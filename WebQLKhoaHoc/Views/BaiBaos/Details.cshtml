@@ -1,0 +1,181 @@
+﻿@model WebQLKhoaHoc.BaiBao
+
+@{
+    ViewBag.Title = "Chi Tiết Dữ Liệu Bài Báo";
+    Layout = "~/Views/Shared/PopUpLayout.cshtml";
+}
+
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">×</button>
+    <h4 class="modal-title"><span class="glyphicon glyphicon-info-sign"></span> Thông tin bài báo</h4>
+</div>
+
+<div class="modal-body">
+
+    <dl class="dl-horizontal">
+        <dt>
+            Mã bài báo:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaISSN)
+        </dd>
+
+        <dt>
+            Tên bài báo:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenBaiBao)
+        </dd>
+
+        <dt>
+            Tạp chí:
+        </dt>
+
+        <dd>
+            @if (Model.LaTrongNuoc.Value)
+            {
+                var trongnuoc = "Trong nước";
+                <span>@trongnuoc</span>
+            }
+            else
+            {
+                var nuocngoai = "Nước ngoài";
+                <span>@nuocngoai</span>
+            }
+        </dd>
+
+        <dt>
+            Cơ quan xuất bản:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CQXuatBan)
+        </dd>
+
+        <dt>
+            Năm đăng báo:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NamDangBao.Value.Year)
+        </dd>
+
+        <dt>
+            Tập phát hành:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TapPhatHanh)
+        </dd>
+
+        <dt>
+            Số phát hành:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoPhatHanh)
+        </dd>
+
+        <dt>
+            Trang bài báo:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TrangBaiBao)
+        </dd>
+
+        <dt>
+            Web liên kết:
+        </dt>
+
+        <dd>
+           <a class ="customlink" href="@Model.LienKetWeb">@Model.LienKetWeb</a>
+        </dd>
+
+        <dt>
+            Link upload file:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LinkFileUpLoad)
+        </dd>
+
+        <dt>
+            Cấp tạp chí:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CapTapChi.TenCapTapChi)
+        </dd>
+
+        <dt>
+            Loại tạp chí:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhanLoaiTapChi.TenLoaiTapChi)
+        </dd>
+
+        <dt>
+            Lĩnh vực:
+        </dt>
+
+        <dd>
+            @{var countLinhVuc = Model.LinhVucs.Count;
+                int t = 0;
+
+                foreach (var linhvuc in Model.LinhVucs)
+                {
+                    @Html.DisplayFor(modelLV => linhvuc.TenLinhVuc)
+                    if (t < countLinhVuc - 1)
+                    {
+                        @:, 
+                    }
+                    t++;
+                }
+             }
+        </dd>
+
+        <dt>
+            Tác giả:
+        </dt>
+
+        <dd>
+            @for (int i = 0; i < Model.DSNguoiThamGiaBaiBaos.Count; i++)
+            {
+                var tg = Model.DSNguoiThamGiaBaiBaos.ToList()[i];
+                var name = tg.NhaKhoaHoc.HoNKH + " " + tg.NhaKhoaHoc.TenNKH;
+                if (tg.LaTacGiaChinh.Value)
+                {
+                    name += " (Chủ Biên)";
+                }
+                if (i < (Model.DSNguoiThamGiaBaiBaos.Count - 1))
+                {
+                    name += ", ";
+                }
+                @Html.ActionLink(name.ToString(), "Details", "NhaKhoaHocs", new { id = tg.MaNKH }, new { Class = "customlink" });
+            }
+        </dd>
+
+    </dl>
+</div>
+
+<div class="modal-footer">
+    @if(Session["user"] != null) {
+        QLKhoaHocEntities db = new QLKhoaHocEntities();
+        WebQLKhoaHoc.Models.UserLoginViewModel user = (WebQLKhoaHoc.Models.UserLoginViewModel)Session["user"];
+        if (db.DSNguoiThamGiaBaiBaos.Any(p=>p.MaBaiBao==Model.MaBaiBao && p.MaNKH == user.MaNKH && p.LaTacGiaChinh==true))
+        {
+        <a href="@Url.Action("Edit", "BaiBaos", new { id = Model.MaBaiBao })" type="button" class="btn btn-primary">Chỉnh Sửa</a>
+        }
+    }
+    <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
+</div>
+
+<style>
+    a.customlink:hover {
+        color: red;
+    }
+</style>

@@ -1,0 +1,27 @@
+﻿@model WebQLKhoaHoc.PhanLoaiSP
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_MainPage.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>PhanLoaiSP</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TenPhanLoai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenPhanLoai)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MaPhanLoai }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

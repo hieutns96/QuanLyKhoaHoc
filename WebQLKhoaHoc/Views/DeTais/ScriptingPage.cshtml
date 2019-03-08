@@ -1,0 +1,182 @@
+﻿@model WebQLKhoaHoc.DeTai
+@{
+    ViewBag.Title = "Detail";
+    Layout = null;
+}
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">×</button>
+    <h4 class="modal-title text-center"><span class="glyphicon glyphicon-info-sign"></span> Thông tin đề tài</h4>
+</div>
+<div class="modal-body">
+    <dl class="dl-horizontal">
+        <dt>
+            Mã đề tài:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MaDeTaiHoSo)
+        </dd>
+        <dt>
+            Tên đề tài:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TenDeTai)
+        </dd>
+        <dt>
+            Mục tiêu đề tài:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MucTieuDeTai)
+        </dd>
+        <dt>
+            Nội dung đề tài
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NoiDungDeTai)
+        </dd>
+        <dt>
+            Kết quả đề tài
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.KetQuaDeTai)
+        </dd>
+        <dt>
+            Năm bắt đầu:
+        </dt>
+        <dd>
+            @Model.NamBD.Value.ToString("dd/MM/yyyy")
+        </dd>
+        <dt>
+            Năm kết thúc:
+        </dt>
+        <dd>
+            @Model.NamKT.Value.ToString("dd/MM/yyyy")
+        </dd>
+        <dt>
+            Web liên kết:
+        </dt>
+        <dd>
+            <a class="customlink" href="@Model.LienKetWeb.ToString()">@Model.LienKetWeb.ToString()</a>
+        </dd>
+        <dt>
+            Tên file:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.LinkFileUpload)
+        </dd>
+        <dt>
+            Cấp đề tài:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CapDeTai.TenCapDeTai)
+        </dd>
+        <dt>
+            Loại đề tài:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.LoaiHinhDeTai.TenLoaiDT)
+        </dd>
+        <dt>
+            Đơn vị chủ trì:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DonViChuTri.TenDVChuTri)
+        </dd>
+        <dt>
+            Đơn vị:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DonViQL.TenDonVI)
+        </dd>
+        <dt>
+            Lĩnh vực:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.LinhVuc.TenLinhVuc)
+        </dd>
+        <dt>
+            Xếp loại:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.XepLoai.TenXepLoai)
+        </dd>
+        <dt>
+            Tình trạng:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TinhTrangDeTai.TenTinhTrang)
+        </dd>
+        <dt>
+            Phân loại:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PhanLoaiSP.TenPhanLoai)
+        </dd>
+        <dt>
+            Kinh phí:
+        </dt>
+        <dd>
+        </dd>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th class="text-center">Loại kinh phí</th>
+                        <th class="text-center">Năm cấp</th>
+                        <th class="text-center">Số tiền</th>
+                        <th class="text-center">Loại tiền</th>                       
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var kinhphi in Model.KinhPhiDeTais)
+                    {
+                        <tr>
+                            <td class="text-right">@kinhphi.LoaiKinhPhi</td>
+                            <td class="text-right">@kinhphi.NamTiepNhan.Value.ToString("d")</td>
+                            <td class="text-right">@kinhphi.SoTien</td>
+                            <td class="text-right">@kinhphi.LoaiTien</td>                            
+                        </tr>
+                    }
+                </tbody>
+            </table>        
+        <dt>
+            Người tham gia:
+        </dt>
+        <dd>
+            @for (int i = 0; i < Model.DSNguoiThamGiaDeTais.Count; i++)
+            {
+                var nkh = Model.DSNguoiThamGiaDeTais.ToList()[i];
+                var name = nkh.NhaKhoaHoc.HoNKH + " " + nkh.NhaKhoaHoc.TenNKH;
+                if (nkh.LaChuNhiem.Value)
+                {
+                    name += " (Chủ Nhiệm)";
+                }
+                if (i < (Model.DSNguoiThamGiaDeTais.Count - 1))
+                {
+                    name += ", ";
+                }
+                @Html.ActionLink(name.ToString(), "Details", "NhaKhoaHocs", new { id = nkh.MaNKH }, new { Class = "customlink" });
+            }
+        </dd>
+    </dl>
+
+</div>
+<div class="modal-footer">
+    @if (Session["user"] != null)
+    {
+        QLKhoaHocEntities db = new QLKhoaHocEntities();
+        WebQLKhoaHoc.Models.UserLoginViewModel user = (WebQLKhoaHoc.Models.UserLoginViewModel)Session["user"];
+        if (db.DSNguoiThamGiaDeTais.Any(p => p.MaDeTai == Model.MaDeTai && p.MaNKH == user.MaNKH && p.LaChuNhiem == true))
+        {
+            <a href="@Url.Action("Edit", "DeTais", new { id = Model.MaDeTai })" type="button" class="btn btn-primary">Chỉnh Sửa</a>
+        }
+    }
+    <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
+</div>
+
+
+<style>
+    a.customlink:hover{
+        color: red;
+        cursor:pointer;
+    }
+</style>
+

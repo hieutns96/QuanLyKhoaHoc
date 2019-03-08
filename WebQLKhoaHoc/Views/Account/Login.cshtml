@@ -1,0 +1,61 @@
+﻿@{
+    ViewBag.Title = "Cổng đăng nhập";
+    Layout = "~/Views/Shared/PopUpLayout.cshtml";
+}
+
+
+<div class="container-contact100">
+    <div class="wrap-contact100">
+
+
+        <form action="Login" method="post" novalidate="novalidate" class="contact100-form validate-form">
+            <a href="/" class="btn btn-info btn-lg" style="background: #6675df; position: absolute; top: 2%; left: 85%;">
+                <span class="glyphicon glyphicon-log-out"></span> Back To Home Page
+            </a>
+
+            <span class="contact100-form-title">
+                Đăng Nhập
+            </span>
+
+            @if (ViewBag.Error != null)
+            {
+                <div style=" margin-bottom: 35px; max-width: 100%; text-align: center;">
+                    <span class="alert alert-danger">@ViewBag.Error</span>
+                </div>
+
+            }
+            <div class="wrap-input100 validate-input">
+                <label class="label-input100" for="name">User Name</label>
+                <input type="text" id="username" class="input100" name="username" value="" placeholder="Enter your username" required>
+            </div>
+            <div class="wrap-input100 validate-input">
+                <label class="label-input100" for="name">Password</label>
+                <input type="password" id="password" name="password" class="input100" placeholder="Enter your password" required>
+            </div>
+
+            <div class="container-contact100-form-btn">
+                <button type="submit" class="contact100-form-btn">Đăng nhập</button>
+            </div>
+
+        </form>
+        <div class="contact100-more flex-col-c-m" style="background-image: url('/Image/login_background.jpg');">
+        </div>
+    </div>
+
+   
+</div>
+@Scripts.Render("~/bundles/jquery")
+<script>
+(function ($) {
+    "use strict";
+    $('.validate-form .input100').each(function(){
+        $(this).focus(function(){
+           hideValidate(this);
+        });
+    });
+    function hideValidate(input) {
+        var thisAlert = $(input).parent();
+        $(thisAlert).removeClass('alert-validate');
+    }
+})(jQuery);
+</script>

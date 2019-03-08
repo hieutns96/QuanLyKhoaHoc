@@ -1,0 +1,335 @@
+﻿@model WebQLKhoaHoc.DeTai
+
+@{
+    ViewBag.Title = "Sửa Dữ Liệu Đề Tài";
+    Layout = "~/Views/Shared/_MainPage.cshtml";
+}
+<style>
+    .ma-phi {
+        display: none;
+    }
+    .kinhphiinput{
+        margin-left: 5px;
+    }
+</style>
+<div class=" parallax layer-overlay overlay-light bg-white-transparent-4" data-bg-img="../../Image/research-background.png" style='background-image: url("../../Image/research-background.png")'>
+    <div class="container">
+        @using (Html.BeginForm("Edit","Detais",FormMethod.Post,new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            <div class="form-group">
+                <div class="form-horizontal">
+                    @Html.ValidationSummary(true)
+                    @Html.HiddenFor(model => model.MaDeTai)
+
+                    <div class="modal-header bg-white-transparent-5">
+                        <h1 class="modal-title text-center text-theme-color-2 ">@Model.TenDeTai </h1>
+                    </div>
+
+                    <div class="modal-body">
+                        <div class="row  bg-white-transparent-7">
+                            <div class="x_panel">
+                                <div class="x_title">
+                                    <h2></h2>
+                                    <ul class="nav navbar-right panel_toolbox">
+                                        <li class="icon-toggle">
+                                            <a class="collapse-link"><i class="glyphicon glyphicon-chevron-up"></i></a>
+                                        </li>
+                                    </ul>
+                                    <div class="clearfix"></div>
+                                </div>
+
+                                <div class="x_content">
+                                    <div class="col-md-6">
+                                        <dl class="dl-horizontal">
+                                            <dt>
+                                                Mã đề tài hộ sở:
+                                            </dt>
+                                            <dd>
+                                                @Html.EditorFor(model => model.MaDeTaiHoSo, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
+                                            </dd>
+                                            <dt>
+                                                Tên đề tài:
+                                            </dt>
+                                            <dd>
+                                                @Html.EditorFor(model => model.TenDeTai, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
+                                            </dd>
+                                            <dt>
+                                                Mục tiêu đề tài:
+                                            </dt>
+                                            <dd>
+                                                @Html.EditorFor(model => model.MucTieuDeTai, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
+                                            </dd>
+                                            <dt>
+                                                Nội dung đề tài
+                                            </dt>
+                                            <dd>
+                                                @Html.EditorFor(model => model.NoiDungDeTai, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
+                                            </dd>
+                                            <dt>
+                                                Kết quả đề tài
+                                            </dt>
+                                            <dd>
+                                                @Html.EditorFor(model => model.KetQuaDeTai, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
+                                            </dd>
+                                        </dl>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <dl class="dl-horizontal">
+                                            <dt>
+                                                Năm bắt đầu:
+                                            </dt>
+                                            <dd>
+
+                                                <input name="NamBD" id="Fromdate" class="form-control date-picker" type="text" placeholder="Từ thời điểm" value="@Model.NamBD.Value.ToString("d")" autocomplete="off">
+
+                                            </dd>
+                                            <dt>
+                                                Năm kết thúc:
+                                            </dt>
+                                            <dd>
+                                                <input name="NamKT" id="Fromdate" class="form-control date-picker" type="text" placeholder="Từ thời điểm" value="@Model.NamKT.Value.ToString("d")" autocomplete="off">
+
+                                            </dd>
+
+                                            <dt>
+                                                Web liên kết:
+                                            </dt>
+                                            <dd>
+                                                @Html.EditorFor(model => model.LienKetWeb, new { htmlAttributes = new { @class = "form-control" } })
+                                            </dd>
+                                            <dt></dt>
+                                            <dd></dd>
+                                            <dt>
+                                                Link upload file:
+                                            </dt>
+                                            <dd>
+                                                <input type="file" class="form-control-plaintext" name="linkUpload" id="linkUpload" />
+                                            </dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                              
+                            </div>
+
+                           
+                        </div>
+                        <hr />
+                        <div class="row bg-white-transparent-7">
+                            <div class="x_panel">
+                                <div class="x_title">
+                                    <h2></h2>
+                                    <ul class="nav navbar-right panel_toolbox">
+                                        <li class="icon-toggle">
+                                            <a class="collapse-link"><i class="glyphicon glyphicon-chevron-up"></i></a>
+                                        </li>
+                                    </ul>
+                                    <div class="clearfix"></div>
+                                </div>
+
+                                <div class="x_content">
+                                    <div class="col-md-6">
+                                        <dl class="dl-horizontal">
+                                            <dt>
+                                                Cấp đề tài:
+                                            </dt>
+                                            <dd>
+                                                @Html.DropDownList("MaCapDeTai", (IEnumerable<SelectListItem>)ViewBag.MaCapDeTai, new { @class = "form-control form-control-sm" })
+                                            </dd>
+                                            <dt>
+                                                Loại đề tài:
+                                            </dt>
+                                            <dd>
+                                                @Html.DropDownList("MaLoaiDeTai", (IEnumerable<SelectListItem>)ViewBag.MaLoaiDeTai, new { @class = "form-control" })
+                                            </dd>
+                                            <dt>
+                                                Đơn vị chủ trì:
+                                            </dt>
+                                            <dd>
+                                                @Html.DropDownList("MaDVChuTri", (IEnumerable<SelectListItem>)ViewBag.MaDVChuTri, new { @class = "form-control" })
+                                            </dd>
+                                            <dt>
+                                                Đơn vị:
+                                            </dt>
+                                            <dd>
+                                                @Html.DropDownList("MaDonViQLThucHien", (IEnumerable<SelectListItem>)ViewBag.MaDonViQLThucHien, new { @class = "form-control" })
+                                            </dd>
+                                            <dt>
+                                                Lĩnh vực:
+                                            </dt>
+                                            <dd>
+                                                @Html.DropDownList("MaLinhVuc", (IEnumerable<SelectListItem>)ViewBag.MaLinhVuc, new { @class = "form-control" })
+                                            </dd>
+                                        </dl>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <dl class="dl-horizontal">
+                                            <dt>
+                                                Xếp loại:
+                                            </dt>
+                                            <dd>
+                                                @Html.DropDownList("MaXepLoai", (IEnumerable<SelectListItem>)ViewBag.MaXepLoai, new { @class = "form-control" })
+                                            </dd>
+                                            <dt>
+                                                Tình trạng:
+                                            </dt>
+                                            <dd>
+                                                @Html.DropDownList("MaTinhTrang", (IEnumerable<SelectListItem>)ViewBag.MaTinhTrang, new { @class = "form-control" })
+                                            </dd>
+                                            <dt>
+                                                Phân loại:
+                                            </dt>
+                                            <dd>
+                                                @Html.DropDownList("MaPhanLoaiSP", (IEnumerable<SelectListItem>)ViewBag.MaPhanLoaiSP, new { @class = "form-control" })
+                                            </dd>
+                                            <dt>
+                                                Người tham gia:
+                                            </dt>
+                                            <dd>
+                                                @Html.ListBox("DSNguoiThamGiaDT", ViewBag.DSNguoiThamGiaDeTai as MultiSelectList, new { @class = "listbox" })
+                                            </dd>
+                                        </dl>
+                                    </div>
+                                </div>                               
+                            </div>
+                        </div>
+                            <hr />
+                            <div class="row bg-white-transparent-7">
+                                <div class="col-md-12 x_panel">
+                                    <div class="x_title">
+                                        <h2 class="text-center"> Kinh phí đề tài:</h2>
+                                        <ul class="nav navbar-right panel_toolbox">
+                                            <li class="icon-toggle">
+                                                <a class="collapse-link"><i class="glyphicon glyphicon-chevron-up"></i></a>
+                                            </li>
+                                        </ul>
+                                        <div class="clearfix"></div>
+                                    </div>
+
+                                    <div class="x_content">
+                                    <table class="table sm">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-center"><input id="inpLoaiKinhPhi" class="form-control" placeholder="Loại kinh phí" /></th>
+                                                <th class="text-center"> <input id="inpNamCap" class="form-control" placeholder="Năm cấp" /></th>
+                                                <th class="text-center"> <input id="inpSoTien" class="form-control" placeholder="Số tiền" /></th>
+                                                <th class="text-center"> <input id="inpLoaiTien" class="form-control" placeholder="Loại tiền" /></th>
+                                                <th class="text-center"><button id="btnThem" type="button" class="btn btn-success">Thêm kinh phí</button></th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                    <br />
+                                    <table class="table table-bordered" id="tblOne">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-center">Loại kinh phí</th>
+                                                <th class="text-center">Năm cấp</th>
+                                                <th class="text-center">Số tiền</th>
+                                                <th class="text-center">Loại tiền</th>
+                                                <th class="text-center">Thao tác</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var kinhphi in Model.KinhPhiDeTais)
+                                            {
+                                                <tr>
+                                                    <td class="ma-phi">@kinhphi.MaPhi</td>
+                                                    <td class="text-right">@kinhphi.LoaiKinhPhi</td>
+                                                    <td class="text-right">@kinhphi.NamTiepNhan.Value.ToString("d")</td>
+                                                    <td class="text-right">@kinhphi.SoTien</td>
+                                                    <td class="text-right">@kinhphi.LoaiTien</td>
+                                                    <td class="text-right"><button class="btn btn-primary xoa-phi" type="button">Xóa kinh phí</button></td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                    <input type="hidden" id="KinhPhiXoa" name="KinhPhiXoa" value="" />
+                                    <input type="hidden" id="KinhPhiMoi" name="KinhPhiMoi" value="" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <br />                   
+
+                    <div class="modal-footer">
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="Lưu Xuống" class="btn btn-warning" />
+                                <a href="@Url.Action("Index","DeTais")" type="button" class="btn btn-danger">Trở Về</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            var ma_phi_xoa = [];
+            $('#tblOne > tbody > tr').click(function (ev) {
+                if (ev.target.className == 'btn btn-primary xoa-phi') {
+                    //console.log(ev.target);
+                    //console.log(ev.currentTarget);
+                    var cf = confirm('Bạn có muốn xoá ?');
+                    if (cf) {
+                        var id = $(ev.currentTarget.children[0]).html();
+                        //console.log(id);
+                        $(ev.currentTarget).fadeOut();
+                        if (id != '') {
+                            ma_phi_xoa.push(id);
+                            $('#KinhPhiXoa').val(JSON.stringify(ma_phi_xoa));
+                        }
+                    }
+                }
+            });
+            $('#btnThem').click(function () {
+                var loaikinhphi = $('#inpLoaiKinhPhi').val();
+                var namcap = $('#inpNamCap').val();
+                var sotien = $('#inpSoTien').val();
+                var loaitien = $('#inpLoaiTien').val();
+                if (loaikinhphi != '' && namcap != '' && sotien != '' && loaitien != '') {
+                    $('#tblOne > tbody:last-child').append('<tr><td class="ma-phi"></td><td class="text-right">' + loaikinhphi + '</td><td class="text-right">' + namcap + '</td><td class="text-right">' + sotien + '</td><td class="text-right">' + loaitien + '</td><td class="text-right"><button class="btn btn-primary xoa-phi" type="button">Xóa kinh phí</button></td></tr>');
+                    $('#tblOne > tbody > tr').click(function (ev) {
+                        if (ev.target.className == 'btn btn-primary xoa-phi') {
+                            //console.log(ev.target);
+                            //console.log(ev.currentTarget);
+                            var cf = confirm('Bạn có muốn xoá ?');
+                            if (cf) {
+                                var id = $(ev.currentTarget.children[0]).html();
+                                //console.log(id);
+                                $(ev.currentTarget).fadeOut();
+                                if (id != '') {
+                                    ma_phi_xoa.push(id);
+                                    $('#KinhPhiXoa').val(JSON.stringify(ma_phi_xoa));
+                                }
+                            }
+                        }
+                    });
+
+                }
+            });
+            $("form").one('submit', function (e) {
+                e.preventDefault();
+                var data_kinhphi = [];
+                $('#tblOne > tbody > tr').each(function (i, row) {
+                    if ($(row.children[0]).html() == '') {
+                        var row_data_kinhphi = [];
+                        row_data_kinhphi.push(@Model.MaDeTai);
+                        $(row.children).each(function (j, cell) {
+                            if (j != 0 && j != row.childElementCount - 1) {                               
+                                row_data_kinhphi.push($(cell).html());
+                            }
+                        });
+                        data_kinhphi.push(row_data_kinhphi);
+                    }
+                });
+                $('#KinhPhiMoi').val(JSON.stringify(data_kinhphi));
+                $(this).submit();
+            });
+        });
+    </script>
+}

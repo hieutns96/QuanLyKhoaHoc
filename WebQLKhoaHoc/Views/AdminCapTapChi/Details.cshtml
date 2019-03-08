@@ -1,0 +1,35 @@
+﻿@model WebQLKhoaHoc.CapTapChi
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_MainPage.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>CapTapChi</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TenCapTapChi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenCapTapChi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ChiChu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ChiChu)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MaCapTapChi }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,105 @@
+﻿@model WebQLKhoaHoc.SachGiaoTrinh
+
+@{
+    ViewBag.Title = "Chi Tiết Dữ Liệu Sách && Giáo Trình";
+    Layout = "~/Views/Shared/PopUpLayout.cshtml";
+}
+
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">×</button>
+    <h4 class="modal-title"><span class="glyphicon glyphicon-info-sign"></span> Thông tin Sách, Giáo trình</h4>
+</div>
+
+<div class="modal-body">
+    <dl class="dl-horizontal">
+        <dt>
+            ISBN
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaISBN)
+        </dd>
+
+        <dt>
+            Tên sách, giáo trình
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenSach)
+        </dd>
+
+        <dt>
+            Loại sách, giáo trình
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhanLoaiSach.TenLoai)
+        </dd>
+
+        <dt>
+            Lĩnh vực
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LinhVuc.TenLinhVuc)
+        </dd>
+
+
+        <dt>
+            Nhà xuất bản
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NhaXuatBan.TenNXB)
+        </dd>
+
+        <dt>
+            Năm xuất bản
+        </dt>
+
+        <dd>
+            @Model.NamXuatBan.Value.ToString("dd/MM/yyyy")
+        </dd>
+
+        <dt>
+            Tác giả
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DSTacGias)
+            @for (int i = 0; i < Model.DSTacGias.Count; i++)
+            {
+                var tg = Model.DSTacGias.ToList()[i];
+                var name = tg.NhaKhoaHoc.HoNKH + " " + tg.NhaKhoaHoc.TenNKH;
+                if (tg.LaChuBien.Value)
+                {
+                    name += " (Chủ Biên)";
+                }
+                if (i < (Model.DSTacGias.Count - 1))
+                {
+                    name += ", ";
+                }
+                @Html.ActionLink(name.ToString(), "Details", "NhaKhoaHocs", new { id = tg.MaNKH }, new { Class = "customlink" });
+            }
+        </dd>
+    </dl>
+</div>
+
+<div class="modal-footer">
+    @if (Session["user"] != null)
+    {
+        QLKhoaHocEntities db = new QLKhoaHocEntities();
+        WebQLKhoaHoc.Models.UserLoginViewModel nkh = (WebQLKhoaHoc.Models.UserLoginViewModel)Session["user"];
+        if (db.DSTacGias.Any(p => p.MaNKH == nkh.MaNKH && p.LaChuBien == true && p.MaSach == Model.MaSach))
+        {
+            <a href="@Url.Action("Edit","SachGiaoTrinhs",new { id = Model.MaSach})" type="button" class="btn btn-primary">Chỉnh Sửa</a>
+        }
+    }
+    <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
+</div>
+
+<style>
+    a.customlink:hover {
+        color: red;
+    }
+</style>

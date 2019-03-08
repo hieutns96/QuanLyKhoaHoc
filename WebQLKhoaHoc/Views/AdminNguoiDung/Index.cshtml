@@ -1,0 +1,46 @@
+﻿@model IEnumerable<WebQLKhoaHoc.NguoiDung>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainPage.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Passwords)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ChucNang.TenChucNang)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NhaKhoaHoc.MaNKHHoSo)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Passwords)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ChucNang.TenChucNang)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NhaKhoaHoc.MaNKHHoSo)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Usernames }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Usernames }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Usernames })
+        </td>
+    </tr>
+}
+
+</table>

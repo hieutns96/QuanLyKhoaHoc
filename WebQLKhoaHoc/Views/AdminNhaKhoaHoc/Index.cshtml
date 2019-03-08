@@ -1,0 +1,99 @@
+﻿@model IEnumerable<WebQLKhoaHoc.Models.NhaKhoaHocViewModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminMainPage.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>
+                    Danh Sách Nhà Khoa Học  
+                </h2>
+                <ul class="nav navbar-right panel_toolbox">
+                    <li class="dropdown">
+                        <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>
+                                @Html.ActionLink("Create New", "Create", "AdminNhaKhoaHoc")
+                            </li>
+                        </ul>
+                    </li>
+                                             
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <div id="datatable_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+                    <!-- list component  -->
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <table id="datatable" class="table table-striped table-bordered dataTable no-footer" role="grid" aria-describedby="datatable_info">
+                                <thead>
+                                    <tr role="row">
+                                        <th>Ảnh Đại Diện</th>
+                                        <th>Họ Tên</th>
+                                        <th>Giới Tính</th>
+                                        <th>Ngày Sinh</th>
+                                        <th>Địa Chỉ</th>
+                                        <th>Điện Thoại</th>
+                                        <th>Email</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+
+                                <!-- grid nkh  -->
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr role="row" class="even">
+                                            <td>
+                                                @{
+                                                    if (String.IsNullOrWhiteSpace(item.AnhCaNhan))
+                                                    {
+                                                        <img src=@Url.Content("~/Image/avatar.bmp") style="height: 58px; width:58px; border-radius: 50%;" />
+                                                    }
+                                                    else
+                                                    {
+                                                        <img src="@item.AnhCaNhan" style="height: 58px; width:58px; border-radius: 50%;" />
+                                                    }
+                                                }
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.HoNKH) @Html.DisplayFor(modelItem => item.TenNKH)
+                                            </td>
+                                            <td> @Html.DisplayFor(modelItem => item.GioiTinhNKH)</td>
+                                            <td> @item.NgaySinh.Value.ToShortDateString()</td>
+                                            <td class="">  @Html.DisplayFor(modelItem => item.DiaChiLienHe)</td>
+                                            <td class="sorting_1">  @Html.DisplayFor(modelItem => item.DienThoai)</td>
+                                            <td>  @Html.DisplayFor(modelItem => item.EmailLienHe)</td>
+                                            <td>
+                                                <a href="@Url.Action("Edit", "AdminNhaKhoaHoc", new {id = item.MaNKH})">
+                                                    <i class="far fa-edit"></i>
+                                                </a>
+                                                <a  href="javascript:" data-toggle="modal" data-target="#mydata" onclick="modal_load('@Url.Action("Details", "AdminNhaKhoaHoc", new { id = item.MaNKH })')">
+                                                    <i class="fas fa-info"></i>
+                                                </a>
+                                                <a href="@Url.Action("Delete", "AdminNhaKhoaHoc", new {id = item.MaNKH})">
+                                                    <i class="far fa-trash-alt"></i>
+                                                </a>
+
+
+                                            </td>
+                                        </tr>
+                                    }
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

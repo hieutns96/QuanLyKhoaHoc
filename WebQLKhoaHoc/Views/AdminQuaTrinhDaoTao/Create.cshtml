@@ -1,0 +1,72 @@
+﻿@model WebQLKhoaHoc.QuaTrinhDaoTao
+@{ QLKhoaHocEntities db = new QLKhoaHocEntities(); }
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_AdminMainPage.cshtml";
+}
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <h1 class="text-center">Thêm quá trình đào tạo</h1>
+    <hr />
+    @Html.ValidationSummary(true)
+    <input type="hidden" name="manhakhoahoc" value="@ViewBag.manhakhoahoc" />
+    <div class="container">
+        <div class="row">
+            <input type="hidden" name="MaNKH" value="@ViewBag.manhakhoahoc" />
+            <div class="form-group">
+                <div class="col-md-2  col-md-offset-1"><h4>Thời gian bất đầu:</h4></div>
+                <div class="col-md-7">
+                    <input name="ThoiGianBD" type="text" class="form-control" required/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-2  col-md-offset-1"><h4>Thời gian kết thúc:</h4></div>
+                <div class="col-md-7">
+                    <input name="ThoiGianKT" type="text" class="form-control" required/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-2  col-md-offset-1"><h4>Bậc đào tạo:</h4></div>
+                <div class="col-md-7">
+                    @Html.DropDownList("MaBacDT", new SelectList(db.BacDaoTaos, "MaBacDT", "TenBacDT"), new { @class = "form-control" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-2  col-md-offset-1"><h4>Cơ sở đào tạo:</h4></div>
+                <div class="col-md-7">
+                    <input name="CoSoDaoTao" type="text" class="form-control" required/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-2  col-md-offset-1"><h4>Mã ngành:</h4></div>
+                <div class="col-md-7">
+                    @Html.DropDownList("MaNganh", new SelectList(db.NganhDaoTaos, "MaNganhDaoTao", "TenNganhDaoTao"), new { @class = "form-control" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-2  col-md-offset-1"><h4>Năm tốt nghiệp:</h4></div>
+                <div class="col-md-7">
+                    <input name="NamTotNghiep" type="text" class="form-control" required/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-3 col-md-7">
+                    @Html.ActionLink("Trở về", "Edit", "AdminNhaKhoaHoc", new { id = ViewBag.manhakhoahoc }, new { @class = "btn btn-danger pull-right" })
+                    <input type="submit" value="Tạo" class="btn btn-primary pull-right" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+}
+

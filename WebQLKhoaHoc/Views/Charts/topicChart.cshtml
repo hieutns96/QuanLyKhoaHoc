@@ -1,0 +1,137 @@
+﻿@{
+    ViewBag.Title = "Thống kê - CSDL Khoa học";
+    Layout = "~/Views/Shared/_MainPage.cshtml";
+}
+
+<div class="main-content">
+    <!-- Section: About -->
+    <section class="">
+        <div class="container">
+            <div class="section-content">
+
+                <div class="panel">
+                    <div class="panel-body">
+                        <div>
+                            <form action="topicChart" class="form-horizontal" method="post" accept-charset="utf-8">
+
+                                <div class="form-group">
+                                    <div class="col-md-2 text-right">
+                                        <label class="control-label">Chọn đơn vị:</label>
+                                    </div>
+                                    <div class="col-md-9">
+                                        @{
+                                            QLKhoaHocEntities db = new QLKhoaHocEntities();
+                                            List<DonViQL> donViQLs = db.DonViQLs.ToList();
+                                        }
+                                        <select name="unit" class="form-control">
+                                            @if (ViewBag.unit != null)
+                                            {
+                                                if (ViewBag.unit == "0")
+                                                {
+                                                    <option value="0" selected="selected">
+                                                        --Tất cả--
+                                                    </option>
+                                                    foreach (var item in donViQLs)
+                                                    {
+                                                        <option value="@item.MaDonVi">
+                                                            @item.TenDonVI
+                                                        </option>
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    <option value="0">
+                                                        --Tất cả--
+                                                    </option>
+                                                    foreach (var item in donViQLs)
+                                                    {
+                                                        if (item.MaDonVi == ViewBag.unit)
+                                                        {
+                                                            <option value="@item.MaDonVi" selected="selected">
+                                                                @item.TenDonVI
+                                                            </option>
+                                                        }
+                                                        else
+                                                        {
+                                                            <option value="@item.MaDonVi">
+                                                                @item.TenDonVI
+                                                            </option>
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                            else
+                                            {
+                                                <option value="0" selected="selected">
+                                                    --Tất cả--
+                                                </option>
+                                                foreach (var item in donViQLs)
+                                                {
+                                                    <option value="@item.MaDonVi">
+                                                        @item.TenDonVI
+                                                    </option>
+                                                }
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-2 text-right">
+                                        <label class="control-label">Từ ngày:</label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <input type="date" class="form-control  datepicker" name="from_date" id="from_date" value="" autocomplete="off">
+                                    </div>
+                                    <div class="col-md-2 text-right">
+                                        <label class="control-label">Đến ngày:</label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <input type="date" class="form-control datepicker" name="to_date" id="to_date" value="" autocomplete="off">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-md-2"></div>
+                                    <div class="col-md-9">
+                                        <button type="submit" class="btn btn-primary">Thống kê</button>
+                                    </div>
+                                </div>
+                            </form>
+                            <div>
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th>Đơn vị công tác</th>
+                                            <th class="text-center">Dự án cấp Nhà nước</th>
+                                            <th class="text-center">Đề tài cấp Bộ</th>
+                                            <th class="text-center">Đề tài cấp Tỉnh</th>
+                                            <th class="text-center">Đề tài cấp Cơ sở</th>
+                                            <th class="text-center">Dự án hợp tác quốc tế</th>
+                                            <th class="text-center">Dự án SXTN cấp Nhà nước</th>
+                                            <th class="text-center">Đề tài độc lập cấp Nhà nước</th>
+                                            <th class="text-center">Đề tài thuộc chương trình TĐ cấp NN</th>
+                                            <th class="text-center">Dự án thuộc chương trình TĐ cấp NN</th>
+                                            <th class="text-center">Nghiên cứu cơ bản</th>
+                                            <th class="text-center">Nhiệm vụ nghiên cứu theo NĐT</th>
+                                            <th class="text-center">Giáo dục và Bảo vệ môi trường</th>
+                                            <th class="text-center">Đề tài trọng điểm cấp Bộ</th>
+                                            <th class="text-center">Dự án SXTN cấp Bộ</th>
+                                            <th class="text-center">Đề tài cấp Đại học Huế</th>
+                                            <th>Tổng cộng</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+

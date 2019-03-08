@@ -1,0 +1,166 @@
+﻿<html lang="en" class="">
+@{
+
+    QLKhoaHocEntities db = new QLKhoaHocEntities();
+    WebQLKhoaHoc.Models.UserLoginViewModel nd = (WebQLKhoaHoc.Models.UserLoginViewModel)Session["user"] ?? new WebQLKhoaHoc.Models.UserLoginViewModel();
+}
+<!-- Head BEGIN -->
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="shortcut icon" type="image/x-icon" href="~/Image/hcmup_edu.ico" />
+
+    <title>@ViewBag.Title</title>
+    <!-- Theme styles START -->
+    @Scripts.RenderFormat("<script src=\"/Scripts/use.fontawesome.js\" data -auto-replace-svg=\"nest\"></script>", "~/bundles/use.fontawesome")
+    @Styles.Render("~/Content/admincss")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <!-- Theme styles END -->
+</head>
+<!-- Head END -->
+<!-- Body BEGIN -->
+<body class="nav-md">
+    <div class="container body">
+        <div class="main_container">
+            <!-- left container -->
+            <div class="col-md-3 left_col">
+                <div class="left_col scroll-view">
+                    <div class="navbar nav_title" style="border: 0;">
+                        <!-- load page again -->
+                        <a href="#" class="site_title"><span>ADMIN PAGE</span></a>
+                    </div>
+                    <div class="clearfix"></div>
+
+                    <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                        <div class="menu_section active">
+                            <ul class="nav side-menu" style="">
+                                <!-- list controllers -->
+                                <li>
+                                    <a href="@Url.Action("Index","AdminNhaKhoaHoc")"><i class="fa fa-home"></i> Nhà Khoa Học </a>
+                                  
+                                </li>
+                                <li>
+
+                                    <a href="javascript:;"><i class="fa fa-home"></i> Đề Tài <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu" style="display: none;">
+                                        <!-- list children controllers -->
+                                        <li><a href="@Url.Action("Index","AdminDeTai")">Danh sách đề tài</a></li>
+                                        <li><a href="@Url.Action("Index","AdminKinhPhiDeTai")">Kinh phí đề tài</a></li>     
+                                        <li><a href="@Url.Action("DanhSachNguoiThamGiaDeTai","AdminDeTai")">Danh sách người tham gia đề tài</a></li>     
+                                        
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="javascript:;"><i class="fa fa-home"></i> Sách và Giáo Trình <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu" style="display: none;">
+                                        <!-- list children controllers -->
+                                        <li><a href="@Url.Action("Index","AdminSachGiaoTrinhs")">Sách giáo trình</a></li>
+                                        <li><a href="@Url.Action("DanhSachTacGia","AdminSachGiaoTrinhs")">Danh sách tác giả</a></li>                                        
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="javascript:;"><i class="fa fa-home"></i> Bài Báo <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu" style="display: none;">
+                                        <!-- list children controllers -->
+                                        <li><a href="@Url.Action("Index","AdminBaiBao")">Danh sách bài báo</a></li>
+                                        <li><a href="@Url.Action("DanhSachNguoiThamGiaBaiBao","AdminBaiBao")">Danh sách người thàm gia bài báo</a></li>                                       
+                                    </ul>
+                                </li>
+
+                            </ul>
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </div>
+            <!-- top navigation -->
+            <div class="top_nav">
+                <div class="nav_menu">
+                    <nav>
+                        <div class="nav toggle">
+                            <a id="menu_toggle">
+                                <i class="fa fa-bars"></i>
+                            </a>
+                        </div>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="">
+                                <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                    @{
+                                        if (String.IsNullOrWhiteSpace(nd.AnhCaNhan))
+                                        {
+                                            <img src=@Url.Content("~/Image/avatar.bmp") style="height: 29px; width: 29px; border-radius: 50%;" />
+                                        }
+                                        else
+                                        {
+                                            <img src="@nd.AnhCaNhan" style="height: 29px; width: 29px; border-radius: 50%;" />
+                                        }
+                                    }@nd.Ten
+
+                                    <span class=" fa fa-angle-down"></span>
+                                </a>
+                                <ul class="dropdown-menu dropdown-usermenu pull-right">
+                                    <li>
+                                        <a href="javascript:;"> Profile</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;">
+                                            <span class="badge bg-red pull-right">50%</span>
+                                            <span>Settings</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;">Help</a>
+                                    </li>
+                                    <li>
+                                        <a href="login.html">
+                                            <i class="fa fa-sign-out pull-right"></i>
+                                            Log Out
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <div class="right_col" role="main">
+                @RenderBody()
+                <div class="">
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <footer>
+                <div class="pull-right">
+                    Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+                </div>
+                <div class="clearfix"></div>
+            </footer>
+        </div>
+    </div>
+
+    <div id="mydata" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+            </div>
+        </div>
+    </div>
+    <!-- end wrapper -->
+    <!-- Footer Scripts -->
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/admin")
+    <script>
+        function modal_load(url) {
+            $('#mydata .modal-content').load(url);
+        };
+    </script>
+
+
+</body>
+<!-- END BODY -->
+</html>

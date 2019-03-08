@@ -1,0 +1,415 @@
+﻿@using Microsoft.Ajax.Utilities
+@model IEnumerable<WebQLKhoaHoc.Models.topicChartViewModel>
+@{
+    ViewBag.Title = "Thống kê - CSDL Khoa học";
+    Layout = "~/Views/Shared/_MainPage.cshtml";
+}
+@functions{
+    public List<List<Object>> GoogleChartData(QLKhoaHocEntities db, int take = 10, int skip = 0)
+    {
+        List<List<Object>> data = new List<List<Object>>(){new List<Object>() {
+                                "Đơn vị công tác",
+                                "Dự án cấp Nhà nước",
+                                "Đề tài cấp Bộ",
+                                "Đề tài cấp Tỉnh",
+                                "Đề tài cấp Cơ sở",
+                                "Dự án hợp tác quốc tế",
+                                "Dự án SXTN cấp Nhà nước",
+                                "Đề tài độc lập cấp Nhà nước",
+                                "Đề tài thuộc chương trình TĐ cấp NN",
+                                "Dự án thuộc chương trình TĐ cấp NN",
+                                "Nghiên cứu cơ bản",
+                                "Nhiệm vụ nghiên cứu theo NĐT",
+                                "Giáo dục và Bảo vệ môi trường",
+                                "Đề tài trọng điểm cấp Bộ",
+                                "Dự án SXTN cấp Bộ",
+                                "Đề tài cấp Đại học Huế",
+                            }};
+        var data_rows = Model.Skip(skip).Take(take);
+        foreach (var row in data_rows)
+        {
+            string tenDonVi = db.DonViQLs.Find(row.MaDVQL).TenDonVI;
+            data.Add(new List<Object>() {
+            tenDonVi,
+            row.DACNN,
+            row.DTCB,
+            row.DTCT,
+            row.DTCCS,
+            row.DAHTQT,
+            row.DASXTNCNN,
+            row.DTDLCNN,
+            row.DTTCTDTCNN,
+            row.DATCTTDCNN,
+            row.NCCB,
+            row.NVNCTNDT,
+            row.GDBVMT,
+            row.DTTDCB,
+            row.DASXTNCB,
+            row.DTCDHH
+    });
+        }
+        return data;
+    }
+}
+<div class="main-content">
+    <!-- Section: About -->
+    <section class="">
+        <div class="container">
+            <div class="section-content">
+
+                <div class="panel">
+                    <div class="panel-body">
+                        <div>
+                            <form action="topicChart" class="form-horizontal" method="post" accept-charset="utf-8">
+
+                                <div class="form-group">
+                                    <div class="col-md-2 text-right">
+                                        <label class="control-label">Chọn đơn vị:</label>
+                                    </div>
+                                    <div class="col-md-9">
+                                        @{
+                                            QLKhoaHocEntities db = new QLKhoaHocEntities();
+                                            List<DonViQL> donViQLs = db.DonViQLs.ToList();
+                                        }
+                                        <select name="unit" class="form-control">
+                                            @if (ViewBag.unit != null)
+                                            {
+                                                if (ViewBag.unit == 0)
+                                                {
+                                                    <option value="0" selected="selected">
+                                                        --Tất cả--
+                                                    </option>
+                                                    foreach (var item in donViQLs)
+                                                    {
+                                                        <option value="@item.MaDonVi">
+                                                            @item.TenDonVI
+                                                        </option>
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    <option value="0">
+                                                        --Tất cả--
+                                                    </option>
+                                                    foreach (var item in donViQLs)
+                                                    {
+                                                        if (item.MaDonVi == ViewBag.unit)
+                                                        {
+                                                            <option value="@item.MaDonVi" selected="selected">
+                                                                @item.TenDonVI
+                                                            </option>
+                                                        }
+                                                        else
+                                                        {
+                                                            <option value="@item.MaDonVi">
+                                                                @item.TenDonVI
+                                                            </option>
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                            else
+                                            {
+                                                <option value="0" selected="selected">
+                                                    --Tất cả--
+                                                </option>
+                                                foreach (var item in donViQLs)
+                                                {
+                                                    <option value="@item.MaDonVi">
+                                                        @item.TenDonVI
+                                                    </option>
+                                                }
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-2 text-right">
+                                        <label class="control-label">Từ ngày:</label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <input type="date" class="form-control  datepicker" name="from_date" id="from_date" value="" autocomplete="off">
+                                    </div>
+                                    <div class="col-md-2 text-right">
+                                        <label class="control-label">Đến ngày:</label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <input type="date" class="form-control datepicker" name="to_date" id="to_date" value="" autocomplete="off">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-md-2"></div>
+                                    <div class="col-md-9">
+                                        <button type="submit" class="btn btn-primary">Thống kê</button>
+                                    </div>
+                                </div>
+                            </form>
+                            <div>
+                                <div class="text-center">
+                                    <span class="statistic-title">
+                                        @if (ViewBag.fromdate != DateTime.MinValue && ViewBag.todate != DateTime.MaxValue)
+                                        {
+                                            <br>
+                                            <span> TỪ @Convert.ToDateTime(ViewBag.fromdate).ToString("MM/dd/yyyy")  ĐẾN @Convert.ToDateTime(ViewBag.todate).ToString("MM/dd/yyyy")</span>
+                                        }
+                                    </span>
+                                </div>
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th>Đơn vị công tác</th>
+                                            <th class="text-center">Dự án cấp Nhà nước</th>
+                                            <th class="text-center">Đề tài cấp Bộ</th>
+                                            <th class="text-center">Đề tài cấp Tỉnh</th>
+                                            <th class="text-center">Đề tài cấp Cơ sở</th>
+                                            <th class="text-center">Dự án hợp tác quốc tế</th>
+                                            <th class="text-center">Dự án SXTN cấp Nhà nước</th>
+                                            <th class="text-center">Đề tài độc lập cấp Nhà nước</th>
+                                            <th class="text-center">Đề tài thuộc chương trình TĐ cấp NN</th>
+                                            <th class="text-center">Dự án thuộc chương trình TĐ cấp NN</th>
+                                            <th class="text-center">Nghiên cứu cơ bản</th>
+                                            <th class="text-center">Nhiệm vụ nghiên cứu theo NĐT</th>
+                                            <th class="text-center">Giáo dục và Bảo vệ môi trường</th>
+                                            <th class="text-center">Đề tài trọng điểm cấp Bộ</th>
+                                            <th class="text-center">Dự án SXTN cấp Bộ</th>
+                                            <th class="text-center">Đề tài cấp Đại học Huế</th>
+                                            <th>Tổng cộng</th>
+                                        </tr>
+                                    </thead>
+                                    @{
+                                        int stt = 1;
+                                    }
+                                    <tbody>
+                                        @foreach (var item in Model)
+                                        {
+                                            <tr>
+                                                <td>@stt</td>
+                                                <td>@db.DonViQLs.Find(item.MaDVQL).TenDonVI</td>
+                                                <td class="text-center">
+                                                    @if (item.DACNN > 0)
+                                                    {
+                                                        @item.DACNN
+                                                    }
+                                                    else
+                                                    {
+                                                        <span>-</span>
+                                                    }
+                                                </td>
+                                                <td class="text-center">
+                                                    @if (item.DTCB > 0)
+                                                    {
+                                                        @item.DTCB
+                                                    }
+                                                    else
+                                                    {
+                                                        <span>-</span>
+                                                    }
+                                                </td>
+                                                <td class="text-center">
+                                                    @if (item.DTCT > 0)
+                                                    {
+                                                        @item.DTCT
+                                                    }
+                                                    else
+                                                    {
+                                                        <span>-</span>
+                                                    }
+                                                </td>
+                                                <td class="text-center">
+                                                    @if (item.DTCCS > 0)
+                                                    {
+                                                        @item.DTCCS
+                                                    }
+                                                    else
+                                                    {
+                                                        <span>-</span>
+                                                    }
+                                                </td>
+                                                <td class="text-center">
+                                                    @if (item.DAHTQT > 0)
+                                                    {
+                                                        @item.DAHTQT
+                                                    }
+                                                    else
+                                                    {
+                                                        <span>-</span>
+                                                    }
+                                                </td>
+                                                <td class="text-center">
+                                                    @if (item.DASXTNCNN > 0)
+                                                    {
+                                                        @item.DASXTNCNN
+                                                    }
+                                                    else
+                                                    {
+                                                        <span>-</span>
+                                                    }
+                                                </td>
+                                                <td class="text-center">
+                                                    @if (item.DTDLCNN > 0)
+                                                    {
+                                                        @item.DTDLCNN
+                                                    }
+                                                    else
+                                                    {
+                                                        <span>-</span>
+                                                    }
+                                                </td>
+                                                <td class="text-center">
+                                                    @if (item.DTTCTDTCNN > 0)
+                                                    {
+                                                        @item.DTTCTDTCNN
+                                                    }
+                                                    else
+                                                    {
+                                                        <span>-</span>
+                                                    }
+                                                </td>
+                                                <td class="text-center">
+                                                    @if (item.DATCTTDCNN > 0)
+                                                    {
+                                                        @item.DATCTTDCNN
+                                                    }
+                                                    else
+                                                    {
+                                                        <span>-</span>
+                                                    }
+                                                </td>
+                                                <td class="text-center">
+                                                    @if (item.NCCB > 0)
+                                                    {
+                                                        @item.NCCB
+                                                    }
+                                                    else
+                                                    {
+                                                        <span>-</span>
+                                                    }
+                                                </td>
+                                                <td class="text-center">
+                                                    @if (item.NVNCTNDT > 0)
+                                                    {
+                                                        @item.NVNCTNDT
+                                                    }
+                                                    else
+                                                    {
+                                                        <span>-</span>
+                                                    }
+                                                </td>
+                                                <td class="text-center">
+                                                    @if (item.GDBVMT > 0)
+                                                    {
+                                                        @item.GDBVMT
+                                                    }
+                                                    else
+                                                    {
+                                                        <span>-</span>
+                                                    }
+                                                </td>
+                                                <td class="text-center">
+                                                    @if (item.DTTDCB > 0)
+                                                    {
+                                                        @item.DTTDCB
+                                                    }
+                                                    else
+                                                    {
+                                                        <span>-</span>
+                                                    }
+                                                </td>
+                                                <td class="text-center">
+                                                    @if (item.DASXTNCB > 0)
+                                                    {
+                                                        @item.DASXTNCB
+                                                    }
+                                                    else
+                                                    {
+                                                        <span>-</span>
+                                                    }
+                                                </td>
+                                                <td class="text-center">
+                                                    @if (item.DTCDHH > 0)
+                                                    {
+                                                        @item.DTCDHH
+                                                    }
+                                                    else
+                                                    {
+                                                        <span>-</span>
+                                                    }
+                                                </td>
+                                                <td class="text-center">
+                                                    @if (item.Sum > 0)
+                                                    {
+                                                        @item.Sum
+                                                    }
+                                                    else
+                                                    {
+                                                        <span>-</span>
+                                                    }
+                                                </td>
+
+                                            </tr>
+                                            stt++;
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @{
+
+                    List<List<Object>> data1 = GoogleChartData(db, 10, 0);
+                    List<List<Object>> data2 = GoogleChartData(db, 10, 10);
+                    List<List<Object>> data3 = GoogleChartData(db, 10, 20);
+                    List<List<Object>> data4 = GoogleChartData(db, 9, 30);
+
+                }
+                <input type="hidden" id="data1" value="@Json.Encode(data1)" />
+                <input type="hidden" id="data2" value="@Json.Encode(data2)" />
+                <input type="hidden" id="data3" value="@Json.Encode(data3)" />
+                <input type="hidden" id="data4" value="@Json.Encode(data4)" />
+                <div class="panel">
+                    <div class="panel-body">
+                        <div id="topicsChart1"></div>
+                    </div>
+                </div>
+                <div class="panel">
+                    <div class="panel-body">
+                        <div id="topicsChart2"></div>
+                    </div>
+                </div>
+                <div class="panel">
+                    <div class="panel-body">
+                        <div id="topicsChart3"></div>
+                    </div>
+                </div>
+                <div class="panel">
+                    <div class="panel-body">
+                        <div id="topicsChart4"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+@section charts{
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    @Scripts.Render("~/bundles/charts")
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var json_data1 = $('#data1').val();
+            var json_data2 = $('#data2').val();
+            var json_data3 = $('#data3').val();
+            var json_data4 = $('#data4').val();
+            googleChart(json_data1, 'line', 'topicsChart1');
+            googleChart(json_data2, 'line', 'topicsChart2');
+            googleChart(json_data3, 'line', 'topicsChart3');
+            googleChart(json_data4, 'line', 'topicsChart4');
+        });
+    </script>
+}
+
+
+

@@ -1,0 +1,52 @@
+﻿@model IEnumerable<WebQLKhoaHoc.DonViQL>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainPage.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TenDonVI)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DiaChiCQ)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DienThoaiCQ)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmailCQ)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TenDonVI)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DiaChiCQ)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DienThoaiCQ)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmailCQ)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.MaDonVi }) |
+            @Html.ActionLink("Details", "Details", new { id=item.MaDonVi }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.MaDonVi })
+        </td>
+    </tr>
+}
+
+</table>

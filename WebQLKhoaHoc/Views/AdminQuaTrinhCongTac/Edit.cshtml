@@ -1,0 +1,65 @@
+﻿@model WebQLKhoaHoc.QuaTrinhCongTac
+@{ QLKhoaHocEntities db = new QLKhoaHocEntities(); }
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_AdminMainPage.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h1 class="text-center">Thêm quá trình công tác:</h1>
+        <hr />
+        @Html.ValidationSummary(true)
+        <input type="hidden" name="manhakhoahoc" value="@ViewBag.manhakhoahoc" />
+        <div class="container">
+            <div class="row">
+                <input type="hidden" name="MaCT" value="@Model.MaCT" />
+                <input type="hidden" name="MaNKH" value="@ViewBag.manhakhoahoc" />
+                <div class="form-group">
+                    <div class="col-md-2  col-md-offset-1"><h4>Thời gian bất đầu:</h4></div>
+                    <div class="col-md-7">
+                        <input name="ThoiGianBD" type="text" class="form-control" value="@Model.ThoiGianBD" required />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-2  col-md-offset-1"><h4>Thời gian kết thúc:</h4></div>
+                    <div class="col-md-7">
+                        <input name="ThoiGIanKT" type="text" class="form-control" value="@Model.ThoiGIanKT" required />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-2  col-md-offset-1"><h4>Đơn vị quản lý:</h4></div>
+                    <div class="col-md-7">
+                        @Html.DropDownList("MaDonViQL", new SelectList(db.DonViQLs, "MaDonVi", "TenDonVI",Model.MaDonViQL), new { @class = "form-control" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-2  col-md-offset-1"><h4>Chức danh công tác:</h4></div>
+                    <div class="col-md-7">
+                        <input name="ChucDanhCT" type="text" class="form-control" value="@Model.ChucDanhCT" required />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-2  col-md-offset-1"><h4>Chức vụ công tác:</h4></div>
+                    <div class="col-md-7">
+                        <input name="ChucVuCT" type="text" class="form-control" value="@Model.ChucVuCT" required />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-3 col-md-7">
+                        @Html.ActionLink("Trở về", "Edit", "AdminNhaKhoaHoc", new { id = ViewBag.manhakhoahoc }, new { @class = "btn btn-danger pull-right" })
+                        <input type="submit" value="Tạo" class="btn btn-primary pull-right" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

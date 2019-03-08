@@ -1,0 +1,70 @@
+﻿@model IEnumerable<WebQLKhoaHoc.QuaTrinhDaoTao>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainPage.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ThoiGianBD)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ThoiGianKT)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CoSoDaoTao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NamTotNghiep)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BacDaoTao.TenBacDT)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NganhDaoTao.TenNganhDaoTao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NhaKhoaHoc.MaNKHHoSo)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ThoiGianBD)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ThoiGianKT)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CoSoDaoTao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NamTotNghiep)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BacDaoTao.TenBacDT)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NganhDaoTao.TenNganhDaoTao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NhaKhoaHoc.MaNKHHoSo)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.MaQT }) |
+            @Html.ActionLink("Details", "Details", new { id=item.MaQT }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.MaQT })
+        </td>
+    </tr>
+}
+
+</table>

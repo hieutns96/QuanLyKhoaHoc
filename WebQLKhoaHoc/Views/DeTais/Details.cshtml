@@ -1,0 +1,220 @@
+﻿@model WebQLKhoaHoc.DeTai
+
+@{
+    ViewBag.Title = "Chi Tiết Dữ Liệu Đề Tài";
+    Layout = "~/Views/Shared/_MainPage.cshtml";
+}
+
+<div class=" parallax layer-overlay overlay-light bg-white-transparent-4" data-bg-img="../../Image/research-background.png" style='background-image: url("../../Image/research-background.png")'>
+    <div class="modal-header bg-white-transparent-5">
+        <h1 class="modal-title text-center text-theme-color-2  "><span class="glyphicon glyphicon-info-sign"></span> Thông tin đề tài</h1>
+    </div>
+    <div class="modal-body">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="details-data-field">
+                        <div class="col-md-4">
+                            <h2 class="text-center">Section-Title</h2>
+                            <h3 class="text-center">Section-Description</h3>
+                        </div>
+                        <div class="col-md-8 border-4px border-blue border-rounded bg-white-transparent-8">
+                            <dl class="dl-horizontal pull-left">
+                                <dt>
+                                    Mã đề tài:
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.MaDeTaiHoSo)
+                                </dd>
+                                <dt>
+                                    Tên đề tài:
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.TenDeTai)
+                                </dd>
+                                <dt>
+                                    Mục tiêu đề tài:
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.MucTieuDeTai)
+                                </dd>
+                                <dt>
+                                    Nội dung đề tài
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.NoiDungDeTai)
+                                </dd>
+                                <dt>
+                                    Kết quả đề tài
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.KetQuaDeTai)
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <hr />
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="details-data-field">
+                        <div class="col-md-8 border-3px border-rounded bg-white-transparent-8">
+                            <dl class="dl-horizontal pull-left">
+                                <dt>
+                                    Năm bắt đầu:
+                                </dt>
+                                <dd>
+                                    @Model.NamBD.Value.ToString("dd/MM/yyyy")
+                                </dd>
+                                <dt>
+                                    Năm kết thúc:
+                                </dt>
+                                <dd>
+                                    @Model.NamKT.Value.ToString("dd/MM/yyyy")
+                                </dd>
+                                <dt>
+                                    Kinh phí:
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.KinhPhi)
+                                </dd>
+                                <dt>
+                                    Web liên kết:
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.LienKetWeb)
+                                </dd>
+                                <dt>
+                                    Link upload file:
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.LinkFileUpload)
+                                </dd>
+                            </dl>
+                        </div>
+                        <div class="col-md-4">
+                            <h2 class="text-center">Section-Title</h2>
+                            <h3 class="text-center">Section-Description</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <hr />
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="details-data-field">
+                        <div class="col-md-4 vertical-align-middle">
+                            <h2 class="text-center">Section-Title</h2>
+                            <h3 class="text-center">Section-Description</h3>
+                        </div>
+                        <div class="col-md-8 border-3px border-rounded bg-white-transparent-8 ">
+                            <dl class="dl-horizontal pull-left">
+                                <dt>
+                                    Cấp đề tài:
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.CapDeTai.TenCapDeTai)
+                                </dd>
+                                <dt>
+                                    Loại đề tài:
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.LoaiHinhDeTai.TenLoaiDT)
+                                </dd>
+                                <dt>
+                                    Đơn vị chủ trì:
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.DonViChuTri.TenDVChuTri)
+                                </dd>
+                                <dt>
+                                    Đơn vị:
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.DonViQL.TenDonVI)
+                                </dd>
+                                <dt>
+                                    Lĩnh vực:
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.LinhVuc.TenLinhVuc)
+                                </dd>
+                                <dt>
+                                    Xếp loại:
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.XepLoai.TenXepLoai)
+                                </dd>
+                                <dt>
+                                    Tình trạng:
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.TinhTrangDeTai.TenTinhTrang)
+                                </dd>
+                                <dt>
+                                    Phân loại:
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.PhanLoaiSP.TenPhanLoai)
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr />
+        <div class="row">
+            <h2 class="text-center text-black-666">
+                Người tham gia:
+            </h2>
+
+            @for (int i = 0; i < Model.DSNguoiThamGiaDeTais.Count; i++)
+            {
+                var nkh = Model.DSNguoiThamGiaDeTais.ToList()[i];
+                var name = nkh.NhaKhoaHoc.HoNKH + " " + nkh.NhaKhoaHoc.TenNKH;  
+               
+                if (nkh.LaChuNhiem.Value)
+                {
+                    name += " (Chủ Nhiệm)";
+                }
+                if (i < (Model.DSNguoiThamGiaDeTais.Count - 1))
+                {
+                    name += ", ";
+                }
+                @Html.ActionLink(name.ToString(), "Details", "NhaKhoaHocs", new { id = nkh.MaNKH }, new { @class = "customlink" });
+            }
+              
+        </div>
+        <div class="modal-footer bg-white-transparent-6">
+            @if (Session["user"] != null)
+            {
+            <a href="@Url.Action("Edit", "DeTais", new { id = Model.MaDeTai })" class="btn btn-primary">Chỉnh Sửa</a>
+            }
+            <a href="@Url.Action("Index","DeTais")" class="btn btn-danger">Quay Lại</a>
+        </div>
+        <br />
+    </div>
+   
+</div>
+
+<style>
+    a.customlink:hover {
+        color: red;
+        cursor:pointer;
+    }
+    hr{
+        color: blue;
+        height: 2px;
+        background-color: blue;
+        opacity: 0.4;
+    }
+    
+</style>
+
+

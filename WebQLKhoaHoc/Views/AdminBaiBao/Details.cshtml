@@ -1,0 +1,115 @@
+﻿@model WebQLKhoaHoc.BaiBao
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_MainPage.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>BaiBao</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MaISSN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaISSN)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TenBaiBao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenBaiBao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LaTrongNuoc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LaTrongNuoc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CQXuatBan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CQXuatBan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NamDangBao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NamDangBao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TapPhatHanh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TapPhatHanh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SoPhatHanh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoPhatHanh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TrangBaiBao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TrangBaiBao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LienKetWeb)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LienKetWeb)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LinkFileUpLoad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LinkFileUpLoad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CapTapChi.TenCapTapChi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CapTapChi.TenCapTapChi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhanLoaiTapChi.TenLoaiTapChi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhanLoaiTapChi.TenLoaiTapChi)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MaBaiBao }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

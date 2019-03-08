@@ -1,0 +1,110 @@
+﻿@model WebQLKhoaHoc.BaiBao
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_AdminMainPage.cshtml";
+}
+
+
+@using (Html.BeginForm("Create","AdminBaiBao",FormMethod.Post, new { @enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h1 class="text-center">Bài báo</h1>
+        <hr />
+        <div class="row">
+            @Html.ValidationSummary(true)
+            <div class="form-group">
+                <h4 class="col-md-2 col-md-offset-1">Mã ISSN:</h4>
+                <div class="col-md-7">
+                    <input required class="form-control" name="MaISSN" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <h4 class="col-md-2 col-md-offset-1">Tên bài báo:</h4>
+                <div class="col-md-7">
+                    <input required class="form-control" name="TenBaiBao" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <h4 class="col-md-2 col-md-offset-1">Là trong nước:</h4>
+                <div class="col-md-7">
+                   <select type="checkbox" name="LaTrongNuoc" value="true" class="form-control">
+                       <option value="true" selected>Trong nước</option>
+                       <option value="false">Ngoài nước</option>
+                   </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <h4 class="col-md-2 col-md-offset-1">Cơ quan xuất bản:</h4>
+                <div class="col-md-7">
+                    <input required class="form-control" name="CQXuanBan" />
+                </div>
+            </div>
+            <div class="form-group">
+                <h4 class="col-md-2 col-md-offset-1">Năm đăng báo:</h4>
+                <div class="col-md-7">
+                    <input required class="form-control" name="NamDangBao" />
+                </div>
+            </div>
+            <div class="form-group">
+                <h4 class="col-md-2 col-md-offset-1">Tập phát hành:</h4>
+                <div class="col-md-7">
+                    <input required class="form-control" name="TapPhatHanh" />
+                </div>
+            </div>
+            <div class="form-group">
+                <h4 class="col-md-2 col-md-offset-1">Số phát hành:</h4>
+                <div class="col-md-7">
+                    <input required class="form-control" name="SoPhatHanh" />
+                </div>
+            </div>
+            <div class="form-group">
+                <h4 class="col-md-2 col-md-offset-1">Trang bài báo:</h4>
+                <div class="col-md-7">
+                    <input required class="form-control" name="TrangBaiBao" />
+                </div>
+            </div>
+            <div class="form-group">
+                <h4 class="col-md-2 col-md-offset-1">Web liên kết:</h4>
+                <div class="col-md-7">
+                    <input required class="form-control" name="LienKetWeb" />
+                </div>
+            </div>
+            <div class="form-group">
+                <h4 class="col-md-2 col-md-offset-1">File Upload:</h4>
+                <div class="col-md-7">
+                    <input required class="form-control" name="linkUpload" type="file" />
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <h4 class="col-md-2 col-md-offset-1">Cấp tạp chí:</h4>
+                <div class="col-md-7">
+                    @Html.DropDownList("MaLinhVuc", ViewBag.MaCapTapChi as SelectList, new { @class = "form-control" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <h4 class="col-md-2 col-md-offset-1">Loại tạp chí:</h4>
+                <div class="col-md-7">
+                    @Html.DropDownList("MaNXB", ViewBag.MaLoaiTapChi as SelectList, new { @class = "form-control" })
+                </div>
+            </div>
+           
+            <div class="form-group">
+                <div class="col-md-offset-3 col-md-7">
+                    @Html.ActionLink("Trở về", "Index", "AdminDeTai", null, new { @class = "pull-right btn btn-default" })
+                    <input type="submit" value="Create" class="btn btn-default pull-right" />
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+

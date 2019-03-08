@@ -1,0 +1,158 @@
+﻿@model WebQLKhoaHoc.BaiBao
+
+@{
+    ViewBag.Title = "Sửa Dữ Liệu Bài Báo";
+    Layout = "~/Views/Shared/_MainPage.cshtml";
+}
+
+<div class=" parallax layer-overlay overlay-light bg-white-transparent-4" data-bg-img="../../Image/research-background.png" style='background-image: url("../../Image/research-background.png")'>
+    <div class="container">
+        @using (Html.BeginForm("Edit", "BaiBaos", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            <div class="form-group">
+                <div class="form-horizontal">
+                    @Html.ValidationSummary(true)
+                    @Html.HiddenFor(model => model.MaBaiBao)
+
+                    <div class="modal-header bg-white-transparent-5">
+                        <h1 class="modal-title text-center text-theme-color-2 ">@Model.TenBaiBao </h1>
+                    </div>
+
+                    <div class="modal-body">
+                        <div class="row  bg-white-transparent-7">
+                            <div class="col-md-6">
+                                <dl class="dl-horizontal">
+                                    <dt>
+                                        Mã ISSN:
+                                    </dt>
+                                    <dd>
+                                        @Html.EditorFor(model => model.MaISSN, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
+                                    </dd>
+                                    <dt>
+                                        Tên bài báo:
+                                    </dt>
+                                    <dd>
+                                        @Html.EditorFor(model => model.TenBaiBao, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
+                                    </dd>
+                                    <dt>
+                                        Nguồn gốc:
+                                    </dt>
+                                    <dd>
+                                        @Html.DropDownList("LaTrongNuoc", (IEnumerable<SelectListItem>)ViewBag.NguonGoc, new { @class = "form-control" })                                        
+                                    </dd>
+                                    <dt>
+                                        Tập phát hành:
+                                    </dt>
+                                    <dd>
+                                        @Html.EditorFor(model => model.TapPhatHanh, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
+                                    </dd>
+                                    <dt>
+                                        Số phát hành:
+                                    </dt>
+                                    <dd>
+                                        @Html.EditorFor(model => model.SoPhatHanh, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
+                                    </dd>                                    
+                                </dl>
+                            </div>
+
+
+                            <div class="col-md-6">
+                                <dl class="dl-horizontal">
+                                    <dt>
+                                        Trang báo:
+                                    </dt>
+                                    <dd>
+                                        @Html.EditorFor(model => model.TrangBaiBao, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
+                                    </dd>
+
+                                    <dt>
+                                        Cơ quan xuất bản:
+                                    </dt>
+                                    <dd>
+                                        @Html.EditorFor(model => model.CQXuatBan, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
+                                    </dd>
+
+                                    <dt>
+                                        Năm đăng báo:
+                                    </dt>
+                                    <dd>
+                                        <input name="NamDangBao" id="NamDangBao" class="form-control date-picker" type="text" placeholder="Năm đăng báo" value="@Model.NamDangBao.Value.ToString("d")" autocomplete="off">
+                                    </dd>
+
+                                    <dt>
+                                        Web liên kết:
+                                    </dt>
+                                    <dd>
+                                        @Html.EditorFor(model => model.LienKetWeb, new { htmlAttributes = new { @class = "form-control" } })
+                                    </dd>
+                                    <dt></dt>
+                                    <dd></dd>
+                                    <dt>
+                                        Link upload file:
+                                    </dt>
+                                    <dd>
+                                        <input type="file" class="form-control-plaintext" name="linkUpload" id="linkUpload" />
+                                    </dd>
+                                </dl>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="row bg-white-transparent-7">
+                            <div class="col-md-6">
+                                <dl class="dl-horizontal">                                   
+                                    <dt>
+                                        Lĩnh vực:
+                                    </dt>
+                                    <dd>
+                                        @Html.ListBox("LinhVuc", ViewBag.DSLinhVuc as MultiSelectList, new { @class = "listbox" })
+                                    </dd>
+                                    <dt>
+                                        Đề tài bài báo:
+                                    </dt>
+                                    <dd>
+                                        @Html.ListBox("DeTaiBaiBao", ViewBag.DeTai as MultiSelectList, new { @class = "listbox" })
+                                    </dd>
+
+                                </dl>
+                            </div>
+                            <div class="col-md-6">
+                                <dl class="dl-horizontal">
+                                    <dt>
+                                        Cấp tạp chí:
+                                    </dt>
+                                    <dd>
+                                        @Html.DropDownList("MaCapTapChi", (IEnumerable<SelectListItem>)ViewBag.MaCapTapChi, new { @class = "form-control form-control-sm" })
+                                    </dd>
+                                    <dt>
+                                        Loại tạp chí:
+                                    </dt>
+                                    <dd>
+                                        @Html.DropDownList("MaLoaiTapChi", (IEnumerable<SelectListItem>)ViewBag.MaLoaiTapChi, new { @class = "form-control" })
+                                    </dd>
+                                    <dt>
+                                        Tác giả:
+                                    </dt>
+                                    <dd>
+                                        @Html.ListBox("DSNguoiThamGiaBaiBao", ViewBag.DSNguoiThamBaiBao as MultiSelectList, new { @class = "listbox" })
+                                    </dd>
+                                </dl>
+                            </div>
+                        </div>
+                        <hr />                       
+                    </div>
+                    <br />
+
+                    <div class="modal-footer">
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="Lưu Xuống" class="btn btn-warning" />
+                                <a href="@Url.Action("Index","BaiBaos")" type="button" class="btn btn-danger">Trở Về</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

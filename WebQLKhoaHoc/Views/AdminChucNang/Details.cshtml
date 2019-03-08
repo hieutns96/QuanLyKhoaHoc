@@ -1,0 +1,35 @@
+﻿@model WebQLKhoaHoc.ChucNang
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_MainPage.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ChucNang</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TenChucNang)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenChucNang)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GhiChu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GhiChu)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MaChucNang }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

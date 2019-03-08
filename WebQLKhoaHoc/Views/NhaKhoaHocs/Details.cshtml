@@ -1,0 +1,532 @@
+﻿@using Microsoft.Ajax.Utilities
+@model WebQLKhoaHoc.Models.NhaKhoaHocViewModel
+
+@{
+    ViewBag.Title = "Chi Tiết Dữ Liệu Nhà Khoa Học";
+    Layout = "~/Views/Shared/_MainPage.cshtml";
+   
+}
+
+
+<section class="">
+    <!-- Section: Scientist header -->
+    <section id="home" class="divider parallax layer-overlay overlay-dark-4" data-bg-img="http://csdlkhoahoc.hueuni.edu.vn/csdl/images/bg5.jpg" style="background-image: url(&quot;http://csdlkhoahoc.hueuni.edu.vn/csdl/images/bg5.jpg&quot;); background-position: 50% 91px;">
+        @using (Html.BeginForm("Index", "NhaKhoaHocs", FormMethod.Get))
+        {
+            @Html.AntiForgeryToken()
+            <div class="display-table">
+                <div class="display-table-cell">
+                    <div class="container pt-30 pb-20">
+                        <div class="row">
+                            <div class="col-md-6 pt-10">
+                                <h2 class="title text-white">Dữ liệu Nhà khoa học</h2>
+                                <ol class="breadcrumb text-left text-black mt-10">
+                                    <li> @Html.ActionLink("Trang Chủ", "Index", "Home")</li>
+                                    <li class="active text-gray-silver">Nhà khoa học</li>
+                                </ol>
+                            </div>
+                            <div class="col-md-6">
+                                <!-- Appointment Form Starts -->
+                                <form class="subpage bg-white pt-20 pl-30 pr-30 pb-15" method="post" action="http://csdlkhoahoc.hueuni.edu.vn/index.php/scientist/search">
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-12 pl-5 pr-5">
+                                            <div class="form-group mb-5">
+                                                <div class="styled-select">
+                                                    @Html.DropDownList("MaDonVi", (IEnumerable<SelectListItem>)ViewBag.MaDonViQL, "--Chọn đơn vị--", new { @class = "form-control" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6 pl-5 pr-5">
+                                            <div class="form-group mb-5">
+                                                @Html.DropDownList("MaNgach", (IEnumerable<SelectListItem>)ViewBag.MaNgachVienChuc, "--Chọn ngạch--", new { @class = "form-control" })
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xs-12 col-sm-6 pl-5 pr-5">
+                                            <div class="form-group mb-5">
+                                                @Html.DropDownList("MaHocHam", (IEnumerable<SelectListItem>)ViewBag.MaHocHam, "--Chọn học hàm--", new { @class = "form-control" })
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6 pl-5 pr-5">
+                                            <div class="form-group mb-5">
+                                                @Html.DropDownList("MaHocVi", (IEnumerable<SelectListItem>)ViewBag.MaHocVi, "--Chọn học vị--", new { @class = "form-control" })
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6 pl-5 pr-5">
+                                            <div class="form-group mb-5">
+                                                @Html.DropDownList("MaCNDaoTao", (IEnumerable<SelectListItem>)ViewBag.MaCNDaoTao, "--Chọn chuyên ngành--", new { @class = "form-control" })
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xs-12 col-sm-8 pl-5 pr-5">
+                                            <div class="form-group mb-5">
+                                                <div class="styled-select">
+                                                    <input name="SearchValue" id="SearchValue" class="form-control" type="text" placeholder="Từ khóa tìm kiếm" value="@ViewBag.SearchValue">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-4 pl-5 pr-5">
+                                            <div class="form-group mb-5">
+                                                <button type="submit" class="btn btn-colored btn-theme-color-2 text-white btn-lg btn-block" data-loading-text="Please wait...">
+                                                    Tìm Kiếm
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </section>
+    <div class="container">
+
+        <div class="section-content">
+
+            <!-- Section: Experts Details -->
+            <section>
+                <div class="container">
+                    <div class="section-content">
+                        <div class="row">
+                            <div class="col-md-4">                               
+                                @{
+                                    if (Model.AnhCaNhan.IsNullOrWhiteSpace())
+                                    {
+                                        <img class="img-fullwidth" src= @Url.Content("~/Image/avatar.bmp") style="max-height: 100vw; border-radius: 50%" />
+                                    }
+                                    else
+                                    {
+                                        <img class="img-fullwidth" src="@Model.AnhCaNhan" style="max-height: 100vw; border-radius: 50%"/>
+                                    }
+                                }
+                                <div class="row">
+                                    <div class="col-md-12 mt-20 text-center">
+                                        <h4 class="name font-24 mt-0 mb-0">
+                                            @Model.HoNKH @Model.TenNKH
+                                        </h4>
+                                        <h5 class="mt-5 text-theme-color-2">
+                                            @Model.HocHam.TenHocHam - @Model.HocVi.TenHocVi
+                                        </h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <!-- Divider: Funfact -->
+
+                                <div class="row divider parallax " data-parallax-ratio="0.7" style="background-position: 50% 380px;">
+                                    <div class="col-xs-12 col-sm-6 col-md-4 mb-md-50">
+                                        <div class="funfact text-center">
+                                            <a href="../../BaiBaos?nkhId=@Model.MaNKH">
+                                                <h2 data-animation-duration="2000" data-value="@Model.DsBaiBao" class="animate-number mt-0 font-30 font-weight-500 text-theme-color-2 appeared">0</h2>
+                                            </a>
+                                            <h5 class="text-uppercase mb-0">Bài báo</h5>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-6 col-md-4 mb-md-50">
+                                        <div class="funfact text-center">
+                                            <a href="../../SachGiaoTrinhs?nkhId=@Model.MaNKH">
+                                                <h2 data-animation-duration="2000" data-value="@Model.DsSach" class="animate-number mt-0 font-30 font-weight-500 text-theme-color-2 appeared">0</h2>
+                                            </a>
+                                            <h5 class="text-uppercase mb-0">Sách - Giáo trình</h5>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-6 col-md-4 mb-md-50">
+                                        <div class="funfact text-center">
+                                            <a href="../../DeTais?nkhId=@Model.MaNKH">
+                                                <h2 data-animation-duration="2000" data-value="@Model.DsDetai" class="animate-number mt-0 font-30 font-weight-500 text-theme-color-2 appeared">1</h2>
+                                            </a>
+                                            <h5 class="text-uppercase mb-0">Đề tài khoa học</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h4 class="line-bottom">Thông tin:</h4>
+                                        <div class="volunteer-address">
+                                            <ul>
+                                                <li>
+                                                    <div class="bg-light media border-bottom p-15 mb-20">
+                                                        <div class="media-left">
+                                                            <i class="fa fa-user text-theme-colored font-24 mt-5"></i>
+                                                        </div>
+                                                        <div class="media-body">
+                                                            <p>
+                                                                <span class="mt-0 mb-0 font-weight-600">Họ và tên:</span>
+                                                                @Model.HoNKH @Model.TenNKH<br>
+                                                                <span class="mt-0 mb-0 font-weight-600">Giới tính:</span>
+                                                                @Model.GioiTinhNKH<br>
+                                                                <span class="mt-0 mb-0 font-weight-600">Năm sinh:</span>
+                                                                @Model.NgaySinh.Value.Year
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="bg-light media border-bottom p-15 mb-20">
+                                                        <div class="media-left">
+                                                            <i class="fa fa-map-marker text-theme-colored font-24 mt-5"></i>
+                                                        </div>
+                                                        <div class="media-body">
+                                                            <h5 class="mt-0 mb-0 font-weight-600">Địa chỉ:</h5>
+                                                            <p>
+                                                                @Model.DiaChiLienHe
+                                                                .
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="bg-light media border-bottom p-15">
+                                                        <div class="media-left">
+                                                            <i class="fa fa-phone text-theme-colored font-24 mt-5"></i>
+                                                        </div>
+                                                        <div class="media-body">
+                                                            <h5 class="mt-0 mb-0 font-weight-600">Liên hệ:</h5>
+                                                            <p>
+                                                                <span>Điện thoại:</span> @Model.DienThoai<br>
+                                                                <span>Email:</span> @Model.EmailLienHe<br>
+
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h4 class="line-bottom">Chuyên môn:</h4>
+                                        <div class="volunteer-address">
+                                            <ul>
+                                                <li>
+                                                    <div class="bg-light media border-bottom p-15 mb-20">
+                                                        <div class="media-left">
+                                                            <i class="fa fa-bookmark text-theme-colored font-24 mt-5"></i>
+                                                        </div>
+                                                        <div class="media-body">
+                                                            <h5 class="mt-0 mb-0 font-weight-600">Chức danh:</h5>
+                                                            <p>
+                                                                <span>@Model.HocHam.TenHocHam</span>
+                                                                -
+                                                                <span>@Model.NamKetThucDaoTao.Year</span>
+                                                                <br>
+                                                            </p>
+                                                            <h5 class="mt-0 mb-0 font-weight-600">Ngành đào tạo:</h5>
+                                                            <p>
+                                                                <span>@Model.ChuyenNganh.NganhDaoTao.TenNganhDaoTao</span>
+                                                            </p>
+                                                            <h5 class="mt-0 mb-0 font-weight-600">Chuyên ngành đào tạo:</h5>
+                                                            <p>
+                                                                <span>@Model.ChuyenNganh.TenChuyenNganh</span>
+                                                            </p>
+                                                            <h5 class="mt-0 mb-0 font-weight-600">Chuyên môn giảng dạy:</h5>
+                                                            <p>
+                                                                @{
+                                                                    foreach (var item in Model.ChuyenMonNKHs)
+                                                                    {
+                                                                        <span>@item.ChuyenMon.TenChuyenMon;</span>
+                                                                    }
+                                                                }
+                                                                    </p>
+                                                            <h5 class="mt-0 mb-0 font-weight-600">Lĩnh vực nghiên cứu:</h5>
+                                                            <p>
+                                                                @{
+                                                                    foreach (var item in Model.LinhVucs)
+                                                                    {
+                                                                        <span>@item.TenLinhVuc; </span>
+                                                                    }
+                                                                }
+                                                            </p>
+                                                            <h5 class="mt-0 mb-0 font-weight-600">Trình độ ngoại ngữ:</h5>
+                                                            <p>
+                                                                @{
+                                                                    foreach (var item in Model.TrinhDoNgoaiNgus)
+                                                                    {
+                                                                        <span>@item.TenTrinhDo</span>
+                                                                        <br>
+                                                                    }
+                                                                }
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </li>
+
+
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="row mt-30">
+                            <div class="col-md-12">
+                                <h4 class="line-bottom">Quá trình:</h4>
+                                <div class="volunteer-address">
+                                    <ul>
+                                        <li>
+                                            <div class="bg-light media border-bottom p-15 mb-20">
+                                                <div class="media-left">
+                                                    <i class="fa fa-users text-theme-colored font-24 mt-5"></i>
+                                                </div>
+                                                <div class="media-body">
+                                                    <h4 class="mt-0 mb-0 font-weight-600">Đơn vị quản lý</h4>
+                                                    <hr class="mt-10 mb-10">
+                                                    <table class="table table-hover">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Đơn vị</th>
+                                                                <th>Địa chỉ cơ quan</th>
+                                                                <th>Điện thoại cơ quan</th>
+                                                                <th>Email cơ quan</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>@Model.DonViQL.TenDonVI</td>
+                                                                <td>@Model.DonViQL.DiaChiCQ</td>
+                                                                <td>@Model.DonViQL.DienThoaiCQ</td>
+                                                                <td>@Model.DonViQL.EmailCQ</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="bg-light media border-bottom p-15 mb-20">
+                                                <div class="media-left">
+                                                    <i class="fa fa-briefcase text-theme-colored font-24 mt-5"></i>
+                                                </div>
+                                                <div class="media-body" style="width:100%">
+                                                    <h4 class="mt-0 mb-0 font-weight-600">Quá trình công tác</h4>
+                                                    <hr class="mt-10 mb-10">
+                                                    <section class="text-center section-padding cd-horizontal-timeline">
+                                                        <div class="timeline" style="margin-top: 50px">
+                                                            <div class="events-wrapper">
+                                                                <div class="events">
+                                                                    <ol>
+                                                                        @{ int i = 0;}
+                                                                        @foreach (var item in Model.QuaTrinhCongTacs)
+                    {
+                        if (i == 0)
+                        {
+                                                    <li><a href="#0" data-date="@item.ThoiGianBD.Value.ToString("dd/MM/yyyy")" class="selected">@item.ThoiGianBD.Value.ToString("dd/MM")</a></li>
+}
+else
+{
+                                                    <li><a href="#0" data-date="@item.ThoiGianBD.Value.ToString("dd/MM/yyyy")">@item.ThoiGianBD.Value.ToString("dd/MM")</a></li>
+}
+
+i = 1;
+}
+
+
+                                                                    </ol>
+                                                                    <span class="filling-line" aria-hidden="true"></span>
+                                                                </div>
+                                                                <!-- .events -->
+                                                            </div>
+                                                            <!-- .events-wrapper -->
+                                                            <ul class="cd-timeline-navigation">
+                                                                <li><a href="#0" class="prev inactive"></a></li>
+                                                                <li><a href="#0" class="next"></a></li>
+                                                            </ul>
+                                                            <!-- .cd-timeline-navigation -->
+                                                        </div>
+                                                        <!-- .timeline -->
+                                                        <div class="events-content">
+                                                            <ol>
+
+                                                                @{ int a = 0;}
+                                                                @foreach (var item in Model.QuaTrinhCongTacs)
+            {
+
+                if (a == 0)
+                {
+                                                    <li class="selected" data-date="@item.ThoiGianBD.Value.ToString("dd/MM/yyyy")">
+                                                        <table class="table table-hover">
+                                                            <tr class="test">
+                                                                <th>Thời gian</th>
+                                                                <td>@item.ThoiGianBD.Value.ToString("dd/MM/yyyy") - @item.ThoiGIanKT.Value.ToString("dd/MM/yyyy")</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Chức danh công tác</th>
+                                                                <td>@item.ChucDanhCT</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Cơ quan công tác</th>
+                                                                <td>@item.DonViQL.TenDonVI</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Chức vụ</th>
+                                                                <td>@item.ChucVuCT</td>
+                                                            </tr>
+                                                        </table>
+                                                    </li>
+}
+else
+{
+                                                    <li data-date="@item.ThoiGianBD.Value.ToString("dd/MM/yyyy")">
+                                                        <table class="table table-hover">
+                                                            <tr>
+                                                                <th>Thời gian</th>
+                                                                <td>@item.ThoiGianBD.Value.ToString("dd/MM/yyyy") - @item.ThoiGIanKT.Value.ToString("dd/MM/yyyy")</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Chức danh công tác</th>
+                                                                <td>@item.ChucDanhCT</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Cơ quan công tác</th>
+                                                                <td>@item.DonViQL.TenDonVI</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Chức vụ</th>
+                                                                <td>@item.ChucVuCT</td>
+                                                            </tr>
+                                                        </table>
+                                                    </li>
+}
+a = 1;
+
+}
+                                                            </ol>
+                                                        </div>
+                                                        <!-- .events-content -->
+                                                    </section>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="bg-light media border-bottom p-15 mb-20">
+                                                <div class="media-left">
+                                                    <i class="fa fa-graduation-cap text-theme-colored font-24 mt-5"></i>
+                                                </div>
+                                                <div class="media-body" style="width:100%">
+                                                    <h4 class="mt-0 mb-0 font-weight-600">Quá trình đào tạo</h4>
+                                                    <hr class="mt-10 mb-10">
+                                                    <section class="text-center section-padding cd-horizontal-timeline">
+                                                        <div class="timeline" style="margin-top: 50px">
+                                                            <div class="events-wrapper">
+                                                                <div class="events">
+                                                                    <ol>
+                                                                        @{ int b = 0;}
+                                                                        @foreach (var item in Model.QuaTrinhDaoTaos)
+                        {
+                            if (b == 0)
+                            {
+                                                <li><a href="#0" data-date="@item.NamTotNghiep.Value.ToString("dd/MM/yyyy")" class="selected">@item.NamTotNghiep.Value.Year</a></li>
+}
+else
+{
+                                                <li><a href="#0" data-date="@item.NamTotNghiep.Value.ToString("dd/MM/yyyy")">@item.NamTotNghiep.Value.Year</a></li>
+}
+
+b = 1;
+}
+
+
+                                                                    </ol>
+                                                                    <span class="filling-line" aria-hidden="true"></span>
+                                                                </div>
+                                                                <!-- .events -->
+                                                            </div>
+                                                            <!-- .events-wrapper -->
+                                                            <ul class="cd-timeline-navigation">
+                                                                <li><a href="#0" class="prev inactive"></a></li>
+                                                                <li><a href="#0" class="next"></a></li>
+                                                            </ul>
+                                                            <!-- .cd-timeline-navigation -->
+                                                        </div>
+                                                        <!-- .timeline -->
+                                                        <div class="events-content">
+                                                            <ol>
+
+                                                                @{ int c = 0;}
+                                                                @foreach (var item in Model.QuaTrinhDaoTaos)
+                {
+
+                    if (c == 0)
+                    {
+                                                                <li class="selected" data-date="@item.NamTotNghiep.Value.ToString("dd/MM/yyyy")">
+                                                                    <table class="table table-hover">
+                                                                        <tr>
+                                                                            <th>Bậc đào tạo</th>
+                                                                            <td>@item.BacDaoTao.TenBacDT</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th>Cơ sở đào tạo</th>
+                                                                            <td>@item.CoSoDaoTao</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th>Ngành đào tạo</th>
+                                                                            <td>@item.NganhDaoTao.TenNganhDaoTao</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th>Năm tốt nghiệp</th>
+                                                                            <td>@item.NamTotNghiep.Value.Year</td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </li>
+}
+else
+{
+                                                <li data-date="@item.NamTotNghiep.Value.ToString("dd/MM/yyyy")">
+                                                    <table class="table table-hover">
+                                                        <tr>
+                                                            <th>Bậc đào tạo</th>
+                                                            <td>@item.BacDaoTao.TenBacDT</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Cơ sở đào tạo</th>
+                                                            <td>@item.CoSoDaoTao</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Ngành đào tạo</th>
+                                                            <td>@item.NganhDaoTao.TenNganhDaoTao</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Năm tốt nghiệp</th>
+                                                            <td>@item.NamTotNghiep.Value.Year</td>
+                                                        </tr>
+                                                    </table>
+                                                </li>
+}
+c = 1;
+
+}
+                                                            </ol>
+                                                        </div>
+                                                        <!-- .events-content -->
+                                                    </section>
+                                                    
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <div class="modal-footer bg-white-transparent-6">
+                @if (Session["user"] != null)
+                {
+                    QLKhoaHocEntities db = new QLKhoaHocEntities();
+                    WebQLKhoaHoc.Models.UserLoginViewModel nkh = (WebQLKhoaHoc.Models.UserLoginViewModel)Session["user"];
+                    if (nkh.MaNKH == Model.MaNKH)
+                    {
+                        <a href="@Url.Action("Edit", "NhaKhoaHocs", new { id = Model.MaNKH })" class="btn btn-primary">Chỉnh Sửa</a>
+                    }
+                }
+                    <a href="@Url.Action("Index","NhaKhoaHocs")" class="btn btn-danger">Quay Lại</a>
+                </div>
+        <br />
+        </div>
+    </div>
+</section>

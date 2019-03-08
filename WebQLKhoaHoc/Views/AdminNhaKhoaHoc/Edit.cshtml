@@ -1,0 +1,739 @@
+﻿@model WebQLKhoaHoc.Models.NhaKhoaHocViewModel
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_AdminMainPage.cshtml";
+}
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Thông tin nhà khoa học  <small>Users</small></h2>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <div class="" role="tabpanel" data-example-id="togglable-tabs">
+                    <!-- Tabs -->
+                    <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+                        <!-- Thông tin cơ bản -->
+                        <li role="presentation" class="active">
+                            <a href="#tab_content1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">Thông tin cơ bản</a>
+                        </li>
+                        <!-- 5 tables 1-1-->
+                        
+                        <!-- 3 tables DS -->
+                        <li role="presentation" class="">
+                            <a href="#tab_content3" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="false">Danh Sách</a>
+                        </li>
+                        <!-- 2 tables QT -->
+                        <li role="presentation" class="">
+                            <a href="#tab_content4" role="tab" id="profile-tab3" data-toggle="tab" aria-expanded="false">Quá trình</a>
+                        </li>
+                        <!-- Chuyên môn -->
+                        <li role="presentation" class="">
+                            <a href="#tab_content5" role="tab" id="profile-tab4" data-toggle="tab" aria-expanded="false">Chuyên môn</a>
+                        </li>
+                        <li role="presentation" class="">
+                            <a href="#tab_content6" role="tab" id="profile-tab5" data-toggle="tab" aria-expanded="false">Trình dộ ngoại ngữ</a>
+                        </li>                       
+                    </ul>
+                    <!-- Content of each tab-->
+                    <div id="myTabContent" class="tab-content">                       
+                        <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="home-tab">
+                            <div>
+                                <!-- Thông tin cơ bản -->
+                                @using (Html.BeginForm("Edit", "AdminNhaKhoaHoc", FormMethod.Post, new { @class = "form-horizontal form-label-right", @enctype = "multipart/form-data" }))
+                                {
+                                    @Html.AntiForgeryToken()
+                                    @Html.HiddenFor(model => model.MaNKH)
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Mã nhà khoa học</label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input type="text" name="MaNKHHoSo" class="form-control" placeholder="Mã nhà khoa học" value="@Html.DisplayFor(model => model.MaNKHHoSo)">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Họ nhà khoa học</label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input type="text" name="HoNKH" class="form-control" placeholder="Họ nhà khoa học" value="@Html.DisplayFor(model => model.HoNKH)">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Tên nhà khoa học</label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input type="text" name="TenNKH" class="form-control" placeholder="Tên nhà khoa học" value="@Html.DisplayFor(model => model.TenNKH)">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Giới tính</label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input type="text" name="GioiTinhNKH" class="form-control" placeholder="Giới tính khoa học" value="@Html.DisplayFor(model => model.GioiTinhNKH)">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Ngày sinh</label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input type="text" name="NgaySinh" class="form-control" placeholder="Ngày sinh nhà khoa học" value="@Html.DisplayFor(model => model.NgaySinh)">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Địa chỉ</label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input type="text" name="DiaChiLienHe" class="form-control" placeholder="Địa chỉ liên hệ" value="@Html.DisplayFor(model => model.DiaChiLienHe)">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Email</label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input type="text" name="EmailLienHe" class="form-control" placeholder="Email liên hệ" value="@Html.DisplayFor(model => model.EmailLienHe)">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Số điện thoại:</label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input type="text" name="DienThoai" class="form-control" placeholder="Email liên hệ" value="@Html.DisplayFor(model => model.DienThoai)">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Ảnh cá nhân</label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input type="file" name="fileUpload" class="form-control" placeholder="Ảnh cá nhân" value="@Html.DisplayFor(model => model.AnhCaNhan)">
+                                        </div>
+                                    </div>
+                                    <hr />
+
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Học hàm</label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            @Html.DropDownList("MaHocHam", (IEnumerable<SelectListItem>)ViewBag.MaHocHam, new { @class = "form-control" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Học vị</label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            @Html.DropDownList("MaHocVi", (IEnumerable<SelectListItem>)ViewBag.MaHocVi, new { @class = "form-control" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Chuyên ngành đào tạo</label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            @Html.DropDownList("MaCNDaoTao", (IEnumerable<SelectListItem>)ViewBag.MaCNDaoTao, new { @class = "form-control" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Đơn vị quản lý</label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            @Html.DropDownList("MaDonViQL", (IEnumerable<SelectListItem>)ViewBag.MaDonViQL, new { @class = "form-control" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Ngạch viên chức</label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            @Html.DropDownList("MaNgachVienChuc", (IEnumerable<SelectListItem>)ViewBag.MaNgachVienChuc, new { @class = "form-control" })
+                                        </div>
+                                    </div>
+                                    <hr />
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12"></label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input type="submit" value="Lưu" class="btn btn-default pull-right" />
+                                        </div>
+                                    </div>
+                                }
+
+                            </div>
+                        </div>
+                        
+                        <div role="tabpanel" class="tab-pane fade" id="tab_content3" aria-labelledby="profile-tab">
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="x_panel">
+                                        <div class="x_title">
+                                            <h2>
+                                                Danh sách tham gia biên soạn giáo trình và sách:
+                                            </h2>
+                                            <!--ul class="nav navbar-right panel_toolbox">
+                                                <li>
+                                                    <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                                </!--li>
+                                                <li class="dropdown">
+                                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                                    <ul class="dropdown-menu" role="menu">
+                                                        <li>
+                                                            @@Html.ActionLink("Create New", "Create", "AdminDSTacGia")
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            </ul-->
+                                            <div class="clearfix"></div>
+                                        </div>
+                                        <div class="x_content">
+                                            <div id="datatable_wrapper_3" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+                                                <!-- list component  -->
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <table id="datatable_3" class="table table-striped table-bordered dataTable no-footer" role="grid" aria-describedby="datatable_info">
+                                                            <thead>
+                                                                <tr role="row">
+                                                                    <th>Tên Sách</th>
+                                                                    <th>Chủ Biên</th>
+                                                                    <th>Action</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <!-- grid nkh  -->
+                                                            <tbody>
+                                                                @foreach (var item in Model.DSTacGias)
+                                                                {
+                                                                    <tr role="row" class="even">
+
+                                                                        <td class="">  @Html.DisplayFor(modelItem => item.SachGiaoTrinh.TenSach)</td>
+                                                                        <td class="sorting_1">  @Html.CheckBoxFor(modelItem => item.LaChuBien.Value, new { @disabled = "disabled" })</td>
+                                                                        <td>
+                                                                            <a href="@Url.Action("Edit", "AdminDSTacGia", new {id = item.MaSach, manhakhoahoc = item.MaNKH})">
+                                                                                <i class="far fa-edit"></i>
+                                                                            </a>
+                                                                            <a href="@Url.Action("Details", "AdminDSTacGia", new { id = item.MaSach})">
+                                                                                <i class="fas fa-info"></i>
+                                                                            </a>
+                                                                            <a href="@Url.Action("Delete", "AdminDSTacGia", new {id = item.MaSach})">
+                                                                                <i class="far fa-trash-alt"></i>
+                                                                            </a>
+                                                                        </td>
+                                                                    </tr>
+                                                                }
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="x_panel">
+                                        <div class="x_title">
+                                            <h2>
+                                                Danh sách đề tài tham gia
+                                            </h2>
+                                            <!--ul class="nav navbar-right panel_toolbox">
+                                                <li>
+                                                    <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                                </li>
+                                                <li class="dropdown">
+                                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                                    <ul class="dropdown-menu" role="menu">
+                                                        <li>
+                                                            @@Html.ActionLink("Create New", "Create", "AdminDSNguoiThamGiaDeTai")
+                                                        </li>
+                                                    </ul>
+                                                </li>
+
+                                            </ul-->
+                                            <div class="clearfix"></div>
+                                        </div>
+                                        <div class="x_content">
+                                            <div id="datatable_wrapper_4" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+                                                <!-- list component  -->
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <table id="datatable_4" class="table table-striped table-bordered dataTable no-footer" role="grid" aria-describedby="datatable_info">
+                                                            <thead>
+                                                                <tr role="row">
+                                                                    <th>Đề Tài</th>
+                                                                    <th>Chủ Nhiệm</th>
+                                                                    <th>Action</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <!-- grid nkh  -->
+                                                            <tbody>
+                                                                @foreach (var item in Model.DSNguoiThamGiaDeTais)
+                                                                {
+                                                                    <tr role="row" class="even">
+
+                                                                        <td class="">  @Html.DisplayFor(modelItem => item.DeTai.TenDeTai)</td>
+                                                                        <td class="sorting_1">  @Html.CheckBoxFor(modelItem => item.LaChuNhiem.Value, new { @disabled = "disabled" })</td>
+                                                                        <td>
+                                                                            <a href="@Url.Action("Edit", "AdminDSNguoiThamGiaDeTai", new {id = item.MaDeTai, manhakhoahoc = item.MaNKH})">
+                                                                                <i class="far fa-edit"></i>
+                                                                            </a>
+                                                                            <a href="@Url.Action("Details", "AdminDSNguoiThamGiaDeTai", new { id = item.MaDeTai})">
+                                                                                <i class="fas fa-info"></i>
+                                                                            </a>
+                                                                            <a href="@Url.Action("Delete", "AdminDSNguoiThamGiaDeTai", new {id = item.MaDeTai})">
+                                                                                <i class="far fa-trash-alt"></i>
+                                                                            </a>
+                                                                        </td>
+                                                                    </tr>
+                                                                }
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="x_panel">
+                                        <div class="x_title">
+                                            <h2>
+                                                Danh sách bài báo tham gia:
+                                            </h2>
+                                            <!--ul class="nav navbar-right panel_toolbox">
+                                                <li>
+                                                    <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                                </li>
+                                                <li class="dropdown">
+                                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                                    <ul class="dropdown-menu" role="menu">
+                                                        <li>
+                                                            @@Html.ActionLink("Create New", "Create", "AdminDSNguoiThamGiaBaiBao")
+                                                        </li>
+                                                    </ul>
+                                                </li>
+
+                                            </ul-->
+                                            <div class="clearfix"></div>
+                                        </div>
+                                        <div class="x_content">
+                                            <div id="datatable_wrapper_5" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+                                                <!-- list component  -->
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <table id="datatable_5" class="table table-striped table-bordered dataTable no-footer" role="grid" aria-describedby="datatable_info">
+                                                            <thead>
+                                                                <tr role="row">
+                                                                    <th>Tên Bài Báo</th>
+                                                                    <th>Là Tác Giả Chính</th>
+                                                                    <th>Action</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <!-- grid nkh  -->
+                                                            <tbody>
+                                                                @foreach (var item in Model.DSNguoiThamGiaBaiBaos)
+                                                                {
+                                                                    <tr role="row" class="even">
+
+                                                                        <td class="">  @Html.DisplayFor(modelItem => item.BaiBao.TenBaiBao)</td>
+                                                                        <td class="sorting_1">  @Html.CheckBoxFor(modelItem => item.LaTacGiaChinh.Value, new { @disabled = "disabled" })</td>
+                                                                        <td>
+                                                                            <a href="@Url.Action("Edit", "AdminDSNguoiThamGiaBaiBao", new {id = item.MaBaiBao, manhakhoahoc = item.MaNKH})">
+                                                                                <i class="far fa-edit"></i>
+                                                                            </a>
+                                                                            <a href="@Url.Action("Details", "AdminDSNguoiThamGiaBaiBao", new { id = item.MaBaiBao})">
+                                                                                <i class="fas fa-info"></i>
+                                                                            </a>
+                                                                            <a href="@Url.Action("Delete", "AdminDSNguoiThamGiaBaiBao", new {id = item.MaBaiBao})">
+                                                                                <i class="far fa-trash-alt"></i>
+                                                                            </a>
+                                                                        </td>
+                                                                    </tr>
+                                                                }
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane fade" id="tab_content4" aria-labelledby="profile-tab">
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="x_panel">
+                                        <div class="x_title">
+                                            <h2>
+                                                Quá Trình Đào Tạo
+                                            </h2>
+                                            <ul class="nav navbar-right panel_toolbox">
+                                                <li>
+                                                    <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                                </li>
+                                                <li class="dropdown">
+                                                    <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                                    <ul class="dropdown-menu" role="menu">
+                                                        <li>
+                                                            @Html.ActionLink("Create New", "Create", "AdminQuaTrinhDaoTao",new { manhakhoahoc = Model.MaNKH},null)
+                                                        </li>
+                                                    </ul>
+                                                </li>
+
+                                            </ul>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                        <div class="x_content">
+                                            <div id="datatable_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+                                                <!-- list component  -->
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <table id="datatable" class="table table-striped table-bordered dataTable no-footer" role="grid" aria-describedby="datatable_info">
+                                                            <thead>
+                                                                <tr role="row">
+                                                                    <th>Thời Gian Bắt Đầu</th>
+                                                                    <th>Thời Gian Kết Thúc</th>
+                                                                    <th>Bậc Đào Tạo</th>
+                                                                    <th>Cơ Sở Đào Tạo</th>
+                                                                    <th>Ngành</th>
+                                                                    <th>Năm Tốt Nghiệp</th>
+                                                                    <th>Action</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <!-- grid nkh  -->
+                                                            <tbody>
+                                                                @foreach (var item in Model.QuaTrinhDaoTaos)
+                                                                {
+                                                                    <tr role="row" class="even">
+
+                                                                        <td> @item.ThoiGianBD.Value.ToShortDateString()</td>
+                                                                        <td> @item.ThoiGianKT.Value.ToShortDateString()</td>
+                                                                        <td class="">  @Html.DisplayFor(modelItem => item.BacDaoTao.TenBacDT)</td>
+                                                                        <td class="sorting_1">  @Html.DisplayFor(modelItem => item.CoSoDaoTao)</td>
+                                                                        <td>  @Html.DisplayFor(modelItem => item.NganhDaoTao.TenNganhDaoTao)</td>
+                                                                        <td>  @item.NamTotNghiep.Value.Year</td>
+                                                                        <td>
+                                                                            <a href="@Url.Action("Edit", "AdminQuaTrinhDaoTao", new {id = item.MaQT, manhakhoahoc = Model.MaNKH})">
+                                                                                <i class="far fa-edit"></i>
+                                                                            </a>
+                                                                            <a href="@Url.Action("Delete", "AdminQuaTrinhDaoTao", new {id = item.MaQT, manhakhoahoc = Model.MaNKH})">
+                                                                                <i class="far fa-trash-alt"></i>
+                                                                            </a>
+                                                                        </td>
+                                                                    </tr>
+                                                                }
+
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="x_panel">
+                                        <div class="x_title">
+                                            <h2>
+                                                Quá Trình Công Tác
+                                            </h2>
+                                            <ul class="nav navbar-right panel_toolbox">
+                                                <li>
+                                                    <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                                </li>
+                                                <li class="dropdown">
+                                                    <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                                    <ul class="dropdown-menu" role="menu">
+                                                        <li>
+                                                            @Html.ActionLink("Create New", "Create", "AdminQuaTrinhCongTac", new { manhakhoahoc = Model.MaNKH }, null)
+                                                        </li>
+                                                    </ul>
+                                                </li>
+
+                                            </ul>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                        <div class="x_content">
+                                            <div id="datatable_wrapper_2" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+                                                <!-- list component  -->
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <table id="datatable_2" class="table table-striped table-bordered dataTable no-footer" role="grid" aria-describedby="datatable_info">
+                                                            <thead>
+                                                                <tr role="row">
+                                                                    <th>Thời Gian Bắt Đầu</th>
+                                                                    <th>Thời Gian Kết Thúc</th>
+                                                                    <th>Chức Danh Công Tác</th>
+                                                                    <th>Đơn Vị Quản Lý</th>
+                                                                    <th>Chức Vụ Công Tác</th>
+                                                                    <th>Action</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <!-- grid nkh  -->
+                                                            <tbody>
+                                                                @foreach (var item in Model.QuaTrinhCongTacs)
+                                                                {
+                                                                    <tr role="row" class="even">
+
+                                                                        <td> @item.ThoiGianBD.Value.ToShortDateString()</td>
+                                                                        <td> @item.ThoiGIanKT.Value.ToShortDateString()</td>
+                                                                        <td class="">  @Html.DisplayFor(modelItem => item.ChucDanhCT)</td>
+                                                                        <td class="sorting_1">  @Html.DisplayFor(modelItem => item.DonViQL.TenDonVI)</td>
+                                                                        <td>  @Html.DisplayFor(modelItem => item.ChucVuCT)</td>
+                                                                        <td>
+                                                                            <a href="@Url.Action("Edit", "AdminQuaTrinhCongTac", new {id = item.MaCT, manhakhoahoc = Model.MaNKH})">
+                                                                                <i class="far fa-edit"></i>
+                                                                            </a>                                                                            
+                                                                            <a href="@Url.Action("Delete", "AdminQuaTrinhCongTac", new {id = item.MaCT, manhakhoahoc = Model.MaNKH})">
+                                                                                <i class="far fa-trash-alt"></i>
+                                                                            </a>
+                                                                        </td>
+                                                                    </tr>
+                                                                }
+
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane fade" id="tab_content5" aria-labelledby="profile-tab">
+                            <div>
+                                <div class="x_title">
+                                    <h2>
+                                       Trình độ chuyên môn
+                                    </h2>
+                                    <ul class="nav navbar-right panel_toolbox">                                       
+                                        <li class="dropdown">
+                                            <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                            <ul class="dropdown-menu" role="menu">
+                                                <li>
+                                                    @Html.ActionLink("Create New", "Create", "AdminChuyenMonNKH", new { manhakhoahoc = Model.MaNKH }, null)
+                                                </li>
+                                            </ul>
+                                        </li>
+
+                                    </ul>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <!--List Chuyen mon-->
+                                <form class="form-horizontal form-label-right">
+                                    <table id="datatable" class="table table-striped table-bordered dataTable no-footer" role="grid" aria-describedby="datatable_info">
+                                        <thead>
+                                            <tr role="row">
+                                                <th>Mã chuyên môn</th>
+                                                <th>Chuyên môn</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+
+                                        <!-- grid nkh  -->
+                                        <tbody>
+                                            @foreach (var item in Model.ChuyenMonNKHs)
+                                            {
+                                                <tr role="row" class="even">
+                                                    <td>
+                                                        @Html.DisplayFor(modelCM => item.MaChuyenMon)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelCM => item.ChuyenMon.TenChuyenMon)
+                                                    </td>
+                                                    <td>
+                                                        <a href="@Url.Action("Delete", "AdminChuyenMonNKH", new {id = item.MaChuyenMon,manhakhoahoc = item.MaNKH})">
+                                                            <i class="far fa-trash-alt"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            }
+
+                                        </tbody>
+                                    </table>
+                                </form>
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane fade" id="tab_content6" aria-labelledby="profile-tab">
+                            <div>
+                                <div class="x_title">
+                                    <h2>
+                                       Trình độ ngoại ngữ
+                                    </h2>
+                                    <ul class="nav navbar-right panel_toolbox">
+                                        <li class="dropdown">
+                                            <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                            <ul class="dropdown-menu" role="menu">
+                                                <li>
+                                                    @Html.ActionLink("Create New", "Create", "AdminTrinhDoNgoaiNguNKH", new { manhakhoahoc = Model.MaNKH }, null)
+                                                </li>
+                                            </ul>
+                                        </li>
+
+                                    </ul>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <!--List trinh do ngoai ngu-->
+                                <form class="form-horizontal form-label-right">
+                                    <table id="datatable" class="table table-striped table-bordered dataTable no-footer" role="grid" aria-describedby="datatable_info">
+                                        <thead>
+                                            <tr role="row">
+                                                <th>Ngoại ngữ</th>
+                                                <th>Cấp dộ ngoại ngữ</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+
+                                        <!-- grid nkh  -->
+                                        <tbody>
+                                            @foreach (var item in Model.TrinhDoNgoaiNgus)
+                                            {
+                                                <tr role="row" class="even">
+                                                    <td>
+                                                        @Html.DisplayFor(modelCM => item.MaTrinhDoNN)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelCM => item.TenTrinhDo)
+                                                    </td>
+                                                    <td>                                                        
+                                                        <a href="@Url.Action("Delete", "AdminTrinhDoNgoaiNguNKH", new {id = item.MaTrinhDoNN , manhakhoahoc = Model.MaNKH})">
+                                                            <i class="far fa-trash-alt"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            }
+
+                                        </tbody>
+                                    </table>
+                                </form>
+                            </div>
+                        </div>                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>NhaKhoaHoc</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.MaNKH)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.MaNKHHoSo, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.MaNKHHoSo)
+                @Html.ValidationMessageFor(model => model.MaNKHHoSo)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.HoNKH, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.HoNKH)
+                @Html.ValidationMessageFor(model => model.HoNKH)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TenNKH, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TenNKH)
+                @Html.ValidationMessageFor(model => model.TenNKH)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.GioiTinhNKH, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.GioiTinhNKH)
+                @Html.ValidationMessageFor(model => model.GioiTinhNKH)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.NgaySinh, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.NgaySinh)
+                @Html.ValidationMessageFor(model => model.NgaySinh)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DiaChiLienHe, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DiaChiLienHe)
+                @Html.ValidationMessageFor(model => model.DiaChiLienHe)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DienThoai, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DienThoai)
+                @Html.ValidationMessageFor(model => model.DienThoai)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.EmailLienHe, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.EmailLienHe)
+                @Html.ValidationMessageFor(model => model.EmailLienHe)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.MaHocHam, "MaHocHam", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("MaHocHam", String.Empty)
+                @Html.ValidationMessageFor(model => model.MaHocHam)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.MaHocVi, "MaHocVi", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("MaHocVi", String.Empty)
+                @Html.ValidationMessageFor(model => model.MaHocVi)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.MaCNDaoTao, "MaCNDaoTao", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("MaCNDaoTao", String.Empty)
+                @Html.ValidationMessageFor(model => model.MaCNDaoTao)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.MaDonViQL, "MaDonViQL", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("MaDonViQL", String.Empty)
+                @Html.ValidationMessageFor(model => model.MaDonViQL)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.AnhDaiDien, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.AnhDaiDien)
+                @Html.ValidationMessageFor(model => model.AnhDaiDien)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.AnhCaNhan, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.AnhCaNhan)
+                @Html.ValidationMessageFor(model => model.AnhCaNhan)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.MaNgachVienChuc, "MaNgachVienChuc", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("MaNgachVienChuc", String.Empty)
+                @Html.ValidationMessageFor(model => model.MaNgachVienChuc)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>*@

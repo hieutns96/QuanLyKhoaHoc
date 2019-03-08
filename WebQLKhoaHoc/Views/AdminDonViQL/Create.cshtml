@@ -1,0 +1,60 @@
+﻿@model WebQLKhoaHoc.DonViQL
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_MainPage.cshtml";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>DonViQL</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+        <div class="form-group">
+            @Html.LabelFor(model => model.TenDonVI, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TenDonVI)
+                @Html.ValidationMessageFor(model => model.TenDonVI)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DiaChiCQ, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DiaChiCQ)
+                @Html.ValidationMessageFor(model => model.DiaChiCQ)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DienThoaiCQ, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DienThoaiCQ)
+                @Html.ValidationMessageFor(model => model.DienThoaiCQ)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.EmailCQ, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.EmailCQ)
+                @Html.ValidationMessageFor(model => model.EmailCQ)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

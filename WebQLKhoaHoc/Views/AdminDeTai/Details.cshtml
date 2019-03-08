@@ -1,0 +1,163 @@
+﻿@model WebQLKhoaHoc.DeTai
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_MainPage.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>DeTai</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MaDeTaiHoSo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaDeTaiHoSo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TenDeTai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenDeTai)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MucTieuDeTai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MucTieuDeTai)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NoiDungDeTai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NoiDungDeTai)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KetQuaDeTai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KetQuaDeTai)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NamBD)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NamBD)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NamKT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NamKT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KinhPhi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KinhPhi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LienKetWeb)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LienKetWeb)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LinkFileUpload)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LinkFileUpload)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CapDeTai.TenCapDeTai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CapDeTai.TenCapDeTai)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LoaiHinhDeTai.TenLoaiDT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LoaiHinhDeTai.TenLoaiDT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DonViChuTri.TenDVChuTri)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DonViChuTri.TenDVChuTri)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DonViQL.TenDonVI)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DonViQL.TenDonVI)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LinhVuc.TenLinhVuc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LinhVuc.TenLinhVuc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.XepLoai.TenXepLoai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.XepLoai.TenXepLoai)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TinhTrangDeTai.TenTinhTrang)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TinhTrangDeTai.TenTinhTrang)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhanLoaiSP.TenPhanLoai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhanLoaiSP.TenPhanLoai)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MaDeTai }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,147 @@
+﻿@model WebQLKhoaHoc.DeTai
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_AdminMainPage.cshtml";
+}
+
+@using (Html.BeginForm("Create", "AdminDeTai", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <h1 class="text-center">Tạo đề tài</h1>
+    <hr />
+    <div class="row">
+        @Html.ValidationSummary(true)
+        <div class="form-group">
+            <h4 class="col-md-2 col-md-offset-1">Mã đề tài hộ sở:</h4>
+            <div class="col-md-7">
+                <input  required class="form-control" name="MaDeTaiHoSo" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <h4 class="col-md-2 col-md-offset-1">Tên đề tài:</h4>
+            <div class="col-md-7">
+                <input  required class="form-control" name="TenDeTai" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <h4 class="col-md-2 col-md-offset-1">Mục tiêu đề tài:</h4>
+            <div class="col-md-7">
+                <input  required class="form-control" name="MucTieuDeTai" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <h4 class="col-md-2 col-md-offset-1">Nội dung đề tài:</h4>
+            <div class="col-md-7">
+                <input  required class="form-control" name="NoiDungDeTai" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <h4 class="col-md-2 col-md-offset-1">Kết quả đề tài:</h4>
+            <div class="col-md-7">
+                <input  required class="form-control" name="KetQuaDeTai" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <h4 class="col-md-2 col-md-offset-1">Năm bất đầu:</h4>
+            <div class="col-md-7">
+                <input  required class="form-control" name="NamBD" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <h4 class="col-md-2 col-md-offset-1">Năm kết thúc:</h4>
+            <div class="col-md-7">
+                <input  required class="form-control" name="NamKT" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <h4 class="col-md-2 col-md-offset-1">Web liên kết:</h4>
+            <div class="col-md-7">
+                <input  required class="form-control" name="LienKetWeb" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <h4 class="col-md-2 col-md-offset-1">File Upload:</h4>
+            <div class="col-md-7">
+                <input  required class="form-control" name="linkUpload" type="file"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <h4 class="col-md-2 col-md-offset-1">Loại đề tài:</h4>
+            <div class="col-md-7">
+                @Html.DropDownList("MaLoaiDeTai", ViewBag.MaLoaiDeTai as SelectList, new { @class="form-control"})               
+            </div>
+        </div>
+
+        <div class="form-group">
+            <h4 class="col-md-2 col-md-offset-1">Cấp đề tài:</h4>
+            <div class="col-md-7">
+                @Html.DropDownList("MaCapDeTai", ViewBag.MaCapDeTai as SelectList, new { @class = "form-control" })
+                
+            </div>
+        </div>
+
+        <div class="form-group">
+            <h4 class="col-md-2 col-md-offset-1">Mã đơn vị chủ trì:</h4>
+            <div class="col-md-7">
+                @Html.DropDownList("MaDVChuTri", ViewBag.MaDVChuTri as SelectList, new { @class = "form-control" })              
+            </div>
+        </div>
+
+        <div class="form-group">
+            <h4 class="col-md-2 col-md-offset-1">Mã đơn vị quản lý:</h4>
+            <div class="col-md-7">
+                @Html.DropDownList("MaDonViQLThucHien", ViewBag.MaDonViQLThucHien as SelectList, new { @class = "form-control" })                
+            </div>
+        </div>
+
+        <div class="form-group">
+            <h4 class="col-md-2 col-md-offset-1">Lĩnh vực đề tài:</h4>
+            <div class="col-md-7">
+                @Html.DropDownList("MaLinhVuc", ViewBag.MaLinhVuc as SelectList, new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <h4 class="col-md-2 col-md-offset-1">Xếp loại đề tài:</h4>
+            <div class="col-md-7">
+                @Html.DropDownList("MaXepLoai", ViewBag.MaXepLoai as SelectList, new { @class = "form-control" })
+                
+        </div>
+
+        <div class="clearfix"></div>
+        <div class="form-group">
+            <h4 class="col-md-2 col-md-offset-1">Tình trạng đề tài:</h4>
+            <div class="col-md-7">
+                @Html.DropDownList("MaTinhTrang", ViewBag.MaTinhTrang as SelectList, new { @class = "form-control" })               
+            </div>
+        </div>
+
+        <div class="form-group">
+            <h4 class="col-md-2 col-md-offset-1">Phân loại đề tài:</h4>
+            <div class="col-md-7">
+                @Html.DropDownList("MaPhanLoaiSP", ViewBag.MaPhanLoaiSP as SelectList, new { @class = "form-control" })                
+            </div>
+        </div>
+      
+        <div class="form-group">
+            <div class="col-md-offset-3 col-md-7">
+                @Html.ActionLink("Trở về","Index", "AdminDeTai", null, new { @class = "pull-right btn btn-default" })
+                <input type="submit" value="Create" class="btn btn-default pull-right" />
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+}

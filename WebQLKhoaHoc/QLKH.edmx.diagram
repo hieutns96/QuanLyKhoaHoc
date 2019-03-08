@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="61ca1a3f706d48f399fb8dd137bd9e28" Name="Diagram1">
+        <EntityTypeShape EntityType="QLKhoaHocModel.BacDaoTao" Width="1.5" PointX="12" PointY="25.5" />
+        <EntityTypeShape EntityType="QLKhoaHocModel.BaiBao" Width="1.5" PointX="9" PointY="2.25" />
+        <EntityTypeShape EntityType="QLKhoaHocModel.CapDeTai" Width="1.5" PointX="0.75" PointY="8.375" />
+        <EntityTypeShape EntityType="QLKhoaHocModel.CapTapChi" Width="1.5" PointX="6.75" PointY="2.375" />
+        <EntityTypeShape EntityType="QLKhoaHocModel.ChucNang" Width="1.5" PointX="6" PointY="27.5" />
+        <EntityTypeShape EntityType="QLKhoaHocModel.ChuyenMon" Width="1.5" PointX="9" PointY="27.5" />
+        <EntityTypeShape EntityType="QLKhoaHocModel.ChuyenMonNKH" Width="1.5" PointX="11.25" PointY="18.375" />
+        <EntityTypeShape EntityType="QLKhoaHocModel.ChuyenNganh" Width="1.5" PointX="3.75" PointY="12.625" />
+        <EntityTypeShape EntityType="QLKhoaHocModel.DeTai" Width="1.5" PointX="3" PointY="16" />
+        <EntityTypeShape EntityType="QLKhoaHocModel.DonViChuTri" Width="1.5" PointX="0.75" PointY="15.5" />
+        <EntityTypeShape EntityType="QLKhoaHocModel.DonViQL" Width="1.5" PointX="0.75" PointY="18" />
+        <EntityTypeShape EntityType="QLKhoaHocModel.DSBaiBaoDeTai" Width="1.5" PointX="8.25" PointY="18.375" />
+        <EntityTypeShape EntityType="QLKhoaHocModel.DSNguoiThamGiaBaiBao" Width="1.5" PointX="8.25" PointY="12.375" />
+        <EntityTypeShape EntityType="QLKhoaHocModel.DSNguoiThamGiaDeTai" Width="1.5" PointX="8.25" PointY="15.375" />
+        <EntityTypeShape EntityType="QLKhoaHocModel.DSTacGia" Width="1.5" PointX="8.25" PointY="24.375" />
+        <EntityTypeShape EntityType="QLKhoaHocModel.HocHam" Width="1.5" PointX="3.75" PointY="26.875" />
+        <EntityTypeShape EntityType="QLKhoaHocModel.HocVi" Width="1.5" PointX="3.75" PointY="9.375" />
+        <EntityTypeShape EntityType="QLKhoaHocModel.KinhPhiDeTai" Width="1.5" PointX="5.25" PointY="23.625" />
+        <EntityTypeShape EntityType="QLKhoaHocModel.LinhVuc" Width="1.5" PointX="11.25" PointY="15" />
+        <EntityTypeShape EntityType="QLKhoaHocModel.LoaiHinhDeTai" Width="1.5" PointX="0.75" PointY="6" />
+        <EntityTypeShape EntityType="QLKhoaHocModel.NgachVienChuc" Width="1.5" PointX="3.75" PointY="29.5" />
+        <EntityTypeShape EntityType="QLKhoaHocModel.NganhDaoTao" Width="1.5" PointX="1.5" PointY="12.75" />
+        <EntityTypeShape EntityType="QLKhoaHocModel.NguoiDung" Width="1.5" PointX="8.25" PointY="21.25" />
+        <EntityTypeShape EntityType="QLKhoaHocModel.NhaKhoaHoc" Width="1.5" PointX="6" PointY="16" />
+        <EntityTypeShape EntityType="QLKhoaHocModel.NhaXuatBan" Width="1.5" PointX="11.25" PointY="12.125" />
+        <EntityTypeShape EntityType="QLKhoaHocModel.NhomLinhVuc" Width="1.5" PointX="9" PointY="7.875" />
+        <EntityTypeShape EntityType="QLKhoaHocModel.PhanLoaiSach" Width="1.5" PointX="11.25" PointY="9" />
+        <EntityTypeShape EntityType="QLKhoaHocModel.PhanLoaiSP" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="QLKhoaHocModel.PhanLoaiTapChi" Width="1.5" PointX="6.75" PointY="4.875" />
+        <EntityTypeShape EntityType="QLKhoaHocModel.QuaTrinhCongTac" Width="1.5" PointX="11.25" PointY="22" />
+        <EntityTypeShape EntityType="QLKhoaHocModel.QuaTrinhDaoTao" Width="1.5" PointX="14.25" PointY="17.75" />
+        <EntityTypeShape EntityType="QLKhoaHocModel.SachGiaoTrinh" Width="1.5" PointX="13.5" PointY="13.75" />
+        <EntityTypeShape EntityType="QLKhoaHocModel.TinhTrangDeTai" Width="1.5" PointX="0.75" PointY="22.125" />
+        <EntityTypeShape EntityType="QLKhoaHocModel.TrinhDoNgoaiNgu" Width="1.5" PointX="8.25" PointY="40.25" />
+        <EntityTypeShape EntityType="QLKhoaHocModel.XepLoai" Width="1.5" PointX="0.75" PointY="0.75" />
+        <AssociationConnector Association="QLKhoaHocModel.QuaTrinhDaoTao_fk1" />
+        <AssociationConnector Association="QLKhoaHocModel.DSBaiBaoDeTai_fk1" />
+        <AssociationConnector Association="QLKhoaHocModel.DSNguoiThamGiaBaiBao_fk0" />
+        <AssociationConnector Association="QLKhoaHocModel.FK_BaiBao_CapTapChi" />
+        <AssociationConnector Association="QLKhoaHocModel.FK_BaiBao_PhanLoaiTapChi" />
+        <AssociationConnector Association="QLKhoaHocModel.DeTai_fk1" />
+        <AssociationConnector Association="QLKhoaHocModel.FK_NguoiDung_ChucNang" />
+        <AssociationConnector Association="QLKhoaHocModel.ChuyenMonNKH_fk1" />
+        <AssociationConnector Association="QLKhoaHocModel.ChuyenMonNKH_fk0" />
+        <AssociationConnector Association="QLKhoaHocModel.ChuyenNganh_fk0" />
+        <AssociationConnector Association="QLKhoaHocModel.NhaKhoaHoc_fk2" />
+        <AssociationConnector Association="QLKhoaHocModel.DeTai_fk0" />
+        <AssociationConnector Association="QLKhoaHocModel.DeTai_fk2" />
+        <AssociationConnector Association="QLKhoaHocModel.DeTai_fk3" />
+        <AssociationConnector Association="QLKhoaHocModel.DeTai_fk4" />
+        <AssociationConnector Association="QLKhoaHocModel.DeTai_fk5" />
+        <AssociationConnector Association="QLKhoaHocModel.DeTai_fk6" />
+        <AssociationConnector Association="QLKhoaHocModel.DeTai_fk7" />
+        <AssociationConnector Association="QLKhoaHocModel.DSBaiBaoDeTai_fk0" />
+        <AssociationConnector Association="QLKhoaHocModel.DSNguoiThamGiaDeTai_fk0" />
+        <AssociationConnector Association="QLKhoaHocModel.FK_KinhPhiDeTai_DeTai" />
+        <AssociationConnector Association="QLKhoaHocModel.NhaKhoaHoc_fk3" />
+        <AssociationConnector Association="QLKhoaHocModel.QuaTrinhCongTac_fk1" />
+        <AssociationConnector Association="QLKhoaHocModel.DSNguoiThamGiaBaiBao_fk1" />
+        <AssociationConnector Association="QLKhoaHocModel.DSNguoiThamGiaDeTai_fk1" />
+        <AssociationConnector Association="QLKhoaHocModel.FK_DSTacGia_NhaKhoaHoc" />
+        <AssociationConnector Association="QLKhoaHocModel.FK_DSTacGia_SachGiaoTrinh" />
+        <AssociationConnector Association="QLKhoaHocModel.NhaKhoaHoc_fk0" />
+        <AssociationConnector Association="QLKhoaHocModel.NhaKhoaHoc_fk1" />
+        <AssociationConnector Association="QLKhoaHocModel.LinhVuc_fk0" />
+        <AssociationConnector Association="QLKhoaHocModel.SachGiaoTrinh_fk1" />
+        <AssociationConnector Association="QLKhoaHocModel.NhaKhoaHoc_fk4" />
+        <AssociationConnector Association="QLKhoaHocModel.QuaTrinhDaoTao_fk2" />
+        <AssociationConnector Association="QLKhoaHocModel.FK_NguoiDung_NKH" />
+        <AssociationConnector Association="QLKhoaHocModel.QuaTrinhCongTac_fk0" />
+        <AssociationConnector Association="QLKhoaHocModel.QuaTrinhDaoTao_fk0" />
+        <AssociationConnector Association="QLKhoaHocModel.FK_SachGiaoTrinh_NhaXuatBan" />
+        <AssociationConnector Association="QLKhoaHocModel.SachGiaoTrinh_fk0" />
+        <AssociationConnector Association="QLKhoaHocModel.LinhVucBaiBao" />
+        <AssociationConnector Association="QLKhoaHocModel.LinhVucNghienCuuNKH" />
+        <AssociationConnector Association="QLKhoaHocModel.NgoaiNguNKH" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

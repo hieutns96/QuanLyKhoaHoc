@@ -1,0 +1,35 @@
+﻿@model WebQLKhoaHoc.TrinhDoNgoaiNgu
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_MainPage.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>TrinhDoNgoaiNgu</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TenTrinhDo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenTrinhDo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CapDo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CapDo)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MaTrinhDoNN }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

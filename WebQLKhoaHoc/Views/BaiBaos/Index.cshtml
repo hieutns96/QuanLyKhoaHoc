@@ -1,0 +1,209 @@
+﻿@*@model IEnumerable<WebQLKhoaHoc.BaiBao>*@
+@model IPagedList<WebQLKhoaHoc.BaiBao>
+
+@{
+    ViewBag.Title = "Dữ Liệu Bài Báo";
+    Layout = "~/Views/Shared/_MainPage.cshtml";
+    int quantity = 0;
+}
+
+@using PagedList.Mvc;
+@using PagedList;
+
+<!-- Start main-content -->
+<div class="main-content">
+    <section id="home" class="divider parallax layer-overlay overlay-dark-4" data-bg-img="http://csdlkhoahoc.hueuni.edu.vn/csdl/images/bg5.jpg" style="background-image: url(&quot;http://csdlkhoahoc.hueuni.edu.vn/csdl/images/bg5.jpg&quot;); background-position: 50% 91px;">
+        @using (Html.BeginForm("Index", "BaiBaos", FormMethod.Get))
+        {
+            
+            <div class="display-table">
+                <div class="display-table-cell">
+                    <div class="container pt-30 pb-20">
+                        <div class="row">
+                            <div class="col-md-6 pt-10">
+                                <h2 class="title text-white">Dữ liệu <span class="text-theme-color-2">Bài Báo</span></h2>
+                                <ol class="breadcrumb text-left text-black mt-10">
+                                    <li> @Html.ActionLink("Trang Chủ", "Index", "Home")</li>
+                                    <li class="active text-gray-silver">Bài Báo</li>
+                                </ol>
+                                @if (Session["user"] != null)
+                                {
+                                    <div class="col-xs-12 col-sm-4 pl-5 pr-5">
+                                        <div class="form-group mb-5">
+                                            <button type="submit" class="btn btn-colored btn-theme-color-2 text-white btn-lg btn-block btn-round border-radius-15px" data-loading-text="Please wait...">
+                                                Bài báo của tôi
+                                            </button>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                            <div class="col-md-6">
+                                <!-- Appointment Form Starts -->
+                                <form class="subpage bg-white pt-20 pl-30 pr-30 pb-15" method="post" action="http://csdlkhoahoc.hueuni.edu.vn/index.php/scientist/search">
+                                    <div class="row">                                        
+                                        <div class="col-xs-12 col-sm-12 pl-5 pr-5">
+                                            <div class="form-group mb-5">
+                                                @Html.DropDownList("MaLinhVuc", (IEnumerable<SelectListItem>)ViewBag.MaLinhVuc, "--Chọn lĩnh vực--", new { @class = "form-control border-radius-15px" })
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6 pl-5 pr-5">
+                                            <div class="form-group mb-5">
+                                                @Html.DropDownList("MaPhanLoaiTapChi", (IEnumerable<SelectListItem>)ViewBag.MaPhanLoaiTapChi, "--Chọn phân loại tạp chí--", new { @class = "form-control border-radius-15px" })
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6 pl-5 pr-5">
+                                            <div class="form-group mb-5">
+                                                @Html.DropDownList("MaLoaiTapChi", (IEnumerable<SelectListItem>)ViewBag.MaLoaiTapChi, "--Chọn loại tạp chí--", new { @class = "form-control border-radius-15px" })
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6 pl-5 pr-5">
+                                            <div class="form-group mb-5">
+                                                @Html.DropDownList("MaCapTapChi", (IEnumerable<SelectListItem>)ViewBag.MaCapTapChi, "--Chọn cấp tạp chí--", new { @class = "form-control border-radius-15px" })
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xs-12 col-sm-6 pl-5 pr-5">
+                                            <div class="form-group mb-5">
+                                                <input name="CQXuatBan" id="CQXuatBan" class="form-control border-radius-15px" type="text" placeholder="Cơ quan xuất bản" value="@ViewBag.CQXuatBan">
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6 pl-5 pr-5">
+                                            <div class="form-group mb-5">
+                                                <div class="styled-select">
+                                                    <input name="Fromdate" id="Fromdate" class="form-control border-radius-15px date-picker" type="text" placeholder="Từ thời điểm" value="@ViewBag.Fromdate" autocomplete="off">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6 pl-5 pr-5">
+                                            <div class="form-group mb-5">
+                                                <div class="styled-select">
+                                                    <input name="Todate" id="Todate" class="form-control border-radius-15px date-picker " type="text" placeholder="Đến thời điểm" value="@ViewBag.Todate" autocomplete="off">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-8 pl-5 pr-5">
+                                            <div class="form-group mb-5">
+                                                <div class="styled-select">
+                                                    <input name="SearchValue" id="SearchValue" class="form-control border-radius-15px" type="text" placeholder="Từ khóa tìm kiếm" value="@ViewBag.SearchValue">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        @if (Session["user"] != null)
+                                        {
+                                            WebQLKhoaHoc.Models.UserLoginViewModel nkh = (WebQLKhoaHoc.Models.UserLoginViewModel)Session["user"];
+                                            <input name="nkhId" id="nkhId" type="hidden" value="@nkh.MaNKH">
+                                        }                                        
+                                        <div class="col-xs-12 col-sm-4 pl-5 pr-5">
+                                            <div class="form-group mb-5">
+                                                <i class="glyphicon glyphicon-search icon-glyphicon-search-custom"></i>
+                                                <button type="submit" class="btn btn-colored text-white btn-block border-radius-15px btn-search-component" data-loading-text="Please wait...">
+                                                    Tìm Kiếm
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </section>
+    <section class="divider parallax layer-overlay overlay-light" data-bg-img="../../Image/research-background.png" style='background-image: url("../../Image/research-background.png")'>
+        <div class="container">
+            <div class="section-content">
+                <section id="services" class="bg-white-transparent-6 border-radius-10px">
+                    <div class="container pt-40">
+                        <div class="section-title mb-10">
+                            <div class="row">
+                                <div class="col-md-11">
+                                    <h2 class="text-uppercase title line-bottom" style="color:deepskyblue;">
+                                        Dữ liệu bài báo
+                                    </h2>
+                                </div>
+                                @if (Session["user"]!=null) {
+                                    <div class="col-md-1">
+                                        <a href="@Url.Action("Create", "BaiBaos")" class="btn btn-success border-radius-10px pull-right">Thêm mới</a>
+                                    </div>
+                                }
+                            </div>                           
+                        </div>
+
+
+                        <div class="row mtli-row-clearfix">
+                            @foreach (var item in Model)
+                            {
+                                <div class="col-xs-12">
+                                    <div class="bg-white p-15 mb-30 border-1px">
+                                        <button class="btn btn-link left" style="padding-left:unset" role="link" href="javascript:" data-toggle="modal" data-target="#mydata" onclick="modal_load('@Url.Action("Details", "BaiBaos", new { id = item.MaBaiBao })')">
+                                            <h4 class="icon-box-title font-16 font-weight-600 m-0 mb-5 pr-15">
+                                                @Html.DisplayFor(modelItem => item.TenBaiBao)
+                                            </h4>
+                                        </button>
+                                        <button class="btn btn-default btn-round" data-toggle="collapse" data-target="#article-@quantity"><i class="fas fa-caret-down"></i></button>
+                                        <div id="article-@quantity" class="collapse">
+                                            <p class="text-gray font-13 mb-0">
+                                                @Html.DisplayFor(modelItem => item.CQXuatBan), @Html.DisplayFor(modelItem => item.NamDangBao.Value.Year)
+
+                                                <br>
+                                                <i class="fa fa-globe" aria-hidden="true"></i>
+                                                <b>Lĩnh vực:</b>
+                                                @{
+                                                    var lv = item.LinhVucs.ToList();
+                                                    for (int i = 0; i < lv.Count-1; i++)
+                                                    {
+                                                        @Html.DisplayFor(modelLV => lv[i].TenLinhVuc) @:,
+                                                    }
+                                                    @Html.DisplayFor(modelLV => lv[lv.Count-1].TenLinhVuc)
+                                                }
+                                                <br>
+                                                <i class="fa fa-users" aria-hidden="true"></i>
+                                                <b>Tác giả:</b>
+
+                                                @for (int i = 0; i < item.DSNguoiThamGiaBaiBaos.Count; i++)
+                                                {
+                                                    var tg = item.DSNguoiThamGiaBaiBaos.ToList()[i];
+                                                    var name = tg.NhaKhoaHoc.HoNKH + " " + tg.NhaKhoaHoc.TenNKH;
+                                                    if (tg.LaTacGiaChinh.Value)
+                                                    {
+                                                        name += " (Chủ Biên)";
+                                                    }
+                                                    if (i < (item.DSNguoiThamGiaBaiBaos.Count - 1))
+                                                    {
+                                                        name += ", ";
+                                                    }
+                                                <a class="customlink" href="@Url.Action("Details", "NhaKhoaHocs", new { id = tg.MaNKH })">@name</a>
+
+                                                }
+                                                @{ quantity++;}
+                                                <br>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+
+                        <div class="row mt-20 text-center">
+                            @Html.PagedListPager(Model, Page_No => Url.Action("Index", "BaiBaos", new
+                       {
+                           Page_No,
+                           MaLinhVuc = Request.QueryString["MaLinhVuc"],
+                           MaPhanLoaiTapChi = Request.QueryString["MaPhanLoaiTapChi"],
+                           MaLoaiTapChi = Request.QueryString["MaLoaiTapChi"],
+                           MaCapTapChi = Request.QueryString["MaCapTapChi"],
+                           CQXuatBan = Request.QueryString["CQXuatBan"],
+                           Fromdate = Request.QueryString[" Fromdate"],
+                           Todate = Request.QueryString["Todate"],
+                           SearchValue = Request.QueryString["SearchValue"],
+                           nkhId = Request.QueryString["nkhId"]
+                       }))
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </section>
+</div>

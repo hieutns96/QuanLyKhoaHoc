@@ -1,0 +1,169 @@
+﻿<html lang="en">
+<!-- Head BEGIN -->
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/x-icon" href="~/Image/hcmup_edu.ico" />
+
+    <title>@ViewBag.Title</title>
+    @Scripts.RenderFormat("<script src=\"/Scripts/use.fontawesome.js\" data-auto-replace-svg=\"nest\"></script>", "~/bundles/use.fontawesome")
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<!-- Head END -->
+<!-- Body BEGIN -->
+<body>
+    <div id="wrapper" class="clearfix">
+        <!-- Header -->
+        <header id="header" class="header">
+            <div class="header-middle p-0 bg-lightest xs-text-center">
+                <div class="container pt-0 pb-0">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-4 col-md-3 text-left">
+                            <div class="widget no-border m-0">
+                                <a class=" menuzord-menu flip xs-pull-center mt-10 mb-10" href="javascript:void(0)">
+                                    <img src="~/Image/logo_hcmup.png" style="width: 70%;" alt="">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-8 col-md-9">
+                            <div class="header-custom">
+                                <h2 class="font-weight-800 text-theme-colored font-27">CSDL KHOA HỌC VÀ CÔNG NGHỆ</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="header-nav">
+                <div class="header-nav-wrapper navbar-scrolltofixed bg-theme-colored border-bottom-theme-color-2-1px" style="z-index: 1000;">
+                    <div class="container header-container">
+                        <nav id="menuzord" class="menuzord bg-theme-colored pull-left flip menuzord-responsive">
+                            <ul class="menuzord-menu menuzord-indented scrollable" style="max-height: 400px;">
+                                <li>
+                                    @Html.ActionLink("Trang Chủ", "Index", "Home")
+                                </li>
+                                <li>
+                                    @Html.ActionLink("Nhà Khoa Học", "Index", "NhaKhoaHocs")
+                                </li>
+                                <li>
+                                    @Html.ActionLink("Đề Tài Khoa Học", "Index", "DeTais")
+                                </li>
+                                <li>
+                                    @Html.ActionLink("Bài Báo Khoa Học", "Index", "BaiBaos")
+                                </li>
+                                <li>
+                                    @Html.ActionLink("Sách Và Giáo Trình", "Index", "SachGiaoTrinhs")
+                                </li>
+                                <li>
+                                    <a href="javascript:;">Thống kê<span class="indicator"></span></a>
+                                    <ul class="dropdown" style="right: auto; display: none;">
+                                        <li>
+                                            @Html.ActionLink("Đội ngũ KHCN", "Index", "Charts")
+                                        </li>
+                                        <li>
+                                            @Html.ActionLink("Nhiệm vụ, đề tài KHCN", "topicChart", "Charts")
+                                        </li>
+                                        <li>
+                                            @Html.ActionLink("Bài báo khoa học", "article", "Charts")
+                                        </li>
+                                        <li>
+                                            @Html.ActionLink("Sách , giáo trình", "book", "Charts")
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="scrollable-fix"></li>
+                            </ul>
+                            <ul></ul>
+                            <ul class="menuzord-menu menuzord-indented scrollable pull-right" style="max-height: 400px;">
+
+                                @if (Session["user"] == null)
+        {
+                                    <li>
+                                        @Html.ActionLink("Đăng nhập", "Login", "Account", null, new { @class = "bg-theme-color-2 text-white font-14" })
+                                    </li>
+                                }
+                                else
+                                {
+                                    QLKhoaHocEntities db = new QLKhoaHocEntities();
+        WebQLKhoaHoc.Models.UserLoginViewModel nd = (WebQLKhoaHoc.Models.UserLoginViewModel)Session["user"];
+                                    <li>
+                                        <a><img src="@nd.AnhCaNhan" style="width:30px;height:30px;border-radius: 50%;display: inline-block;" /> @nd.ChucVi @nd.HoVaTen</a>
+                                        <ul class="dropdown">
+                                            <li><a>Đổi mật khẩu</a></li>
+                                            <li><a>Thông tin tài khoản</a></li>
+                                            <li>@Html.ActionLink("Đăng xuất", "LogOff", "Account")</li>
+                                        </ul>
+                                    </li>
+                                    <li></li>
+                                }
+                                <li class="scrollable-fix"></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div><div></div>
+            </div>
+        </header>
+        @RenderBody()
+    </div>
+    <!-- Footer -->
+    <footer id="footer" class="footer divider layer-overlay overlay-dark-9");">
+        <div class="container">
+            <div class="row">               
+                <div class="col-sm-4 col-md-6 text-center">
+                    <div class="widget dark">
+                        <img class="mt-5" width="300" alt="" src="~/Image/logo_hcmup.png">
+                        <p class="font1 widget-title m-0 widget-title reset_pass">Bản quyền thuộc Đại học Sư Phạm TPHCM © 2018.</p>
+                    </div>
+                   
+                </div>
+
+                <div class="col-sm-8 col-md-6 text-center">
+                    <div class="widget dark">
+                        <h3 class="widget-title mb-10 font1">Thông Tin Liên Hệ</h3>
+                        <ul class="list mt-5 font1 widget-title">
+                            <li class="m-0 pl-10 pr-10">
+                                <i class="fa fa-map-marker text-theme-color-2 mr-5"></i>
+                                Phòng Công Nghệ Thông Tin
+                                <br />Đại học Sư Phạm TPHCM
+                                <br /><i class="fa fa-map text-theme-color-2 mr-5"></i>
+                                 Số 280 An Dương Vương - TP HCM
+                            </li>
+                            <li class="m-0 pl-10 pr-10">
+                                <i class="fa fa-user text-theme-color-2 mr-5"></i>
+                                Hỗ trợ kỹ thuật: Âu Bửu Long
+                            </li>
+                            <li class="m-0 pl-10 pr-10">
+                                <i class="fa fa-phone text-theme-color-2 mr-5"></i>
+                                0123456789 - longab@hcmue.edu.vn
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </footer>
+    <div id="mydata" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+            </div>
+        </div>
+    </div>
+    <a class="scrollToTop" href="#"><i class="fa fa-angle-up"></i></a>
+    <!-- end wrapper -->
+    <!-- Footer Scripts -->
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/qlkh")
+    @RenderSection("scripts", required: false)
+    @RenderSection("NhaKhoaHocScripts",required:false)
+    @RenderSection("charts", required: false)
+    <script>
+        function modal_load(url) {
+            $('#mydata .modal-content').load(url);
+        };
+    </script>
+</body>
+<!-- END BODY -->
+</html>

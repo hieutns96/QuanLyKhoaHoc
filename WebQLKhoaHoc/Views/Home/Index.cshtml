@@ -1,0 +1,295 @@
+﻿@{
+    ViewBag.Title = "Trang Chủ";
+    Layout = "~/Views/Shared/_MainPage.cshtml";
+}
+@{
+    QLKhoaHocEntities db = new QLKhoaHocEntities();
+    var daTruyCap = System.Web.HttpContext.Current.Application["DaTruyCap"].ToString();
+
+    var dangTruyCap = System.Web.HttpContext.Current.Application["DangTruyCap"].ToString();
+}
+<div class="main-content">
+    <!-- Section: home header -->
+    <section id="home" class="divider parallax layer-overlay overlay-dark-4" data-bg-img="/Image/bg-cover.jpg" style="background-image: url(/Image/bg-cover.jpg); background-position: 50% 91px;">
+        <div class="container  pt-40 pb-40">
+            <div class="display-table">
+                <div class="display-table-cell">
+                    <h1 class="text-white text-center mb-4">
+                        CƠ SỞ DỮ LIỆU
+                        <span class="text-theme-color-2">KHOA HỌC</span> VÀ CÔNG NGHỆ
+                    </h1>
+                    <div class="row">
+                        <div class="col-lg-3 col-md-3 col-sm-6">
+                            <div class="card card-royal card-body overflow-hidden text-center  zoomInUp animation-delay-2" style="visibility: visible;">
+                                <a class="text-white font-18" href="@Url.Action("Index","NhaKhoaHocs")">
+                                    <h2 class="counter">@db.NhaKhoaHocs.Count()</h2>
+                                    <i class="fa fa-4x fa-briefcase color-royal"></i>
+                                    <p class="mt-2 no-mb lead small-caps">NHÀ KHOA HỌC</p>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-6">
+                            <div class="card card-warning card-body overflow-hidden text-center  zoomInUp animation-delay-3" style="visibility: visible;">
+                                <a class="text-white font-18" href="@Url.Action("Index","DeTais")">
+                                    <h2 class="counter"> @db.DeTais.Count()</h2>
+                                    <i class="fa fa-4x fa-lightbulb color-warning"></i>
+                                    <p class="mt-2 no-mb lead small-caps">ĐỀ TÀI KHOA HỌC</p>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-6">
+                            <div class="card card-danger card-body overflow-hidden text-center  zoomInUp animation-delay-4" style="visibility: visible;">
+                                <a class="text-white font-18" href="@Url.Action("Index","BaiBaos")">
+                                    @*<h2 class="counter">@db.BaiBaos.Count()</h2>*@
+                                    <h2 class="counter">450</h2>
+                                    <i class="fa fa-4x fa-newspaper color-danger"></i>
+                                    <p class="mt-2 no-mb lead small-caps">BÀI BÁO KHOA HỌC</p>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-6">
+                            <div class="card card-info card-body overflow-hidden text-center  zoomInUp animation-delay-5" style="visibility: visible;">
+                                <a class="text-white font-18" href="@Url.Action("Index","SachGiaoTrinhs")">
+                                    <h2 class="counter">@db.SachGiaoTrinhs.Count()</h2>
+                                    <i class="fa fa-4x fa-book color-info"></i>
+                                    <p class="mt-2 no-mb lead small-caps">SÁCH, GIÁO TRÌNH</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        @using (Html.BeginForm("Search", "Home", FormMethod.Post))
+                        {
+                            @Html.AntiForgeryToken()
+                            <!-- Appointment Form Starts -->
+                            <form id="home_appointment_form" name="home_appointment_form" class="booking-form form-home bg-white p-30" method="post" action="http://csdlkhoahoc.hueuni.edu.vn/index.php/home/search">
+                                <h3 class="mt-0 mb-20 text-white text-center">Tìm Kiếm <span class="text-theme-color-2">Dữ Liệu</span></h3>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <div class="form-group mb-10">
+                                            <input id="SearchValue" name="SearchValue" class="form-control" type="text" placeholder="Nhập từ khóa...">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class="form-group mb-10">
+                                            <div class="styled-select">
+                                                @Html.DropDownList("MaDonViQLThucHien", (IEnumerable<SelectListItem>)ViewBag.MaDonViQLThucHien, "--Chọn đơn vị--", new { @class = "form-control" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class="form-group mb-10">
+                                            <div class="styled-select">
+                                                @Html.DropDownList("MaDanhMuc", (IEnumerable<SelectListItem>)ViewBag.MaDanhMuc, new { @class = "form-control" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class ="col-sm-3">
+                                        <div class="form-group mb-0">
+                                            <input name="form_botcheck" class="form-control" type="hidden" value="">
+                                            <button type="submit" class="btn btn-colored btn-theme-color-2 text-white btn-lg btn-block" data-loading-text="Please wait...">
+                                                Tìm Kiếm
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section: About -->
+    <section class="">
+        <div class="container">
+            <div class="section-content">
+
+                <!-- Section: About -->
+                <section class="">
+                    <div class="container">
+                        <div class="section-content">
+                            <div class="row">
+                                <div class="col-md-6 wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.3s" style="visibility: visible; animation-duration: 1s; animation-delay: 0.3s;">
+                                    <h2 class="text-uppercase mt-0 font-weight-600 font1">Giới Thiệu Tổng Quan Về<br> <span class="text-theme-color-2">Đại Học Sư Phạm TPHCM</span></h2>
+                                    <p style="text-align:justify">
+                                        <span style="color:#ff6600; font-family:georgia,palatino; font-size:x-large"><strong>61</strong></span><span class="font1" style="color:#132f5b">
+                                            năm hình thành và phát triển, Đại học Sư Phạm TPHCM ngày nay là một trung tâm đào tạo và nghiên cứu khoa học lớn của miền Trung Việt Nam. Là một trong 14 trường Đại học trọng điểm của cả nước, Đại học Sư Phạm TPHCM đã khẳng định được vị thế, uy tín của mình trong hệ thống giáo dục đại học Việt Nam. Nguồn nhân lực KHCN bao gồm một đội ngũ đông đảo các nhà giáo, nhà nghiên cứu có trình độ cao. Tính cho đến nay Đại học Sư Phạm TPHCM có <span style="color:#ff0000"><strong>3770</strong></span>&nbsp;cán bộ công chức. Số lượng giảng viên là
+                                            <span style="color:#333399">
+                                                <strong>
+                                                    <strong>
+                                                        <a href="@Url.Action("Index","NhaKhoaHocs",new {MaNgach = "1"})" target="_blank">
+                                                            <span style="color: #333399">@db.NhaKhoaHocs.Where(p => p.MaNgachVienChuc == 1).Count()</span>
+                                                        </a>
+                                                    </strong>
+                                                </strong>
+                                                Đại học Sư Phạm TPHCM có <span class="font1" style="color: #333399">
+                                                    <strong>
+                                                        <a href="@Url.Action("Index", "NhaKhoaHocs", new {MaHocHam = "2"})" target="_blank">
+                                                            <span style="color: #333399">@db.NhaKhoaHocs.Where(p => p.MaHocHam == 2).Count()</span>
+                                                        </a>
+                                                    </strong>
+                                                </span>&nbsp;GS,
+                                                <strong>
+                                                    <a href="@Url.Action("Index", "NhaKhoaHocs", new {MaHocHam = "1"})" target="_blank">
+                                                        <span style="color: #333399"> @db.NhaKhoaHocs.Where(p => p.MaHocHam == 1).Count() </span>
+                                                    </a>
+                                                </strong> PGS;
+                                                <span class="font1" style="color:#333399">
+                                                    <strong>
+                                                        <a href="@Url.Action("Index","NhaKhoaHocs",new {MaHocVi = "7"})" target="_blank">
+                                                            <span style="color: #333399">
+                                                                @db.NhaKhoaHocs.Where(p => p.MaHocVi == 6 || p.MaHocVi == 7).Count()
+                                                            </span>
+                                                        </a>
+                                                    </strong>
+                                                </span>&nbsp;Tiến sĩ khoa học, tiến sĩ.
+                                                Đây là một tài sản quý báu của Đại học Sư Phạm TPHCM, của tỉnh Thừa Thiên Sư Phạm TPHCM và của cả nước.
+
+                                            </span>
+                                        </span>
+                                    </p>
+
+                                    <p style="text-align:justify"><span class="font1" style="color:#132f5b"><span style="color:#ff6600; font-family:georgia,palatino; font-size:large"><strong>H</strong></span>oạt động đào tạo và NCKH của các nhà giáo, nhà khoa học đã góp phần to lớn và có tính chất quyết định đến sự phát triển của Đại học Sư Phạm TPHCM trong điều kiện hội nhập và mở rộng giao lưu hợp tác quốc tế. Cán bộ giảng viên Đại học Sư Phạm TPHCM đã thực hiện hàng trăm nhiệm vụ NCKH các cấp, đăng tải hàng ngàn bài báo, công trình khoa học trên các Tạp chí trong và ngoài nước, biên soạn hàng trăm giáo trình, sách, tài liệu tham khảo phục vụ thiết thực cho công tác đào tạo và NCKH. Đây là nguồn dữ liệu quý, phục vụ cho việc tra cứu, tham khảo trong đào tạo, đặc biệt là đào tạo Sau đại học và NCKH.</span></p>
+
+                                    <p style="text-align:justify"><span class="font1" style="color:#132f5b"><strong><span style="color:#ff6600">CƠ SỞ DỮ LIỆU KHOA HỌC CÔNG NGHỆ</span></strong> còn là nguồn thông tin giúp cho công tác quản lý trên các lĩnh vực Khoa học Công nghệ, đào tạo Sau đại học, xuất bản TCKH, tư vấn và dịch vụ khoa học,...</span></p>
+
+                                    <p style="text-align:justify"><span class="font1" style="color:#132f5b">Chúng tôi trân trọng giới thiệu <strong><span style="color:#ff6600">"CƠ SỞ DỮ LIỆU KHOA HỌC CÔNG NGHỆ"</span></strong> với mong muốn rằng, cùng với các CSDL khác sẽ góp phần phản ánh một cách tương đối đầy đủ nguồn nhân lực chất lượng cao của giáo dục đại học nước nhà.</span></p>
+
+                                    <p style="text-align:justify">&nbsp;</p>
+                                </div>
+                                <div class="col-md-6 wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.3s" style="visibility: visible; animation-duration: 1s; animation-delay: 0.3s;">
+                                    <div class="row mb-10">
+                                        <div class="col-md-12">
+                                            <a href="#" target="_blank" class="hue-uni"><img src="~/Image/logo_hcmup.png"></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- Section: Second -->
+                <section class="">
+                    <div class="container" style="height: 300px">
+                        <div class="section-content">
+                           <h3>New Section </h3>
+                            <p>LoRem</p>
+                        </div>
+                    </div>
+                </section>
+                <!-- Section: List News -->
+                <section id="event">
+                    <div class="container pb-50">
+                        <div class="section-content">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <h2 class="x_title font1">
+                                        Đề Tài Mới
+                                    </h2>
+                                    <ul class="ms-timeline">
+                                        @foreach (var item in db.DeTais.OrderByDescending(p => p.NamBD).Take(5))
+                                        {
+                                            <li class="ms-timeline-item" style="visibility: visible;">
+                                                <div class="ms-timeline-date">
+                                                    <time class="timeline-time" datetime="">@item.NamKT.Value.Year <span class=font1>@item.NamKT.Value.ToString("MMMM")</span></time>
+                                                    <i class="ms-timeline-point bg-warning"></i>
+                                                </div>
+                                                <div class="material-card material-card-info">
+                                                    <div class="material-card-header custom-grid">
+                                                        <h3 class="material-card-title font1">@item.TenDeTai</h3>
+                                                    </div>
+                                                    <div class="material-card-body">
+                                                        <p class="font1">@item.NoiDungDeTai</p>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <a href="@Url.Action("Details", "DeTais", new {id = item.MaDeTai})" type="button" class="btn btn-info">Chi Tiết</a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        }
+
+
+
+                                    </ul>
+
+                                </div>
+                                <div class="col-md-4">
+                                    <h2 class="x_title font1">
+                                        Nội Dung Khác
+                                    </h2>
+                                    <div class="material-card  material-card-info">
+                                        <div class="material-card-header custom-grid">
+                                            <h3 class="material-card-title font1">Bài Báo Mới</h3>
+                                        </div>
+
+                                        <ul class="tip-list">
+                                            @foreach (var item in db.DeTais.OrderByDescending(p => p.NamBD).Take(5))
+                                            {
+                                                <li class="tip-list-item">
+
+                                                    <a href="@Url.Action("Details","DeTais",new {id = item.MaDeTai })">
+                                                        @item.NoiDungDeTai <span class="cdate font1" style="color: #f00; font-size: 11px; font-weight: normal !important;"> (@item.NamBD.Value.ToShortDateString())</span>
+                                                    </a>
+
+
+                                                </li>
+                                            }
+                                            @foreach (var item in db.BaiBaos.OrderByDescending(p => p.NamDangBao).Take(5))
+                                            {
+                                                <li class="tip-list-item">
+                                                    <a href="@Url.Action("Details","DeTais",new {id = item.MaBaiBao })">
+                                                        @item.TenBaiBao <span class="cdate font1" style="color: #f00; font-size: 11px; font-weight: normal !important;"> (@item.NamDangBao.Value.ToShortDateString())</span>
+                                                    </a>
+                                                </li>
+                                            }
+                                        </ul>
+
+                                    </div>
+                                    <div class="material-card  material-card-info">
+                                        <div class="material-card-header custom-grid">
+                                            <h3 class="material-card-title font1">Sách Và Giáo Trình Mới</h3>
+                                        </div>
+
+                                        <ul class="tip-list">
+                                            @foreach (var item in db.DeTais.OrderByDescending(p => p.NamBD).Take(5))
+                                            {
+                                                <li class="tip-list-item">
+
+                                                    <a href="@Url.Action("Details","DeTais",new {id = item.MaDeTai })">
+                                                        @item.NoiDungDeTai <span class="cdate font1" style="color: #f00; font-size: 11px; font-weight: normal !important;"> (@item.NamBD.Value.ToShortDateString())</span>
+                                                    </a>
+
+
+                                                </li>
+                                            }
+                                            @foreach (var item in db.SachGiaoTrinhs.OrderByDescending(p => p.NamXuatBan).Take(5))
+                                            {
+                                                <li class="tip-list-item">
+                                                    <a href="@Url.Action("Details","DeTais",new {id = item.MaSach })">
+                                                        @item.TenSach <span class="cdate font1" style="color: #f00; font-size: 11px; font-weight: normal !important;"> (@item.NamXuatBan.Value.ToShortDateString())</span>
+                                                    </a>
+                                                </li>
+                                            }
+                                        </ul>
+
+                                    </div>
+                                    <div class="material-card  text-center">
+                                        <div class="material-card-body">
+                                            <h2 class=""><span class="counter">@daTruyCap</span></h2>
+                                            <i class="fa fa-4x fa-heart color-danger "></i>
+                                            <h4 class="font1">Lượt Truy Cập</h4>
+                                            <p class="font1">Đang Online: @dangTruyCap</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+    </section>
+</div>

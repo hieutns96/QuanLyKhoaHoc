@@ -1,0 +1,780 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{9035BC1E-76E1-4BD3-AF40-B5266E7380F9}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WebQLKhoaHoc</RootNamespace>
+    <AssemblyName>WebQLKhoaHoc</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <Use64BitIISExpress />
+    <UseGlobalApplicationHostFile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="LinqKit, Version=1.1.15.0, Culture=neutral, PublicKeyToken=bc217f8844052a91, processorArchitecture=MSIL">
+      <HintPath>..\packages\LinqKit.1.1.15\lib\net45\LinqKit.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.0.0\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.1\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.0.0\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <Private>True</Private>
+      <HintPath>..\packages\Newtonsoft.Json.5.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.1.0.0\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.1.0.0\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.1.0.0\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin">
+      <HintPath>..\packages\Microsoft.Owin.2.0.0\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.2.0.0\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security">
+      <HintPath>..\packages\Microsoft.Owin.Security.2.0.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Facebook">
+      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.2.0.0\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.2.0.0\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.2.0.0\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google">
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.2.0.0\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter">
+      <HintPath>..\packages\Microsoft.Owin.Security.Twitter.2.0.0\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount">
+      <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.2.0.0\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="BacDaoTao.cs">
+      <DependentUpon>QLKH.tt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="BaiBao.cs">
+      <DependentUpon>QLKH.tt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="CapDeTai.cs">
+      <DependentUpon>QLKH.tt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="CapTapChi.cs">
+      <DependentUpon>QLKH.tt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="ChucNang.cs">
+      <DependentUpon>QLKH.tt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="ChuyenMon.cs">
+      <DependentUpon>QLKH.tt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="ChuyenMonNKH.cs">
+      <DependentUpon>QLKH.tt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="ChuyenNganh.cs">
+      <DependentUpon>QLKH.tt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminBacDaoTaoController.cs" />
+    <Compile Include="Controllers\AdminBaiBaoController.cs" />
+    <Compile Include="Controllers\AdminCapDeTaiController.cs" />
+    <Compile Include="Controllers\AdminCapTapChiController.cs" />
+    <Compile Include="Controllers\AdminChucNangController.cs" />
+    <Compile Include="Controllers\AdminChuyenMonController.cs" />
+    <Compile Include="Controllers\AdminChuyenMonNKHController.cs" />
+    <Compile Include="Controllers\AdminChuyenNganhController.cs" />
+    <Compile Include="Controllers\AdminDeTaiController.cs" />
+    <Compile Include="Controllers\AdminDonViChuTriController.cs" />
+    <Compile Include="Controllers\AdminDonViQLController.cs" />
+    <Compile Include="Controllers\AdminDSBaiBaoDeTaiController.cs" />
+    <Compile Include="Controllers\AdminDSNguoiThamGiaBaiBaoController.cs" />
+    <Compile Include="Controllers\AdminDSNguoiThamGiaDeTaiController.cs" />
+    <Compile Include="Controllers\AdminDSTacGiaController.cs" />
+    <Compile Include="Controllers\AdminHocHamController.cs" />
+    <Compile Include="Controllers\AdminHocViController.cs" />
+    <Compile Include="Controllers\AdminKinhPhiDeTaiController.cs" />
+    <Compile Include="Controllers\AdminLinhVucController.cs" />
+    <Compile Include="Controllers\AdminLoaiHinhDeTaiController.cs" />
+    <Compile Include="Controllers\AdminNgachVienChucController.cs" />
+    <Compile Include="Controllers\AdminNganhDaoTaoController.cs" />
+    <Compile Include="Controllers\AdminNguoiDungController.cs" />
+    <Compile Include="Controllers\AdminNhaKhoaHocController.cs" />
+    <Compile Include="Controllers\AdminNhaXuatBanController.cs" />
+    <Compile Include="Controllers\AdminNhomLinhVucController.cs" />
+    <Compile Include="Controllers\AdminnPhanLoaiSPController.cs" />
+    <Compile Include="Controllers\AdminPhanLoaiSachesController.cs" />
+    <Compile Include="Controllers\AdminPhanLoaiTapChiController.cs" />
+    <Compile Include="Controllers\AdminQuaTrinhCongTacController.cs" />
+    <Compile Include="Controllers\AdminQuaTrinhDaoTaoController.cs" />
+    <Compile Include="Controllers\AdminSachGiaoTrinhsController.cs" />
+    <Compile Include="Controllers\AdminTinhTrangDeTaiController.cs" />
+    <Compile Include="Controllers\AdminTrinhDoNgoaiNguController.cs" />
+    <Compile Include="Controllers\AdminTrinhDoNgoaiNguNKHController.cs" />
+    <Compile Include="Controllers\AdminXepLoaiController.cs" />
+    <Compile Include="Controllers\BaiBaosController.cs" />
+    <Compile Include="Controllers\ChartsController.cs" />
+    <Compile Include="Controllers\DeTaisController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\NhaKhoaHocsController.cs" />
+    <Compile Include="Controllers\SachGiaoTrinhsController.cs" />
+    <Compile Include="DeTai.cs">
+      <DependentUpon>QLKH.tt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="DonViChuTri.cs">
+      <DependentUpon>QLKH.tt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="DonViQL.cs">
+      <DependentUpon>QLKH.tt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="DSBaiBaoDeTai.cs">
+      <DependentUpon>QLKH.tt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="DSNguoiThamGiaBaiBao.cs">
+      <DependentUpon>QLKH.tt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="DSNguoiThamGiaDeTai.cs">
+      <DependentUpon>QLKH.tt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="DSTacGia.cs">
+      <DependentUpon>QLKH.tt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="HocHam.cs">
+      <DependentUpon>QLKH.tt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="HocVi.cs">
+      <DependentUpon>QLKH.tt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="KinhPhiDeTai.cs">
+      <DependentUpon>QLKH.tt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="LinhVuc.cs">
+      <DependentUpon>QLKH.tt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="LoaiHinhDeTai.cs">
+      <DependentUpon>QLKH.tt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Models\AccountViewModel.cs" />
+    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\BaiBaoSearchViewModel.cs" />
+    <Compile Include="Models\HomeSearchViewModel.cs" />
+    <Compile Include="Models\degreeChartViewModel.cs" />
+    <Compile Include="Models\DeTaiSearchViewModel.cs" />
+    <Compile Include="Models\Encryptor.cs" />
+    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\LinhVucViewMenuModel.cs" />
+    <Compile Include="Models\NhaKhoaHocSearchViewModel.cs" />
+    <Compile Include="Models\NhaKhoaHocViewModel.cs" />
+    <Compile Include="Models\quantumChartViewModel.cs" />
+    <Compile Include="Models\topicChartViewModel.cs" />
+    <Compile Include="Models\topicdata.cs" />
+    <Compile Include="Models\SachGiaoTrinhSearchViewModel.cs" />
+    <Compile Include="Models\totalChartViewModel.cs" />
+    <Compile Include="Models\QLKHRepository.cs" />
+    <Compile Include="Models\UserLoginViewModel.cs" />
+    <Compile Include="NgachVienChuc.cs">
+      <DependentUpon>QLKH.tt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="NganhDaoTao.cs">
+      <DependentUpon>QLKH.tt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="NguoiDung.cs">
+      <DependentUpon>QLKH.tt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="NhaKhoaHoc.cs">
+      <DependentUpon>QLKH.tt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="NhaXuatBan.cs">
+      <DependentUpon>QLKH.tt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="NhomLinhVuc.cs">
+      <DependentUpon>QLKH.tt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="PhanLoaiSach.cs">
+      <DependentUpon>QLKH.tt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="PhanLoaiSP.cs">
+      <DependentUpon>QLKH.tt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="PhanLoaiTapChi.cs">
+      <DependentUpon>QLKH.tt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QLKH.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QLKH.Context.tt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="QLKH.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QLKH.tt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="QLKH.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QLKH.edmx</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="QuaTrinhCongTac.cs">
+      <DependentUpon>QLKH.tt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="QuaTrinhDaoTao.cs">
+      <DependentUpon>QLKH.tt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="SachGiaoTrinh.cs">
+      <DependentUpon>QLKH.tt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Startup.cs" />
+    <Compile Include="TinhTrangDeTai.cs">
+      <DependentUpon>QLKH.tt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="TrinhDoNgoaiNgu.cs">
+      <DependentUpon>QLKH.tt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="XepLoai.cs">
+      <DependentUpon>QLKH.tt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\Admin\animate.css" />
+    <Content Include="Content\Admin\bootstrap-theme.min.css" />
+    <Content Include="Content\Admin\bootstrap.min.css" />
+    <Content Include="Content\Admin\dataTables.bootstrap.min.css" />
+    <Content Include="Content\animate.css" />
+    <Content Include="Content\bootstrap-multiselect.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\css-plugin-collections.css" />
+    <Content Include="Content\custom-bootstrap-margin-padding.css" />
+    <Content Include="Content\custom.min.css" />
+    <Content Include="Content\jquery-ui.min.css" />
+    <Content Include="Content\lightbox\close.png" />
+    <Content Include="Content\lightbox\loading.gif" />
+    <Content Include="Content\lightbox\next.png" />
+    <Content Include="Content\lightbox\prev.png" />
+    <Content Include="Content\menuzord-rounded-boxed.css" />
+    <Content Include="Content\PagedList.css" />
+    <Content Include="Content\responsive.css" />
+    <Content Include="Content\style-main.css" />
+    <Content Include="Content\theme-skin-color-set-1.css" />
+    <Content Include="Content\utility-classes.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Image\admins.bmp" />
+    <Content Include="Image\avatar.bmp" />
+    <Content Include="Image\bg-cover.jpg" />
+    <Content Include="Image\hcmup_edu.ico" />
+    <Content Include="Image\login_background.jpg" />
+    <Content Include="Image\logo_hcmup.png" />
+    <Content Include="Image\research-background.png" />
+    <Content Include="QLKH.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>QLKH.edmx</DependentUpon>
+      <LastGenOutput>QLKH.Context.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="QLKH.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>QLKH.edmx</DependentUpon>
+      <LastGenOutput>QLKH.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\Admin\autosize.min.js" />
+    <Content Include="Scripts\Admin\bootstrap.min.js" />
+    <Content Include="Scripts\Admin\dataTables.bootstrap.min.js" />
+    <Content Include="Scripts\Admin\jquery.dataTables.min.js" />
+    <Content Include="Scripts\Admin\jquery.knob.min.js" />
+    <Content Include="Scripts\Admin\jquery.min.js" />
+    <Content Include="Scripts\Admin\jquery.mousewheel.min.js" />
+    <Content Include="Scripts\Admin\multifield.js" />
+    <Content Include="Scripts\Admin\validator.js" />
+    <Content Include="Scripts\app.js" />
+    <Content Include="Scripts\app_admin.min.js" />
+    <Content Include="Scripts\bootstrap-multiselect.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <EntityDeploy Include="QLKH.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>QLKH.Designer.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EntityDeploy>
+    <Content Include="QLKH.edmx.diagram">
+      <DependentUpon>QLKH.edmx</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\custom.css" />
+    <Content Include="Content\daterangepicker.css" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\custom-admin.js" />
+    <Content Include="Scripts\custom.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-plugin-collection.js" />
+    <Content Include="Scripts\jquery-ui.min.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\Account\_ChangePasswordPartial.cshtml" />
+    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\Account\_RemoveAccountPartial.cshtml" />
+    <Content Include="Views\Account\_SetPasswordPartial.cshtml" />
+    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Manage.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Shared\_MainPage.cshtml" />
+    <Content Include="Views\NhaKhoaHocs\Create.cshtml" />
+    <Content Include="Views\NhaKhoaHocs\Delete.cshtml" />
+    <Content Include="Views\NhaKhoaHocs\Details.cshtml" />
+    <Content Include="Views\NhaKhoaHocs\Edit.cshtml" />
+    <Content Include="Views\NhaKhoaHocs\Index.cshtml" />
+    <Content Include="Views\Charts\Index.cshtml" />
+    <Content Include="Views\Charts\degreeCharts.cshtml" />
+    <Content Include="Views\Charts\quantumCharts.cshtml" />
+    <Content Include="Views\Charts\book.cshtml" />
+    <Content Include="Views\Charts\article.cshtml" />
+    <Content Include="Views\Charts\totalCharts.cshtml" />
+    <Content Include="Views\Charts\topicsChart.cshtml" />
+    <Content Include="Views\Charts\topicChart.cshtml" />
+    <Content Include="Views\Charts\atopicChart.cshtml" />
+    <Content Include="Views\DeTais\Create.cshtml" />
+    <Content Include="Views\DeTais\Delete.cshtml" />
+    <Content Include="Views\DeTais\Details.cshtml" />
+    <Content Include="Views\DeTais\Edit.cshtml" />
+    <Content Include="Views\DeTais\Index.cshtml" />
+    <Content Include="Views\SachGiaoTrinhs\Create.cshtml" />
+    <Content Include="Views\SachGiaoTrinhs\Delete.cshtml" />
+    <Content Include="Views\SachGiaoTrinhs\Details.cshtml" />
+    <Content Include="Views\SachGiaoTrinhs\Edit.cshtml" />
+    <Content Include="Views\SachGiaoTrinhs\Index.cshtml" />
+    <Content Include="Views\BaiBaos\Create.cshtml" />
+    <Content Include="Views\BaiBaos\Delete.cshtml" />
+    <Content Include="Views\BaiBaos\Details.cshtml" />
+    <Content Include="Views\BaiBaos\Edit.cshtml" />
+    <Content Include="Views\BaiBaos\Index.cshtml" />
+    <Content Include="Views\AdminNhaKhoaHoc\Create.cshtml" />
+    <Content Include="Views\AdminNhaKhoaHoc\Delete.cshtml" />
+    <Content Include="Views\AdminNhaKhoaHoc\Details.cshtml" />
+    <Content Include="Views\AdminNhaKhoaHoc\Edit.cshtml" />
+    <Content Include="Views\AdminNhaKhoaHoc\Index.cshtml" />
+    <Content Include="Views\AdminBacDaoTao\Create.cshtml" />
+    <Content Include="Views\AdminBacDaoTao\Delete.cshtml" />
+    <Content Include="Views\AdminBacDaoTao\Details.cshtml" />
+    <Content Include="Views\AdminBacDaoTao\Edit.cshtml" />
+    <Content Include="Views\AdminBacDaoTao\Index.cshtml" />
+    <Content Include="Views\AdminBaiBao\Create.cshtml" />
+    <Content Include="Views\AdminBaiBao\Delete.cshtml" />
+    <Content Include="Views\AdminBaiBao\Details.cshtml" />
+    <Content Include="Views\AdminBaiBao\Edit.cshtml" />
+    <Content Include="Views\AdminBaiBao\Index.cshtml" />
+    <Content Include="Views\AdminCapDeTai\Create.cshtml" />
+    <Content Include="Views\AdminCapDeTai\Delete.cshtml" />
+    <Content Include="Views\AdminCapDeTai\Details.cshtml" />
+    <Content Include="Views\AdminCapDeTai\Edit.cshtml" />
+    <Content Include="Views\AdminCapDeTai\Index.cshtml" />
+    <Content Include="Views\AdminCapTapChi\Create.cshtml" />
+    <Content Include="Views\AdminCapTapChi\Delete.cshtml" />
+    <Content Include="Views\AdminCapTapChi\Details.cshtml" />
+    <Content Include="Views\AdminCapTapChi\Edit.cshtml" />
+    <Content Include="Views\AdminCapTapChi\Index.cshtml" />
+    <Content Include="Views\AdminChucNang\Create.cshtml" />
+    <Content Include="Views\AdminChucNang\Delete.cshtml" />
+    <Content Include="Views\AdminChucNang\Details.cshtml" />
+    <Content Include="Views\AdminChucNang\Edit.cshtml" />
+    <Content Include="Views\AdminChucNang\Index.cshtml" />
+    <Content Include="Views\AdminChuyenMon\Create.cshtml" />
+    <Content Include="Views\AdminChuyenMon\Delete.cshtml" />
+    <Content Include="Views\AdminChuyenMon\Details.cshtml" />
+    <Content Include="Views\AdminChuyenMon\Edit.cshtml" />
+    <Content Include="Views\AdminChuyenMon\Index.cshtml" />
+    <Content Include="Views\AdminChuyenMonNKH\Create.cshtml" />
+    <Content Include="Views\AdminChuyenMonNKH\Delete.cshtml" />
+    <Content Include="Views\AdminChuyenMonNKH\Details.cshtml" />
+    <Content Include="Views\AdminChuyenMonNKH\Edit.cshtml" />
+    <Content Include="Views\AdminChuyenMonNKH\Index.cshtml" />
+    <Content Include="Views\AdminChuyenNganh\Create.cshtml" />
+    <Content Include="Views\AdminChuyenNganh\Delete.cshtml" />
+    <Content Include="Views\AdminChuyenNganh\Details.cshtml" />
+    <Content Include="Views\AdminChuyenNganh\Edit.cshtml" />
+    <Content Include="Views\AdminChuyenNganh\Index.cshtml" />
+    <Content Include="Views\AdminDeTai\Create.cshtml" />
+    <Content Include="Views\AdminDeTai\Delete.cshtml" />
+    <Content Include="Views\AdminDeTai\Details.cshtml" />
+    <Content Include="Views\AdminDeTai\Edit.cshtml" />
+    <Content Include="Views\AdminDeTai\Index.cshtml" />
+    <Content Include="Views\AdminDonViChuTri\Create.cshtml" />
+    <Content Include="Views\AdminDonViChuTri\Delete.cshtml" />
+    <Content Include="Views\AdminDonViChuTri\Details.cshtml" />
+    <Content Include="Views\AdminDonViChuTri\Edit.cshtml" />
+    <Content Include="Views\AdminDonViChuTri\Index.cshtml" />
+    <Content Include="Views\AdminDonViQL\Create.cshtml" />
+    <Content Include="Views\AdminDonViQL\Delete.cshtml" />
+    <Content Include="Views\AdminDonViQL\Details.cshtml" />
+    <Content Include="Views\AdminDonViQL\Edit.cshtml" />
+    <Content Include="Views\AdminDonViQL\Index.cshtml" />
+    <Content Include="Views\AdminDSBaiBaoDeTai\Create.cshtml" />
+    <Content Include="Views\AdminDSBaiBaoDeTai\Delete.cshtml" />
+    <Content Include="Views\AdminDSBaiBaoDeTai\Details.cshtml" />
+    <Content Include="Views\AdminDSBaiBaoDeTai\Edit.cshtml" />
+    <Content Include="Views\AdminDSBaiBaoDeTai\Index.cshtml" />
+    <Content Include="Views\AdminDSNguoiThamGiaBaiBao\Create.cshtml" />
+    <Content Include="Views\AdminDSNguoiThamGiaBaiBao\Delete.cshtml" />
+    <Content Include="Views\AdminDSNguoiThamGiaBaiBao\Details.cshtml" />
+    <Content Include="Views\AdminDSNguoiThamGiaBaiBao\Edit.cshtml" />
+    <Content Include="Views\AdminDSNguoiThamGiaBaiBao\Index.cshtml" />
+    <Content Include="Views\AdminDSNguoiThamGiaDeTai\Create.cshtml" />
+    <Content Include="Views\AdminDSNguoiThamGiaDeTai\Delete.cshtml" />
+    <Content Include="Views\AdminDSNguoiThamGiaDeTai\Details.cshtml" />
+    <Content Include="Views\AdminDSNguoiThamGiaDeTai\Edit.cshtml" />
+    <Content Include="Views\AdminDSNguoiThamGiaDeTai\Index.cshtml" />
+    <Content Include="Views\AdminDSTacGia\Create.cshtml" />
+    <Content Include="Views\AdminDSTacGia\Delete.cshtml" />
+    <Content Include="Views\AdminDSTacGia\Details.cshtml" />
+    <Content Include="Views\AdminDSTacGia\Edit.cshtml" />
+    <Content Include="Views\AdminDSTacGia\Index.cshtml" />
+    <Content Include="Views\AdminHocHam\Create.cshtml" />
+    <Content Include="Views\AdminHocHam\Delete.cshtml" />
+    <Content Include="Views\AdminHocHam\Details.cshtml" />
+    <Content Include="Views\AdminHocHam\Edit.cshtml" />
+    <Content Include="Views\AdminHocHam\Index.cshtml" />
+    <Content Include="Views\AdminHocVi\Create.cshtml" />
+    <Content Include="Views\AdminHocVi\Delete.cshtml" />
+    <Content Include="Views\AdminHocVi\Details.cshtml" />
+    <Content Include="Views\AdminHocVi\Edit.cshtml" />
+    <Content Include="Views\AdminHocVi\Index.cshtml" />
+    <Content Include="Views\AdminKinhPhiDeTai\Create.cshtml" />
+    <Content Include="Views\AdminKinhPhiDeTai\Delete.cshtml" />
+    <Content Include="Views\AdminKinhPhiDeTai\Details.cshtml" />
+    <Content Include="Views\AdminKinhPhiDeTai\Edit.cshtml" />
+    <Content Include="Views\AdminKinhPhiDeTai\Index.cshtml" />
+    <Content Include="Views\AdminLinhVuc\Create.cshtml" />
+    <Content Include="Views\AdminLinhVuc\Delete.cshtml" />
+    <Content Include="Views\AdminLinhVuc\Details.cshtml" />
+    <Content Include="Views\AdminLinhVuc\Edit.cshtml" />
+    <Content Include="Views\AdminLinhVuc\Index.cshtml" />
+    <Content Include="Views\AdminLoaiHinhDeTai\Create.cshtml" />
+    <Content Include="Views\AdminLoaiHinhDeTai\Delete.cshtml" />
+    <Content Include="Views\AdminLoaiHinhDeTai\Details.cshtml" />
+    <Content Include="Views\AdminLoaiHinhDeTai\Edit.cshtml" />
+    <Content Include="Views\AdminLoaiHinhDeTai\Index.cshtml" />
+    <Content Include="Views\AdminNgachVienChuc\Create.cshtml" />
+    <Content Include="Views\AdminNgachVienChuc\Delete.cshtml" />
+    <Content Include="Views\AdminNgachVienChuc\Details.cshtml" />
+    <Content Include="Views\AdminNgachVienChuc\Edit.cshtml" />
+    <Content Include="Views\AdminNgachVienChuc\Index.cshtml" />
+    <Content Include="Views\AdminNganhDaoTao\Create.cshtml" />
+    <Content Include="Views\AdminNganhDaoTao\Delete.cshtml" />
+    <Content Include="Views\AdminNganhDaoTao\Details.cshtml" />
+    <Content Include="Views\AdminNganhDaoTao\Edit.cshtml" />
+    <Content Include="Views\AdminNganhDaoTao\Index.cshtml" />
+    <Content Include="Views\AdminNguoiDung\Create.cshtml" />
+    <Content Include="Views\AdminNguoiDung\Delete.cshtml" />
+    <Content Include="Views\AdminNguoiDung\Details.cshtml" />
+    <Content Include="Views\AdminNguoiDung\Edit.cshtml" />
+    <Content Include="Views\AdminNguoiDung\Index.cshtml" />
+    <Content Include="Views\AdminNhaXuatBan\Create.cshtml" />
+    <Content Include="Views\AdminNhaXuatBan\Delete.cshtml" />
+    <Content Include="Views\AdminNhaXuatBan\Details.cshtml" />
+    <Content Include="Views\AdminNhaXuatBan\Edit.cshtml" />
+    <Content Include="Views\AdminNhaXuatBan\Index.cshtml" />
+    <Content Include="Views\AdminXepLoai\Create.cshtml" />
+    <Content Include="Views\AdminXepLoai\Delete.cshtml" />
+    <Content Include="Views\AdminXepLoai\Details.cshtml" />
+    <Content Include="Views\AdminXepLoai\Edit.cshtml" />
+    <Content Include="Views\AdminXepLoai\Index.cshtml" />
+    <Content Include="Views\AdminTrinhDoNgoaiNgu\Create.cshtml" />
+    <Content Include="Views\AdminTrinhDoNgoaiNgu\Delete.cshtml" />
+    <Content Include="Views\AdminTrinhDoNgoaiNgu\Details.cshtml" />
+    <Content Include="Views\AdminTrinhDoNgoaiNgu\Edit.cshtml" />
+    <Content Include="Views\AdminTrinhDoNgoaiNgu\Index.cshtml" />
+    <Content Include="Views\AdminTinhTrangDeTai\Create.cshtml" />
+    <Content Include="Views\AdminTinhTrangDeTai\Delete.cshtml" />
+    <Content Include="Views\AdminTinhTrangDeTai\Details.cshtml" />
+    <Content Include="Views\AdminTinhTrangDeTai\Edit.cshtml" />
+    <Content Include="Views\AdminTinhTrangDeTai\Index.cshtml" />
+    <Content Include="Views\AdminSachGiaoTrinhs\Create.cshtml" />
+    <Content Include="Views\AdminSachGiaoTrinhs\Delete.cshtml" />
+    <Content Include="Views\AdminSachGiaoTrinhs\Details.cshtml" />
+    <Content Include="Views\AdminSachGiaoTrinhs\Edit.cshtml" />
+    <Content Include="Views\AdminSachGiaoTrinhs\Index.cshtml" />
+    <Content Include="Views\AdminQuaTrinhDaoTao\Create.cshtml" />
+    <Content Include="Views\AdminQuaTrinhDaoTao\Delete.cshtml" />
+    <Content Include="Views\AdminQuaTrinhDaoTao\Details.cshtml" />
+    <Content Include="Views\AdminQuaTrinhDaoTao\Edit.cshtml" />
+    <Content Include="Views\AdminQuaTrinhDaoTao\Index.cshtml" />
+    <Content Include="Views\AdminQuaTrinhCongTac\Create.cshtml" />
+    <Content Include="Views\AdminQuaTrinhCongTac\Delete.cshtml" />
+    <Content Include="Views\AdminQuaTrinhCongTac\Details.cshtml" />
+    <Content Include="Views\AdminQuaTrinhCongTac\Edit.cshtml" />
+    <Content Include="Views\AdminQuaTrinhCongTac\Index.cshtml" />
+    <Content Include="Views\AdminNhomLinhVuc\Create.cshtml" />
+    <Content Include="Views\AdminNhomLinhVuc\Delete.cshtml" />
+    <Content Include="Views\AdminNhomLinhVuc\Details.cshtml" />
+    <Content Include="Views\AdminNhomLinhVuc\Edit.cshtml" />
+    <Content Include="Views\AdminNhomLinhVuc\Index.cshtml" />
+    <Content Include="Views\AdminPhanLoaiTapChi\Create.cshtml" />
+    <Content Include="Views\AdminPhanLoaiTapChi\Delete.cshtml" />
+    <Content Include="Views\AdminPhanLoaiTapChi\Details.cshtml" />
+    <Content Include="Views\AdminPhanLoaiTapChi\Edit.cshtml" />
+    <Content Include="Views\AdminPhanLoaiTapChi\Index.cshtml" />
+    <Content Include="Views\AdminnPhanLoaiSP\Create.cshtml" />
+    <Content Include="Views\AdminnPhanLoaiSP\Delete.cshtml" />
+    <Content Include="Views\AdminnPhanLoaiSP\Details.cshtml" />
+    <Content Include="Views\AdminnPhanLoaiSP\Edit.cshtml" />
+    <Content Include="Views\AdminnPhanLoaiSP\Index.cshtml" />
+    <Content Include="Views\AdminPhanLoaiSaches\Create.cshtml" />
+    <Content Include="Views\AdminPhanLoaiSaches\Delete.cshtml" />
+    <Content Include="Views\AdminPhanLoaiSaches\Details.cshtml" />
+    <Content Include="Views\AdminPhanLoaiSaches\Edit.cshtml" />
+    <Content Include="Views\AdminPhanLoaiSaches\Index.cshtml" />
+    <Content Include="Views\Shared\_AdminMainPage.cshtml" />
+    <Content Include="Views\Home\Admin.cshtml" />
+    <Content Include="Views\AdminBaiBao\CreateDanhSachNguoiThamGiaBaiBao.cshtml" />
+    <Content Include="Views\AdminBaiBao\DanhSachNguoiThamGiaBaiBao.cshtml" />
+    <Content Include="Views\AdminBaiBao\EditDanhSachNguoiThamGiaBaiBao.cshtml" />
+    <Content Include="Views\AdminDeTai\CreateDanhSachNguoiThamGiaDeTai.cshtml" />
+    <Content Include="Views\AdminDeTai\DanhSachNguoiThamGiaDeTai.cshtml" />
+    <Content Include="Views\AdminDeTai\EditDanhSachNguoiThamGiaDeTai.cshtml" />
+    <Content Include="Views\AdminSachGiaoTrinhs\CreateDanhSachTacGia.cshtml" />
+    <Content Include="Views\AdminSachGiaoTrinhs\DanhSachTacGia.cshtml" />
+    <Content Include="Views\AdminSachGiaoTrinhs\EditDanhSachTacGia.cshtml" />
+    <Content Include="Views\DeTais\ScriptingPage.cshtml" />
+    <Content Include="Views\TrinhDoNgoaiNguNKH\Create.cshtml" />
+    <Content Include="Views\TrinhDoNgoaiNguNKH\Delete.cshtml" />
+    <Content Include="Views\TrinhDoNgoaiNguNKH\Details.cshtml" />
+    <Content Include="Views\TrinhDoNgoaiNguNKH\Edit.cshtml" />
+    <Content Include="Views\TrinhDoNgoaiNguNKH\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="packages.config" />
+    <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>51945</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:51945/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

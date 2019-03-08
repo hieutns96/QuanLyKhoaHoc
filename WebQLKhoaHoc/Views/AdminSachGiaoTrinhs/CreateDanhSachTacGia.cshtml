@@ -1,0 +1,51 @@
+﻿@model WebQLKhoaHoc.DSTacGia
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_AdminMainPage.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <div class="container">
+            <h1 class="text-center title">@ViewBag.TenSach</h1>
+            <hr />
+            @Html.ValidationSummary(true)          
+            <input type="hidden" name="MaSach" value="@ViewBag.masach" />
+            <div class="form-group text-left">
+                <div class="row">
+                    <div class="col-md-4">
+                        <h3 style="margin-top: 0;">Danh sách nhà khoa học:</h3>
+                    </div>
+                    <div class="col-md-8">
+                        @Html.DropDownList("MaNKH", ViewBag.MaNKH as SelectList, new { @class = "form-control" })
+                    </div>
+                </div>
+                <hr />
+                <div class="row">
+                    <div class="col-md-4">
+                        <h3 style="margin-top: 0;">Là Chủ Biên:</h3>
+                    </div>
+                    <div class="col-md-6">
+                        @Html.CheckBox("LaChuBien", false, new { @class = "big-checkbox" })
+                    </div>
+                </div>
+            </div>
+            <hr />
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    @Html.ActionLink("Trở về", "DanhSachTacGia","AdminSachGiaoTrinhs", null , new { @class = "btn btn-default pull-right" })
+                    <input type="submit" value="Thêm" class="btn btn-default pull-right" style="margin-right:10px;" />
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<style>
+    .big-checkbox {
+        height: 40px;
+        width: 25px;
+    }
+</style>

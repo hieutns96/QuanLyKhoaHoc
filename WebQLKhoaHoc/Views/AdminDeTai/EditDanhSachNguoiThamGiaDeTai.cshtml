@@ -1,0 +1,56 @@
+﻿@model WebQLKhoaHoc.DSNguoiThamGiaDeTai
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_AdminMainPage.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)    
+    
+    <div class="form-horizontal">
+        <div class="container">
+            <div class="text-center">
+                <h1>Danh sách người tham gia dề tài:</h1>
+                <h1>@ViewBag.TenDeTai</h1>
+            </div>
+            <hr />
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <td><h4>Tên tác giả</h4></td>
+                        <td><h4>Là chủ nhiệm</h4></td>                        
+                    </tr>
+                </thead>
+                <tbody>
+                   
+                    <tr>
+                        @Html.HiddenFor(model => Model.MaDeTai)
+                        @Html.HiddenFor(model => Model.MaNKH)
+                        <td>
+                            <h5>@Model.NhaKhoaHoc.HoNKH @Model.NhaKhoaHoc.TenNKH</h5>
+                        </td>
+                        <td>
+                            @Html.CheckBox("LaChuNhiem", Convert.ToBoolean(Model.LaChuNhiem), new { @class = "big-checkbox" })
+                        </td>                            
+                    </tr>
+                    
+                </tbody>
+            </table>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    @Html.ActionLink("Trở về", "DanhSachNguoiThamGiaDeTai", "AdminDeTai", null , new { @class = "btn btn-default  pull-right" })
+                    <input type="submit" value="Lưu" class="btn btn-default  pull-right" style="margin-right:10px" />                   -
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<style>
+    .big-checkbox {
+        height: 40px;
+        width: 25px;
+    }
+</style>

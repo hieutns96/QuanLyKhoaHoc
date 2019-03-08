@@ -1,0 +1,351 @@
+﻿@using Microsoft.Ajax.Utilities
+@model IEnumerable<WebQLKhoaHoc.Models.quantumChartViewModel>
+@{
+    ViewBag.Title = "Thống kê - CSDL Khoa học";
+    Layout = "~/Views/Shared/_MainPage.cshtml";
+}
+@functions{
+    public List<List<Object>> GoogleChartData(QLKhoaHocEntities db, int take = 10, int skip = 0)
+    {
+        List<List<Object>> data = new List<List<Object>>(){new List<Object>() {
+                                        "Đơn vị công tác",
+                                        "Giảng viên",
+                                        "Giảng viên chính",
+                                        "Giảng viên cao cấp",
+                                        "Giáo viên trung học",
+                                        "Chuyên viên",
+                                        "Chuyên viên chính",
+                                        "Thư viện viên",
+                                        "Kỹ thuật viên",
+                                        "Kỹ thuật viên cao cấp",
+                                        "Nghiên cứu viên",
+                                        "Kế toán viên",
+                                        "Kỹ thuật viên chính",
+                                        "Nhân viên văn thư",
+                                        "Cán sự",
+                                    }};
+        var data_rows = Model.Skip(skip).Take(take);
+        foreach (var row in data_rows)
+        {
+            string tenDonVi = db.DonViQLs.Find(row.MaDVQL).TenDonVI;
+            data.Add(new List<Object>() {
+            tenDonVi,
+            row.GV,
+            row.GVC,
+            row.GVCC,
+            row.GVTH,
+            row.CV,
+            row.CVC,
+            row.TVV,
+            row.KTV,
+            row.KTVCC,
+            row.NCV,
+            row.KTOAN,
+            row.KTVC,
+            row.NVVT,
+            row.CS
+    });
+        }
+        return data;
+    }
+}
+<div class="main-content">
+    <!-- Section: About -->
+    <section class="">
+        <div class="container">
+            <div class="section-content">
+                <div class="panel">
+                    <div class="panel-body">
+                        <div>
+                            <form action="ThongKe" class="form-horizontal" method="post" accept-charset="utf-8">
+                                <div class="form-group">
+                                    <div class="col-md-2 text-right">
+                                        <label class="control-label">Thống kê theo:</label>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <select name="unit" class="form-control">
+                                            <option value="total">Tổng hợp</option>
+                                            <option value="degree">Trình độ</option>
+                                            <option value="quantum" selected>Ngạch công chức</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-2"></div>
+                                    <div class="col-md-9">
+                                        <button type="submit" class="btn btn-primary">Thống kê</button>
+                                    </div>
+                                </div>
+                            </form>
+                            <div>
+                                <div class="text-center">
+                                    <span class="statistic-title">
+                                        <br>Tính đến thời điểm (hiện tại)
+                                    </span>
+                                </div>
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>TT</th>
+                                            <th>Đơn vị công tác</th>
+                                            <th class="text-center">Số lượng<br>Giảng viên</th>
+                                            <th class="text-center">Số lượng<br>Giảng viên chính</th>
+                                            <th class="text-center">Số lượng<br>Giảng viên cao cấp</th>
+                                            <th class="text-center">Số lượng<br>Giáo viên trung học</th>
+                                            <th class="text-center">Số lượng<br>Chuyên viên</th>
+                                            <th class="text-center">Số lượng<br>Chuyên viên chính</th>
+                                            <th class="text-center">Số lượng<br>Thư viện viên</th>
+                                            <th class="text-center">Số lượng<br>Kỹ thuật viên</th>
+                                            <th class="text-center">Số lượng<br>Kỹ thuật viên cao cấp</th>
+                                            <th class="text-center">Số lượng<br>Nghiên cứu viên</th>
+                                            <th class="text-center">Số lượng<br>Kế toán viên</th>
+                                            <th class="text-center">Số lượng<br>Kỹ thuật viên chính</th>
+                                            <th class="text-center">Số lượng<br>Nhân viên văn thư</th>
+                                            <th class="text-center">Số lượng<br>Cán sự</th>
+                                        </tr>
+                                    </thead>
+                                    @{
+                                        // lấy thông tin các khoa
+                                        QLKhoaHocEntities db = new QLKhoaHocEntities();
+                                        int stt = 1;
+                                        int[] sum = new int[14];
+                                    }
+                                    <tbody>
+                                        @foreach (var item in Model)
+                                        {
+                                            sum[0] += item.GV;
+                                            sum[1] += item.GVC;
+                                            sum[2] += item.GVCC;
+                                            sum[3] += item.GVTH;
+                                            sum[4] += item.CV;
+                                            sum[5] += item.CVC;
+                                            sum[6] += item.TVV;
+                                            sum[7] += item.KTV;
+                                            sum[8] += item.KTVCC;
+                                            sum[9] += item.NCV;
+                                            sum[10] += item.KTOAN;
+                                            sum[11] += item.KTVC;
+                                            sum[12] += item.NVVT;
+                                            sum[13] += item.CS;
+                                            <tr>
+                                                <td>@stt</td>
+                                                <td>@db.DonViQLs.Find(item.MaDVQL).TenDonVI</td>
+                                                <td class="text-center">
+                                                    @if (item.GV > 0)
+                                                    {
+                                                        @item.GV;
+                                                    }
+                                                    else
+                                                    {
+                                                        <span>-</span>
+                                                    }
+                                                </td>
+                                                <td class="text-center">
+                                                    @if (item.GVC > 0)
+                                                    {
+                                                        @item.GVC;
+                                                    }
+                                                    else
+                                                    {
+                                                        <span>-</span>
+                                                    }
+                                                </td>
+                                                <td class="text-center">
+                                                    @if (item.GVCC > 0)
+                                                    {
+                                                        @item.GVCC;
+                                                    }
+                                                    else
+                                                    {
+                                                        <span>-</span>
+                                                    }
+                                                </td>
+                                                <td class="text-center">
+                                                    @if (item.GVTH > 0)
+                                                    {
+                                                        @item.GVTH;
+                                                    }
+                                                    else
+                                                    {
+                                                        <span>-</span>
+                                                    }
+                                                </td>
+                                                <td class="text-center">
+                                                    @if (item.CV > 0)
+                                                    {
+                                                        @item.CV;
+                                                    }
+                                                    else
+                                                    {
+                                                        <span>-</span>
+                                                    }
+                                                </td>
+                                                <td class="text-center">
+                                                    @if (item.CVC > 0)
+                                                    {
+                                                        @item.CVC;
+                                                    }
+                                                    else
+                                                    {
+                                                        <span>-</span>
+                                                    }
+                                                </td>
+                                                <td class="text-center">
+                                                    @if (item.TVV > 0)
+                                                    {
+                                                        @item.TVV;
+                                                    }
+                                                    else
+                                                    {
+                                                        <span>-</span>
+                                                    }
+                                                </td>
+                                                <td class="text-center">
+                                                    @if (item.KTV > 0)
+                                                    {
+                                                        @item.KTV;
+                                                    }
+                                                    else
+                                                    {
+                                                        <span>-</span>
+                                                    }
+                                                </td>
+                                                <td class="text-center">
+                                                    @if (item.KTVCC > 0)
+                                                    {
+                                                        @item.KTVCC;
+                                                    }
+                                                    else
+                                                    {
+                                                        <span>-</span>
+                                                    }
+                                                </td>
+                                                <td class="text-center">
+                                                    @if (item.NCV > 0)
+                                                    {
+                                                        @item.NCV;
+                                                    }
+                                                    else
+                                                    {
+                                                        <span>-</span>
+                                                    }
+                                                </td>
+                                                <td class="text-center">
+                                                    @if (item.KTOAN > 0)
+                                                    {
+                                                        @item.KTOAN;
+                                                    }
+                                                    else
+                                                    {
+                                                        <span>-</span>
+                                                    }
+                                                </td>
+                                                <td class="text-center">
+                                                    @if (item.KTVC > 0)
+                                                    {
+                                                        @item.KTVC;
+                                                    }
+                                                    else
+                                                    {
+                                                        <span>-</span>
+                                                    }
+                                                </td>
+                                                <td class="text-center">
+                                                    @if (item.NVVT > 0)
+                                                    {
+                                                        @item.NVVT;
+                                                    }
+                                                    else
+                                                    {
+                                                        <span>-</span>
+                                                    }
+                                                </td>
+                                                <td class="text-center">
+                                                    @if (item.CS > 0)
+                                                    {
+                                                        @item.CS;
+                                                    }
+                                                    else
+                                                    {
+                                                        <span>-</span>
+                                                    }
+                                                </td>
+
+                                            </tr>
+                                            stt++;
+                                        }
+                                        <tr>
+                                            <th colspan="2" class="text-center">Tổng cộng</th>
+                                            @foreach (var item in sum)
+                                            {
+                                                <th class="text-center">
+                                                    @if (item > 0)
+                                                    {
+                                                        @item;
+                                                    }
+                                                    else
+                                                    {
+                                                        <span>-</span>
+                                                    }
+                                                </th>
+                                            }
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @{
+
+                    List<List<Object>> data1 = GoogleChartData(db, 10, 0);
+                    List<List<Object>> data2 = GoogleChartData(db, 10, 10);
+                    List<List<Object>> data3 = GoogleChartData(db, 10, 20);
+                    List<List<Object>> data4 = GoogleChartData(db, 9, 30);
+
+                }
+                <input type="hidden" id="data1" value="@Json.Encode(data1)" />
+                <input type="hidden" id="data2" value="@Json.Encode(data2)" />
+                <input type="hidden" id="data3" value="@Json.Encode(data3)" />
+                <input type="hidden" id="data4" value="@Json.Encode(data4)" />
+                <div class="panel">
+                    <div class="panel-body">
+                        <div id="quantumChart1"></div>
+                    </div>
+                </div>
+                <div class="panel">
+                    <div class="panel-body">
+                        <div id="quantumChart2"></div>
+                    </div>
+                </div>
+                <div class="panel">
+                    <div class="panel-body">
+                        <div id="quantumChart3"></div>
+                    </div>
+                </div>
+                <div class="panel">
+                    <div class="panel-body">
+                        <div id="quantumChart4"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+@section charts{
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    @Scripts.Render("~/bundles/charts")
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var json_data1 = $('#data1').val();
+            var json_data2 = $('#data2').val();
+            var json_data3 = $('#data3').val();
+            var json_data4 = $('#data4').val();
+            googleChart(json_data1, 'line', 'quantumChart1');
+            googleChart(json_data2, 'line', 'quantumChart2');
+            googleChart(json_data3, 'line', 'quantumChart3');
+            googleChart(json_data4, 'line', 'quantumChart4');
+        });
+    </script>
+}

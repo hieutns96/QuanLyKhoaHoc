@@ -1,0 +1,133 @@
+﻿@model WebQLKhoaHoc.NhaKhoaHoc
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_AdminMainPage.cshtml";
+}
+
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Tạo nhà khoa học <small>Users</small></h2>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <div class="" role="tabpanel" data-example-id="togglable-tabs">
+                        <!-- Tabs -->
+                        <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+                            <!-- Thông tin cơ bản -->
+                            <li role="presentation" class="active">
+                                <a href="#tab_content1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">Thông tin cơ bản</a>
+                            </li>
+                        </ul>
+                        <!-- Content of each tab-->
+                        <div id="myTabContent" class="tab-content">
+                            <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="home-tab">
+                                <div>
+                                    <!-- Thông tin cơ bản -->
+                                    @using (Html.BeginForm("Create", "AdminNhaKhoaHoc", FormMethod.Post, new { @class = "form-horizontal form-label-right", @enctype = "multipart/form-data" }))
+                                    {
+                                        @Html.AntiForgeryToken()
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Mã nhà khoa học</label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input type="text" name="MaNKHHoSo" class="form-control" placeholder="Mã nhà khoa học" value="@Html.DisplayFor(model => model.MaNKHHoSo)">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Họ nhà khoa học</label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input type="text" name="HoNKH" class="form-control" placeholder="Họ nhà khoa học" value="@Html.DisplayFor(model => model.HoNKH)">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Tên nhà khoa học</label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input type="text" name="TenNKH" class="form-control" placeholder="Tên nhà khoa học" value="@Html.DisplayFor(model => model.TenNKH)">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Giới tính</label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input type="text" name="GioiTinhNKH" class="form-control" placeholder="Giới tính khoa học" value="@Html.DisplayFor(model => model.GioiTinhNKH)">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Ngày sinh</label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input type="text" name="NgaySinh" class="form-control" placeholder="Ngày sinh nhà khoa học" value="@Html.DisplayFor(model => model.NgaySinh)">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Địa chỉ</label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input type="text" name="DiaChiLienHe" class="form-control" placeholder="Địa chỉ liên hệ" value="@Html.DisplayFor(model => model.DiaChiLienHe)">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Email</label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input type="text" name="EmailLienHe" class="form-control" placeholder="Email liên hệ" value="@Html.DisplayFor(model => model.EmailLienHe)">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Số điện thoại:</label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input type="text" name="DienThoai" class="form-control" placeholder="Email liên hệ" value="@Html.DisplayFor(model => model.DienThoai)">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Ảnh cá nhân</label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input type="file" name="fileUpload" class="form-control" placeholder="Ảnh cá nhân" value="@Html.DisplayFor(model => model.AnhCaNhan)">
+                                            </div>
+                                        </div>
+                                        <hr />
+
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Học hàm</label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                @Html.DropDownList("MaHocHam", (IEnumerable<SelectListItem>)ViewBag.MaHocHam, new { @class = "form-control" })
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Học vị</label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                @Html.DropDownList("MaHocVi", (IEnumerable<SelectListItem>)ViewBag.MaHocVi, new { @class = "form-control" })
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Chuyên ngành đào tạo</label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                @Html.DropDownList("MaCNDaoTao", (IEnumerable<SelectListItem>)ViewBag.MaCNDaoTao, new { @class = "form-control" })
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Đơn vị quản lý</label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                @Html.DropDownList("MaDonViQL", (IEnumerable<SelectListItem>)ViewBag.MaDonViQL, new { @class = "form-control" })
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Ngạch viên chức</label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                @Html.DropDownList("MaNgachVienChuc", (IEnumerable<SelectListItem>)ViewBag.MaNgachVienChuc, new { @class = "form-control" })
+                                            </div>
+                                        </div>
+                                        <hr />
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12"></label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input type="submit" value="Lưu" class="btn btn-default pull-right" />
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

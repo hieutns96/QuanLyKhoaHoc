@@ -1,0 +1,135 @@
+﻿@model IEnumerable<WebQLKhoaHoc.DeTai>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminMainPage.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>
+                    Danh Sách Đề Tài
+                </h2>
+                <ul class="nav navbar-right panel_toolbox">
+                    <li class="dropdown">
+                        <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>
+                                @Html.ActionLink("Create New", "Create", "AdminDeTai")
+                            </li>
+                        </ul>
+                    </li>
+
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <div id="datatable_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+                    <!-- list component  -->
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <table id="datatable" class="table table-striped table-bordered dataTable no-footer" role="grid" aria-describedby="datatable_info">
+                                <thead>
+                                    <tr role="row">
+                                        <th>Mã Đề Tài Hồ Sơ</th>
+                                        <th>Tên Đề Tài</th>
+                                        <th>Mục Tiêu Đề Tài</th>
+                                        <th>Nội Dung Đề Tài</th>
+                                        <th>Kết Quả Đề Tài</th>
+                                        <th>Năm Bắt Đầu</th>
+                                        <th>Năm Kết Thúc</th>                                        
+                                        <th>Liên Kết Web</th>
+                                        <th>Link File Upload</th>
+                                        <th>Cấp Đề Tài</th>
+                                        <th>Loại Hình Đề Tài</th>
+                                        <th>Tên Đơn Vị Chủ Trì</th>
+                                        <th>Tên Đơn Vị Quản Lý</th>
+                                        <th>Tên Lĩnh Vực</th>
+                                        <th>Xếp Lọai</th>
+                                        <th>Tình Trạng Đề Tài</th>
+                                        <th>Tên Phân Loại Đề Tài</th>
+                                        <th>Action</th>
+                                    </tr>
+                                  </thead>
+                                <!-- grid nkh  -->
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                    <tr role="row" class="even">
+
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.MaDeTaiHoSo)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.TenDeTai)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.MucTieuDeTai)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.NoiDungDeTai)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.KetQuaDeTai)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.NamBD)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.NamKT)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.LienKetWeb)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.LinkFileUpload)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.CapDeTai.TenCapDeTai)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.LoaiHinhDeTai.TenLoaiDT)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.DonViChuTri.TenDVChuTri)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.DonViQL.TenDonVI)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.LinhVuc.TenLinhVuc)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.XepLoai.TenXepLoai)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.TinhTrangDeTai.TenTinhTrang)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.PhanLoaiSP.TenPhanLoai)
+                                        </td>
+                                        <td>
+                                            <a href="@Url.Action("Edit", "AdminDeTai", new {id = item.MaDeTai})">
+                                                <i class="far fa-edit"></i>
+                                            </a>
+                                            <a href="@Url.Action("Details", "AdminDeTai", new { id = item.MaDeTai })">
+                                                <i class="fas fa-info"></i>
+                                            </a>
+                                            <a href="@Url.Action("Delete", "AdminDeTai", new {id = item.MaDeTai})">
+                                                <i class="far fa-trash-alt"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    }
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

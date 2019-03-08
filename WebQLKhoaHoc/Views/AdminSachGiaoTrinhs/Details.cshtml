@@ -1,0 +1,67 @@
+﻿@model WebQLKhoaHoc.SachGiaoTrinh
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_MainPage.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>SachGiaoTrinh</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MaISBN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaISBN)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TenSach)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenSach)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NamXuatBan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NamXuatBan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LinhVuc.TenLinhVuc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LinhVuc.TenLinhVuc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NhaXuatBan.TenNXB)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NhaXuatBan.TenNXB)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhanLoaiSach.TenLoai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhanLoaiSach.TenLoai)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MaSach }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

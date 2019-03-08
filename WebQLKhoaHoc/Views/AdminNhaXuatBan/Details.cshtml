@@ -1,0 +1,51 @@
+﻿@model WebQLKhoaHoc.NhaXuatBan
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_MainPage.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>NhaXuatBan</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TenNXB)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenNXB)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DiaChiNXB)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DiaChiNXB)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DienThoaiNXB)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DienThoaiNXB)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DiaChiWeb)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DiaChiWeb)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MaNXB }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

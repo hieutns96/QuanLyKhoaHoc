@@ -1,0 +1,43 @@
+﻿@model WebQLKhoaHoc.NguoiDung
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_MainPage.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>NguoiDung</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Passwords)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Passwords)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ChucNang.TenChucNang)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ChucNang.TenChucNang)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NhaKhoaHoc.MaNKHHoSo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NhaKhoaHoc.MaNKHHoSo)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Usernames }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

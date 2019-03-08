@@ -1,0 +1,87 @@
+﻿@model WebQLKhoaHoc.SachGiaoTrinh
+
+@{
+    ViewBag.Title = "Tạo Dữ Liệu Sách && Giáo Trình";
+    Layout = "~/Views/Shared/_MainPage.cshtml";
+}
+<div class=" parallax layer-overlay overlay-light bg-white-transparent-4" data-bg-img="../../Image/research-background.png" style='background-image: url("../../Image/research-background.png")'>
+    <div class="container">
+        @using (Html.BeginForm("Create", "SachGiaoTrinhs", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            @Html.ValidationSummary(true)
+            <div class="modal-header bg-white-transparent-5">
+                <h1 class="modal-title text-center text-theme-color-2 uppercase ">Thêm sách giáo trình </h1>
+            </div>
+
+            <div class="modal-body">
+                <div class="row  bg-white-transparent-7">
+                    <div class="col-md-6">
+                        <dl class="dl-horizontal">
+                            <dt>
+                                Mã ISBN:
+                            </dt>
+                            <dd>
+                                @Html.EditorFor(model => model.MaISBN, new { htmlAttributes = new { @class = "form-control", @required = "@required" } })
+                            </dd>
+                            <dt>
+                                Tên sách giáo trình:
+                            </dt>
+                            <dd>
+                                @Html.EditorFor(model => model.TenSach, new { htmlAttributes = new { @class = "form-control", @required = "@required" } })
+                            </dd>
+                            <dt>
+                                Loại sách:
+                            </dt>
+                            <dd>
+                                @Html.DropDownList("MaLoai", (IEnumerable<SelectListItem>)ViewBag.MaLoai, new { @class = "form-control" })
+                            </dd>
+                            <dt>
+                                Lĩnh vực
+                            </dt>
+                            <dd>
+                                @Html.DropDownList("MaLinhVuc", (IEnumerable<SelectListItem>)ViewBag.MaLinhVuc, new { @class = "form-control" })
+                            </dd>
+                        </dl>
+
+                    </div>
+                    <div class="col-md-6">
+                        <dl class="dl-horizontal">
+                            <dt>
+                                Nhà xuất bản
+                            </dt>
+                            <dd>
+                                @Html.DropDownList("MaNXB", (IEnumerable<SelectListItem>)ViewBag.MaNXB, new { @class = "form-control" })
+                            </dd>
+                            <dt>
+                                Năm xuất bản
+                            </dt>
+                            <dd>
+                                <input name="NamXuatBan" id="NamXuatBan" class="form-control" type="text" placeholder="Năm xuất bản" value="" autocomplete="off">
+                            </dd>
+                            <dt>
+                                Người tham gia:
+                            </dt>
+                            <dd>
+                                @Html.ListBox("DSTacGia", ViewBag.DSTacGia as MultiSelectList, new { @class = "listbox" })
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+            <br />
+
+            <div class="modal-footer">
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Lưu Xuống" class="btn btn-warning btn-lg" />
+                        <a href="@Url.Action("Index","SachGiaoTrinhs")" type="button" class="btn btn-danger btn-lg">Trở Về</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,31 @@
+﻿@model WebQLKhoaHoc.DSTacGia
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_AdminMainPage.cshtml";
+}
+<h2 class="text-center">Bạn có chắc là muốn xóa Tác giả này?</h2>
+<div>
+    <hr />
+    <dl class="dl-horizontal text-center">
+        <dt>
+            Tên Tác giả:
+        </dt>
+        <dd>
+            @Model.NhaKhoaHoc.HoNKH @Model.NhaKhoaHoc.TenNKH @if (Model.LaChuBien == true)
+            {@:(Chủ Biên)
+            }
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <input type="hidden" name="manhakhoahoc" value="@ViewBag.manhakhoahoc" />
+        <input type="hidden" name="id" value="@ViewBag.masach" />
+        <input type="hidden" name="mankh" value="@ViewBag.mankh" />
+        <div class="form-actions no-color">
+            @Html.ActionLink("Trở về", "Edit", new { id = ViewBag.masach, manhakhoahoc = ViewBag.manhakhoahoc }, new { @class = "btn btn-default pull-right" })
+            <input type="submit" value="Xóa" class="btn btn-danger pull-right" />
+        </div>
+    }
+</div>

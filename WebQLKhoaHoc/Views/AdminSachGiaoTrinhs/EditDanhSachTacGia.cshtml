@@ -1,0 +1,61 @@
+﻿@model WebQLKhoaHoc.DSTacGia
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_AdminMainPage.cshtml";
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="container">
+        <div class="form-horizontal">
+            <div class="text-center">
+                <h1>Danh sách người tham gia biên soạn:</h1>
+                <h1>@ViewBag.TenSach</h1>
+            </div>
+            <hr />
+            @Html.ValidationSummary(true)           
+            <form class="form-horizontal form-label-right">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <td><h3>Tên tác giả</h3></td>
+                            <td><h3 class="control-label col-md-6 col-sm-6 col-xs-12 " style="text-align:left; margin-left: 0px;">Là chủ biên:</h3></td>                           
+                        </tr>
+                    </thead>
+                    <tbody>                       
+                        <div class="form-group">
+                            <tr>
+                                @Html.HiddenFor(model => model.MaNKH)
+                                @Html.HiddenFor(model => model.MaSach)
+                                <td>
+
+                                    @Model.NhaKhoaHoc.HoNKH @Model.NhaKhoaHoc.TenNKH
+
+                                </td>
+                                <td>
+                                    @Html.CheckBox("LaChuBien", Convert.ToBoolean(Model.LaChuBien), new { @class = "big-checkbox" })
+                                </td>                              
+                            </tr>
+                        </div>                        
+                    </tbody>
+                </table>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        @Html.ActionLink("Trở về", "DanhSachTacGia","AdminSachGiaoTrinhs", null, new { @class = "btn btn-default pull-right" })
+                        <input type="submit" value="Lưu" class="btn btn-default pull-right" />                       
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+}
+
+<style>
+    .big-checkbox {
+        height: 40px;
+        width: 25px;
+    }
+</style>

@@ -1,0 +1,58 @@
+﻿@model WebQLKhoaHoc.KinhPhiDeTai
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_AdminMainPage.cshtml";
+}
+@using (Html.BeginForm("Create", "AdminKinhPhiDeTai", FormMethod.Post))
+{
+    @Html.AntiForgeryToken() 
+    <div class="form-horizontal">
+        <h1 class="text-center">Tạo kinh phí:</h1>
+        <hr />
+        <div class="row">
+            @Html.ValidationSummary(true)           
+            <div class="form-group">
+                <h4 class="col-md-2 col-md-offset-1">Tên đề tài:</h4>
+                <div class="col-md-7">
+                    @Html.DropDownList("MaDeTai", ViewBag.MaDeTai as SelectList,new { @class="form-control"})                   
+                </div>
+            </div>
+
+            <div class="form-group">
+                <h4 class="col-md-2 col-md-offset-1">Loại kinh phí:</h4>
+                <div class="col-md-7">
+                    <input required class="form-control" name="LoaiKinhPhi" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <h4 class="col-md-2 col-md-offset-1">Năm tiếp nhận:</h4>
+                <div class="col-md-7">
+                    <input required class="form-control" name="NamTiepNhan" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <h4 class="col-md-2 col-md-offset-1">Số tiền:</h4>
+                <div class="col-md-7">
+                    <input required class="form-control" name="SoTien" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <h4 class="col-md-2 col-md-offset-1">Loại tiền:</h4>
+                <div class="col-md-7">
+                    <input required class="form-control" name="LoaiTien" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-3 col-md-7">
+                    @Html.ActionLink("Trở về","Index","AdminKinhPhiDeTai",new{@class="btn btn-default pull-right"})
+                    <input type="submit" value="Tạo" class="btn btn-default pull-right" />
+                </div>
+            </div>
+        </div>
+    </div>
+}s

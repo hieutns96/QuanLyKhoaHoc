@@ -1,0 +1,247 @@
+﻿@*@model IPagedList<WebQLKhoaHoc.NhaKhoaHoc>*@
+@model IPagedList<WebQLKhoaHoc.Models.NhaKhoaHocViewModel>
+
+@{
+    ViewBag.Title = "Dữ Liệu Nhà Khoa Học";
+    Layout = "~/Views/Shared/_MainPage.cshtml";
+
+}
+
+@using PagedList.Mvc;
+@using PagedList;
+
+@{
+    QLKhoaHocEntities db = new QLKhoaHocEntities();
+}
+
+
+<!-- Start main-content -->
+<div class="main-content">
+    <!-- Section: Scientist header -->
+    <section id="home" class="divider parallax layer-overlay overlay-dark-4" data-bg-img="http://csdlkhoahoc.hueuni.edu.vn/csdl/images/bg5.jpg" style="background-image: url(&quot;http://csdlkhoahoc.hueuni.edu.vn/csdl/images/bg5.jpg&quot;); background-position: 50% 91px;">
+        @using (Html.BeginForm("Index", "NhaKhoaHocs", FormMethod.Get))
+        {
+            @Html.AntiForgeryToken()
+            <div class="display-table">
+                <div class="display-table-cell">
+                    <div class="container pt-30 pb-20">
+                        <div class="row">
+                            <div class="col-md-6 pt-10">
+                                <h2 class="title text-white">Dữ liệu Nhà khoa học</h2>
+                                <ol class="breadcrumb text-left text-black mt-10">
+                                    <li> @Html.ActionLink("Trang Chủ", "Index", "Home")</li>
+                                    <li class="active text-gray-silver">Nhà khoa học</li>
+                                </ol>
+                            </div>
+                            <div class="col-md-6">
+                                <!-- Appointment Form Starts -->
+                                <form class="subpage bg-white pt-20 pl-30 pr-30 pb-15" method="post" action="http://csdlkhoahoc.hueuni.edu.vn/index.php/scientist/search">
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-12 pl-5 pr-5">
+                                            <div class="form-group mb-5">
+                                                <div class="styled-select">
+                                                    @Html.DropDownList("MaDonVi", (IEnumerable<SelectListItem>)ViewBag.MaDonViQL, "--Chọn đơn vị--", new { @class = "form-control border-radius-15px" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6 pl-5 pr-5">
+                                            <div class="form-group mb-5">
+                                                @Html.DropDownList("MaNgach", (IEnumerable<SelectListItem>)ViewBag.MaNgachVienChuc, "--Chọn ngạch--", new { @class = "form-control border-radius-15px" })
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xs-12 col-sm-6 pl-5 pr-5">
+                                            <div class="form-group mb-5">
+                                                @Html.DropDownList("MaHocHam", (IEnumerable<SelectListItem>)ViewBag.MaHocHam, "--Chọn học hàm--", new { @class = "form-control border-radius-15px" })
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6 pl-5 pr-5">
+                                            <div class="form-group mb-5">
+                                                @Html.DropDownList("MaHocVi", (IEnumerable<SelectListItem>)ViewBag.MaHocVi, "--Chọn học vị--", new { @class = "form-control border-radius-15px" })
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6 pl-5 pr-5">
+                                            <div class="form-group mb-5">
+                                                @Html.DropDownList("MaCNDaoTao", (IEnumerable<SelectListItem>)ViewBag.MaCNDaoTao, "--Chọn chuyên ngành--", new { @class = "form-control border-radius-15px" })
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xs-12 col-sm-8 pl-5 pr-5">
+                                            <div class="form-group mb-5">
+                                                <div class="styled-select">
+                                                    <input name="SearchValue" id="SearchValue" class="form-control border-radius-15px" type="text" placeholder="Từ khóa tìm kiếm" value="@ViewBag.SearchValue">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-4 pl-5 pr-5">
+                                            <div class="form-group mb-5">
+                                                <i class="glyphicon glyphicon-search icon-glyphicon-search-custom"></i>
+                                                <button type="submit" class="btn btn-colored text-white btn-block border-radius-15px btn-search-component" data-loading-text="Please wait...">
+                                                    Tìm Kiếm
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </section>
+    <section>
+        <div class="container">
+            <div class="section-content">
+                <section id="team">
+                    <div class="container pt-40">
+
+                        <div class="section-title mb-10">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h3 class="text-uppercase text-theme-colored title line-bottom">
+                                        Dữ liệu Nhà khoa học                                        
+                                    </h3>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row mtli-row-clearfix">
+                            @foreach (var item in Model)
+                            {
+                                <div class="col-xs-12 col-sm-6 col-md-4 sm-text-center mb-30 mb-sm-30">
+
+                                    <div class="team maxwidth600">
+                                        <style>
+                                            .flip-card {
+                                                background-color: transparent;
+                                                perspective: 1000px;
+                                            }
+
+                                            .flip-card-inner {
+                                                position: relative;
+                                                width: 100%;
+                                                height: 100%;
+                                                text-align: center;
+                                                transition: transform 0.6s;
+                                                transform-style: preserve-3d;
+                                                box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+                                            }
+
+                                            .flip-card:hover .flip-card-inner {
+                                                transform: rotateY(180deg);
+                                            }
+
+                                            .flip-card-front, .flip-card-back {
+                                                position: absolute;
+                                                width: 100%;
+                                                height: 100%;
+                                                backface-visibility: hidden;
+                                            }
+
+                                            .flip-card-front {
+                                                background-color: white;
+                                                color: white;
+                                            }
+
+                                            .flip-card-back {
+                                                transform: rotateY(180deg);
+                                                background-color: white;
+                                                color: white;
+                                            }
+                                        </style>
+                                        <div class="content flip-card" style="height:350px">
+                                            <div class="flip-card-inner">
+                                                <div class="flip-card-front">
+                                                    @{
+                                                        if (String.IsNullOrWhiteSpace(item.AnhCaNhan))
+                                                        {
+                                                            <img style="max-height: 280px; width: 100%" src="../Image/avatar.bmp" />
+                                                        }
+                                                        else
+                                                        {
+                                                            <img style="max-height: 280px" class="img-fullwidth" src="@item.AnhCaNhan" />
+                                                        }
+                                                    }
+                                                    <h4 class="name text-theme-color-2 mt-0" style="padding: 15px 0 !important">
+                                                        @Html.DisplayFor(modelItem => item.HoNKH) @Html.DisplayFor(modelItem => item.TenNKH)<br>
+                                                        <small>
+                                                            @if (!@Html.DisplayFor(modelItem => item.HocHam.TenHocHam).ToString().IsEmpty())
+                                                            {
+                                                                @Html.DisplayFor(modelItem => item.HocHam.TenHocHam)
+                                                            }
+
+                                                            @if (!@Html.DisplayFor(modelItem => item.HocHam.TenHocHam).ToString().IsEmpty() && !@Html.DisplayFor(modelItem => item.HocVi.TenHocVi).ToString().IsEmpty())
+                                                            {
+                                                                <span>-</span>
+                                                            }
+
+                                                            @if (!@Html.DisplayFor(modelItem => item.HocVi.TenHocVi).ToString().IsEmpty())
+                                                            {
+                                                                @Html.DisplayFor(modelItem => item.HocVi.TenHocVi)
+                                                            }
+                                                        </small>
+                                                    </h4>
+
+                                                </div>
+                                              
+
+                                                <div class="flip-card-back">
+                                                    <h4 class="name text-theme-color-2 mt-0" style="padding: 15px 0 !important">
+                                                        @Html.DisplayFor(modelItem => item.HoNKH) @Html.DisplayFor(modelItem => item.TenNKH)<br>
+                                                        <small>
+                                                            @if (!@Html.DisplayFor(modelItem => item.HocHam.TenHocHam).ToString().IsEmpty())
+                                                            {
+                                                                @Html.DisplayFor(modelItem => item.HocHam.TenHocHam)
+                                                            }
+
+                                                            @if (!@Html.DisplayFor(modelItem => item.HocHam.TenHocHam).ToString().IsEmpty() && !@Html.DisplayFor(modelItem => item.HocVi.TenHocVi).ToString().IsEmpty())
+                                                            {
+                                                                <span>-</span>
+                                                            }
+
+                                                            @if (!@Html.DisplayFor(modelItem => item.HocVi.TenHocVi).ToString().IsEmpty())
+                                                            {
+                                                                @Html.DisplayFor(modelItem => item.HocVi.TenHocVi)
+                                                            }
+                                                        </small>
+                                                    </h4>
+                                                    <p class="mb-0">
+                                                        <b>Ngành đào tạo:</b> <br>
+                                                        @Html.DisplayFor(modelItem => item.NgachVienChuc.TenNgach)
+                                                    </p>
+                                                    <p class="mb-10">
+                                                        <b>Chuyên ngành đào tạo:</b> <br>
+                                                        @Html.DisplayFor(modelItem => item.ChuyenNganh.TenChuyenNganh)
+                                                    </p>
+                                                    <p class="mb-10">
+                                                        <b>Đơn vị quản lý:</b> <br>
+                                                        @Html.DisplayFor(modelItem => item.DonViQL.TenDonVI)
+                                                    </p>
+                                                    <a class="btn btn-theme-colored btn-sm flip" style="margin: 5px auto !important" href="@Url.Action("Details", "NhaKhoaHocs", new { id = item.MaNKH })">
+                                                        Xem chi tiết
+                                                    </a>
+                                                </div>
+                                            </div>
+                                           
+                                        </div>
+                                    </div>
+
+                                </div>
+                            }
+                        </div>
+
+
+
+                        <div class="row paging mt-20 text-center">
+                            @Html.PagedListPager(Model, Page_No => Url.Action("Index", "NhaKhoaHocs", new { Page_No, search = Request.QueryString["search"] }))
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </section>
+</div>
+

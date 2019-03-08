@@ -1,0 +1,51 @@
+﻿@model WebQLKhoaHoc.DonViQL
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_MainPage.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>DonViQL</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TenDonVI)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenDonVI)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DiaChiCQ)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DiaChiCQ)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DienThoaiCQ)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DienThoaiCQ)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmailCQ)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmailCQ)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MaDonVi }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

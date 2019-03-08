@@ -1,0 +1,75 @@
+﻿@model WebQLKhoaHoc.QuaTrinhDaoTao
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_MainPage.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>QuaTrinhDaoTao</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ThoiGianBD)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ThoiGianBD)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ThoiGianKT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ThoiGianKT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CoSoDaoTao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CoSoDaoTao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NamTotNghiep)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NamTotNghiep)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BacDaoTao.TenBacDT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BacDaoTao.TenBacDT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NganhDaoTao.TenNganhDaoTao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NganhDaoTao.TenNganhDaoTao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NhaKhoaHoc.MaNKHHoSo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NhaKhoaHoc.MaNKHHoSo)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MaQT }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
