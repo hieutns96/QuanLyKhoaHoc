@@ -1,0 +1,13 @@
+- Table NguoiDung:
++ tạo thêm trường RandomKey phát sinh key ngẫu nhiên kết hợp mật khẩu người dùng để hash.
++ MaQL: cho biết thông tin Account này được ai tạo.
+
+-Login: (khi đăng nhập login xong cập nhật LastLogin trong NguoiDung)
++ Sau khi đăng nhập hiển thị thêm chức năng edit thông tin cơ bản cá nhân
++ Cập nhật mật khẩu:
++ Xem tổng hợp cá nhân ( theo mẫu lí lịch DDHSP TPHCM, có thêm chức năng tải file)
++ Logout
+
+- MainTab PhatMinhGiaiPhap (thiết kế giống mẫu chung như các MainTab khác)
++ Phần file ảnh (show ảnh, khi click vào ảnh open tab mới cho người dùng có thể tải xuống)
+
