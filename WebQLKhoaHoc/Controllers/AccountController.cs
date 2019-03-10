@@ -29,8 +29,8 @@ namespace WebQLKhoaHoc.Controllers
         {
             if(username != null && username != "" && password != null && password != "")
             {
-                string md5_pass = Encryptor.MD5Hash(password);
-                NguoiDung nguoiDung = db.NguoiDungs.SingleOrDefault(p => p.Usernames == username && p.Passwords == md5_pass);
+                NguoiDung nguoiDung = db.NguoiDungs.SingleOrDefault(p => p.Usernames == username &&
+                    p.Passwords == Encryptor.MD5Hash(password + p.RandomKey) );
                 if (nguoiDung != null)
                 {
                     NhaKhoaHoc nhaKhoaHoc = db.NhaKhoaHocs.Find(nguoiDung.MaNKH);

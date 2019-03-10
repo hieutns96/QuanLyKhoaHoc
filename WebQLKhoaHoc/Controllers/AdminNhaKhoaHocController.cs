@@ -89,11 +89,13 @@ namespace WebQLKhoaHoc.Controllers
                 db.NhaKhoaHocs.Add(nhaKhoaHoc);
                 await db.SaveChangesAsync();
 
+                string salt = "".GenRandomKey(); //update by Khiet
                 NguoiDung newuser = new NguoiDung {
                     MaNKH = nhaKhoaHoc.MaNKH,
                     Usernames = nhaKhoaHoc.MaNKHHoSo,
-                    Passwords = Encryptor.MD5Hash("123"),
-                    MaChucNang = 2
+                    Passwords = Encryptor.MD5Hash("12345"+salt), //update by Khiet
+                    MaChucNang = 2,
+                    RandomKey = salt //update by Khiet
                 };
                 db.NguoiDungs.Add(newuser);
                 await db.SaveChangesAsync();
