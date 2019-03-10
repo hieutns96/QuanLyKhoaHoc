@@ -83,7 +83,7 @@ namespace WebQLKhoaHoc.Controllers
                     byte[] fileData = new byte[fileLength];                   
                     fileStream.Read(fileData, 0, fileLength);
                     nhaKhoaHoc.AnhCaNhan = fileData;
-                    nhaKhoaHoc.AnhDaiDien = fileName;
+                  
                 }
 
                 db.NhaKhoaHocs.Add(nhaKhoaHoc);
@@ -151,7 +151,7 @@ namespace WebQLKhoaHoc.Controllers
                     byte[] fileData = new byte[fileLength];                   
                     fileStream.Read(fileData, 0, fileLength);
                     nhaKhoaHoc.AnhCaNhan = fileData;
-                    nhaKhoaHoc.AnhDaiDien = Path.GetFileName(fileUpload.FileName);
+                    
                 }
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
