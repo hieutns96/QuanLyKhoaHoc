@@ -12,19 +12,26 @@ namespace WebQLKhoaHoc
     using System;
     using System.Collections.Generic;
     
-    public partial class TrinhDoNgoaiNgu
+    public partial class PhatMinhGiaiPhap
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public TrinhDoNgoaiNgu()
+        public PhatMinhGiaiPhap()
         {
-            this.NgoaiNguNKHs = new HashSet<NgoaiNguNKH>();
+            this.DSPhatMinhNKHs = new HashSet<DSPhatMinhNKH>();
         }
     
-        public int MaTrinhDoNN { get; set; }
-        public string TenTrinhDo { get; set; }
-        public string CapDo { get; set; }
+        public int MaPM { get; set; }
+        public string TenPM { get; set; }
+        public string SoHieuPM { get; set; }
+        public string MotaPM { get; set; }
+        public string DoiTuongSuDung { get; set; }
+        public string QuocGiaCap { get; set; }
+        public string LinkLienKet { get; set; }
+        public byte[] AnhScanGiayChungNhan { get; set; }
+        public byte[] AnhChupSanPham1 { get; set; }
+        public byte[] AnhChupSanPham2 { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<NgoaiNguNKH> NgoaiNguNKHs { get; set; }
+        public virtual ICollection<DSPhatMinhNKH> DSPhatMinhNKHs { get; set; }
     }
 }

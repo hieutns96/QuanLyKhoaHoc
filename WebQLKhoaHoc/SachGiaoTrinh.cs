@@ -27,6 +27,10 @@ namespace WebQLKhoaHoc
         public Nullable<int> MaLinhVuc { get; set; }
         public Nullable<int> MaNXB { get; set; }
         public Nullable<System.DateTime> NamXuatBan { get; set; }
+        public string Mota { get; set; }
+        public byte[] AnhBia1 { get; set; }
+        public byte[] AnhBia4 { get; set; }
+        public byte[] AnhBiaISBN { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DSTacGia> DSTacGias { get; set; }

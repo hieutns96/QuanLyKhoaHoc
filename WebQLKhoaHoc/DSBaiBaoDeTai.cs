@@ -14,6 +14,7 @@ namespace WebQLKhoaHoc
     
     public partial class DSBaiBaoDeTai
     {
+        public int MaTT { get; set; }
         public int MaDeTai { get; set; }
         public int MaBaiBao { get; set; }
         public string GhiChu { get; set; }

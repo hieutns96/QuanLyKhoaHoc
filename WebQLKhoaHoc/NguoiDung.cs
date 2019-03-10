@@ -15,9 +15,14 @@ namespace WebQLKhoaHoc
     public partial class NguoiDung
     {
         public string Usernames { get; set; }
-        public string Passwords { get; set; }
+        public byte[] Passwords { get; set; }
         public Nullable<int> MaNKH { get; set; }
         public Nullable<int> MaChucNang { get; set; }
+        public Nullable<System.DateTime> DateCreate { get; set; }
+        public Nullable<System.DateTime> LastLogin { get; set; }
+        public Nullable<bool> IsActive { get; set; }
+        public string UsernamesQL { get; set; }
+        public string RandomKey { get; set; }
     
         public virtual ChucNang ChucNang { get; set; }
         public virtual NhaKhoaHoc NhaKhoaHoc { get; set; }

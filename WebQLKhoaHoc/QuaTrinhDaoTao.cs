@@ -18,10 +18,9 @@ namespace WebQLKhoaHoc
         public int MaNKH { get; set; }
         public Nullable<System.DateTime> ThoiGianBD { get; set; }
         public Nullable<System.DateTime> ThoiGianKT { get; set; }
-        public Nullable<int> MaBacDT { get; set; }
+        public Nullable<int> MaHocVi { get; set; }
         public string CoSoDaoTao { get; set; }
         public Nullable<int> MaNganh { get; set; }
-        public Nullable<System.DateTime> NamTotNghiep { get; set; }
     
         public virtual BacDaoTao BacDaoTao { get; set; }
         public virtual NganhDaoTao NganhDaoTao { get; set; }

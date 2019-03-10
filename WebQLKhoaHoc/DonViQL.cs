@@ -19,10 +19,9 @@ namespace WebQLKhoaHoc
         {
             this.DeTais = new HashSet<DeTai>();
             this.NhaKhoaHocs = new HashSet<NhaKhoaHoc>();
-            this.QuaTrinhCongTacs = new HashSet<QuaTrinhCongTac>();
         }
     
-        public int MaDonVi { get; set; }
+        public string MaDonVi { get; set; }
         public string TenDonVI { get; set; }
         public string DiaChiCQ { get; set; }
         public string DienThoaiCQ { get; set; }
@@ -32,7 +31,5 @@ namespace WebQLKhoaHoc
         public virtual ICollection<DeTai> DeTais { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<NhaKhoaHoc> NhaKhoaHocs { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<QuaTrinhCongTac> QuaTrinhCongTacs { get; set; }
     }
 }

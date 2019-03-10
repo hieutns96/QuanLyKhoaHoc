@@ -33,12 +33,14 @@ namespace WebQLKhoaHoc
         public virtual DbSet<ChuyenMon> ChuyenMons { get; set; }
         public virtual DbSet<ChuyenMonNKH> ChuyenMonNKHs { get; set; }
         public virtual DbSet<ChuyenNganh> ChuyenNganhs { get; set; }
+        public virtual DbSet<DanhGiaNgoaiNgu> DanhGiaNgoaiNgus { get; set; }
         public virtual DbSet<DeTai> DeTais { get; set; }
         public virtual DbSet<DonViChuTri> DonViChuTris { get; set; }
         public virtual DbSet<DonViQL> DonViQLs { get; set; }
         public virtual DbSet<DSBaiBaoDeTai> DSBaiBaoDeTais { get; set; }
         public virtual DbSet<DSNguoiThamGiaBaiBao> DSNguoiThamGiaBaiBaos { get; set; }
         public virtual DbSet<DSNguoiThamGiaDeTai> DSNguoiThamGiaDeTais { get; set; }
+        public virtual DbSet<DSPhatMinhNKH> DSPhatMinhNKHs { get; set; }
         public virtual DbSet<DSTacGia> DSTacGias { get; set; }
         public virtual DbSet<HocHam> HocHams { get; set; }
         public virtual DbSet<HocVi> HocVis { get; set; }
@@ -46,14 +48,19 @@ namespace WebQLKhoaHoc
         public virtual DbSet<LinhVuc> LinhVucs { get; set; }
         public virtual DbSet<LoaiHinhDeTai> LoaiHinhDeTais { get; set; }
         public virtual DbSet<NgachVienChuc> NgachVienChucs { get; set; }
+        public virtual DbSet<NganHang> NganHangs { get; set; }
+        public virtual DbSet<NganHangNKH> NganHangNKHs { get; set; }
         public virtual DbSet<NganhDaoTao> NganhDaoTaos { get; set; }
+        public virtual DbSet<NgoaiNguNKH> NgoaiNguNKHs { get; set; }
         public virtual DbSet<NguoiDung> NguoiDungs { get; set; }
         public virtual DbSet<NhaKhoaHoc> NhaKhoaHocs { get; set; }
+        public virtual DbSet<NhaKhoaHoc_KH> NhaKhoaHoc_KH { get; set; }
         public virtual DbSet<NhaXuatBan> NhaXuatBans { get; set; }
         public virtual DbSet<NhomLinhVuc> NhomLinhVucs { get; set; }
         public virtual DbSet<PhanLoaiSach> PhanLoaiSaches { get; set; }
         public virtual DbSet<PhanLoaiSP> PhanLoaiSPs { get; set; }
         public virtual DbSet<PhanLoaiTapChi> PhanLoaiTapChis { get; set; }
+        public virtual DbSet<PhatMinhGiaiPhap> PhatMinhGiaiPhaps { get; set; }
         public virtual DbSet<QuaTrinhCongTac> QuaTrinhCongTacs { get; set; }
         public virtual DbSet<QuaTrinhDaoTao> QuaTrinhDaoTaos { get; set; }
         public virtual DbSet<SachGiaoTrinh> SachGiaoTrinhs { get; set; }

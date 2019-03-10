@@ -22,7 +22,7 @@ namespace WebQLKhoaHoc
     
         public int MaCapTapChi { get; set; }
         public string TenCapTapChi { get; set; }
-        public string ChiChu { get; set; }
+        public string DanhMucNhom { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BaiBao> BaiBaos { get; set; }

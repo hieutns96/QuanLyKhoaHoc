@@ -12,18 +12,15 @@ namespace WebQLKhoaHoc
     using System;
     using System.Collections.Generic;
     
-    public partial class QuaTrinhCongTac
+    public partial class DSPhatMinhNKH
     {
-        public int MaCT { get; set; }
-        public int MaNKH { get; set; }
-        public Nullable<System.DateTime> ThoiGianBD { get; set; }
-        public Nullable<System.DateTime> ThoiGIanKT { get; set; }
-        public string TenCoQuan { get; set; }
-        public string TenPhongBan { get; set; }
-        public string DiaChiQoQuan { get; set; }
-        public string TinhTP { get; set; }
-        public string ChucVuCT { get; set; }
+        public int MaTT { get; set; }
+        public Nullable<int> MaNKH { get; set; }
+        public Nullable<int> MaPM { get; set; }
+        public Nullable<bool> LaChuSoHuu { get; set; }
+        public string VaiTro { get; set; }
     
         public virtual NhaKhoaHoc NhaKhoaHoc { get; set; }
+        public virtual PhatMinhGiaiPhap PhatMinhGiaiPhap { get; set; }
     }
 }

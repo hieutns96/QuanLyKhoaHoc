@@ -20,12 +20,13 @@ namespace WebQLKhoaHoc
             this.ChuyenMonNKHs = new HashSet<ChuyenMonNKH>();
             this.DSNguoiThamGiaBaiBaos = new HashSet<DSNguoiThamGiaBaiBao>();
             this.DSNguoiThamGiaDeTais = new HashSet<DSNguoiThamGiaDeTai>();
+            this.DSPhatMinhNKHs = new HashSet<DSPhatMinhNKH>();
             this.DSTacGias = new HashSet<DSTacGia>();
+            this.NgoaiNguNKHs = new HashSet<NgoaiNguNKH>();
             this.NguoiDungs = new HashSet<NguoiDung>();
             this.QuaTrinhCongTacs = new HashSet<QuaTrinhCongTac>();
             this.QuaTrinhDaoTaos = new HashSet<QuaTrinhDaoTao>();
             this.LinhVucs = new HashSet<LinhVuc>();
-            this.TrinhDoNgoaiNgus = new HashSet<TrinhDoNgoaiNgu>();
         }
     
         public int MaNKH { get; set; }
@@ -40,8 +41,7 @@ namespace WebQLKhoaHoc
         public Nullable<int> MaHocHam { get; set; }
         public Nullable<int> MaHocVi { get; set; }
         public Nullable<int> MaCNDaoTao { get; set; }
-        public Nullable<int> MaDonViQL { get; set; }
-        public string AnhDaiDien { get; set; }
+        public string MaDonViQL { get; set; }
         public byte[] AnhCaNhan { get; set; }
         public Nullable<int> MaNgachVienChuc { get; set; }
     
@@ -54,19 +54,23 @@ namespace WebQLKhoaHoc
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DSNguoiThamGiaDeTai> DSNguoiThamGiaDeTais { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DSPhatMinhNKH> DSPhatMinhNKHs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DSTacGia> DSTacGias { get; set; }
         public virtual HocHam HocHam { get; set; }
         public virtual HocVi HocVi { get; set; }
         public virtual NgachVienChuc NgachVienChuc { get; set; }
+        public virtual NganHangNKH NganHangNKH { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<NgoaiNguNKH> NgoaiNguNKHs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<NguoiDung> NguoiDungs { get; set; }
+        public virtual NhaKhoaHoc_KH NhaKhoaHoc_KH { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<QuaTrinhCongTac> QuaTrinhCongTacs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<QuaTrinhDaoTao> QuaTrinhDaoTaos { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<LinhVuc> LinhVucs { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TrinhDoNgoaiNgu> TrinhDoNgoaiNgus { get; set; }
     }
 }
