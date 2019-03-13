@@ -14,16 +14,7 @@ namespace WebQLKhoaHoc
     
     public partial class BacDaoTao
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public BacDaoTao()
-        {
-            this.QuaTrinhDaoTaos = new HashSet<QuaTrinhDaoTao>();
-        }
-    
         public int MaBacDT { get; set; }
         public string TenBacDT { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<QuaTrinhDaoTao> QuaTrinhDaoTaos { get; set; }
     }
 }

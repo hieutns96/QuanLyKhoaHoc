@@ -22,7 +22,7 @@ namespace WebQLKhoaHoc
         public string CoSoDaoTao { get; set; }
         public Nullable<int> MaNganh { get; set; }
     
-        public virtual BacDaoTao BacDaoTao { get; set; }
+        public virtual HocVi HocVi { get; set; }
         public virtual NganhDaoTao NganhDaoTao { get; set; }
         public virtual NhaKhoaHoc NhaKhoaHoc { get; set; }
     }

@@ -41,7 +41,7 @@ namespace WebQLKhoaHoc
         public Nullable<int> MaHocHam { get; set; }
         public Nullable<int> MaHocVi { get; set; }
         public Nullable<int> MaCNDaoTao { get; set; }
-        public string MaDonViQL { get; set; }
+        public Nullable<int> MaDonViQL { get; set; }
         public byte[] AnhCaNhan { get; set; }
         public Nullable<int> MaNgachVienChuc { get; set; }
     

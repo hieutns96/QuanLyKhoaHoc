@@ -18,6 +18,7 @@ namespace WebQLKhoaHoc
         public HocVi()
         {
             this.NhaKhoaHocs = new HashSet<NhaKhoaHoc>();
+            this.QuaTrinhDaoTaos = new HashSet<QuaTrinhDaoTao>();
         }
     
         public int MaHocVi { get; set; }
@@ -26,5 +27,7 @@ namespace WebQLKhoaHoc
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<NhaKhoaHoc> NhaKhoaHocs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<QuaTrinhDaoTao> QuaTrinhDaoTaos { get; set; }
     }
 }

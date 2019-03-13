@@ -4,26 +4,26 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="9796ebce030d479e9b753e382c4760c7" Name="Diagram1">
-        <EntityTypeShape EntityType="QLKhoaHocModel.BacDaoTao" Width="1.5" PointX="5.25" PointY="19.25" IsExpanded="true" />
+      <Diagram DiagramId="bfb6f5816ab94cc6801cd0de25c729a6" Name="Diagram1">
+        <EntityTypeShape EntityType="QLKhoaHocModel.BacDaoTao" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="QLKhoaHocModel.BaiBao" Width="1.5" PointX="8.25" PointY="32.625" IsExpanded="true" />
         <EntityTypeShape EntityType="QLKhoaHocModel.CapDeTai" Width="1.5" PointX="13.5" PointY="18.25" IsExpanded="true" />
         <EntityTypeShape EntityType="QLKhoaHocModel.CapTapChi" Width="1.5" PointX="6" PointY="32.75" IsExpanded="true" />
         <EntityTypeShape EntityType="QLKhoaHocModel.ChucNang" Width="1.5" PointX="11.25" PointY="40.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLKhoaHocModel.ChuyenMon" Width="1.5" PointX="5.25" PointY="16.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLKhoaHocModel.ChuyenMon" Width="1.5" PointX="5.25" PointY="20.25" IsExpanded="true" />
         <EntityTypeShape EntityType="QLKhoaHocModel.ChuyenMonNKH" Width="1.5" PointX="7.5" PointY="26" IsExpanded="true" />
         <EntityTypeShape EntityType="QLKhoaHocModel.ChuyenNganh" Width="1.5" PointX="3" PointY="26" IsExpanded="true" />
         <EntityTypeShape EntityType="QLKhoaHocModel.DanhGiaNgoaiNgu" Width="1.5" PointX="11.25" PointY="18.625" IsExpanded="true" />
         <EntityTypeShape EntityType="QLKhoaHocModel.DeTai" Width="1.5" PointX="15.75" PointY="27.625" IsExpanded="true" />
         <EntityTypeShape EntityType="QLKhoaHocModel.DonViChuTri" Width="1.5" PointX="13.5" PointY="15.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLKhoaHocModel.DonViQL" Width="1.5" PointX="3" PointY="22.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLKhoaHocModel.DonViQL" Width="1.5" PointX="3" PointY="22" IsExpanded="true" />
         <EntityTypeShape EntityType="QLKhoaHocModel.DSBaiBaoDeTai" Width="1.5" PointX="18" PointY="28.875" IsExpanded="true" />
         <EntityTypeShape EntityType="QLKhoaHocModel.DSNguoiThamGiaBaiBao" Width="1.5" PointX="7.5" PointY="22.875" IsExpanded="true" />
         <EntityTypeShape EntityType="QLKhoaHocModel.DSNguoiThamGiaDeTai" Width="1.5" PointX="7.5" PointY="28.875" IsExpanded="true" />
         <EntityTypeShape EntityType="QLKhoaHocModel.DSPhatMinhNKH" Width="1.5" PointX="10.5" PointY="25.875" IsExpanded="true" />
         <EntityTypeShape EntityType="QLKhoaHocModel.DSTacGia" Width="1.5" PointX="10.5" PointY="21.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLKhoaHocModel.HocHam" Width="1.5" PointX="3" PointY="29.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLKhoaHocModel.HocVi" Width="1.5" PointX="3" PointY="31.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLKhoaHocModel.HocHam" Width="1.5" PointX="3" PointY="29.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLKhoaHocModel.HocVi" Width="1.5" PointX="3" PointY="31.625" IsExpanded="true" />
         <EntityTypeShape EntityType="QLKhoaHocModel.KinhPhiDeTai" Width="1.5" PointX="18" PointY="32.75" IsExpanded="true" />
         <EntityTypeShape EntityType="QLKhoaHocModel.LinhVuc" Width="1.5" PointX="10.5" PointY="29.75" IsExpanded="true" />
         <EntityTypeShape EntityType="QLKhoaHocModel.LoaiHinhDeTai" Width="1.5" PointX="13.5" PointY="39.125" IsExpanded="true" />
@@ -47,7 +47,6 @@
         <EntityTypeShape EntityType="QLKhoaHocModel.TinhTrangDeTai" Width="1.5" PointX="13.5" PointY="43.875" IsExpanded="true" />
         <EntityTypeShape EntityType="QLKhoaHocModel.TrinhDoNgoaiNgu" Width="1.5" PointX="11.25" PointY="15.625" IsExpanded="true" />
         <EntityTypeShape EntityType="QLKhoaHocModel.XepLoai" Width="1.5" PointX="13.5" PointY="46.125" IsExpanded="true" />
-        <AssociationConnector Association="QLKhoaHocModel.QuaTrinhDaoTao_fk1" ManuallyRouted="false" />
         <AssociationConnector Association="QLKhoaHocModel.DSBaiBaoDeTai_fk1" ManuallyRouted="false" />
         <AssociationConnector Association="QLKhoaHocModel.DSNguoiThamGiaBaiBao_fk0" ManuallyRouted="false" />
         <AssociationConnector Association="QLKhoaHocModel.FK_BaiBao_CapTapChi" ManuallyRouted="false" />
@@ -80,6 +79,7 @@
         <AssociationConnector Association="QLKhoaHocModel.FK_DSTacGia_SachGiaoTrinh" ManuallyRouted="false" />
         <AssociationConnector Association="QLKhoaHocModel.NhaKhoaHoc_fk0" ManuallyRouted="false" />
         <AssociationConnector Association="QLKhoaHocModel.NhaKhoaHoc_fk1" ManuallyRouted="false" />
+        <AssociationConnector Association="QLKhoaHocModel.QuaTrinhDaoTao_fk1" ManuallyRouted="false" />
         <AssociationConnector Association="QLKhoaHocModel.LinhVuc_fk0" ManuallyRouted="false" />
         <AssociationConnector Association="QLKhoaHocModel.SachGiaoTrinh_fk1" ManuallyRouted="false" />
         <AssociationConnector Association="QLKhoaHocModel.NhaKhoaHoc_fk4" ManuallyRouted="false" />

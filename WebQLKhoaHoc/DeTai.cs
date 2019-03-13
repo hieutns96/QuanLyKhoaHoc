@@ -28,7 +28,7 @@ namespace WebQLKhoaHoc
         public Nullable<int> MaLoaiDeTai { get; set; }
         public Nullable<int> MaCapDeTai { get; set; }
         public Nullable<int> MaDVChuTri { get; set; }
-        public string MaDonViQLThucHien { get; set; }
+        public Nullable<int> MaDonViQLThucHien { get; set; }
         public Nullable<int> MaLinhVuc { get; set; }
         public string MucTieuDeTai { get; set; }
         public string NoiDungDeTai { get; set; }

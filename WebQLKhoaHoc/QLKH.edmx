@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="QLKhoaHocModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="QLKhoaHocModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="BacDaoTao">
           <Key>
             <PropertyRef Name="MaBacDT" />
@@ -95,7 +95,7 @@
           <Property Name="MaLoaiDeTai" Type="int" />
           <Property Name="MaCapDeTai" Type="int" />
           <Property Name="MaDVChuTri" Type="int" />
-          <Property Name="MaDonViQLThucHien" Type="nvarchar" MaxLength="50" />
+          <Property Name="MaDonViQLThucHien" Type="int" />
           <Property Name="MaLinhVuc" Type="int" />
           <Property Name="MucTieuDeTai" Type="nvarchar(max)" />
           <Property Name="NoiDungDeTai" Type="nvarchar(max)" />
@@ -121,7 +121,7 @@
           <Key>
             <PropertyRef Name="MaDonVi" />
           </Key>
-          <Property Name="MaDonVi" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MaDonVi" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TenDonVI" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="DiaChiCQ" Type="nvarchar" MaxLength="50" />
           <Property Name="DienThoaiCQ" Type="varchar" MaxLength="50" />
@@ -309,7 +309,7 @@
           <Property Name="MaHocHam" Type="int" />
           <Property Name="MaHocVi" Type="int" />
           <Property Name="MaCNDaoTao" Type="int" />
-          <Property Name="MaDonViQL" Type="nvarchar" MaxLength="50" />
+          <Property Name="MaDonViQL" Type="int" />
           <Property Name="AnhCaNhan" Type="varbinary(max)" />
           <Property Name="MaNgachVienChuc" Type="int" />
         </EntityType>
@@ -1016,11 +1016,11 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="QuaTrinhDaoTao_fk1">
-          <End Role="BacDaoTao" Type="Self.BacDaoTao" Multiplicity="0..1" />
+          <End Role="HocVi" Type="Self.HocVi" Multiplicity="0..1" />
           <End Role="QuaTrinhDaoTao" Type="Self.QuaTrinhDaoTao" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="BacDaoTao">
-              <PropertyRef Name="MaBacDT" />
+            <Principal Role="HocVi">
+              <PropertyRef Name="MaHocVi" />
             </Principal>
             <Dependent Role="QuaTrinhDaoTao">
               <PropertyRef Name="MaHocVi" />
@@ -1297,7 +1297,7 @@
             <End Role="QuaTrinhDaoTao" EntitySet="QuaTrinhDaoTao" />
           </AssociationSet>
           <AssociationSet Name="QuaTrinhDaoTao_fk1" Association="Self.QuaTrinhDaoTao_fk1">
-            <End Role="BacDaoTao" EntitySet="BacDaoTao" />
+            <End Role="HocVi" EntitySet="HocVi" />
             <End Role="QuaTrinhDaoTao" EntitySet="QuaTrinhDaoTao" />
           </AssociationSet>
           <AssociationSet Name="QuaTrinhDaoTao_fk2" Association="Self.QuaTrinhDaoTao_fk2">
@@ -1313,7 +1313,8 @@
             <End Role="SachGiaoTrinh" EntitySet="SachGiaoTrinh" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="QLKhoaHocModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -1323,7 +1324,6 @@
           </Key>
           <Property Name="MaBacDT" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TenBacDT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="QuaTrinhDaoTaos" Relationship="Self.QuaTrinhDaoTao_fk1" FromRole="BacDaoTao" ToRole="QuaTrinhDaoTao" />
         </EntityType>
         <EntityType Name="BaiBao">
           <Key>
@@ -1424,7 +1424,7 @@
           <Property Name="MaLoaiDeTai" Type="Int32" />
           <Property Name="MaCapDeTai" Type="Int32" />
           <Property Name="MaDVChuTri" Type="Int32" />
-          <Property Name="MaDonViQLThucHien" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MaDonViQLThucHien" Type="Int32" />
           <Property Name="MaLinhVuc" Type="Int32" />
           <Property Name="MucTieuDeTai" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="NoiDungDeTai" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -1462,7 +1462,7 @@
           <Key>
             <PropertyRef Name="MaDonVi" />
           </Key>
-          <Property Name="MaDonVi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MaDonVi" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TenDonVI" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="DiaChiCQ" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="DienThoaiCQ" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
@@ -1546,6 +1546,7 @@
           <Property Name="TenVietTat" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="TenHocVi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="NhaKhoaHocs" Relationship="Self.NhaKhoaHoc_fk1" FromRole="HocVi" ToRole="NhaKhoaHoc" />
+          <NavigationProperty Name="QuaTrinhDaoTaos" Relationship="Self.QuaTrinhDaoTao_fk1" FromRole="HocVi" ToRole="QuaTrinhDaoTao" />
         </EntityType>
         <EntityType Name="KinhPhiDeTai">
           <Key>
@@ -1668,7 +1669,7 @@
           <Property Name="MaHocHam" Type="Int32" />
           <Property Name="MaHocVi" Type="Int32" />
           <Property Name="MaCNDaoTao" Type="Int32" />
-          <Property Name="MaDonViQL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MaDonViQL" Type="Int32" />
           <Property Name="AnhCaNhan" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="MaNgachVienChuc" Type="Int32" />
           <NavigationProperty Name="ChuyenMonNKHs" Relationship="Self.ChuyenMonNKH_fk0" FromRole="NhaKhoaHoc" ToRole="ChuyenMonNKH" />
@@ -1784,7 +1785,7 @@
           <Property Name="MaHocVi" Type="Int32" />
           <Property Name="CoSoDaoTao" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="MaNganh" Type="Int32" />
-          <NavigationProperty Name="BacDaoTao" Relationship="Self.QuaTrinhDaoTao_fk1" FromRole="QuaTrinhDaoTao" ToRole="BacDaoTao" />
+          <NavigationProperty Name="HocVi" Relationship="Self.QuaTrinhDaoTao_fk1" FromRole="QuaTrinhDaoTao" ToRole="HocVi" />
           <NavigationProperty Name="NganhDaoTao" Relationship="Self.QuaTrinhDaoTao_fk2" FromRole="QuaTrinhDaoTao" ToRole="NganhDaoTao" />
           <NavigationProperty Name="NhaKhoaHoc" Relationship="Self.QuaTrinhDaoTao_fk0" FromRole="QuaTrinhDaoTao" ToRole="NhaKhoaHoc" />
         </EntityType>
@@ -1833,18 +1834,6 @@
           <Property Name="TenXepLoai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="DeTais" Relationship="Self.DeTai_fk5" FromRole="XepLoai" ToRole="DeTai" />
         </EntityType>
-        <Association Name="QuaTrinhDaoTao_fk1">
-          <End Role="BacDaoTao" Type="Self.BacDaoTao" Multiplicity="0..1" />
-          <End Role="QuaTrinhDaoTao" Type="Self.QuaTrinhDaoTao" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="BacDaoTao">
-              <PropertyRef Name="MaBacDT" />
-            </Principal>
-            <Dependent Role="QuaTrinhDaoTao">
-              <PropertyRef Name="MaHocVi" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="DSBaiBaoDeTai_fk1">
           <End Role="BaiBao" Type="Self.BaiBao" Multiplicity="1" />
           <End Role="DSBaiBaoDeTai" Type="Self.DSBaiBaoDeTai" Multiplicity="*" />
@@ -2233,6 +2222,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="QuaTrinhDaoTao_fk1">
+          <End Role="HocVi" Type="Self.HocVi" Multiplicity="0..1" />
+          <End Role="QuaTrinhDaoTao" Type="Self.QuaTrinhDaoTao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HocVi">
+              <PropertyRef Name="MaHocVi" />
+            </Principal>
+            <Dependent Role="QuaTrinhDaoTao">
+              <PropertyRef Name="MaHocVi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="LinhVuc_fk0">
           <End Role="NhomLinhVuc" Type="Self.NhomLinhVuc" Multiplicity="0..1" />
           <End Role="LinhVuc" Type="Self.LinhVuc" Multiplicity="*" />
@@ -2460,10 +2461,6 @@
           <EntitySet Name="TinhTrangDeTais" EntityType="Self.TinhTrangDeTai" />
           <EntitySet Name="TrinhDoNgoaiNgus" EntityType="Self.TrinhDoNgoaiNgu" />
           <EntitySet Name="XepLoais" EntityType="Self.XepLoai" />
-          <AssociationSet Name="QuaTrinhDaoTao_fk1" Association="Self.QuaTrinhDaoTao_fk1">
-            <End Role="BacDaoTao" EntitySet="BacDaoTaos" />
-            <End Role="QuaTrinhDaoTao" EntitySet="QuaTrinhDaoTaos" />
-          </AssociationSet>
           <AssociationSet Name="DSBaiBaoDeTai_fk1" Association="Self.DSBaiBaoDeTai_fk1">
             <End Role="BaiBao" EntitySet="BaiBaos" />
             <End Role="DSBaiBaoDeTai" EntitySet="DSBaiBaoDeTais" />
@@ -2591,6 +2588,10 @@
           <AssociationSet Name="NhaKhoaHoc_fk1" Association="Self.NhaKhoaHoc_fk1">
             <End Role="HocVi" EntitySet="HocVis" />
             <End Role="NhaKhoaHoc" EntitySet="NhaKhoaHocs" />
+          </AssociationSet>
+          <AssociationSet Name="QuaTrinhDaoTao_fk1" Association="Self.QuaTrinhDaoTao_fk1">
+            <End Role="HocVi" EntitySet="HocVis" />
+            <End Role="QuaTrinhDaoTao" EntitySet="QuaTrinhDaoTaos" />
           </AssociationSet>
           <AssociationSet Name="LinhVuc_fk0" Association="Self.LinhVuc_fk0">
             <End Role="NhomLinhVuc" EntitySet="NhomLinhVucs" />
