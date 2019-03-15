@@ -41,11 +41,11 @@ namespace WebQLKhoaHoc.Controllers
         {
             if (manhakhoahoc != null)
             {
-                var ngoaingunkh = db.NhaKhoaHocs.Find(manhakhoahoc).TrinhDoNgoaiNgus;
-                var trinhdongoaingu = db.TrinhDoNgoaiNgus.Where(p => !ngoaingunkh.Contains(p)).ToList();
-
+                var ngoaingunkh = db.NgoaiNguNKHs.Where(p => p.MaNKH == manhakhoahoc).Select(p => p.TrinhDoNgoaiNgu.MaTrinhDoNN).ToList();
+                var trinhdongoaingu = db.TrinhDoNgoaiNgus.Where(p => !ngoaingunkh.Contains(p.MaTrinhDoNN)).ToList();
 
                 ViewBag.trinhdongoaingu = new SelectList(trinhdongoaingu, "MaTrinhDoNN", "TenTrinhDo");
+                ViewBag.danhgiatrinhdo = new SelectList(db.DanhGiaNgoaiNgus, "MaLoai", "TenLoai");
                 ViewBag.manhakhoahoc = manhakhoahoc;
                
             }
@@ -57,22 +57,22 @@ namespace WebQLKhoaHoc.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create(int? manhakhoahoc,int? matrinhdo)
+        public async Task<ActionResult> Create(NgoaiNguNKH ngoaingu , int manhakhoahoc)
         {
             if (ModelState.IsValid)
             {
-                var trinhdo = db.TrinhDoNgoaiNgus.Find(matrinhdo);
-                db.TrinhDoNgoaiNgus.Add(trinhdo);
+                var nkh = db.NhaKhoaHocs.Find(manhakhoahoc);
+                nkh.NgoaiNguNKHs.Add(ngoaingu);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Edit", "AdminNhaKhoaHoc", new { id = manhakhoahoc });
             }
 
 
-            var ngoaingu = db.NhaKhoaHocs.Find(manhakhoahoc).TrinhDoNgoaiNgus;
-            var trinhdongoaingu = db.TrinhDoNgoaiNgus.Where(p => !ngoaingu.Contains(p)).ToList();
-
+            var ngoaingunkh = db.NgoaiNguNKHs.Where(p => p.MaNKH == manhakhoahoc).Select(p => p.TrinhDoNgoaiNgu.MaTrinhDoNN).ToList();
+            var trinhdongoaingu = db.TrinhDoNgoaiNgus.Where(p => !ngoaingunkh.Contains(p.MaTrinhDoNN)).ToList();
 
             ViewBag.trinhdongoaingu = new SelectList(trinhdongoaingu, "MaTrinhDoNN", "TenTrinhDo");
+            ViewBag.danhgiatrinhdo = new SelectList(db.DanhGiaNgoaiNgus, "MaLoai", "TenLoai");
             ViewBag.manhakhoahoc = manhakhoahoc;
             return View();
         }
@@ -86,12 +86,13 @@ namespace WebQLKhoaHoc.Controllers
             }
            
             var nkh = await db.NhaKhoaHocs.FindAsync(manhakhoahoc);
-            TrinhDoNgoaiNgu trinhDoNgoaiNgu = nkh.TrinhDoNgoaiNgus.Where(p => p.MaTrinhDoNN == id).FirstOrDefault();
+            //TrinhDoNgoaiNgu trinhDoNgoaiNgu = nkh.NgoaiNguNKHs.Where(p=>p.TrinhDoNgoaiNgus.Where(p => p.MaTrinhDoNN == id).FirstOrDefault());
+            NgoaiNguNKH trinhDoNgoaiNgu = nkh.NgoaiNguNKHs.Where(p => p.MaTrinhDoNN == id && p.MaNKH == manhakhoahoc).FirstOrDefault();
             if (trinhDoNgoaiNgu == null)
             {
                 return HttpNotFound();
             }
-            nkh.TrinhDoNgoaiNgus.Remove(trinhDoNgoaiNgu);
+            db.NgoaiNguNKHs.Remove(trinhDoNgoaiNgu);
             await db.SaveChangesAsync();
             return RedirectToAction("Edit", "AdminNhaKhoaHoc", new { id = manhakhoahoc });
         }

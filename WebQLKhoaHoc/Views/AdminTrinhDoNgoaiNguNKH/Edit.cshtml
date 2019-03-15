@@ -1,0 +1,38 @@
+﻿@model WebQLKhoaHoc.TrinhDoNgoaiNgu
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_AdminMainPage.cshtml";
+}
+
+
+<div class="container">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>Trình độ ngoại ngữ</h4>
+            <hr />
+            <div class="row">
+                @Html.ValidationSummary(true)
+                <input type="hidden" name="manhakhoahoc" value="@ViewBag.manhakhoahoc" />
+                <div class="form-group">
+                    <h2 class="col-md-2 col-md-offset-1">Tên trình độ:</h2>
+                    <div class="col-md-7">
+                        @Html.DropDownList("matrinhdo", ViewBag.trinhdongoaingu as SelectList, new { @class = "form-control" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        @Html.ActionLink("Trở về", "Edit", "AdminNhaKhoaHoc", new { id = ViewBag.manhakhoahoc }, new { @class = "btn btn-default pull-right" })
+                        <input type="submit" value="Save" class="btn btn-default pull-right" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+

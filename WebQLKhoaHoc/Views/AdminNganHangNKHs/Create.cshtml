@@ -1,0 +1,60 @@
+﻿@model WebQLKhoaHoc.NganHangNKH
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_AdminMainPage.cshtml";
+}
+
+
+<div class="container">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h1 class="text-center">Tài Khoản ngân hàng</h1>
+            <hr />
+            <div class="row">
+                @Html.ValidationSummary(true)
+                <input type="hidden" name="manhakhoahoc" value="@ViewBag.manhakhoahoc" />
+                <input type="hidden" name="MaNKH" value="@ViewBag.manhakhoahoc" />
+                <div class="form-group">
+                    <h2 class="col-md-2 col-md-offset-1">Tài khoản nhà khoa học:</h2>
+                    <div class="col-md-7">                      
+                        @Html.TextBoxFor(model => model.STKNH, new { @class = "form-control" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <h2 class="col-md-2 col-md-offset-1">Tên ngân hàng:</h2>
+                    <div class="col-md-7">
+                        @Html.DropDownList("MaNH", ViewBag.MaNH as SelectList, new { @class = "form-control" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <h2 class="col-md-2 col-md-offset-1">Chi nhánh:</h2>
+                    <div class="col-md-7">
+                        @Html.TextBoxFor(model=>model.ChiNhanhNH,new {@class="form-control"})
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <h2 class="col-md-2 col-md-offset-1">Ghi chú:</h2>
+                    <div class="col-md-7">
+                        @Html.TextBoxFor(model => model.GhiChu, new { @class = "form-control" })
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        @Html.ActionLink("Trở về", "Edit", "AdminNhaKhoaHoc", new { id = ViewBag.manhakhoahoc }, new { @class = "btn btn-default pull-right" })
+                        <input type="submit" value="Save" class="btn btn-default pull-right" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+

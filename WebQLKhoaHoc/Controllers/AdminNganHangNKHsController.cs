@@ -11,115 +11,119 @@ using WebQLKhoaHoc;
 
 namespace WebQLKhoaHoc.Controllers
 {
-    public class AdminQuaTrinhDaoTaoController : Controller
+    public class AdminNganHangNKHsController : Controller
     {
         private QLKhoaHocEntities db = new QLKhoaHocEntities();
 
-        // GET: AdminQuaTrinhDaoTao
+        // GET: AdminNganHangNKHs
         public async Task<ActionResult> Index()
         {
-            var quaTrinhDaoTaos = db.QuaTrinhDaoTaos.Include(q => q.HocVi).Include(q => q.NganhDaoTao).Include(q => q.NhaKhoaHoc);
-            return View(await quaTrinhDaoTaos.ToListAsync());
+            var nganHangNKHs = db.NganHangNKHs.Include(n => n.NganHang).Include(n => n.NhaKhoaHoc);
+            return View(await nganHangNKHs.ToListAsync());
         }
 
-        // GET: AdminQuaTrinhDaoTao/Details/5
+        // GET: AdminNganHangNKHs/Details/5
         public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            QuaTrinhDaoTao quaTrinhDaoTao = await db.QuaTrinhDaoTaos.FindAsync(id);
-            if (quaTrinhDaoTao == null)
+            NganHangNKH nganHangNKH = await db.NganHangNKHs.FindAsync(id);
+            if (nganHangNKH == null)
             {
                 return HttpNotFound();
             }
-            return View(quaTrinhDaoTao);
+            return View(nganHangNKH);
         }
 
-        // GET: AdminQuaTrinhDaoTao/Create
-        public ActionResult Create(int? manhakhoahoc)
-        {   
+        // GET: AdminNganHangNKHs/Create
+        public ActionResult Create(int manhakhoahoc)
+        {
+
+            ViewBag.MaNH = new SelectList(db.NganHangs, "MaNH", "TenNH");            
             ViewBag.manhakhoahoc = manhakhoahoc;
             return View();
         }
 
-        // POST: AdminQuaTrinhDaoTao/Create
+        // POST: AdminNganHangNKHs/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "MaQT,MaNKH,ThoiGianBD,ThoiGianKT,MaHocVi,CoSoDaoTao,MaNganh")] QuaTrinhDaoTao quaTrinhDaoTao,int? manhakhoahoc)
+        public async Task<ActionResult> Create([Bind(Include = "MaNKH,STKNH,MaNH,ChiNhanhNH,GhiChu")] NganHangNKH nganHangNKH,int? manhakhoahoc)
         {
             if (ModelState.IsValid)
             {
-                db.QuaTrinhDaoTaos.Add(quaTrinhDaoTao);
+                db.NganHangNKHs.Add(nganHangNKH);
                 await db.SaveChangesAsync();
-                return RedirectToAction("Edit","AdminNhaKhoaHoc",new { id = manhakhoahoc });
+                return RedirectToAction("Edit","AdminNhaKhoaHoc",new { id = manhakhoahoc});
             }
 
+            ViewBag.MaNH = new SelectList(db.NganHangs, "MaNH", "TenNH");
             ViewBag.manhakhoahoc = manhakhoahoc;
-            return View(quaTrinhDaoTao);
+            return View();
         }
 
-        // GET: AdminQuaTrinhDaoTao/Edit/5
-        public async Task<ActionResult> Edit(int? id,int manhakhoahoc)
+        // GET: AdminNganHangNKHs/Edit/5
+        public async Task<ActionResult> Edit(int? id,int? manhakhoahoc)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            QuaTrinhDaoTao quaTrinhDaoTao = await db.QuaTrinhDaoTaos.FindAsync(id);
-            if (quaTrinhDaoTao == null)
+            NganHangNKH nganHangNKH = await db.NganHangNKHs.Where(p => p.MaNH == id && p.MaNKH == manhakhoahoc).FirstOrDefaultAsync();
+            if (nganHangNKH == null)
             {
                 return HttpNotFound();
             }
-
+            ViewBag.MaNH = new SelectList(db.NganHangs, "MaNH", "TenNH");
             ViewBag.manhakhoahoc = manhakhoahoc;
-            return View(quaTrinhDaoTao);
+            return View(nganHangNKH);
         }
 
-        // POST: AdminQuaTrinhDaoTao/Edit/5
+        // POST: AdminNganHangNKHs/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "MaQT,MaNKH,ThoiGianBD,ThoiGianKT,MaHocVi,CoSoDaoTao,MaNganh")] QuaTrinhDaoTao quaTrinhDaoTao,int manhakhoahoc)
+        public async Task<ActionResult> Edit([Bind(Include = "MaNKH,STKNH,MaNH,ChiNhanhNH,GhiChu")] NganHangNKH nganHangNKH,int? manhakhoahoc)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(quaTrinhDaoTao).State = EntityState.Modified;
+                db.Entry(nganHangNKH).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Edit", "AdminNhaKhoaHoc", new { id = manhakhoahoc });
             }
-            ViewBag.manhakhoahoc = manhakhoahoc;
-            return View(quaTrinhDaoTao);
+            ViewBag.MaNH = new SelectList(db.NganHangs, "MaNH", "TenNH", nganHangNKH.MaNH);
+            ViewBag.MaNKH = new SelectList(db.NhaKhoaHocs, "MaNKH", "MaNKHHoSo", nganHangNKH.MaNKH);
+            return View(nganHangNKH);
         }
 
-        // GET: AdminQuaTrinhDaoTao/Delete/5
-        public async Task<ActionResult> Delete(int? id,int? manhakhoahoc)
+        // GET: AdminNganHangNKHs/Delete/5
+        public async Task<ActionResult> Delete(int? id, int? manhakhoahoc)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            QuaTrinhDaoTao quaTrinhDaoTao = await db.QuaTrinhDaoTaos.FindAsync(id);
-            if (quaTrinhDaoTao == null)
+            NganHangNKH nganHangNKH = await db.NganHangNKHs.Where(p => p.MaNH == id && p.MaNKH == manhakhoahoc).FirstOrDefaultAsync();
+            if (nganHangNKH == null)
             {
                 return HttpNotFound();
             }
-            db.QuaTrinhDaoTaos.Remove(quaTrinhDaoTao);
+            db.NganHangNKHs.Remove(nganHangNKH);
             await db.SaveChangesAsync();
-            return RedirectToAction("Edit", "AdminNhaKhoaHoc", new { id = manhakhoahoc });          
+            return RedirectToAction("Edit", "AdminNhaKhoaHoc", new { id = manhakhoahoc });
         }
 
-        // POST: AdminQuaTrinhDaoTao/Delete/5
+        // POST: AdminNganHangNKHs/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            QuaTrinhDaoTao quaTrinhDaoTao = await db.QuaTrinhDaoTaos.FindAsync(id);
-            db.QuaTrinhDaoTaos.Remove(quaTrinhDaoTao);
+            NganHangNKH nganHangNKH = await db.NganHangNKHs.FindAsync(id);
+            db.NganHangNKHs.Remove(nganHangNKH);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }

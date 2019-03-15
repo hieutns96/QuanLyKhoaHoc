@@ -88,7 +88,7 @@ namespace WebQLKhoaHoc.Controllers
         }
 
         // GET: NhaKhoaHocs/Details/5
-        public async Task<ActionResult> Details(int id)
+        public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
             {
@@ -195,8 +195,9 @@ namespace WebQLKhoaHoc.Controllers
                 p.MaTrinhDoNN,
                 TenTD = p.TenTrinhDo
             }).ToList();
-          
-            var lstTrinhDoNN = db.TrinhDoNgoaiNgus.Where(p => p.NhaKhoaHocs.Select(t => t.MaNKH).Contains(nhaKhoaHoc.MaNKH)).Select(p => p.MaTrinhDoNN).ToList();
+
+            var lstTrinhDoNN = db.TrinhDoNgoaiNgus.Where(p => p.NgoaiNguNKHs.Select(nn => nn.MaNKH).Contains(nhaKhoaHoc.MaNKH)).Select(t=>t.MaTrinhDoNN).ToList();
+            //var lstTrinhDoNN = db.TrinhDoNgoaiNgus.Where(p => p.NhaKhoaHocs.Select(t => t.MaNKH).Contains(nhaKhoaHoc.MaNKH)).Select(p => p.MaTrinhDoNN).ToList();
             ViewBag.DSTrinhDoNgoaiNgu = new MultiSelectList(lstAllTrinhDoNN, "MaTrinhDoNN", "TenTD", lstTrinhDoNN);
 
             var lstAllLinhVucNC = db.LinhVucs.Select(p => new
@@ -225,13 +226,13 @@ namespace WebQLKhoaHoc.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit(HttpPostedFileBase fileUpload, List<int> DSTrinhDoNN,List<int> DSLinhVucNC, List<int> DSChuyenMonGD, [Bind(Include = "MaNKH,MaNKHHoSo,HoNKH,TenNKH,GioiTinhNKH,NgaySinh,DiaChiLienHe,DienThoai,EmailLienHe,MaHocHam,MaHocVi,MaCNDaoTao,MaDonViQL,AnhDaiDien,MaNgachVienChuc")] NhaKhoaHoc nhaKhoaHoc)
+        public async Task<ActionResult> Edit(HttpPostedFileBase fileUpload,List<int> DSLinhVucNC, List<int> DSChuyenMonGD, [Bind(Include = "MaNKH,MaNKHHoSo,HoNKH,TenNKH,GioiTinhNKH,NgaySinh,DiaChiLienHe,DienThoai,EmailLienHe,MaHocHam,MaHocVi,MaCNDaoTao,MaDonViQL,AnhDaiDien,MaNgachVienChuc")] NhaKhoaHoc nhaKhoaHoc, [Bind(Include = "MaNKH,STKNH,MaNH,ChiNhanhNH,GhiChu")] NganHangNKH nganHangNKH)
         {
            
             if (ModelState.IsValid)
             {
                 // upload image
-                var nhakh = db.NhaKhoaHocs.Where(p => p.MaNKH == nhaKhoaHoc.MaNKH).Include(p => p.LinhVucs).Include(p=>p.TrinhDoNgoaiNgus).FirstOrDefault();
+                var nhakh = db.NhaKhoaHocs.Where(p => p.MaNKH == nhaKhoaHoc.MaNKH).Include(p => p.LinhVucs).FirstOrDefault();
 
                 if (repo.HasFile(fileUpload))
                 {
@@ -271,27 +272,33 @@ namespace WebQLKhoaHoc.Controllers
                         nhakh.LinhVucs.Remove(x);
                     }
                 }
-
+                /*
                 if (DSTrinhDoNN != null) {
-                    var deletednn = nhakh.TrinhDoNgoaiNgus.Where(p => !DSTrinhDoNN.Contains(p.MaTrinhDoNN)).ToList();
-                    var addednn = DSTrinhDoNN.Except(nhakh.TrinhDoNgoaiNgus.Select(p => p.MaTrinhDoNN)).ToList();
+                    var deletednn = nhakh.NgoaiNguNKHs.Where(p => !DSTrinhDoNN.Contains(p.MaTrinhDoNN)).ToList();
+                    var addednn = DSTrinhDoNN.Except(nhakh.NgoaiNguNKHs.Select(p => p.MaTrinhDoNN)).ToList();
                     var addnn = db.TrinhDoNgoaiNgus.Where(p => addednn.Contains(p.MaTrinhDoNN)).ToList();
                     foreach (var x in deletednn)
                     {
-                        nhakh.TrinhDoNgoaiNgus.Remove(x);
+                        nhakh.NgoaiNguNKHs.Remove(x);
                     }
                     foreach (var x in addnn)
                     {
-                        nhakh.TrinhDoNgoaiNgus.Add(x);
+                        var newnn = new NgoaiNguNKH
+                        {
+                            MaNKH = nhakh.MaNKH,
+                            MaTrinhDoNN = x.MaTrinhDoNN,
+
+                        };
+                        nhakh.NgoaiNguNKHs.Add(newnn);
                     }
                 }
                 else
                 {
-                    foreach(var x in nhakh.TrinhDoNgoaiNgus)
+                    foreach(var x in nhakh.NgoaiNguNKHs)
                     {
-                        nhakh.TrinhDoNgoaiNgus.Remove(x);
+                        nhakh.NgoaiNguNKHs.Remove(x);
                     }
-                }                               
+                }      */                         
 
               
                 if (DSChuyenMonGD != null) {
@@ -308,7 +315,11 @@ namespace WebQLKhoaHoc.Controllers
                         db.SaveChanges();
                     }
                 }
-               
+
+                if(nganHangNKH != null)
+                {
+                    db.NganHangNKHs.AddOrUpdate(nganHangNKH);
+                }
 
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
@@ -418,8 +429,62 @@ namespace WebQLKhoaHoc.Controllers
             await db.SaveChangesAsync();
             return RedirectToAction("Edit", new { id = MaNKH });
         }
-            // GET: NhaKhoaHocs/Delete/5
-            public async Task<ActionResult> Delete(string id)
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> EditNgoaiNguNKH(List<NgoaiNguNKH> TrinhDoNgoaiNguNKH, string xoatrinhdonn, string xoatrinhdonnjs, int MaNKH)
+        {
+            //các MaQT cần xóa trong DB
+            List<int> maxoa = JsonConvert.DeserializeObject<List<int>>(xoatrinhdonn);
+            //xử lý các dòng chưa có MaQT mà cần xóa
+            List<int> maxoajs = JsonConvert.DeserializeObject<List<int>>(xoatrinhdonnjs);
+            if (maxoajs != null)
+            {
+                maxoajs.Sort();
+                maxoajs.Reverse();
+                foreach (var x in maxoajs)
+                {
+                    TrinhDoNgoaiNguNKH.RemoveAt(x);
+                }
+            }
+
+            /* track entity để thêm xóa sửa*/
+            var trinhdongoaingu = db.NhaKhoaHocs.Where(p => p.MaNKH == MaNKH).Include(p=>p.NgoaiNguNKHs).FirstOrDefault();
+            if (maxoa != null)
+            {
+                foreach (var x in maxoa)
+                {
+                    var deletengoaingu = db.NgoaiNguNKHs.Where(p => p.ID == x).FirstOrDefault();
+                    db.NgoaiNguNKHs.Remove(deletengoaingu);
+                    TrinhDoNgoaiNguNKH.RemoveAll(p => p.ID == x);
+                    db.SaveChanges();
+                }
+            }
+            foreach (var x in TrinhDoNgoaiNguNKH)
+            {
+                var congtac = db.NgoaiNguNKHs.Where(p => p.ID == x.ID).SingleOrDefault();
+                if (congtac != null)
+                {
+                    db.NgoaiNguNKHs.AddOrUpdate(x);
+                }
+                else
+                {
+                    trinhdongoaingu.NgoaiNguNKHs.Add(x);
+                }
+                db.SaveChanges();
+            }
+            await db.SaveChangesAsync();
+            return RedirectToAction("Edit", new { id = MaNKH });
+        }
+
+
+
+
+
+
+
+        // GET: NhaKhoaHocs/Delete/5
+        public async Task<ActionResult> Delete(string id)
         {
             if (id == null)
             {

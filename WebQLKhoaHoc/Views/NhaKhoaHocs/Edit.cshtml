@@ -93,13 +93,13 @@
                                                                         <span class="mt-0 mb-0 font-weight-600">Họ:</span>
                                                                     </div>
                                                                     <div class="col-md-8">
-                                                                        @Html.EditorFor(model => model.HoNKH, new { htmlAttributes = new { @class = "form-control", @required = "reuqired" } })<br>
+                                                                        @Html.TextBoxFor(model => model.HoNKH, new { @class = "form-control", @required = "required" })<br>
                                                                     </div>
                                                                     <div class="col-md-4">
                                                                         <span class="mt-0 mb-0 font-weight-600">Tên:</span>
                                                                     </div>
                                                                     <div class="col-md-8">
-                                                                        @Html.EditorFor(model => model.TenNKH, new { htmlAttributes = new { @class = "form-control", @required = "reuqired" } })<br>
+                                                                        @Html.TextBoxFor(model => model.TenNKH, new { @class = "form-control", @required = "required" })<br>
                                                                     </div>
                                                                     <div class="col-md-4">
                                                                         <span class="mt-0 mb-0 font-weight-600">Giới tính:</span>
@@ -129,37 +129,34 @@
                                                                         <span class="mt-0 mb-0 font-weight-600">Địa chỉ:</span>
                                                                     </div>
                                                                     <div class="col-md-8">
-                                                                        @Html.EditorFor(model => model.DiaChiLienHe, new { htmlAttributes = new { @class = "form-control", @required = "reuqired" } })<br>
+                                                                        @Html.TextBoxFor(model => model.DiaChiLienHe, new { @class = "form-control", @required = "required" })<br>
                                                                     </div>
                                                                 </div>
                                                             </div>
 
                                                         </li>
                                                         <li>
-                                                            <div class="bg-light media border-bottom p-15">
+                                                            <div class="bg-light media border-bottom mb-20 p-15">
 
                                                                 <div class="form-group">
-                                                                    <div class="col-md-12">
-                                                                        <span class="mt-0 mb-0 font-weight-600">Điện thoại</span>
-                                                                    </div>
-                                                                    <div class="col-md-4" style="padding-right:0px">
-                                                                        <span class="mt-0 mb-0 font-weight-600">Liên hệ:</span>
+                                                                    <div class="col-md-4">
+                                                                        <span class="mt-0 mb-0 font-weight-600">Điện thoại liên hệ:</span>
                                                                     </div>
                                                                     <div class="col-md-8">
-                                                                        @Html.EditorFor(model => model.DienThoai, new { htmlAttributes = new { @class = "form-control", @required = "reuqired" } })<br>
+                                                                        @Html.TextBoxFor(model => model.DienThoai, new { @class = "form-control", @required = "required" })<br>
                                                                     </div>
                                                                     <div class="col-md-4">
                                                                         <span class="mt-0 mb-0 font-weight-600">Email:</span>
                                                                     </div>
                                                                     <div class="col-md-8">
-                                                                        @Html.EditorFor(model => model.EmailLienHe, new { htmlAttributes = new { @class = "form-control", @required = "reuqired" } })<br>
+                                                                        @Html.TextBoxFor(model => model.EmailLienHe, new { @class = "form-control", @required = "required" })<br>
                                                                     </div>
                                                                 </div>
                                                             </div>
-
                                                         </li>
-                                                    </ul>
-                                                </div>
+                                                    </ul>                                             
+                                                        
+                                                </div>                                               
                                             </div>
                                         </div>
                                         <div class="col-md-6">
@@ -176,7 +173,7 @@
 
                                                 <div class="volunteer-address x_content">
                                                     <div class="bg-light media border-bottom p-15 mb-20" style="overflow: visible">
-                                                        <div class="form-group">
+                                                        <div class="form-group ">
                                                             <h5 class="mt-0 mb-0 font-weight-600">Chức danh:</h5>
                                                             <p>
                                                                 @Html.DropDownList("MaHocHam", (IEnumerable<SelectListItem>)ViewBag.MaHH, "--Chọn học hàm--", new { @class = "form-control" })
@@ -205,13 +202,49 @@
                                                             <p>
                                                                 @Html.ListBox("DSLinhVucNC", ViewBag.DSLinhVucNghienCuu as MultiSelectList, new { @class = "listbox" })
                                                             </p>
-                                                            <h5 class="mt-0 mb-0 font-weight-600">Trình Độ Ngoại Ngữ:</h5>
-                                                            <p>
-                                                                @Html.ListBox("DSTrinhDoNN", ViewBag.DSTrinhDoNgoaiNgu as MultiSelectList, new { @class = "listbox" })
-                                                            </p>
                                                         </div>
                                                     </div>
+                                                </div>
+                                            </div>
 
+                                            <div class="x_panel">
+                                                <div class="x_title">
+                                                    <h2>Tài khoản ngân hàng:</h2>
+                                                    <ul class="nav navbar-right panel_toolbox">
+                                                        <li class="icon-toggle">
+                                                            <a class="collapse-link"><i class="glyphicon glyphicon-chevron-up"></i></a>
+                                                        </li>
+                                                    </ul>
+                                                    <div class="clearfix"></div>
+                                                </div>
+                                                <div class="volunteer-address x_content">
+                                                    <div class="bg-light media border-bottom p-15 mb-20" style="overflow: visible">                                                        
+                                                        <div class="form-group">                                                           
+                                                            <h5 class="mt-0 mb-0 font-weight-600">Số tài khoản:</h5>
+                                                            <p>
+                                                                <input type="text" name="STKNH" value="@Model.NganHangNKHs.STKNH" class="form-control" required />
+                                                                
+                                                            </p>
+
+                                                            <h5 class="mt-0 mb-0 font-weight-600">Tên ngân hàng:</h5>
+                                                            <p>
+                                                                @Html.DropDownList("MaNH", new SelectList(db.NganHangs, "MaNH", "TenNH", Model.NganHangNKHs.NganHang.MaNH), new { @class = "form-control" })
+                                                            </p>
+
+                                                            <h5 class="mt-0 mb-0 font-weight-600">Chi nhánh:</h5>
+                                                            <p>
+                                                                <input type="text" name="ChiNhanhNH" value="@Model.NganHangNKHs.ChiNhanhNH" class="form-control" required />
+                                                                
+                                                            </p>
+
+                                                            <h5 class="mt-0 mb-0 font-weight-600">Ghi chú:</h5>
+                                                            <p>
+                                                                <input type="text" name="GhiChu" value="@Model.NganHangNKHs.GhiChu" class="form-control" required />
+                                                                
+                                                            </p>
+                                                            
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -231,6 +264,69 @@
                         </div>
                     </div>
                 }
+
+                @{ int indexernn = 0;}
+                @using (Html.BeginForm("EditNgoaiNguNKH", "NhaKhoaHocs", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.HiddenFor(model => model.MaNKH)
+                    <div class="form-group">
+                        <div class="row x_panel">
+                            <div class="x_title">
+                                <h2>Trình độ ngoại ngữ</h2>
+                                <ul class="nav navbar-right panel_toolbox">
+                                    <li class="icon-toggle">
+                                        <a class="collapse-link"><i class="glyphicon glyphicon-chevron-up"></i></a>
+                                    </li>
+                                </ul>
+                                <div class="clearfix"></div>
+                            </div>
+
+                            <div class="col-md-12 x_content">
+                                <table class="table table-bordered table-striped" id="trinhdonn">
+                                    <thead class="custom-tablebody">
+                                        <tr>                                           
+                                            <th>Tên Ngoại Ngữ</th>
+                                            <th>Đọc</th>
+                                            <th>Viết</th>
+                                            <th>Nói</th>
+                                            <th><button class="btn btn-success" id="ThemTrinhDoNN" type="button"><span class="glyphicon glyphicon-plus-sign"></span></button></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="custom-tablebody">
+
+                                        @foreach (var item in Model.NgoaiNguNKHs)
+                                        {
+                                        <tr>
+                                            <td style="display:none;">@Html.Hidden("[" + indexernn + "].ID", item.ID, new { @id = "ID" })</td>
+                                            <td style="display:none;">@Html.Hidden("[" + indexernn + "].MaNKH", item.MaNKH)</td>
+                                            <td>@Html.DropDownList("[" + indexernn + "].MaTrinhDoNN", new SelectList(db.TrinhDoNgoaiNgus, "MaTrinhDoNN", "TenTrinhDo", item.MaTrinhDoNN), new { @class = "form-control text-right" })</td>
+                                            <td>@Html.DropDownList("[" + indexernn + "].Doc", new SelectList(db.DanhGiaNgoaiNgus, "MaLoai", "TenLoai", item.Doc), new { @class = "form-control text-right" })</td>
+                                            <td>@Html.DropDownList("[" + indexernn + "].Viet", new SelectList(db.DanhGiaNgoaiNgus, "MaLoai", "TenLoai", item.Viet), new { @class = "form-control text-right" })</td>
+                                            <td>@Html.DropDownList("[" + indexernn + "].Noi", new SelectList(db.DanhGiaNgoaiNgus, "MaLoai", "TenLoai", item.Noi), new { @class = "form-control text-right" })</td>
+                                            <td><buton class="btn btn-danger" id="xoatrinhdo"><span class="glyphicon glyphicon-remove-sign"></span></buton></td>
+                                        </tr>
+                                            indexernn++;
+                                        }
+                                        <input name="xoatrinhdonn" type="hidden" id="xoatrinhdonn" class="form-control" />
+                                        <input name="xoatrinhdonnjs" type="hidden" id="xoatrinhdonnjs" class="form-control" />
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="modal-footer" style="border-top:0 !important;">
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" value="Lưu" class="btn btn-primary" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+
+
+
                 @{ int indexer = 0;}
                 @using (Html.BeginForm("EditQuaTrinhDT", "NhaKhoaHocs", FormMethod.Post))
                 {
@@ -239,7 +335,7 @@
                     <div class="form-group">
                         <div class="row x_panel">
                             <div class="x_title">
-                                <h2>Quá trình công tác và đào tạo </h2>
+                                <h2>Quá trình đào tạo</h2>
                                 <ul class="nav navbar-right panel_toolbox">
                                     <li class="icon-toggle">
                                         <a class="collapse-link"><i class="glyphicon glyphicon-chevron-up"></i></a>
@@ -247,17 +343,16 @@
                                 </ul>
                                 <div class="clearfix"></div>
                             </div>
-                         
+
                             <div class="col-md-12 x_content">
                                 <table class="table table-bordered table-striped" id="quatrinhdt">
                                     <thead class="custom-tablebody">
                                         <tr>
                                             <th>Thời gian bắt đầu</th>
                                             <th>Thời gian kết thúc</th>
-                                            <th>Bậc đào tạo</th>
+                                            <th>Học vị</th>
                                             <th>Cơ sở đào tạo</th>
                                             <th>Ngành đào tạo</th>
-                                            <th>Năm tốt nghiệp</th>
                                             <th><button class="btn btn-success" id="ThemQuaTrinhDaoTao" type="button"><span class="glyphicon glyphicon-plus-sign"></span></button></th>
                                         </tr>
                                     </thead>
@@ -270,10 +365,10 @@
                                                 <td style="display:none;">@Html.Hidden("[" + indexer + "].MaNKH", item.MaNKH)</td>
                                                 <td><input name="[@indexer].ThoiGianBD" id="[@indexer].ThoiGianBD" class="form-control date-picker text-right" type="text" autocomplete="off" value="@item.ThoiGianBD.Value.ToString("d")" /></td>
                                                 <td><input name="[@indexer].ThoiGianKT" id="[@indexer].ThoiGianKT" class="form-control date-picker text-right" type="text" autocomplete="off" value="@item.ThoiGianKT.Value.ToString("d")" /></td>
-                                                <td>@Html.DropDownList("[" + indexer + "].MaBacDT", new SelectList(db.BacDaoTaos, "MaBacDT", "TenBacDT", item.MaBacDT), new { @class = "form-control text-right" })</td>
+                                                <td>@Html.DropDownList("[" + indexer + "].MaHocVi", new SelectList(db.HocVis, "MaHocVi", "TenHocVi", item.MaHocVi), new { @class = "form-control text-right" })</td>
                                                 <td>@Html.TextBox("[" + indexer + "].CoSoDaoTao", item.CoSoDaoTao, new { @class = "form-control text-right" })</td>
                                                 <td>@Html.DropDownList("[" + indexer + "].MaNganh", new SelectList(db.NganhDaoTaos, "MaNganhDaoTao", "TenNganhDaoTao", item.MaNganh), new { @class = "form-control text-right" })</td>
-                                                <td><input name="[@indexer].NamTotNghiep" id="[@indexer].NamTotNghiep" class="form-control date-picker text-right" type="text" autocomplete="off" value="@item.NamTotNghiep.Value.ToString("d")" /></td>
+
                                                 <td><buton class="btn btn-danger" id="xoadaotao"><span class="glyphicon glyphicon-remove-sign"></span></buton></td>
                                             </tr>
                                             indexer++;
@@ -302,7 +397,7 @@
                     <div class="form-group">
                         <div class="row x_panel">
                             <div class="x_title">
-                                <h2></h2>
+                                <h2>Quá trình công tác</h2>
                                 <ul class="nav navbar-right panel_toolbox">
                                     <li class="icon-toggle">
                                         <a class="collapse-link"><i class="glyphicon glyphicon-chevron-up"></i></a>
@@ -317,9 +412,11 @@
                                         <tr>
                                             <th>Thời gian bắt đầu</th>
                                             <th>Thời gian kết thúc</th>
-                                            <th>Chức danh công tác</th>
-                                            <th>Đơn vị quản lý</th>
-                                            <th>Chức vụ công tác</th>
+                                            <th>Tên cơ quan</th>
+                                            <th>Tên Phòng ban</th>
+                                            <th>Địa chỉ cơ quan</th>
+                                            <th>Tỉnh thành phố</th>
+                                            <th>Chức vụ</th>
                                             <th><button class="btn btn-success" id="ThemQuaTrinhCongTac" type="button"><span class="glyphicon glyphicon-plus-sign"></span></button></th>
                                         </tr>
                                     </thead>
@@ -332,8 +429,10 @@
                                                 <td style="display:none;">@Html.Hidden("[" + indexerct + "].MaNKH", item.MaNKH)</td>
                                                 <td><input name="[@indexerct].ThoiGianBD" id="[@indexerct]DTThoiGianBD" class="form-control date-picker text-right" type="text" autocomplete="off" value="@item.ThoiGianBD.Value.ToString("d")" /></td>
                                                 <td><input name="[@indexerct].ThoiGIanKT" id="[@indexerct]DTThoiGIanKT" class="form-control date-picker text-right" type="text" autocomplete="off" value="@item.ThoiGIanKT.Value.ToString("d")" /></td>
-                                                <td>@Html.TextBox("[" + indexerct + "].ChucDanhCT", item.ChucDanhCT, new { @class = "form-control text-right" })</td>
-                                                <td>@Html.DropDownList("[" + indexerct + "].MaDonViQL", new SelectList(db.DonViQLs, "MaDonVi", "TenDonVi", item.MaDonViQL), new { @class = "form-control text-right" })</td>
+                                                <td>@Html.TextBox("[" + indexerct + "].TenCoQuan", item.TenCoQuan, new { @class = "form-control text-right" })</td>
+                                                <td>@Html.TextBox("[" + indexerct + "].TenPhongBan", item.TenPhongBan, new { @class = "form-control text-right" })</td>
+                                                <td>@Html.TextBox("[" + indexerct + "].DiaChiQoQuan", item.DiaChiQoQuan, new { @class = "form-control text-right" })</td>
+                                                <td>@Html.TextBox("[" + indexerct + "].TinhTP", item.TinhTP, new { @class = "form-control text-right" })</td>
                                                 <td>@Html.TextBox("[" + indexerct + "].ChucVuCT", item.ChucVuCT, new { @class = "form-control text-right" })</td>
                                                 <td><buton class="btn btn-danger" id="xoacongtac"><span class="glyphicon glyphicon-remove-sign"></span></buton></td>
                                             </tr>
@@ -347,7 +446,7 @@
                         </div>
                         <div class="modal-footer" style="border-top:0 !important;">
                             <div class="form-group">
-                                <div class="col-md-offset-2 col-md-10">                                    
+                                <div class="col-md-offset-2 col-md-10">
                                     <input type="submit" value="Lưu" class="btn btn-primary" />
                                 </div>
                             </div>
@@ -364,23 +463,64 @@
 <script>
         var indexerjs = @indexer;
         var indexerjsct = @indexerct;
+        var indexernnjs = @indexernn;
         var ma_phi_xoa = [];
         var ma_phi_xoa_js = [];
         var ma_phi_xoa_ct = [];
         var ma_phi_xoa_ct_js = [];
-        $(document).ready(function () {
-            $("#ThemQuaTrinhDaoTao").click(function () {
+        var ma_phi_xoa_nn = [];
+        var ma_phi_xoa_nn_js = [];
+         $(document).ready(function () {
+            $("#ThemTrinhDoNN").click(function () {               
+                $("#trinhdonn tbody:last-child ").append(`  
+                                                <tr>                                                   
+                                                    <td style="display:none;"><input id="ID" name="[` + indexernnjs + `].ID" type="hidden" value="" /></td>
+                                                    <td style="display:none;"><input name="[` + indexernnjs + `].MaNKH" type="hidden" value="@Model.MaNKH" /></td>
+                                                    <td>@Html.DropDownList("s", new SelectList(db.TrinhDoNgoaiNgus, "MaTrinhDoNN", "TenTrinhDo"), new { @class = "form-control text-right", @id = "SelectListTenNgoaiNgu" })</td>
+                                                    <td>@Html.DropDownList("s", new SelectList(db.DanhGiaNgoaiNgus, "MaLoai", "TenLoai"), new { @class = "form-control text-right", @id = "SelectListDanhGia" })</td>                                                   
+                                                    <td>@Html.DropDownList("s", new SelectList(db.DanhGiaNgoaiNgus, "MaLoai", "TenLoai"), new { @class = "form-control text-right", @id = "SelectListDanhGia1" })</td>                                                   
+                                                    <td>@Html.DropDownList("s", new SelectList(db.DanhGiaNgoaiNgus, "MaLoai", "TenLoai"), new { @class = "form-control text-right", @id = "SelectListDanhGia2" })</td>                                                   
+                                                        <td><buton class="btn btn-danger" id="xoatrinhdo"><span class="glyphicon glyphicon-remove-sign"></span></buton></td>
+                                                </tr>`);
+                        $("#SelectListTenNgoaiNgu").attr('name', "[" + indexernnjs + "].MaTrinhDoNN");
+                        $("#SelectListDanhGia").attr('name', "[" + indexernnjs + "].Doc");
+                        $("#SelectListDanhGia1").attr('name', "[" + indexernnjs + "].Viet");
+                        $("#SelectListDanhGia2").attr('name', "[" + indexernnjs + "].Noi");
+                        $("#SelectListDanhGia").removeAttr('id');
+                        $("#SelectListDanhGia1").removeAttr('id');
+                        $("#SelectListDanhGia2").removeAttr('id');
+                        indexernnjs++;                       
+            });         
+
+             $('#trinhdonn').on('click', '#xoatrinhdo', function () {
+                 var id = $(this).closest("tr").find("td:first input#ID").val();
+                 if (id != null) {
+                     ma_phi_xoa_nn.push(id);
+                     $("#xoatrinhdonn").val(JSON.stringify(ma_phi_xoa_nn));
+                     console.log($("#xoaquatrinhdaotao").val());
+                 }
+                 else {
+                     var index = $(this).parents("tr").index("tr") - 1;
+                     console.log($(this).parents("tr").index("tr") - 1);
+                     ma_phi_xoa_nn_js.push(index);
+                     $("#xoatrinhdonnjs").val(JSON.stringify(ma_phi_xoa_nn_js));
+                 }
+                 $(this).closest("tr").hide();
+             });
+
+
+
+            $("#ThemQuaTrinhDaoTao").click(function () {               
                 $("#quatrinhdt tbody:last-child ").append(`  <tr>
                                                     <input name="[`+indexerjs+`].MaNKH" type="hidden" value="@Model.MaNKH" />
                                                     <td><input name="[`+ indexerjs + `].ThoiGianBD" id="[` + indexerjs + `]DTThoiGianBD" class="form-control date-picker text-right" type="text" autocomplete="off" value="" /></td>
                                                     <td><input name="[`+ indexerjs + `].ThoiGianKT" id="[` + indexerjs + `]DTThoiGianKT" class="form-control date-picker text-right" type="text" autocomplete="off" value="" /></td>
-                                                    <td>@Html.DropDownList("s", new SelectList(db.BacDaoTaos, "MaBacDT", "TenBacDT"), new { @class = "form-control text-right", @id = "SelectListMaBacDaoTao" })</td>
+                                                    <td>@Html.DropDownList("s", new SelectList(db.HocVis, "MaHocVi", "TenHocVi"), new { @class = "form-control text-right", @id = "SelectListMaBacDaoTao" })</td>
                                                     <td><input class="form-control text-right" name="[`+ indexerjs +`].CoSoDaoTao" type="text" value="" /></td>
-                                                    <td>@Html.DropDownList("s", new SelectList(db.NganhDaoTaos, "MaNganhDaoTao", "TenNganhDaoTao"), new { @class = "form-control text-right" , @id="SelectListMaNganhDaoTao"})</td>
-                                                    <td><input name="[`+ indexerjs + `].NamTotNghiep" id="[` + indexerjs +`].NamTotNghiep" class="form-control date-picker text-right" type="text" autocomplete="off" value="" /></td>
+                                                    <td>@Html.DropDownList("s", new SelectList(db.NganhDaoTaos, "MaNganhDaoTao", "TenNganhDaoTao"), new { @class = "form-control text-right" , @id="SelectListMaNganhDaoTao"})</td>                                                   
                                                     <td><buton class="btn btn-danger" id="xoadaotao"><span class="glyphicon glyphicon-remove-sign"></span></buton></td>
                                                 </tr>`);
-                $("#SelectListMaBacDaoTao").attr('name', "[" + indexerjs + "].MaBacDT");
+                $("#SelectListMaBacDaoTao").attr('name', "[" + indexerjs + "].MaHocVi");
                 $("#SelectListMaNganhDaoTao").attr('name', "[" + indexerjs + "].MaNganh");
                 $("#SelectListMaBacDaoTao").removeAttr('id');
                 $("#SelectListMaNganhDaoTao").removeAttr('id');
@@ -405,18 +545,19 @@
                 $(this).closest("tr").hide();
             });
 
-
-            // Nếu add như thế sẽ không add động dược một khi chỉnh sửa database về khoa thì sẽ phải chỉnh front end lại -- fix sau
+            
 
             $("#ThemQuaTrinhCongTac").click(function () {
                 $("#quatrinhct tbody:last-child ").append(`<tr>
                                                 <input name="[`+ indexerjsct + `].MaNKH" type="hidden" value="@Model.MaNKH" />
                                                 <td><input name="[`+ indexerjsct + `].ThoiGianBD" id="ThoiGianBD" class="form-control date-picker text-right" type="text" autocomplete="off" value="" /></td>
                                                 <td><input name="[`+ indexerjsct + `].ThoiGIanKT" id="ThoiGianKT" class="form-control date-picker text-right" type="text" autocomplete="off" value="" /></td>
-                                                <td><input class="form-control text-right" name="[`+ indexerjsct + `].ChucDanhCT" type="text" value="" /></td>
-                                                <td>@Html.DropDownList("s", new SelectList(db.DonViQLs, "MaDonVi", "TenDonVi"), new { @class = "form-control text-right", @id="SelectListDonViQuanLy" })</td >
-                    <td><input class="form-control text-right" name="[`+ indexerjsct + `].ChucVuCT" type="text" value="" /></td>
-                    <td><buton class="btn btn-danger" id="xoacongtac"><span class="glyphicon glyphicon-remove-sign"></span></buton></td>
+                                                    <td><input class="form-control text-right" name="[`+ indexerjsct + `].TenCoQuan" type="text" value="" /></td>
+                                                <td><input class="form-control text-right" name="[`+ indexerjsct + `].TenPhongBan" type="text" value="" /></td>
+                                                <td><input class="form-control text-right" name="[`+ indexerjsct + `].DiaChiQoQuan" type="text" value="" /></td>
+                                                <td><input class="form-control text-right" name="[`+ indexerjsct + `].TinhTP" type="text" value="" /></td>
+                                                <td><input class="form-control text-right" name="[`+ indexerjsct + `].ChucVuCT" type="text" value="" /></td>
+                                                <td><buton class="btn btn-danger" id="xoacongtac"><span class="glyphicon glyphicon-remove-sign"></span></buton></td>
                                             </tr >`);
 
                 $("#SelectListDonViQuanLy").attr('name', "[" + indexerjsct + "].MaDonViQL");

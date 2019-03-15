@@ -33,18 +33,33 @@
                 </div>
 
                 <div class="form-group">
-                    <div class="col-md-2  col-md-offset-1"><h4>Đơn vị quản lý:</h4></div>
+                    <div class="col-md-2  col-md-offset-1"><h4>Cơ quan công tác:</h4></div>
                     <div class="col-md-7">
-                        @Html.DropDownList("MaDonViQL", new SelectList(db.DonViQLs, "MaDonVi", "TenDonVI",Model.MaDonViQL), new { @class = "form-control" })
+                        <input name="TenCoQuan" type="text" class="form-control" value="@Model.TenCoQuan" required />
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <div class="col-md-2  col-md-offset-1"><h4>Chức danh công tác:</h4></div>
+                    <div class="col-md-2  col-md-offset-1"><h4>Phòng ban:</h4></div>
                     <div class="col-md-7">
-                        <input name="ChucDanhCT" type="text" class="form-control" value="@Model.ChucDanhCT" required />
+                        <input name="TenPhongBan" type="text" class="form-control" value="@Model.TenPhongBan" required />
                     </div>
                 </div>
+
+                <div class="form-group">
+                    <div class="col-md-2  col-md-offset-1"><h4>Địa chỉ cơ quan:</h4></div>
+                    <div class="col-md-7">
+                        <input name="DiaChiQoQuan" type="text" class="form-control" value="@Model.DiaChiQoQuan" required />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-2  col-md-offset-1"><h4>Thành phố:</h4></div>
+                    <div class="col-md-7">
+                        <input name="TinhTP" type="text" class="form-control" value="@Model.TinhTP" required />
+                    </div>
+                </div>
+
 
                 <div class="form-group">
                     <div class="col-md-2  col-md-offset-1"><h4>Chức vụ công tác:</h4></div>

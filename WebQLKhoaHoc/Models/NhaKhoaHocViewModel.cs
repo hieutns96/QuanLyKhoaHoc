@@ -42,9 +42,14 @@ namespace WebQLKhoaHoc.Models
         public virtual ICollection<QuaTrinhDaoTao> QuaTrinhDaoTaos { get; set; }
         public virtual ICollection<LinhVuc> LinhVucs { get; set; }
         public virtual ICollection<TrinhDoNgoaiNgu> TrinhDoNgoaiNgus { get; set; }
+        public virtual ICollection<NgoaiNguNKH> NgoaiNguNKHs { get; set; }
+        public virtual NganHangNKH NganHangNKHs { get; set; }
 
         public static NhaKhoaHocViewModel Mapping(NhaKhoaHoc nkh)
         {
+
+
+
             NhaKhoaHocViewModel nkhvm = new NhaKhoaHocViewModel();
             nkhvm.NgachVienChuc = nkh.NgachVienChuc ?? new NgachVienChuc();
             nkhvm.NgaySinh = nkh.NgaySinh ?? new DateTime();
@@ -54,18 +59,18 @@ namespace WebQLKhoaHoc.Models
             nkhvm.DienThoai = nkh.DienThoai ?? String.Empty;
             nkhvm.DiaChiLienHe = nkh.DiaChiLienHe ?? String.Empty;
             nkhvm.HocHam = nkh.HocHam ?? new HocHam();
-            nkhvm.NamKetThucDaoTao = nkh.QuaTrinhDaoTaos.Count > 0 ? nkh.QuaTrinhDaoTaos.Where(p => p.MaNKH == nkh.MaNKH).Max(t => t.NamTotNghiep).Value : new DateTime();
+            nkhvm.NamKetThucDaoTao = nkh.QuaTrinhDaoTaos.Count > 0 ? nkh.QuaTrinhDaoTaos.Where(p => p.MaNKH == nkh.MaNKH).Max(t => t.ThoiGianKT).Value : new DateTime();
             nkhvm.HocVi = nkh.HocVi ?? new HocVi();
             nkhvm.DonViQL = nkh.DonViQL ?? new DonViQL();
             nkhvm.MaCNDaoTao = nkh.MaCNDaoTao ;
-            nkhvm.MaDonViQL = nkh.MaDonViQL ;
+            nkhvm.MaDonViQL = Convert.ToInt32(nkh.MaDonViQL) ;
             nkhvm.EmailLienHe = nkh.EmailLienHe ?? String.Empty;
             nkhvm.QuaTrinhCongTacs = nkh.QuaTrinhCongTacs ?? new List<QuaTrinhCongTac>();
             nkhvm.QuaTrinhDaoTaos = nkh.QuaTrinhDaoTaos ?? new List<QuaTrinhDaoTao>();
             nkhvm.DSNguoiThamGiaBaiBaos = nkh.DSNguoiThamGiaBaiBaos ?? new List<DSNguoiThamGiaBaiBao>();
             nkhvm.DSNguoiThamGiaDeTais = nkh.DSNguoiThamGiaDeTais ?? new List<DSNguoiThamGiaDeTai>();
             nkhvm.DSTacGias = nkh.DSTacGias ?? new List<DSTacGia>();
-            nkhvm.TrinhDoNgoaiNgus = nkh.TrinhDoNgoaiNgus ?? new List<TrinhDoNgoaiNgu>();
+            nkhvm.TrinhDoNgoaiNgus = nkh.NgoaiNguNKHs.Select(p=>p.TrinhDoNgoaiNgu).ToList() ?? new List<TrinhDoNgoaiNgu>();
             nkhvm.MaNKHHoSo = nkh.MaNKHHoSo ;
             nkhvm.MaHocVi = nkh.MaHocVi ;
             nkhvm.MaHocHam = nkh.MaHocHam ;
@@ -78,8 +83,8 @@ namespace WebQLKhoaHoc.Models
             nkhvm.DsBaiBao = nkh.DSNguoiThamGiaBaiBaos.Where(p => p.MaNKH == nkh.MaNKH).Count();
             nkhvm.DsSach = nkh.DSTacGias.Where(p => p.MaNKH == nkh.MaNKH).Count();
             nkhvm.DsDetai = nkh.DSNguoiThamGiaBaiBaos.Where(p => p.MaNKH == nkh.MaNKH).Count();
-
-
+            nkhvm.NgoaiNguNKHs = nkh.NgoaiNguNKHs ?? new List<NgoaiNguNKH>();
+            nkhvm.NganHangNKHs = nkh.NganHangNKH ?? new NganHangNKH();
             return nkhvm;
         }
 

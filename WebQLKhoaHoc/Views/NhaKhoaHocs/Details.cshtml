@@ -180,7 +180,7 @@
                                                     </div>
                                                 </li>
                                                 <li>
-                                                    <div class="bg-light media border-bottom p-15">
+                                                    <div class="bg-light media border-bottom mb-20 p-15">
                                                         <div class="media-left">
                                                             <i class="fa fa-phone text-theme-colored font-24 mt-5"></i>
                                                         </div>
@@ -189,11 +189,32 @@
                                                             <p>
                                                                 <span>Điện thoại:</span> @Model.DienThoai<br>
                                                                 <span>Email:</span> @Model.EmailLienHe<br>
-
                                                             </p>
                                                         </div>
                                                     </div>
                                                 </li>
+                                                @if (Session["user"] != null)
+                                                {
+                                                    WebQLKhoaHoc.Models.UserLoginViewModel user = (WebQLKhoaHoc.Models.UserLoginViewModel)Session["user"];
+                                                    if (user.MaNKH == Model.MaNKH)
+                                                    {
+                                                        <li>
+                                                            <div class="bg-light media border-bottom p-15">
+                                                                <div class="media-left">
+                                                                    <i class="fas fa-money-check-alt text-theme-colored font-24 mt-5"></i>
+                                                                </div>
+                                                                <div class="media-body">
+                                                                    <h5 class="mt-0 mb-0 font-weight-600">Tài khoản ngân hàng:</h5>
+                                                                    <p>
+                                                                        <span>Số tài khoản:</span> @Model.NganHangNKHs.STKNH<br>
+                                                                        <span>Tên ngân hàng:</span> @Model.NganHangNKHs.NganHang.TenNH<br>
+                                                                        <span>Chi nhánh:</span> @Model.NganHangNKHs.ChiNhanhNH<br>
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    }
+                                                }
                                             </ul>
                                         </div>
                                     </div>
@@ -354,12 +375,12 @@ i = 1;
                                                                 <td>@item.ThoiGianBD.Value.ToString("dd/MM/yyyy") - @item.ThoiGIanKT.Value.ToString("dd/MM/yyyy")</td>
                                                             </tr>
                                                             <tr>
-                                                                <th>Chức danh công tác</th>
-                                                                <td>@item.ChucDanhCT</td>
+                                                                <th>Tên cơ quan công tác</th>
+                                                                <td>@item.TenCoQuan</td>
                                                             </tr>
                                                             <tr>
-                                                                <th>Cơ quan công tác</th>
-                                                                <td>@item.DonViQL.TenDonVI</td>
+                                                                <th>Tên phòng ban công tác</th>
+                                                                <td>@item.TenPhongBan</td>
                                                             </tr>
                                                             <tr>
                                                                 <th>Chức vụ</th>
@@ -377,12 +398,12 @@ else
                                                                 <td>@item.ThoiGianBD.Value.ToString("dd/MM/yyyy") - @item.ThoiGIanKT.Value.ToString("dd/MM/yyyy")</td>
                                                             </tr>
                                                             <tr>
-                                                                <th>Chức danh công tác</th>
-                                                                <td>@item.ChucDanhCT</td>
+                                                                <th>Tên cơ quan công tác</th>
+                                                                <td>@item.TenCoQuan</td>
                                                             </tr>
                                                             <tr>
-                                                                <th>Cơ quan công tác</th>
-                                                                <td>@item.DonViQL.TenDonVI</td>
+                                                                <th>Tên phòng ban công tác</th>
+                                                                <td>@item.TenPhongBan</td>
                                                             </tr>
                                                             <tr>
                                                                 <th>Chức vụ</th>
@@ -419,11 +440,11 @@ a = 1;
                         {
                             if (b == 0)
                             {
-                                                <li><a href="#0" data-date="@item.NamTotNghiep.Value.ToString("dd/MM/yyyy")" class="selected">@item.NamTotNghiep.Value.Year</a></li>
+                                                <li><a href="#0" data-date="@item.ThoiGianKT.Value.ToString("dd/MM/yyyy")" class="selected">@item.ThoiGianKT.Value.Year</a></li>
 }
 else
 {
-                                                <li><a href="#0" data-date="@item.NamTotNghiep.Value.ToString("dd/MM/yyyy")">@item.NamTotNghiep.Value.Year</a></li>
+                                                <li><a href="#0" data-date="@item.ThoiGianKT.Value.ToString("dd/MM/yyyy")">@item.ThoiGianKT.Value.Year</a></li>
 }
 
 b = 1;
@@ -452,11 +473,11 @@ b = 1;
 
                     if (c == 0)
                     {
-                                                                <li class="selected" data-date="@item.NamTotNghiep.Value.ToString("dd/MM/yyyy")">
+                                                                <li class="selected" data-date="@item.ThoiGianKT.Value.ToString("dd/MM/yyyy")">
                                                                     <table class="table table-hover">
                                                                         <tr>
-                                                                            <th>Bậc đào tạo</th>
-                                                                            <td>@item.BacDaoTao.TenBacDT</td>
+                                                                            <th>Học vị</th>
+                                                                            <td>@item.HocVi.TenHocVi</td>
                                                                         </tr>
                                                                         <tr>
                                                                             <th>Cơ sở đào tạo</th>
@@ -468,18 +489,18 @@ b = 1;
                                                                         </tr>
                                                                         <tr>
                                                                             <th>Năm tốt nghiệp</th>
-                                                                            <td>@item.NamTotNghiep.Value.Year</td>
+                                                                            <td>@item.ThoiGianKT.Value.Year</td>
                                                                         </tr>
                                                                     </table>
                                                                 </li>
 }
 else
 {
-                                                <li data-date="@item.NamTotNghiep.Value.ToString("dd/MM/yyyy")">
+                                                <li data-date="@item.ThoiGianKT.Value.ToString("dd/MM/yyyy")">
                                                     <table class="table table-hover">
                                                         <tr>
                                                             <th>Bậc đào tạo</th>
-                                                            <td>@item.BacDaoTao.TenBacDT</td>
+                                                            <td>@item.HocVi.TenHocVi</td>
                                                         </tr>
                                                         <tr>
                                                             <th>Cơ sở đào tạo</th>
@@ -491,7 +512,7 @@ else
                                                         </tr>
                                                         <tr>
                                                             <th>Năm tốt nghiệp</th>
-                                                            <td>@item.NamTotNghiep.Value.Year</td>
+                                                            <td>@item.ThoiGianKT.Value.Year</td>
                                                         </tr>
                                                     </table>
                                                 </li>

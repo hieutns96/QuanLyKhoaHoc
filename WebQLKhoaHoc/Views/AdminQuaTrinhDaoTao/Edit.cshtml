@@ -33,9 +33,9 @@
                 </div>
 
                 <div class="form-group">
-                    <div class="col-md-2  col-md-offset-1"><h4>Bậc đào tạo:</h4></div>
+                    <div class="col-md-2  col-md-offset-1"><h4>Học vị:</h4></div>
                     <div class="col-md-7">
-                        @Html.DropDownList("MaBacDT", new SelectList(db.BacDaoTaos, "MaBacDT", "TenBacDT", Model.MaBacDT), new { @class = "form-control" })
+                        @Html.DropDownList("MaHocVi", new SelectList(db.HocVis, "MaHocVi", "TenHocVi", Model.MaHocVi), new { @class = "form-control" })
                     </div>
                 </div>
 
@@ -47,19 +47,11 @@
                 </div>
 
                 <div class="form-group">
-                    <div class="col-md-2  col-md-offset-1"><h4>Mã ngành:</h4></div>
+                    <div class="col-md-2  col-md-offset-1"><h4>Tên ngành:</h4></div>
                     <div class="col-md-7">
                         @Html.DropDownList("MaNganh", new SelectList(db.NganhDaoTaos, "MaNganhDaoTao", "TenNganhDaoTao", Model.MaNganh), new { @class = "form-control" })
                     </div>
                 </div>
-
-                <div class="form-group">
-                    <div class="col-md-2  col-md-offset-1"><h4>Năm tốt nghiệp:</h4></div>
-                    <div class="col-md-7">
-                        <input name="NamTotNghiep" type="text" class="form-control" value="@Model.NamTotNghiep" required />
-                    </div>
-                </div>
-
                 <div class="form-group">
                     <div class="col-md-offset-3 col-md-7">
                         @Html.ActionLink("Trở về", "Edit", "AdminNhaKhoaHoc", new { id = ViewBag.manhakhoahoc }, new { @class = "btn btn-danger pull-right" })

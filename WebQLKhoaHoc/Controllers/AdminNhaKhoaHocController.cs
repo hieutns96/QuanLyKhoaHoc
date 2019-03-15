@@ -26,12 +26,6 @@ namespace WebQLKhoaHoc.Controllers
                 NhaKhoaHocViewModel nkh = NhaKhoaHocViewModel.Mapping(nhaKhoaHocs[i]);
                 lstNKH.Add(nkh);
             }
-
-            lstNKH = lstNKH.Concat(lstNKH).ToList();
-            lstNKH = lstNKH.Concat(lstNKH).ToList();
-            lstNKH = lstNKH.Concat(lstNKH).ToList();
-            lstNKH = lstNKH.Concat(lstNKH).ToList();
-            lstNKH = lstNKH.Concat(lstNKH).ToList();
             return View(lstNKH);
         }
 
@@ -123,13 +117,13 @@ namespace WebQLKhoaHoc.Controllers
             {
                 return HttpNotFound();
             }
-            NhaKhoaHocViewModel nhaKhoaHoc = NhaKhoaHocViewModel.Mapping(nkh);
-            ViewBag.MaCNDaoTao = new SelectList(db.ChuyenNganhs, "MaChuyenNganh", "TenChuyenNganh", nhaKhoaHoc.MaCNDaoTao);
-            ViewBag.MaDonViQL = new SelectList(db.DonViQLs, "MaDonVi", "TenDonVI", nhaKhoaHoc.MaDonViQL);
-            ViewBag.MaHocHam = new SelectList(db.HocHams, "MaHocHam", "TenHocHam", nhaKhoaHoc.MaHocHam);
-            ViewBag.MaHocVi = new SelectList(db.HocVis, "MaHocVi", "TenHocVi", nhaKhoaHoc.MaHocVi);
-            ViewBag.MaNgachVienChuc = new SelectList(db.NgachVienChucs, "MaNgach", "TenNgach", nhaKhoaHoc.MaNgachVienChuc);
-            return View(nhaKhoaHoc);
+            //NhaKhoaHocViewModel nhaKhoaHoc = NhaKhoaHocViewModel.Mapping(nkh);
+            ViewBag.MaCNDaoTao = new SelectList(db.ChuyenNganhs, "MaChuyenNganh", "TenChuyenNganh", nkh.MaCNDaoTao);
+            ViewBag.MaDonViQL = new SelectList(db.DonViQLs, "MaDonVi", "TenDonVI", nkh.MaDonViQL);
+            ViewBag.MaHocHam = new SelectList(db.HocHams, "MaHocHam", "TenHocHam", nkh.MaHocHam);
+            ViewBag.MaHocVi = new SelectList(db.HocVis, "MaHocVi", "TenHocVi", nkh.MaHocVi);
+            ViewBag.MaNgachVienChuc = new SelectList(db.NgachVienChucs, "MaNgach", "TenNgach", nkh.MaNgachVienChuc);
+            return View(nkh);
         }
 
         // POST: AdminNhaKhoaHoc/Edit/5
