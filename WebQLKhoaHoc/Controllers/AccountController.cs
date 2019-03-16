@@ -38,9 +38,9 @@ namespace WebQLKhoaHoc.Controllers
             {
                 UserLoginViewModel user = (UserLoginViewModel) Session["user"];
                 NguoiDung nguoiDung = db.NguoiDungs.SingleOrDefault(p => p.Usernames == user.UserName &&
-                                                                         p.Passwords ==
-                                                                         Encryptor.MD5Hash(
-                                                                             model.Password + p.RandomKey));
+                      Encryptor.GetHashString(p.Passwords) == Encryptor.GetHashString(Encryptor.MD5Hash(model.Password + p.RandomKey))
+                      );   
+                //p.Passwords ==   Encryptor.MD5Hash(model.Password + p.RandomKey));
                 if (nguoiDung == null)
                 {
                     ModelState.AddModelError("ErrorPassword", "Mật Khẩu không chích xác");
