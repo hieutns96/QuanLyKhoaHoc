@@ -66,10 +66,20 @@ namespace WebQLKhoaHoc.Controllers
         {
             if(username != null && username != "" && password != null && password != "")
             {
-                NguoiDung nguoiDung = db.NguoiDungs.SingleOrDefault(p => p.Usernames == username &&
-                    p.Passwords == Encryptor.MD5Hash(password + p.RandomKey) );
-                if (nguoiDung != null)
+                NguoiDung nguoiDung = db.NguoiDungs.SingleOrDefault(p => p.Usernames == username && p.IsActive ==true);
+
+                if (nguoiDung == null)
                 {
+                    ViewBag.Error = "Tài khoản không đúng hoặc chưa được kích hoạt!";
+                    return View();
+                }
+                
+                if(Encryptor.GetHashString(nguoiDung.Passwords) == Encryptor.GetHashString( Encryptor.MD5Hash(password + nguoiDung.RandomKey)) )
+                {
+                    //cap nhat lastlogin //update by Khiet
+                    nguoiDung.LastLogin = DateTime.Now;
+                    db.SaveChanges();
+                
                     NhaKhoaHoc nhaKhoaHoc = db.NhaKhoaHocs.Find(nguoiDung.MaNKH);
                     string hovaten = nhaKhoaHoc.HoNKH + " " + nhaKhoaHoc.TenNKH;
                     string anhdaidien = nhaKhoaHoc.AnhCaNhan != null ? string.Format("data:image/jpeg;base64,{0}", Convert.ToBase64String(nhaKhoaHoc.AnhCaNhan)) : String.Empty; ;
