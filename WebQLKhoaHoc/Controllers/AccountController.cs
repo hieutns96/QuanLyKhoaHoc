@@ -20,6 +20,11 @@ namespace WebQLKhoaHoc.Controllers
 
         public ActionResult Login()
         {
+            if (Session["user"] != null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
             return View();
         }
 
@@ -37,13 +42,11 @@ namespace WebQLKhoaHoc.Controllers
             if (ModelState.IsValid)
             {
                 UserLoginViewModel user = (UserLoginViewModel) Session["user"];
-                NguoiDung nguoiDung = db.NguoiDungs.SingleOrDefault(p => p.Usernames == user.UserName &&
-                      Encryptor.GetHashString(p.Passwords) == Encryptor.GetHashString(Encryptor.MD5Hash(model.Password + p.RandomKey))
-                      );   
-                //p.Passwords ==   Encryptor.MD5Hash(model.Password + p.RandomKey));
-                if (nguoiDung == null)
+                NguoiDung nguoiDung = db.NguoiDungs.SingleOrDefault(p => p.Usernames == user.UserName && p.IsActive == true);
+       
+                if (Encryptor.GetHashString(nguoiDung.Passwords) != Encryptor.GetHashString(Encryptor.MD5Hash(model.OldPassword+ nguoiDung.RandomKey)))
                 {
-                    ModelState.AddModelError("ErrorPassword", "Mật Khẩu không chích xác");
+                    ModelState.AddModelError("OldPassword", "Mật Khẩu không chích xác");
                     return View(model);
                 }
 
