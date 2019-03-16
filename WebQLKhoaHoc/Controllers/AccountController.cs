@@ -46,7 +46,7 @@ namespace WebQLKhoaHoc.Controllers
        
                 if (Encryptor.GetHashString(nguoiDung.Passwords) != Encryptor.GetHashString(Encryptor.MD5Hash(model.OldPassword+ nguoiDung.RandomKey)))
                 {
-                    ModelState.AddModelError("OldPassword", "Mật Khẩu không chích xác");
+                    ModelState.AddModelError("OldPassword", "Mật Khẩu không chính xác");
                     return View(model);
                 }
 
