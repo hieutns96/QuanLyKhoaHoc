@@ -11,7 +11,8 @@ namespace WebQLKhoaHoc
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class DonViChuTri
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,9 +20,16 @@ namespace WebQLKhoaHoc
         {
             this.DeTais = new HashSet<DeTai>();
         }
-    
+
+        [Display(Name ="Mã đơn vị chủ trì")]
         public int MaDVChuTri { get; set; }
+        [Display(Name="Tên đơn vị chủ trì")]
+        [MaxLength(50)]
+        [Required]
         public string TenDVChuTri { get; set; }
+
+        [Display(Name = "Địa chỉ")]
+        [MaxLength(50)]
         public string DiaChi { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

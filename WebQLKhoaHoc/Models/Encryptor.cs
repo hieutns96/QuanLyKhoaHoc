@@ -35,6 +35,7 @@ public static class Encryptor
             sb.Append(b.ToString("X2"));
         return sb.ToString();
     }
+
     public static byte[] ToBytes(string hex)
     {
         var shb = SoapHexBinary.Parse(hex);

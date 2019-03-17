@@ -111,6 +111,12 @@ namespace WebQLKhoaHoc.Controllers
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
             LoaiHinhDeTai loaiHinhDeTai = await db.LoaiHinhDeTais.FindAsync(id);
+            List<DeTai> deTai = await db.DeTais.Where(p => p.MaLoaiDeTai == loaiHinhDeTai.MaLoaiDT).ToListAsync();
+            foreach (var detai in deTai)
+            {
+                detai.LoaiHinhDeTai = null;
+                await db.SaveChangesAsync();
+            }
             db.LoaiHinhDeTais.Remove(loaiHinhDeTai);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");

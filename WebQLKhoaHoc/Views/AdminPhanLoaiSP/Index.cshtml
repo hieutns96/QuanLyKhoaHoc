@@ -1,4 +1,4 @@
-﻿@model IEnumerable<WebQLKhoaHoc.LoaiHinhDeTai>
+﻿@model IEnumerable<WebQLKhoaHoc.PhanLoaiSP>
 
 @{
     ViewBag.Title = "Index";
@@ -10,14 +10,14 @@
         <div class="x_panel">
             <div class="x_title">
                 <h2>
-                    Loại hình đề tài
+                    Phân loại sản phẩm đề tài
                 </h2>
                 <ul class="nav navbar-right panel_toolbox">
                     <li class="dropdown">
                         <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
                         <ul class="dropdown-menu" role="menu">
                             <li>
-                                @Html.ActionLink("Create New", "Create", "AdminLoaiHinhDeTai")
+                                @Html.ActionLink("Create New", "Create", "AdminPhanLoaiSP")
                             </li>
                         </ul>
                     </li>
@@ -34,7 +34,7 @@
                                 <thead>
                                     <tr role="row">
                                         <th>
-                                            Tên cấp bậc đề tài:
+                                            Tên phân loại:
                                         </th>
                                         <th>Action</th>
                                     </tr>
@@ -46,14 +46,14 @@
                                         <tr role="row" class="even">
 
                                             <td>
-                                                @Html.DisplayFor(modelItem => item.TenLoaiDT)
+                                                @Html.DisplayFor(modelItem => item.TenPhanLoai)
                                             </td>
 
                                             <td>
-                                                <a href="@Url.Action("Edit", "AdminLoaiHinhDeTai", new {id = item.MaLoaiDT})">
+                                                <a href="@Url.Action("Edit", "AdminPhanLoaiSP", new {id = item.MaPhanLoai })">
                                                     <i class="far fa-edit"></i>
                                                 </a>
-                                                <a href="@Url.Action("Delete", "AdminLoaiHinhDeTai", new {id = item.MaLoaiDT})">
+                                                <a href="@Url.Action("Delete", "AdminPhanLoaiSP", new {id = item.MaPhanLoai })">
                                                     <i class="far fa-trash-alt"></i>
                                                 </a>
                                             </td>
@@ -69,5 +69,3 @@
         </div>
     </div>
 </div>
-
-

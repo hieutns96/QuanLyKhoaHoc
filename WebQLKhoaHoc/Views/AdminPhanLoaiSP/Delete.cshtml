@@ -1,4 +1,4 @@
-﻿@model WebQLKhoaHoc.LoaiHinhDeTai
+﻿@model WebQLKhoaHoc.PhanLoaiSP
 
 @{
     ViewBag.Title = "Delete";
@@ -8,14 +8,14 @@
 <h1 class="text-center">Bạn có chăc lá muốn xóa thông tin bên dưới?</h1>
 <div class="form-horizontal">
     <hr />
-    <h1 class="text-center">Loại hình đề tài</h1>
+    <h1 class="text-center">Phân loại sản phẩm đề tài</h1>
     <br />
     <div class="form-group">
         <div class="col-md-2 col-md-offset-1">
-            <h2>@Html.DisplayNameFor(model => model.TenLoaiDT)</h2>
+            <h2>@Html.DisplayNameFor(model => model.TenPhanLoai)</h2>
         </div>
         <div class="col-md-7">
-            @Html.TextBoxFor(model => model.TenLoaiDT, new { @class = "form-control", @disable = "disable" })
+            @Html.TextBoxFor(model => model.TenPhanLoai, new { @class = "form-control", @disable = "disable" })
         </div>
     </div>
     @using (Html.BeginForm())

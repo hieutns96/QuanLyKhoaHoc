@@ -2,39 +2,46 @@
 
 @{
     ViewBag.Title = "Edit";
-    Layout = "~/Views/Shared/_MainPage.cshtml";
+    Layout = "~/Views/Shared/_AdminMainPage.cshtml";
 }
-
-<h2>Edit</h2>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+    @Html.HiddenFor(model=>model.MaTT)
     <div class="form-horizontal">
-        <h4>DSBaiBaoDeTai</h4>
+        <h1 class="text-center">Bài báo về đề tài</h1>
         <hr />
         @Html.ValidationSummary(true)
-        @Html.HiddenFor(model => model.MaDeTai)
-
-        @Html.HiddenFor(model => model.MaBaiBao)
-
         <div class="form-group">
-            @Html.LabelFor(model => model.GhiChu, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.GhiChu)
-                @Html.ValidationMessageFor(model => model.GhiChu)
+            <div class="col-md-2 col-md-offset-1">
+                <h2>@Html.DisplayNameFor(model => model.BaiBao.TenBaiBao)</h2>
+            </div>
+            <div class="col-md-7">
+                @Html.DropDownList("MaBaiBao", ViewBag.MaBaiBao as SelectList, new { @class = "form-control"})
             </div>
         </div>
-
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+            <div class="col-md-2 col-md-offset-1">
+                <h2> @Html.DisplayNameFor(model => model.DeTai.TenDeTai)</h2>
+            </div>
+            <div class="col-md-7">
+                @Html.DropDownList("MaDeTai", ViewBag.MaDeTai as SelectList, new { @class = "form-control"})
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-2 col-md-offset-1">
+                <h2>@Html.DisplayNameFor(model => model.GhiChu)</h2>
+            </div>
+            <div class="col-md-7">
+                @Html.TextBoxFor(model => model.GhiChu, new { @class = "form-control"})
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-8">
+                @Html.ActionLink("Trở về", "Index", null, new { @class = "btn btn-default pull-right" })
+                <input type="submit" value="Save" class="btn btn-default pull-right" />
             </div>
         </div>
     </div>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>

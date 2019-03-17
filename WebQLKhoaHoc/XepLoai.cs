@@ -11,7 +11,8 @@ namespace WebQLKhoaHoc
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class XepLoai
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,6 +22,10 @@ namespace WebQLKhoaHoc
         }
     
         public int MaXepLoai { get; set; }
+
+        [Display(Name = "Tên Xếp loại")]
+        [MaxLength(50)]
+        [Required]
         public string TenXepLoai { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
