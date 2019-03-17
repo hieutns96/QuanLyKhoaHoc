@@ -20,6 +20,11 @@ namespace WebQLKhoaHoc.Controllers
 
         public ActionResult Login()
         {
+            if (Session["user"] != null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
             return View();
         }
 
@@ -37,13 +42,11 @@ namespace WebQLKhoaHoc.Controllers
             if (ModelState.IsValid)
             {
                 UserLoginViewModel user = (UserLoginViewModel) Session["user"];
-                NguoiDung nguoiDung = db.NguoiDungs.SingleOrDefault(p => p.Usernames == user.UserName &&
-                                                                         p.Passwords ==
-                                                                         Encryptor.MD5Hash(
-                                                                             model.Password + p.RandomKey));
-                if (nguoiDung == null)
+                NguoiDung nguoiDung = db.NguoiDungs.SingleOrDefault(p => p.Usernames == user.UserName && p.IsActive == true);
+       
+                if (Encryptor.GetHashString(nguoiDung.Passwords) != Encryptor.GetHashString(Encryptor.MD5Hash(model.OldPassword+ nguoiDung.RandomKey)))
                 {
-                    ModelState.AddModelError("ErrorPassword", "Mật Khẩu không chích xác");
+                    ModelState.AddModelError("OldPassword", "Mật Khẩu không chính xác");
                     return View(model);
                 }
 
@@ -67,13 +70,20 @@ namespace WebQLKhoaHoc.Controllers
             if(username != null && username != "" && password != null && password != "")
             {
 
-                NguoiDung nguoiDung = db.NguoiDungs.SingleOrDefault(p => p.Usernames == username);
-                Byte[] md5hash = Encryptor.MD5Hash(password);
-                string hashpassword = Encryptor.GetHashString(md5hash);
-                //p.Passwords == Encryptor.MD5Hash(password + p.RandomKey) );
-                Byte[] hex = Encryptor.ToBytes(hashpassword);
-                if (nguoiDung.Passwords == hex )
+                NguoiDung nguoiDung = db.NguoiDungs.SingleOrDefault(p => p.Usernames == username && p.IsActive ==true);
+
+                if (nguoiDung == null)
                 {
+                    ViewBag.Error = "Tài khoản không đúng hoặc chưa được kích hoạt!";
+                    return View();
+                }
+                
+                if(Encryptor.GetHashString(nguoiDung.Passwords) == Encryptor.GetHashString( Encryptor.MD5Hash(password + nguoiDung.RandomKey)) )
+                {
+                    //cap nhat lastlogin //update by Khiet
+                    nguoiDung.LastLogin = DateTime.Now;
+                    db.SaveChanges();
+                
                     NhaKhoaHoc nhaKhoaHoc = db.NhaKhoaHocs.Find(nguoiDung.MaNKH);
                     string hovaten = nhaKhoaHoc.HoNKH + " " + nhaKhoaHoc.TenNKH;
                     string anhdaidien = nhaKhoaHoc.AnhCaNhan != null ? string.Format("data:image/jpeg;base64,{0}", Convert.ToBase64String(nhaKhoaHoc.AnhCaNhan)) : String.Empty; ;
