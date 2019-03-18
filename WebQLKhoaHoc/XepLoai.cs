@@ -11,8 +11,6 @@ namespace WebQLKhoaHoc
 {
     using System;
     using System.Collections.Generic;
-    
-
     public partial class XepLoai
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,7 +19,8 @@ namespace WebQLKhoaHoc
             this.DeTais = new HashSet<DeTai>();
         }
     
-        public int MaXepLoai { get; set; }        
+
+        public int MaXepLoai { get; set; }  
         public string TenXepLoai { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

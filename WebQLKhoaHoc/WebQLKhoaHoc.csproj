@@ -395,6 +395,7 @@
     <Content Include="Content\lightbox\prev.png" />
     <Content Include="Content\menuzord-rounded-boxed.css" />
     <Content Include="Content\PagedList.css" />
+    <Content Include="Content\report.css" />
     <Content Include="Content\responsive.css" />
     <Content Include="Content\style-main.css" />
     <Content Include="Content\theme-skin-color-set-1.css" />
@@ -706,6 +707,7 @@
     <Content Include="Views\AdminNganHangNKHs\Index.cshtml" />
     <Content Include="Views\AdminBaiBao\LinhVucBaiBao.cshtml" />
     <Content Include="Views\AdminBaiBao\EditLinhVucBaiBao.cshtml" />
+    <Content Include="Views\NhaKhoaHocs\GetReport.cshtml" />
     <None Include="Web.Debug.Config">
       <DependentUpon>Web.Config</DependentUpon>
     </None>
