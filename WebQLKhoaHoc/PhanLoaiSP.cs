@@ -11,7 +11,6 @@ namespace WebQLKhoaHoc
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
 
     public partial class PhanLoaiSP
     {
@@ -21,11 +20,7 @@ namespace WebQLKhoaHoc
             this.DeTais = new HashSet<DeTai>();
         }
     
-        public int MaPhanLoai { get; set; }
-
-        [Display(Name = "Phân loại đề tài")]
-        [MaxLength(50)]
-        [Required]
+        public int MaPhanLoai { get; set; }        
         public string TenPhanLoai { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

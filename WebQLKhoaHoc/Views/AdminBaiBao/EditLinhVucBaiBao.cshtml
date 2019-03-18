@@ -1,0 +1,35 @@
+﻿@model WebQLKhoaHoc.BaiBao
+@{
+    ViewBag.Title = "EditLinhVucBaiBao";
+    Layout = "~/Views/Shared/_AdminMainPage.cshtml";
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.MaBaiBao)
+    <input type="hidden" value="@ViewBag.MaLinhVucCu" name="MaLinhVucCu" />
+    <div class="form-horizontal">
+        <h1 class="text-center">Lĩnh vực bài báo</h1>
+        <hr />
+        @Html.ValidationSummary(true)
+        <div class="form-group">
+            <div class="col-md-2 col-md-offset-1">
+                <h2>@Html.DisplayNameFor(model => model.LinhVucs.First().TenLinhVuc)</h2>
+            </div>
+            <div class="col-md-7">
+                @Html.DropDownList("MaLinhVuc",ViewBag.MaLinhVuc as SelectList, new { @class = "form-control" })               
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-8">
+                @Html.ActionLink("Trở về", "LinhVucBaiBao", null, new { @class = "btn btn-default pull-right" })
+                <input type="submit" value="Save" class="btn btn-default pull-right" />
+            </div>
+        </div>
+    </div>
+}
+
+
+

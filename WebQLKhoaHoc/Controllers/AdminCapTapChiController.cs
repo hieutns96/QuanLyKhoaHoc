@@ -47,7 +47,7 @@ namespace WebQLKhoaHoc.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "MaCapTapChi,TenCapTapChi,ChiChu")] CapTapChi capTapChi)
+        public async Task<ActionResult> Create([Bind(Include = "MaCapTapChi,TenCapTapChi,DanhMucNhom")] CapTapChi capTapChi)
         {
             if (ModelState.IsValid)
             {
@@ -79,7 +79,7 @@ namespace WebQLKhoaHoc.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "MaCapTapChi,TenCapTapChi,ChiChu")] CapTapChi capTapChi)
+        public async Task<ActionResult> Edit([Bind(Include = "MaCapTapChi,TenCapTapChi,DanhMucNhom")] CapTapChi capTapChi)
         {
             if (ModelState.IsValid)
             {
@@ -111,6 +111,11 @@ namespace WebQLKhoaHoc.Controllers
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
             CapTapChi capTapChi = await db.CapTapChis.FindAsync(id);
+            List<BaiBao> baiBaos = await db.BaiBaos.Where(p => p.MaCapTapChi == capTapChi.MaCapTapChi).ToListAsync();
+            foreach(var baiBao in baiBaos)
+            {
+                baiBao.CapTapChi = null;
+            }
             db.CapTapChis.Remove(capTapChi);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
