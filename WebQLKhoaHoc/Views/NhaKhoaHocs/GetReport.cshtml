@@ -15,6 +15,7 @@
 <!DOCTYPE html>
 
 <link href="~/Content/report.css" rel="stylesheet" />
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
 
 
 <body class="c45">
@@ -24,10 +25,10 @@
             &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;.
         </span>
     </p>
-    <p class="c19">
+    <p class="c19" style="margin-right: -10px;">
         <span class="c2">
             M&atilde; s&#7889; c&aacute;n b&#7897; vi&ecirc;n
-            ch&#7913;c: @Model.MaNKHHoSo &hellip;&hellip;
+            ch&#7913;c: @Model.MaNKHHoSo
         </span>
     </p>
     <p class="c19 c20"><span class="c2"></span></p>
@@ -56,225 +57,224 @@
         <li class="c17 c29"><span class="c24">Th&ocirc;ng tin c&aacute; nh&acirc;n</span></li>
     </ol>
     <p class="c0 c48"><span class="c2"></span></p><a id="t.76b1b64efaec86c67006b338cd1eaf6672b44c07"></a><a id="t.0"></a>
-    <table class="c39">
-        <tbody>
-            <tr class="c15">
-                <td class="c35" colspan="1" rowspan="1">
-                    <p class="c13"><span class="c2">H&#7885; v&agrave; t&ecirc;n</span></p>
-                </td>
-                <td class="c37" colspan="1" rowspan="1">
-                    <p class="c1"><span class="c2">@Model.HoNKH @Model.TenNKH</span></p>
-                </td>
-                <td class="c34" colspan="1" rowspan="1">
-                    <p class="c13"><span class="c2">N&#259;m sinh</span></p>
-                </td>
-                <td class="c22" colspan="1" rowspan="1">
-                    <p class="c1"><span class="c2">@Model.NgaySinh.Value.ToString("dd-MM-yyyy")</span></p>
-                </td>
-            </tr>
-            <tr class="c15">
-                <td class="c35" colspan="1" rowspan="1">
-                    <p class="c13"><span class="c2">Ch&#7913;c danh khoa h&#7885;c</span></p>
-                </td>
-                <td class="c37" colspan="1" rowspan="1">
-                    <p class="c1"><span class="c2">@Model.HocHam.TenVietTat @Model.HocVi.TenVietTat</span></p>
-                </td>
-                <td class="c34" colspan="1" rowspan="1">
-                    <p class="c13"><span class="c2">Gi&#7899;i t&iacute;nh</span></p>
-                </td>
-                <td class="c22" colspan="1" rowspan="1">
-                    <p class="c1"><span class="c2">@Model.GioiTinhNKH</span></p>
-                </td>
-            </tr>
-            <tr class="c15">
-                <td class="c35" colspan="1" rowspan="1">
-                    <p class="c13"><span class="c2">Ch&#7913;c v&#7909; h&agrave;nh ch&iacute;nh</span></p>
-                </td>
-                <td class="c37" colspan="1" rowspan="1">
-                    <p class="c1"><span class="c2">@quatrinhcongtac.ChucVuCT</span></p>
-                </td>
-                <td class="c34" colspan="1" rowspan="1">
-                    <p class="c13"><span class="c2">S&#7889; CMND, CCCD</span></p>
-                </td>
-                <td class="c22" colspan="1" rowspan="1">
-                    <p class="c1"><span class="c2">@Model.SoCMND</span></p>
-                </td>
-            </tr>
-            <tr class="c15">
-                <td class="c35" colspan="1" rowspan="1">
-                    <p class="c13"><span class="c2">T&ecirc;n ph&ograve;ng, ban, b&#7897; m&ocirc;n</span></p>
-                </td>
-                <td class="c23" colspan="3" rowspan="1">
-                    <p class="c1"><span class="c2">@quatrinhcongtac.TenPhongBan</span></p>
-                </td>
-            </tr>
-            <tr class="c15">
-                <td class="c35" colspan="1" rowspan="1">
-                    <p class="c13"><span class="c2">T&ecirc;n c&#417; quan c&ocirc;ng t&aacute;c</span></p>
-                </td>
-                <td class="c23" colspan="3" rowspan="1">
-                    <p class="c1"><span class="c2">@quatrinhcongtac.TenCoQuan</span></p>
-                </td>
-            </tr>
-            <tr class="c15">
-                <td class="c35" colspan="1" rowspan="1">
-                    <p class="c13"><span class="c2">&#272;&#7883;a ch&#7881; c&#417; quan</span></p>
-                </td>
-                <td class="c37" colspan="1" rowspan="1">
-                    <p class="c1"><span class="c2">@quatrinhcongtac.DiaChiQoQuan</span></p>
-                </td>
-                <td class="c34" colspan="1" rowspan="1">
-                    <p class="c13"><span class="c2">T&#7881;nh, th&agrave;nh ph&#7889;</span></p>
-                </td>
-                <td class="c22" colspan="1" rowspan="1">
-                    <p class="c1"><span class="c2">@quatrinhcongtac.TinhTP</span></p>
-                </td>
-            </tr>
-            <tr class="c15">
-                <td class="c35" colspan="1" rowspan="1">
-                    <p class="c13"><span class="c2">&#272;i&#7879;n tho&#7841;i li&ecirc;n l&#7841;c</span></p>
-                </td>
-                <td class="c23" colspan="3" rowspan="1">
-                    <p class="c1"><span class="c2">@Model.DienThoai</span></p>
-                </td>
-            </tr>
-            <tr class="c15">
-                <td class="c35" colspan="1" rowspan="1">
-                    <p class="c13"><span class="c2">Email ch&iacute;nh</span></p>
-                </td>
-                <td class="c23" colspan="3" rowspan="1">
-                    <p class="c1"><span class="c2">@Model.EmailLienHe</span></p>
-                </td>
-            </tr>
-            <tr class="c15">
-                <td class="c35" colspan="1" rowspan="1">
-                    <p class="c13"><span class="c2">Email thay th&#7871;</span></p>
-                </td>
-                <td class="c23" colspan="3" rowspan="1">
-                    <p class="c1"><span class="c2">@Model.EmailLienHe</span></p>
-                </td>
-            </tr>
-            <tr class="c15">
-                <td class="c35" colspan="1" rowspan="1">
-                    <p class="c13"><span class="c2">S&#7889; t&agrave;i kho&#7843;n</span></p>
-                </td>
-                <td class="c23" colspan="3" rowspan="1">
-                    <p class="c1"><span class="c2">@Model.NganHangNKH.STKNH</span></p>
-                </td>
-            </tr>
-            <tr class="c15">
-                <td class="c35" colspan="1" rowspan="1">
-                    <p class="c13"><span class="c2">M&#7903; t&#7841;i ng&acirc;n h&agrave;ng</span></p>
-                </td>
-                <td class="c23" colspan="3" rowspan="1">
-                    <p class="c1"><span class="c2">@Model.NganHangNKH.NganHang.TenNH</span></p>
-                </td>
-            </tr>
-            <tr class="c15">
-                <td class="c35" colspan="1" rowspan="1">
-                    <p class="c13"><span class="c2">Chi nh&aacute;nh ng&acirc;n h&agrave;ng</span></p>
-                </td>
-                <td class="c23" colspan="3" rowspan="1">
-                    <p class="c1"><span class="c2">@Model.NganHangNKH.ChiNhanhNH</span></p>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <tbody>
+                <tr>
+                    <td>
+                        H&#7885; v&agrave; t&ecirc;n
+                    </td>
+                    <td>
+                        @Model.HoNKH @Model.TenNKH
+                    </td>
+                    <td>
+                        N&#259;m sinh
+                    </td>
+                    <td>
+                        @Model.NgaySinh.Value.ToString("dd-MM-yyyy")
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Ch&#7913;c danh khoa h&#7885;c
+                    </td>
+                    <td>
+                        @Model.HocHam.TenVietTat @Model.HocVi.TenVietTat
+                    </td>
+                    <td>
+                        Gi&#7899;i t&iacute;nh
+                    </td>
+                    <td>
+                        @Model.GioiTinhNKH
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Ch&#7913;c v&#7909; h&agrave;nh ch&iacute;nh
+                    </td>
+                    <td>
+                        @quatrinhcongtac.ChucVuCT
+                    </td>
+                    <td>
+                        S&#7889; CMND, CCCD
+                    </td>
+                    <td>
+                        @Model.SoCMND
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        T&ecirc;n ph&ograve;ng, ban, b&#7897; m&ocirc;n
+                    </td>
+                    <td colspan="3">
+                        @quatrinhcongtac.TenPhongBan
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        T&ecirc;n c&#417; quan c&ocirc;ng t&aacute;c
+                    </td>
+                    <td colspan="3">
+                        @quatrinhcongtac.TenCoQuan
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        &#272;&#7883;a ch&#7881; c&#417; quan
+                    </td>
+                    <td>
+                        @quatrinhcongtac.DiaChiQoQuan
+                    </td>
+                    <td>
+                        T&#7881;nh, th&agrave;nh ph&#7889;
+                    </td>
+                    <td>
+                        @quatrinhcongtac.TinhTP
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        &#272;i&#7879;n tho&#7841;i li&ecirc;n l&#7841;c
+                    </td>
+                    <td colspan="3">
+                        @Model.DienThoai
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Email ch&iacute;nh
+                    </td>
+                    <td colspan="3">
+                        @Model.EmailLienHe
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Email thay th&#7871;
+                    </td>
+                    <td colspan="3">
+                        @Model.EmailLienHe
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        S&#7889; t&agrave;i kho&#7843;n
+                    </td>
+                    <td colspan="3">
+                        @Model.NganHangNKH.STKNH
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        M&#7903; t&#7841;i ng&acirc;n h&agrave;ng
+                    </td>
+                    <td colspan="3">
+                        @Model.NganHangNKH.NganHang.TenNH
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Chi nh&aacute;nh ng&acirc;n h&agrave;ng
+                    </td>
+                    <td colspan="3">
+                        @Model.NganHangNKH.ChiNhanhNH
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
     <p class="c0"><span class="c2"></span></p>
     <ol class="c9 lst-kix_list_1-0" start="2">
         <li class="c17 c36"><span class="c24">Qu&aacute; tr&igrave;nh &#273;&agrave;o t&#7841;o</span></li>
     </ol>
     <p class="c0"><span class="c2"></span></p><a id="t.d97c1d2bf8c9f37cdc1b6f7833b450aa00b1970d"></a><a id="t.1"></a>
-    <table class="c39">
-        <tbody>
-            <tr class="c15">
-                <td class="c6" colspan="1" rowspan="1">
-                    <p class="c5"><span class="c2">TT</span></p>
-                </td>
-                <td class="c11" colspan="1" rowspan="1">
-                    <p class="c5"><span class="c2">Th&#7901;i gian</span></p>
-                </td>
-                <td class="c37" colspan="1" rowspan="1">
-                    <p class="c5"><span class="c2">T&ecirc;n c&#417; s&#7903; &#273;&agrave;o t&#7841;o</span></p>
-                </td>
-                <td class="c40" colspan="1" rowspan="1">
-                    <p class="c5"><span class="c2">Chuy&ecirc;n ng&agrave;nh</span></p>
-                </td>
-                <td class="c26" colspan="1" rowspan="1">
-                    <p class="c5"><span class="c2">H&#7885;c v&#7883;</span></p>
-                </td>
-            </tr>
-            @foreach (var item in Model.QuaTrinhDaoTaos)
-            {
-                <tr class="c15">
-                    <td class="c6" colspan="1" rowspan="1">
-                        <p class="c5"><span class="c2">@count</span></p>
-                    </td>
-                    <td class="c11" colspan="1" rowspan="1">
-                        <p class="c1"><span class="c2">@item.ThoiGianBD.Value.ToString("yyyy")-@item.ThoiGianKT.Value.ToString("yyyy")</span></p>
-                    </td>
-                    <td class="c37" colspan="1" rowspan="1">
-                        <p class="c1"><span class="c2">@item.CoSoDaoTao</span></p>
-                    </td>
-                    <td class="c40" colspan="1" rowspan="1">
-                        <p class="c1"><span class="c2">@item.NganhDaoTao.TenNganhDaoTao</span></p>
-                    </td>
-                    <td class="c26" colspan="1" rowspan="1">
-                        <p class="c5"><span class="c2">@item.HocVi.TenVietTat</span></p>
-                    </td>
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>TT</th>
+                    <th>
+                        Thời gian
+                    </th>
+                    <th>
+                        Tên cơ sở đào tạo
+                    </th>
+                    <th>Chuyên ngành</th>
+                    <th>Học vị</th>
                 </tr>
-                count++;
-            }
-        </tbody>
-    </table>
+            </thead>
+
+            <tbody>
+                @foreach (var item in Model.QuaTrinhDaoTaos)
+                {
+                    <tr>
+                        <td>
+                            @count
+                        </td>
+                        <td>
+                            @item.ThoiGianBD.Value.ToString("yyyy")-@item.ThoiGianKT.Value.ToString("yyyy")
+                        </td>
+                        <td>
+                            @item.CoSoDaoTao
+                        </td>
+                        <td>
+                            @item.NganhDaoTao.TenNganhDaoTao
+                        </td>
+                        <td>
+                            @item.HocVi.TenVietTat
+                        </td>
+                    </tr>
+                    count++;
+                }
+            </tbody>
+        </table>
+    </div>
     <p class="c0"><span class="c2"></span></p>
     <ol class="c9 lst-kix_list_1-0" start="3">
         <li class="c17 c36"><span class="c24">Qu&aacute; tr&igrave;nh c&ocirc;ng t&aacute;c</span></li>
     </ol>
     <p class="c0"><span class="c2"></span></p><a id="t.ae703ce2f420ea70449694eab618ac492df3c650"></a><a id="t.2"></a>
-    <table class="c39">
-        <tbody>
-            <tr class="c15">
-                <td class="c6" colspan="1" rowspan="1">
-                    <p class="c5"><span class="c2">TT</span></p>
-                </td>
-                <td class="c11" colspan="1" rowspan="1">
-                    <p class="c5"><span class="c2">Th&#7901;i gian</span></p>
-                </td>
-                <td class="c21" colspan="1" rowspan="1">
-                    <p class="c5"><span class="c2">T&ecirc;n c&#417; quan c&ocirc;ng t&aacute;c</span></p>
-                </td>
-                <td class="c50" colspan="1" rowspan="1">
-                    <p class="c5"><span class="c2">&#272;&#7883;a ch&#7881;</span></p>
-                </td>
-                <td class="c33" colspan="1" rowspan="1">
-                    <p class="c5"><span class="c2">Ch&#7913;c v&#7909;</span></p>
-                </td>
-            </tr>
-            @{ count = 1;}
-            @foreach (var item in Model.QuaTrinhCongTacs)
-            {
-                <tr class="c15">
-                    <td class="c6" colspan="1" rowspan="1">
-                        <p class="c5"><span class="c2">@count</span></p>
-                    </td>
-                    <td class="c11" colspan="1" rowspan="1">
-                        <p class="c1"><span class="c2">@item.ThoiGianBD.Value.ToString("yyyy")-@item.ThoiGIanKT.Value.ToString("yyyy")</span></p>
-                    </td>
-                    <td class="c21" colspan="1" rowspan="1">
-                        <p class="c1"><span class="c2">@item.TenCoQuan</span></p>
-                    </td>
-                    <td class="c50" colspan="1" rowspan="1">
-                        <p class="c1"><span class="c2">@item.DiaChiQoQuan</span></p>
-                    </td>
-                    <td class="c33" colspan="1" rowspan="1">
-                        <p class="c5 c20"><span class="c2">@item.ChucVuCT</span></p>
-                    </td>
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>TT</th>
+                    <th>
+                        Thời gian
+                    </th>
+                    <th>
+                        Tên cơ quan công tác
+                    </th>
+                    <th>Địa chỉ</th>
+                    <th>Chức vụ</th>
                 </tr>
-                count++;
-            }
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                @{ count = 1;}
+                @foreach (var item in Model.QuaTrinhCongTacs)
+                {
+                    <tr>
+                        <td>
+                            @count
+                        </td>
+                        <td>
+                            @item.ThoiGianBD.Value.ToString("yyyy")-@item.ThoiGIanKT.Value.ToString("yyyy")
+                        </td>
+                        <td>
+                            @item.TenCoQuan
+                        </td>
+                        <td>
+                            @item.DiaChiQoQuan
+                        </td>
+                        <td>
+                            @item.ChucVuCT
+                        </td>
+                    </tr>
+                    count++;
+                }
+            </tbody>
+        </table>
+    </div>
     <p class="c0"><span class="c2"></span></p>
     <ol class="c9 lst-kix_list_1-0" start="4">
         <li class="c17 c36">
@@ -286,42 +286,45 @@
         </li>
     </ol>
     <p class="c0"><span class="c2"></span></p><a id="t.086ccfc796bd5142bc52eece30ec486a6ad3cdab"></a><a id="t.3"></a>
-    <table class="c39">
-        <tbody>
-            <tr class="c15">
-                <td class="c51" colspan="1" rowspan="1">
-                    <p class="c13"><span class="c2">Ngo&#7841;i ng&#7919;</span></p>
-                </td>
-                <td class="c42" colspan="1" rowspan="1">
-                    <p class="c5"><span class="c2">&#272;&#7885;c</span></p>
-                </td>
-                <td class="c32" colspan="1" rowspan="1">
-                    <p class="c5"><span class="c2">Vi&#7871;t</span></p>
-                </td>
-                <td class="c32" colspan="1" rowspan="1">
-                    <p class="c5"><span class="c2">N&oacute;i</span></p>
-                </td>
-            </tr>
-            @{ count = 0;}
-            @foreach (var item in Model.NgoaiNguNKHs)
-            {
-                <tr class="c15">
-                    <td class="c51" colspan="1" rowspan="1">
-                        <p class="c13"><span class="c2">@item.TrinhDoNgoaiNgu.TenTrinhDo</span></p>
-                    </td>
-                    <td class="c42" colspan="1" rowspan="1">
-                        <p class="c1"><span class="c2">@item.DanhGiaNgoaiNgu.TenLoai</span></p>
-                    </td>
-                    <td class="c32" colspan="1" rowspan="1">
-                        <p class="c1"><span class="c2">@item.DanhGiaNgoaiNgu1.TenLoai</span></p>
-                    </td>
-                    <td class="c32" colspan="1" rowspan="1">
-                        <p class="c1"><span class="c2">@item.DanhGiaNgoaiNgu2.TenLoai</span></p>
-                    </td>
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>
+                        Ngoại ngữ
+                    </th>
+                    <th>
+                        Đọc
+                    </th>
+                    <th>
+                        Viết
+                    </th>
+                    <th>Nói</th>
+
                 </tr>
-            }
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                @{ count = 0;}
+                @foreach (var item in Model.NgoaiNguNKHs)
+                {
+                    <tr>
+                        <td>
+                            @item.TrinhDoNgoaiNgu.TenTrinhDo
+                        </td>
+                        <td>
+                            @item.DanhGiaNgoaiNgu.TenLoai
+                        </td>
+                        <td>
+                            @item.DanhGiaNgoaiNgu1.TenLoai
+                        </td>
+                        <td>
+                            @item.DanhGiaNgoaiNgu2.TenLoai
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
     <p class="c0"><span class="c2"></span></p>
     <ol class="c9 lst-kix_list_1-0" start="5">
         <li class="c17 c36">
@@ -354,43 +357,40 @@
         <li class="c17 c38"><span class="c2">&#272;&#7873; t&agrave;i, d&#7921; &aacute;n</span></li>
     </ol>
     <p class="c0 c52"><span class="c2"></span></p><a id="t.381ba009b40aa54bf48a453c481bb5eb7f4d4c19"></a><a id="t.4"></a>
-    <table class="c39">
-        <tbody>
-            <tr class="c15">
-                <td class="c6" colspan="1" rowspan="1">
-                    <p class="c28"><span class="c2">TT</span></p>
-                </td>
-                <td class="c25" colspan="1" rowspan="1">
-                    <p class="c28"><span class="c2">T&ecirc;n &#273;&#7873; t&agrave;i, d&#7921; &aacute;n</span></p>
-                </td>
-                <td class="c31" colspan="1" rowspan="1">
-                    <p class="c28"><span class="c2">C&#417; quan t&agrave;i tr&#7907; kinh ph&iacute;</span></p>
-                </td>
-                <td class="c11" colspan="1" rowspan="1">
-                    <p class="c28"><span class="c2">Th&#7901;i gian th&#7921;c hi&#7879;n </span></p>
-                </td>
-                <td class="c16" colspan="1" rowspan="1">
-                    <p class="c28"><span class="c2">Vai tr&ograve;</span></p>
-                </td>
-            </tr>
-            @{ count = 1;}
-            @foreach (var item in Model.DSNguoiThamGiaDeTais)
-            {
-                <tr class="c15">
-                    <td class="c6" colspan="1" rowspan="1">
-                        <p class="c28"><span class="c2">@count</span></p>
-                    </td>
-                    <td class="c25" colspan="1" rowspan="1">
-                        <p class="c8"><span class="c2">@item.DeTai.TenDeTai</span></p>
-                    </td>
-                    <td class="c31" colspan="1" rowspan="1">
-                        <p class="c8"><span class="c2">@item.DeTai.CoQuanTaiTro</span></p>
-                    </td>
-                    <td class="c11" colspan="1" rowspan="1">
-                        <p class="c8"><span class="c2">@item.DeTai.NamBD.Value.Year-@item.DeTai.NamKT.Value.Year</span></p>
-                    </td>
-                    <td class="c16" colspan="1" rowspan="1">
-                        <p class="c8">
+    <div class="table-responsive">
+        <table class="table table-bordered">
+
+            <thead>
+                <tr>
+                    <th>TT</th>
+                    <th>
+                        Tên đề tài, dự án
+                    </th>
+                    <th>
+                        Cơ quan tài trợ kinh phí
+                    </th>
+                    <th>Thời gian thực hiện</th>
+                    <th>Vai trò</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{ count = 1;}
+                @foreach (var item in Model.DSNguoiThamGiaDeTais)
+                {
+                    <tr>
+                        <td>
+                            @count
+                        </td>
+                        <td>
+                            @item.DeTai.TenDeTai
+                        </td>
+                        <td>
+                            @item.DeTai.CoQuanTaiTro
+                        </td>
+                        <td>
+                            @item.DeTai.NamBD.Value.Year-@item.DeTai.NamKT.Value.Year
+                        </td>
+                        <td>
                             @if (item.LaChuNhiem.Value)
                             {
                                 <span class="c2">Chủ Nhiệm</span>
@@ -399,370 +399,241 @@
                             {
                                 <span class="c2">Đồng Tác Giả</span>
                             }
-                        </p>
-                    </td>
-                </tr>
-                count++;
-            }
-        </tbody>
-    </table>
+                        </td>
+                    </tr>
+                    count++;
+                }
+            </tbody>
+        </table>
+    </div>
     <p class="c0 c52"><span class="c2"></span></p>
     <ol class="c9 lst-kix_list_1-2" start="2">
         <li class="c17 c38"><span class="c2">C&ocirc;ng b&#7889; khoa h&#7885;c</span></li>
     </ol>
     <p class="c0"><span class="c2"></span></p><a id="t.273eee4e33563e72abd0d9f30b98de4b99f8f4b7"></a><a id="t.5"></a>
-    <table class="c39">
-        <tbody>
-            <tr class="c15">
-                <td class="c7" colspan="1" rowspan="1">
-                    <p class="c5"><span class="c2">TT</span></p>
-                </td>
-                <td class="c10" colspan="1" rowspan="1">
-                    <p class="c5"><span class="c2">T&ecirc;n t&aacute;c gi&#7843;</span></p>
-                </td>
-                <td class="c4" colspan="1" rowspan="1">
-                    <p class="c5"><span class="c2">N&#259;m c&ocirc;ng b&#7889;</span></p>
-                </td>
-                <td class="c18" colspan="1" rowspan="1">
-                    <p class="c5"><span class="c2">T&ecirc;n c&ocirc;ng tr&igrave;nh</span></p>
-                </td>
-                <td class="c3" colspan="1" rowspan="1">
-                    <p class="c5">
-                        <span class="c2">
-                            T&ecirc;n t&#7841;p ch&iacute;, NXB/ s&#7889;, t&#7853;p, trang
-                            &#273;&#259;ng c&ocirc;ng tr&igrave;nh
-                        </span>
-                    </p>
-                </td>
-                <td class="c12" colspan="1" rowspan="1">
-                    <p class="c5"><span class="c2">ISSN/ ISBN</span></p>
-                </td>
-                <td class="c12" colspan="1" rowspan="1">
-                    <p class="c5"><span class="c2">Upload minh ch&#7913;ng</span></p>
-                </td>
-            </tr>
-            <tr class="c15">
-                <td class="c7" colspan="1" rowspan="1">
-                    <p class="c5"><span class="c2">1</span></p>
-                </td>
-                <td class="c41" colspan="6" rowspan="1">
-                    <p class="c13">
-                        <span class="c2">
-                            B&agrave;i b&aacute;o thu&#7897;c danh m&#7909;c WoS (SCI, SCIE,
-                            SSCI, A&amp;HCI, ESCI)
-                        </span>
-                    </p>
-                </td>
-            </tr>
-            @{ count = 1;}
-            @foreach (var item in baibaoWoS)
-            {
-                <tr class="c15">
-                    <td class="c7" colspan="1" rowspan="1">
-                        <p class="c5"><span class="c2">1.@count</span></p>
-                    </td>
-                    <td class="c10" colspan="1" rowspan="1">
-                        <p class="c1"><span class="c2">@item.NhaKhoaHoc.HoNKH @item.NhaKhoaHoc.TenNKH</span></p>
-                    </td>
-                    <td class="c4" colspan="1" rowspan="1">
-                        <p class="c1"><span class="c2">@item.BaiBao.NamDangBao.Value.Year</span></p>
-                    </td>
-                    <td class="c18" colspan="1" rowspan="1">
-                        <p class="c1"><span class="c2">@item.BaiBao.TenBaiBao</span></p>
-                    </td>
-                    <td class="c3" colspan="1" rowspan="1">
-                        <p class="c1"><span class="c2">@item.BaiBao.CQXuatBan;@item.BaiBao.TapPhatHanh;@item.BaiBao.SoPhatHanh;@item.BaiBao.TrangBaiBao</span></p>
-                    </td>
-                    <td class="c12" colspan="1" rowspan="1">
-                        <p class="c1"><span class="c2">@item.BaiBao.MaISSN</span></p>
-                    </td>
-                    <td class="c12" colspan="1" rowspan="1">
-                        <p class="c1"><span class="c2">@item.BaiBao.LinkFileUpLoad</span></p>
-                    </td>
+    <div class="table-responsive">
+        <table class="table table-bordered">
+
+            <thead>
+                <tr>
+                    <th>TT</th>
+                    <th>
+                        Tên tác giả
+                    </th>
+                    <th>
+                        Năm công bố
+                    </th>
+                    <th>Tên công trình</th>
+                    <th>Tên tạp chí, NXB/ số, tập, trang đăng công trình</th>
+                    <th>ISSN/ ISBN</th>
+                    <th>Upload minh chứng</th>
                 </tr>
-                count++;
-            }
+            </thead>
+            <tbody>
+                @{ count = 1;}
+                @foreach (var item in baibaoWoS)
+                {
+                    <tr>
+                        <td>
+                            1.@count
+                        </td>
+                        <td>
+                            @item.NhaKhoaHoc.HoNKH @item.NhaKhoaHoc.TenNKH
+                        </td>
+                        <td>
+                            @item.BaiBao.NamDangBao.Value.Year
+                        </td>
+                        <td>
+                            @item.BaiBao.TenBaiBao
+                        </td>
+                        <td>
+                            @item.BaiBao.CQXuatBan;@item.BaiBao.TapPhatHanh;@item.BaiBao.SoPhatHanh;@item.BaiBao.TrangBaiBao
+                        </td>
+                        <td>
+                            @item.BaiBao.MaISSN
+                        </td>
+                        <td>
+                            @item.BaiBao.LinkFileUpLoad
+                        </td>
+                    </tr>
+                    count++;
+                }
 
 
-            <tr class="c15">
-                <td class="c7" colspan="1" rowspan="1">
-                    <p class="c5 c20"><span class="c2"></span></p>
-                </td>
-                <td class="c10" colspan="1" rowspan="1">
-                    <p class="c1"><span class="c2"></span></p>
-                </td>
-                <td class="c4" colspan="1" rowspan="1">
-                    <p class="c1"><span class="c2"></span></p>
-                </td>
-                <td class="c18" colspan="1" rowspan="1">
-                    <p class="c1"><span class="c2"></span></p>
-                </td>
-                <td class="c3" colspan="1" rowspan="1">
-                    <p class="c1"><span class="c2"></span></p>
-                </td>
-                <td class="c12" colspan="1" rowspan="1">
-                    <p class="c1"><span class="c2"></span></p>
-                </td>
-                <td class="c12" colspan="1" rowspan="1">
-                    <p class="c1"><span class="c2"></span></p>
-                </td>
-            </tr>
-            <tr class="c15">
-                <td class="c7" colspan="1" rowspan="1">
-                    <p class="c5"><span class="c2">2</span></p>
-                </td>
-                <td class="c41" colspan="6" rowspan="1">
-                    <p class="c13"><span class="c2">B&agrave;i b&aacute;o thu&#7897;c danh m&#7909;c Scopus</span></p>
-                </td>
-            </tr>
+            <thead>
+                <tr>
+                    <th>2</th>
+                    <th>
+                        Bài báo thuộc danh mục Scopus
+                    </th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+
+
             @{ count = 1;}
             @foreach (var item in baibaoScopus)
             {
-                <tr class="c15">
-                    <td class="c7" colspan="1" rowspan="1">
-                        <p class="c5"><span class="c2">2.@count</span></p>
+                <tr>
+                    <td>
+                        2.@count
                     </td>
-                    <td class="c10" colspan="1" rowspan="1">
-                        <p class="c1"><span class="c2">@item.NhaKhoaHoc.HoNKH @item.NhaKhoaHoc.TenNKH</span></p>
+                    <td>
+                        @item.NhaKhoaHoc.HoNKH @item.NhaKhoaHoc.TenNKH
                     </td>
-                    <td class="c4" colspan="1" rowspan="1">
-                        <p class="c1"><span class="c2">@item.BaiBao.NamDangBao.Value.Year</span></p>
+                    <td>
+                        @item.BaiBao.NamDangBao.Value.Year
                     </td>
-                    <td class="c18" colspan="1" rowspan="1">
-                        <p class="c1"><span class="c2">@item.BaiBao.TenBaiBao</span></p>
+                    <td>
+                        @item.BaiBao.TenBaiBao
                     </td>
-                    <td class="c3" colspan="1" rowspan="1">
-                        <p class="c1"><span class="c2">@item.BaiBao.CQXuatBan;@item.BaiBao.TapPhatHanh;@item.BaiBao.SoPhatHanh;@item.BaiBao.TrangBaiBao</span></p>
+                    <td>
+                        @item.BaiBao.CQXuatBan;@item.BaiBao.TapPhatHanh;@item.BaiBao.SoPhatHanh;@item.BaiBao.TrangBaiBao
                     </td>
-                    <td class="c12" colspan="1" rowspan="1">
-                        <p class="c1"><span class="c2">@item.BaiBao.MaISSN</span></p>
+                    <td>
+                        @item.BaiBao.MaISSN
                     </td>
-                    <td class="c12" colspan="1" rowspan="1">
-                        <p class="c1"><span class="c2">@item.BaiBao.LinkFileUpLoad</span></p>
+                    <td>
+                        @item.BaiBao.LinkFileUpLoad
                     </td>
                 </tr>
                 count++;
             }
 
-            <tr class="c15">
-                <td class="c7" colspan="1" rowspan="1">
-                    <p class="c5 c20"><span class="c2"></span></p>
-                </td>
-                <td class="c10" colspan="1" rowspan="1">
-                    <p class="c1"><span class="c2"></span></p>
-                </td>
-                <td class="c4" colspan="1" rowspan="1">
-                    <p class="c1"><span class="c2"></span></p>
-                </td>
-                <td class="c18" colspan="1" rowspan="1">
-                    <p class="c1"><span class="c2"></span></p>
-                </td>
-                <td class="c3" colspan="1" rowspan="1">
-                    <p class="c1"><span class="c2"></span></p>
-                </td>
-                <td class="c12" colspan="1" rowspan="1">
-                    <p class="c1"><span class="c2"></span></p>
-                </td>
-                <td class="c12" colspan="1" rowspan="1">
-                    <p class="c1"><span class="c2"></span></p>
-                </td>
-            </tr>
-            <tr class="c15">
-                <td class="c7" colspan="1" rowspan="1">
-                    <p class="c5"><span class="c2">3</span></p>
-                </td>
-                <td class="c41" colspan="6" rowspan="1">
-                    <p class="c13"><span class="c2">B&agrave;i b&aacute;o qu&#7889;c t&#7871; kh&aacute;c </span></p>
-                </td>
-            </tr>
+
+            <thead>
+                <tr>
+                    <th>3</th>
+                    <th>
+                        Bài báo quốc tế khác
+                    </th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
             @{ count = 1;}
             @foreach (var item in baibaoQT)
             {
-                <tr class="c15">
-                    <td class="c7" colspan="1" rowspan="1">
-                        <p class="c5"><span class="c2">3.@count</span></p>
+                <tr>
+                    <td>
+                        3.@count
                     </td>
-                    <td class="c10" colspan="1" rowspan="1">
-                        <p class="c1"><span class="c2">@item.NhaKhoaHoc.HoNKH @item.NhaKhoaHoc.TenNKH</span></p>
+                    <td>
+                        @item.NhaKhoaHoc.HoNKH @item.NhaKhoaHoc.TenNKH
                     </td>
-                    <td class="c4" colspan="1" rowspan="1">
-                        <p class="c1"><span class="c2">@item.BaiBao.NamDangBao.Value.Year</span></p>
+                    <td>
+                        @item.BaiBao.NamDangBao.Value.Year
                     </td>
-                    <td class="c18" colspan="1" rowspan="1">
-                        <p class="c1"><span class="c2">@item.BaiBao.TenBaiBao</span></p>
+                    <td>
+                        @item.BaiBao.TenBaiBao
                     </td>
-                    <td class="c3" colspan="1" rowspan="1">
-                        <p class="c1"><span class="c2">@item.BaiBao.CQXuatBan;@item.BaiBao.TapPhatHanh;@item.BaiBao.SoPhatHanh;@item.BaiBao.TrangBaiBao</span></p>
+                    <td>
+                        @item.BaiBao.CQXuatBan;@item.BaiBao.TapPhatHanh;@item.BaiBao.SoPhatHanh;@item.BaiBao.TrangBaiBao
                     </td>
-                    <td class="c12" colspan="1" rowspan="1">
-                        <p class="c1"><span class="c2">@item.BaiBao.MaISSN</span></p>
+                    <td>
+                        @item.BaiBao.MaISSN
                     </td>
-                    <td class="c12" colspan="1" rowspan="1">
-                        <p class="c1"><span class="c2">@item.BaiBao.LinkFileUpLoad</span></p>
+                    <td>
+                        @item.BaiBao.LinkFileUpLoad
                     </td>
                 </tr>
                 count++;
             }
 
-
-            <tr class="c15">
-                <td class="c7" colspan="1" rowspan="1">
-                    <p class="c5 c20"><span class="c2"></span></p>
-                </td>
-                <td class="c10" colspan="1" rowspan="1">
-                    <p class="c1"><span class="c2"></span></p>
-                </td>
-                <td class="c4" colspan="1" rowspan="1">
-                    <p class="c1"><span class="c2"></span></p>
-                </td>
-                <td class="c18" colspan="1" rowspan="1">
-                    <p class="c1"><span class="c2"></span></p>
-                </td>
-                <td class="c3" colspan="1" rowspan="1">
-                    <p class="c1"><span class="c2"></span></p>
-                </td>
-                <td class="c12" colspan="1" rowspan="1">
-                    <p class="c1"><span class="c2"></span></p>
-                </td>
-                <td class="c12" colspan="1" rowspan="1">
-                    <p class="c1"><span class="c2"></span></p>
-                </td>
-            </tr>
-            <tr class="c15">
-                <td class="c7" colspan="1" rowspan="1">
-                    <p class="c5"><span class="c2">4</span></p>
-                </td>
-                <td class="c41" colspan="6" rowspan="1">
-                    <p class="c13">
-                        <span class="c2">
-                            B&agrave;i b&aacute;o tr&ecirc;n c&aacute;c t&#7841;p ch&iacute;
-                            khoa h&#7885;c qu&#7889;c gia
-                        </span>
-                    </p>
-                </td>
-            </tr>
+            <thead>
+                <tr>
+                    <th>4</th>
+                    <th>
+                        Bài báo trên các tạp chí khoa học quốc gia
+                    </th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
             @{ count = 1;}
             @foreach (var item in baibaoVN)
             {
-                <tr class="c15">
-                    <td class="c7" colspan="1" rowspan="1">
-                        <p class="c5"><span class="c2">4.@count</span></p>
+                <tr>
+                    <td>
+                        4.@count
                     </td>
-                    <td class="c10" colspan="1" rowspan="1">
-                        <p class="c1"><span class="c2">@item.NhaKhoaHoc.HoNKH @item.NhaKhoaHoc.TenNKH</span></p>
+                    <td>
+                        @item.NhaKhoaHoc.HoNKH @item.NhaKhoaHoc.TenNKH
                     </td>
-                    <td class="c4" colspan="1" rowspan="1">
-                        <p class="c1"><span class="c2">@item.BaiBao.NamDangBao.Value.Year</span></p>
+                    <td>
+                        @item.BaiBao.NamDangBao.Value.Year
                     </td>
-                    <td class="c18" colspan="1" rowspan="1">
-                        <p class="c1"><span class="c2">@item.BaiBao.TenBaiBao</span></p>
+                    <td>
+                        @item.BaiBao.TenBaiBao
                     </td>
-                    <td class="c3" colspan="1" rowspan="1">
-                        <p class="c1"><span class="c2">@item.BaiBao.CQXuatBan;@item.BaiBao.TapPhatHanh;@item.BaiBao.SoPhatHanh;@item.BaiBao.TrangBaiBao</span></p>
+                    <td>
+                        @item.BaiBao.CQXuatBan;@item.BaiBao.TapPhatHanh;@item.BaiBao.SoPhatHanh;@item.BaiBao.TrangBaiBao
                     </td>
-                    <td class="c12" colspan="1" rowspan="1">
-                        <p class="c1"><span class="c2">@item.BaiBao.MaISSN</span></p>
+                    <td>
+                        @item.BaiBao.MaISSN
                     </td>
-                    <td class="c12" colspan="1" rowspan="1">
-                        <p class="c1"><span class="c2">@item.BaiBao.LinkFileUpLoad</span></p>
+                    <td>
+                        @item.BaiBao.LinkFileUpLoad
                     </td>
                 </tr>
                 count++;
             }
 
-
-            <tr class="c15">
-                <td class="c7" colspan="1" rowspan="1">
-                    <p class="c5 c20"><span class="c2"></span></p>
-                </td>
-                <td class="c10" colspan="1" rowspan="1">
-                    <p class="c1"><span class="c2"></span></p>
-                </td>
-                <td class="c4" colspan="1" rowspan="1">
-                    <p class="c1"><span class="c2"></span></p>
-                </td>
-                <td class="c18" colspan="1" rowspan="1">
-                    <p class="c1"><span class="c2"></span></p>
-                </td>
-                <td class="c3" colspan="1" rowspan="1">
-                    <p class="c1"><span class="c2"></span></p>
-                </td>
-                <td class="c12" colspan="1" rowspan="1">
-                    <p class="c1"><span class="c2"></span></p>
-                </td>
-                <td class="c12" colspan="1" rowspan="1">
-                    <p class="c1"><span class="c2"></span></p>
-                </td>
-            </tr>
-            <tr class="c15">
-                <td class="c7" colspan="1" rowspan="1">
-                    <p class="c5"><span class="c2">5</span></p>
-                </td>
-                <td class="c41" colspan="6" rowspan="1">
-                    <p class="c13">
-                        <span class="c2">
-                            B&agrave;i b&aacute;o khoa h&#7885;c kh&aacute;c (t&#7841;p
-                            ch&iacute; khoa h&#7885;c tr&#432;&#7901;ng, ng&agrave;nh; k&#7881; y&#7871;u h&#7897;i
-                            ngh&#7883;, h&#7897;i th&#7843;o khoa h&#7885;c)
-                        </span>
-                    </p>
-                </td>
-            </tr>
+            <thead>
+                <tr>
+                    <th>5</th>
+                    <th>
+                        Bài báo khoa học khác (tạp chí khoa học trường, ngành; kỉ yếu hội nghị, hội thảo khoa học)
+                    </th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
             @{ count = 1;}
             @foreach (var item in baibaoKhac)
             {
-                <tr class="c15">
-                    <td class="c7" colspan="1" rowspan="1">
-                        <p class="c5"><span class="c2">5.@count</span></p>
+                <tr>
+                    <td>
+                        5.@count
                     </td>
-                    <td class="c10" colspan="1" rowspan="1">
-                        <p class="c1"><span class="c2">@item.NhaKhoaHoc.HoNKH @item.NhaKhoaHoc.TenNKH</span></p>
+                    <td>
+                        @item.NhaKhoaHoc.HoNKH @item.NhaKhoaHoc.TenNKH
                     </td>
-                    <td class="c4" colspan="1" rowspan="1">
-                        <p class="c1"><span class="c2">@item.BaiBao.NamDangBao.Value.Year</span></p>
+                    <td>
+                        @item.BaiBao.NamDangBao.Value.Year
                     </td>
-                    <td class="c18" colspan="1" rowspan="1">
-                        <p class="c1"><span class="c2">@item.BaiBao.TenBaiBao</span></p>
+                    <td>
+                        @item.BaiBao.TenBaiBao
                     </td>
-                    <td class="c3" colspan="1" rowspan="1">
-                        <p class="c1"><span class="c2">@item.BaiBao.CQXuatBan;@item.BaiBao.TapPhatHanh;@item.BaiBao.SoPhatHanh;@item.BaiBao.TrangBaiBao</span></p>
+                    <td>
+                        @item.BaiBao.CQXuatBan;@item.BaiBao.TapPhatHanh;@item.BaiBao.SoPhatHanh;@item.BaiBao.TrangBaiBao
                     </td>
-                    <td class="c12" colspan="1" rowspan="1">
-                        <p class="c1"><span class="c2">@item.BaiBao.MaISSN</span></p>
+                    <td>
+                        @item.BaiBao.MaISSN
                     </td>
-                    <td class="c12" colspan="1" rowspan="1">
-                        <p class="c1"><span class="c2">@item.BaiBao.LinkFileUpLoad</span></p>
+                    <td>
+                        @item.BaiBao.LinkFileUpLoad
                     </td>
                 </tr>
                 count++;
             }
 
-
-            <tr class="c15">
-                <td class="c7" colspan="1" rowspan="1">
-                    <p class="c5 c20"><span class="c2"></span></p>
-                </td>
-                <td class="c10" colspan="1" rowspan="1">
-                    <p class="c1"><span class="c2"></span></p>
-                </td>
-                <td class="c4" colspan="1" rowspan="1">
-                    <p class="c1"><span class="c2"></span></p>
-                </td>
-                <td class="c18" colspan="1" rowspan="1">
-                    <p class="c1"><span class="c2"></span></p>
-                </td>
-                <td class="c3" colspan="1" rowspan="1">
-                    <p class="c1"><span class="c2"></span></p>
-                </td>
-                <td class="c12" colspan="1" rowspan="1">
-                    <p class="c1"><span class="c2"></span></p>
-                </td>
-                <td class="c12" colspan="1" rowspan="1">
-                    <p class="c1"><span class="c2"></span></p>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+            </tbody>
+        </table>
+    </div>
     <p class="c0"><span class="c2"></span></p>
     <ol class="c9 lst-kix_list_1-2" start="3">
         <li class="c17 c38">
@@ -773,86 +644,53 @@
         </li>
     </ol>
     <p class="c0"><span class="c2"></span></p><a id="t.955254dc5ba96fb0380230503ccae7877a3953ef"></a><a id="t.6"></a>
-    <table class="c39">
-        <tbody>
-            <tr class="c15">
-                <td class="c7" colspan="1" rowspan="1">
-                    <p class="c5"><span class="c2">TT</span></p>
-                </td>
-                <td class="c10" colspan="1" rowspan="1">
-                    <p class="c5"><span class="c2">T&ecirc;n t&aacute;c gi&#7843;</span></p>
-                </td>
-                <td class="c4" colspan="1" rowspan="1">
-                    <p class="c5"><span class="c2">N&#259;m xu&#7845;t b&#7843;n</span></p>
-                </td>
-                <td class="c22" colspan="1" rowspan="1">
-                    <p class="c5"><span class="c2">T&ecirc;n s&aacute;ch</span></p>
-                </td>
-                <td class="c11" colspan="1" rowspan="1">
-                    <p class="c5"><span class="c2">NXB, ISBN</span></p>
-                </td>
-                <td class="c46" colspan="1" rowspan="1">
-                    <p class="c5"><span class="c2">Ghi ch&uacute; (gi&aacute;o tr&igrave;nh hay TLTK)</span></p>
-                </td>
-                <td class="c12" colspan="1" rowspan="1">
-                    <p class="c5"><span class="c2">Upload minh ch&#7913;ng</span></p>
-                </td>
-            </tr>
-            @{ count = 1;}
-            @foreach (var item in Model.DSTacGias)
-            {
-                <tr class="c15">
-                    <td class="c7" colspan="1" rowspan="1">
-                        <p class="c5"><span class="c2">@count</span></p>
-                    </td>
-                    <td class="c10" colspan="1" rowspan="1">
-                        <p class="c1"><span class="c2">@item.NhaKhoaHoc.HoNKH @item.NhaKhoaHoc.TenNKH</span></p>
-                    </td>
-                    <td class="c4" colspan="1" rowspan="1">
-                        <p class="c1"><span class="c2">@item.SachGiaoTrinh.NamXuatBan.Value.Year</span></p>
-                    </td>
-                    <td class="c22" colspan="1" rowspan="1">
-                        <p class="c1"><span class="c2">@item.SachGiaoTrinh.TenSach</span></p>
-                    </td>
-                    <td class="c11" colspan="1" rowspan="1">
-                        <p class="c1"><span class="c2">@item.SachGiaoTrinh.MaISBN</span></p>
-                    </td>
-                    <td class="c46" colspan="1" rowspan="1">
-                        <p class="c1"><span class="c2">@item.SachGiaoTrinh.PhanLoaiSach.TenLoai</span></p>
-                    </td>
-                    <td class="c12" colspan="1" rowspan="1">
-                        <p class="c1"><span class="c2"></span></p>
-                    </td>
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>TT</th>
+                    <th>
+                        Tên tác giả
+                    </th>
+                    <th>Năm xuất bản</th>
+                    <th>Tên sách</th>
+                    <th>NXB, ISBN</th>
+                    <th>Ghi chú (giáo trình hay TLTK)</th>
+                    <th>Upload minh chứng</th>
                 </tr>
-                count++;
-            }
+            </thead>
 
+            <tbody>
+                @{ count = 1;}
+                @foreach (var item in Model.DSTacGias)
+                {
+                    <tr>
+                        <td>
+                            @count
+                        </td>
+                        <td>
+                            @item.NhaKhoaHoc.HoNKH @item.NhaKhoaHoc.TenNKH
+                        </td>
+                        <td>
+                            @item.SachGiaoTrinh.NamXuatBan.Value.Year
+                        </td>
+                        <td>
+                            @item.SachGiaoTrinh.TenSach
+                        </td>
+                        <td>
+                            @item.SachGiaoTrinh.MaISBN
+                        </td>
+                        <td>
+                            @item.SachGiaoTrinh.PhanLoaiSach.TenLoai
+                        </td>
+                        <td></td>
+                    </tr>
+                    count++;
+                }
 
-            <tr class="c15">
-                <td class="c7" colspan="1" rowspan="1">
-                    <p class="c5 c20"><span class="c2"></span></p>
-                </td>
-                <td class="c10" colspan="1" rowspan="1">
-                    <p class="c1"><span class="c2"></span></p>
-                </td>
-                <td class="c4" colspan="1" rowspan="1">
-                    <p class="c1"><span class="c2"></span></p>
-                </td>
-                <td class="c22" colspan="1" rowspan="1">
-                    <p class="c1"><span class="c2"></span></p>
-                </td>
-                <td class="c11" colspan="1" rowspan="1">
-                    <p class="c1"><span class="c2"></span></p>
-                </td>
-                <td class="c46" colspan="1" rowspan="1">
-                    <p class="c1"><span class="c2"></span></p>
-                </td>
-                <td class="c12" colspan="1" rowspan="1">
-                    <p class="c1"><span class="c2"></span></p>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+            </tbody>
+        </table>
+    </div>
     <p class="c0"><span class="c2"></span></p>
     <ol class="c9 lst-kix_list_1-2" start="4">
         <li class="c17 c38">
@@ -862,96 +700,58 @@
             </span>
         </li>
     </ol><a id="t.56c4a923174b06c8d79eae3d92450fa2b755b3f7"></a><a id="t.7"></a>
-    <table class="c39">
-        <tbody>
-            <tr class="c15">
-                <td class="c7" colspan="1" rowspan="1">
-                    <p class="c5"><span class="c2">TT</span></p>
-                </td>
-                <td class="c10" colspan="1" rowspan="1">
-                    <p class="c5"><span class="c2">T&ecirc;n t&aacute;c gi&#7843;</span></p>
-                </td>
-                <td class="c4" colspan="1" rowspan="1">
-                    <p class="c5"><span class="c2">N&#259;m c&ocirc;ng b&#7889;</span></p>
-                </td>
-                <td class="c18" colspan="1" rowspan="1">
-                    <p class="c5">
-                        <span class="c2">
-                            T&ecirc;n ph&aacute;t minh, s&aacute;ng ch&#7871;, gi&#7843;i
-                            ph&aacute;p
-                        </span>
-                    </p>
-                </td>
-                <td class="c43" colspan="1" rowspan="1">
-                    <p class="c5"><span class="c2">Qu&#7889;c gia c&#7845;p</span></p>
-                </td>
-                <td class="c30" colspan="1" rowspan="1">
-                    <p class="c5">
-                        <span class="c2">
-                            S&#7889; ph&aacute;t minh, s&aacute;ng ch&#7871;, gi&#7843;i
-                            ph&aacute;p
-                        </span>
-                    </p>
-                </td>
-                <td class="c12" colspan="1" rowspan="1">
-                    <p class="c5"><span class="c2">Upload minh ch&#7913;ng</span></p>
-                </td>
-            </tr>
-            @{ count = 0;}
-            @foreach (var item in Model.DSPhatMinhNKHs)
-            {
-                <tr class="c15">
-                    <td class="c7" colspan="1" rowspan="1">
-                        <p class="c5"><span class="c2">@count</span></p>
-                    </td>
-                    <td class="c10" colspan="1" rowspan="1">
-                        <p class="c1"><span class="c2">@item.NhaKhoaHoc.HoNKH @item.NhaKhoaHoc.TenNKH</span></p>
-                    </td>
-                    <td class="c4" colspan="1" rowspan="1">
-                        <p class="c1"><span class="c2">@item.PhatMinhGiaiPhap.NamCongBo.Value.Year</span></p>
-                    </td>
-                    <td class="c18" colspan="1" rowspan="1">
-                        <p class="c1"><span class="c2">@item.PhatMinhGiaiPhap.TenPM</span></p>
-                    </td>
-                    <td class="c43" colspan="1" rowspan="1">
-                        <p class="c1"><span class="c2">@item.PhatMinhGiaiPhap.QuocGiaCap</span></p>
-                    </td>
-                    <td class="c30" colspan="1" rowspan="1">
-                        <p class="c1"><span class="c2">@item.PhatMinhGiaiPhap.SoHieuPM</span></p>
-                    </td>
-                    <td class="c12" colspan="1" rowspan="1">
-                        <p class="c1"><span class="c2"></span></p>
-                    </td>
+
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>TT</th>
+                    <th>
+                        Tên tác giả
+                    </th>
+                    <th>
+                        Năm công bố
+                    </th>
+                    <th>Tên phát minh, sáng chế, giải pháp</th>
+                    <th>Quốc gia cấp</th>
+                    <th>Số phát minh, sáng chế, giải pháp</th>
+                    <th>Upload minh chứng</th>
+
                 </tr>
-                count++;
-            }
+            </thead>
+            <tbody>
+                @{ count = 1;}
+                @foreach (var item in Model.DSPhatMinhNKHs)
+                {
+                    <tr>
+                        <td>
+                            @count
+                        </td>
+                        <td>
+                            @item.NhaKhoaHoc.HoNKH @item.NhaKhoaHoc.TenNKH
+                        </td>
+                        <td>
+                            @item.PhatMinhGiaiPhap.NamCongBo.Value.Year
+                        </td>
+                        <td>
+                            @item.PhatMinhGiaiPhap.TenPM
+                        </td>
+                        <td>
+                            @item.PhatMinhGiaiPhap.QuocGiaCap
+                        </td>
+                        <td>
+                            @item.PhatMinhGiaiPhap.SoHieuPM
+                        </td>
+                        <td></td>
+                    </tr>
+                    count++;
+                }
 
 
-            <tr class="c15">
-                <td class="c7" colspan="1" rowspan="1">
-                    <p class="c5 c20"><span class="c2"></span></p>
-                </td>
-                <td class="c10" colspan="1" rowspan="1">
-                    <p class="c1"><span class="c2"></span></p>
-                </td>
-                <td class="c4" colspan="1" rowspan="1">
-                    <p class="c1"><span class="c2"></span></p>
-                </td>
-                <td class="c18" colspan="1" rowspan="1">
-                    <p class="c1"><span class="c2"></span></p>
-                </td>
-                <td class="c43" colspan="1" rowspan="1">
-                    <p class="c1"><span class="c2"></span></p>
-                </td>
-                <td class="c30" colspan="1" rowspan="1">
-                    <p class="c1"><span class="c2"></span></p>
-                </td>
-                <td class="c12" colspan="1" rowspan="1">
-                    <p class="c1"><span class="c2"></span></p>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+
+            </tbody>
+        </table>
+    </div>
     <p class="c0"><span class="c2"></span></p>
     <ol class="c9 lst-kix_list_1-2" start="5">
         <li class="c17 c38">
@@ -973,23 +773,21 @@
     <p class="c0"><span class="c2"></span></p>
     <p class="c17">
         <span class="c49">
-            X&aacute;c nh&#7853;n c&#7911;a c&#417; quan c&ocirc;ng t&aacute;c
-        </span><span>
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-        </span><span class="c47">
-            TP. H&#7891;
-            Ch&iacute; Minh, ng&agrave;y &nbsp; th&aacute;ng &nbsp; &nbsp;n&#259;m &hellip;. &nbsp;
+            Xác nhận của cơ quan công tác
+        </span>
+        <span class="c47" style="
+    margin-left: 50px;
+">
+            TP. Hồ
+            Chí Minh, ngày &nbsp; tháng &nbsp; &nbsp;năm …. &nbsp;
         </span><span class="c2">&nbsp;</span>
     </p>
-    <p class="c17">
-        <span>
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            &nbsp; &nbsp; &nbsp;
-        </span><span class="c24">Ng&#432;&#7901;i khai </span>
+    <p class="c17"
+       style="
+    margin-left: 335px;
+    margin-top: -10px;
+">
+        <span class="c24">Người khai </span>
     </p>
     <p class="c0"><span class="c2"></span></p>
 </body>

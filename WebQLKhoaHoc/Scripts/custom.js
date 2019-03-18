@@ -321,12 +321,15 @@ var THEMEMASCOT = {};
 
             function updateFilling(selectedEvent, filling, totWidth) {
                 //change .filling-line length according to the selected event
-                var eventStyle = window.getComputedStyle(selectedEvent.get(0), null),
-                    eventLeft = eventStyle.getPropertyValue("left"),
-                    eventWidth = eventStyle.getPropertyValue("width");
-                eventLeft = Number(eventLeft.replace('px', '')) + Number(eventWidth.replace('px', '')) / 2;
-                var scaleValue = eventLeft / totWidth;
-                setTransformValue(filling.get(0), 'scaleX', scaleValue);
+                if (selectedEvent.get(0) !== undefined) {
+                    var eventStyle = window.getComputedStyle(selectedEvent.get(0), null),
+                        eventLeft = eventStyle.getPropertyValue("left"),
+                        eventWidth = eventStyle.getPropertyValue("width");
+
+                    eventLeft = Number(eventLeft.replace('px', '')) + Number(eventWidth.replace('px', '')) / 2;
+                    var scaleValue = eventLeft / totWidth;
+                    setTransformValue(filling.get(0), 'scaleX', scaleValue);
+                }       
             }
 
             function setDatePosition(timelineComponents, min) {

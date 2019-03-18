@@ -4,9 +4,8 @@
 @{
     ViewBag.Title = "Chi Tiết Dữ Liệu Nhà Khoa Học";
     Layout = "~/Views/Shared/_MainPage.cshtml";
-   
-}
 
+}
 
 <section class="">
     <!-- Section: Scientist header -->
@@ -32,42 +31,43 @@
                                         <div class="col-xs-12 col-sm-12 pl-5 pr-5">
                                             <div class="form-group mb-5">
                                                 <div class="styled-select">
-                                                    @Html.DropDownList("MaDonVi", (IEnumerable<SelectListItem>)ViewBag.MaDonViQL, "--Chọn đơn vị--", new { @class = "form-control" })
+                                                    @Html.DropDownList("MaDonVi", (IEnumerable<SelectListItem>)ViewBag.MaDonViQL, "--Chọn đơn vị--", new { @class = "form-control border-radius-15px" })
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-xs-12 col-sm-6 pl-5 pr-5">
                                             <div class="form-group mb-5">
-                                                @Html.DropDownList("MaNgach", (IEnumerable<SelectListItem>)ViewBag.MaNgachVienChuc, "--Chọn ngạch--", new { @class = "form-control" })
+                                                @Html.DropDownList("MaNgach", (IEnumerable<SelectListItem>)ViewBag.MaNgachVienChuc, "--Chọn ngạch--", new { @class = "form-control border-radius-15px" })
                                             </div>
                                         </div>
 
                                         <div class="col-xs-12 col-sm-6 pl-5 pr-5">
                                             <div class="form-group mb-5">
-                                                @Html.DropDownList("MaHocHam", (IEnumerable<SelectListItem>)ViewBag.MaHocHam, "--Chọn học hàm--", new { @class = "form-control" })
+                                                @Html.DropDownList("MaHocHam", (IEnumerable<SelectListItem>)ViewBag.MaHocHam, "--Chọn học hàm--", new { @class = "form-control border-radius-15px" })
                                             </div>
                                         </div>
                                         <div class="col-xs-12 col-sm-6 pl-5 pr-5">
                                             <div class="form-group mb-5">
-                                                @Html.DropDownList("MaHocVi", (IEnumerable<SelectListItem>)ViewBag.MaHocVi, "--Chọn học vị--", new { @class = "form-control" })
+                                                @Html.DropDownList("MaHocVi", (IEnumerable<SelectListItem>)ViewBag.MaHocVi, "--Chọn học vị--", new { @class = "form-control border-radius-15px" })
                                             </div>
                                         </div>
                                         <div class="col-xs-12 col-sm-6 pl-5 pr-5">
                                             <div class="form-group mb-5">
-                                                @Html.DropDownList("MaCNDaoTao", (IEnumerable<SelectListItem>)ViewBag.MaCNDaoTao, "--Chọn chuyên ngành--", new { @class = "form-control" })
+                                                @Html.DropDownList("MaCNDaoTao", (IEnumerable<SelectListItem>)ViewBag.MaCNDaoTao, "--Chọn chuyên ngành--", new { @class = "form-control border-radius-15px" })
                                             </div>
                                         </div>
 
                                         <div class="col-xs-12 col-sm-8 pl-5 pr-5">
                                             <div class="form-group mb-5">
                                                 <div class="styled-select">
-                                                    <input name="SearchValue" id="SearchValue" class="form-control" type="text" placeholder="Từ khóa tìm kiếm" value="@ViewBag.SearchValue">
+                                                    <input name="SearchValue" id="SearchValue" class="form-control border-radius-15px" type="text" placeholder="Từ khóa tìm kiếm" value="@ViewBag.SearchValue">
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-xs-12 col-sm-4 pl-5 pr-5">
                                             <div class="form-group mb-5">
-                                                <button type="submit" class="btn btn-colored btn-theme-color-2 text-white btn-lg btn-block" data-loading-text="Please wait...">
+                                                <i class="glyphicon glyphicon-search icon-glyphicon-search-custom"></i>
+                                                <button type="submit" class="btn btn-colored text-white btn-block border-radius-15px btn-search-component" data-loading-text="Please wait...">
                                                     Tìm Kiếm
                                                 </button>
                                             </div>
@@ -91,15 +91,15 @@
                 <div class="container">
                     <div class="section-content">
                         <div class="row">
-                            <div class="col-md-4">                               
+                            <div class="col-md-4">
                                 @{
                                     if (Model.AnhCaNhan.IsNullOrWhiteSpace())
                                     {
-                                        <img class="img-fullwidth" src= @Url.Content("~/Image/avatar.bmp") style="max-height: 100vw; border-radius: 50%" />
+                                        <img class="img-fullwidth" src=@Url.Content("~/Image/avatar.bmp") style="max-height: 100vw; border-radius: 50%" />
                                     }
                                     else
                                     {
-                                        <img class="img-fullwidth" src="@Model.AnhCaNhan" style="max-height: 100vw; border-radius: 50%"/>
+                                        <img class="img-fullwidth" src="@Model.AnhCaNhan" style="max-height: 100vw; border-radius: 50%" />
                                     }
                                 }
                                 <div class="row">
@@ -251,7 +251,7 @@
                                                                         <span>@item.ChuyenMon.TenChuyenMon;</span>
                                                                     }
                                                                 }
-                                                                    </p>
+                                                            </p>
                                                             <h5 class="mt-0 mb-0 font-weight-600">Lĩnh vực nghiên cứu:</h5>
                                                             <p>
                                                                 @{
@@ -332,18 +332,18 @@
                                                                     <ol>
                                                                         @{ int i = 0;}
                                                                         @foreach (var item in Model.QuaTrinhCongTacs)
-                    {
-                        if (i == 0)
-                        {
-                                                    <li><a href="#0" data-date="@item.ThoiGianBD.Value.ToString("dd/MM/yyyy")" class="selected">@item.ThoiGianBD.Value.ToString("dd/MM")</a></li>
-}
-else
-{
-                                                    <li><a href="#0" data-date="@item.ThoiGianBD.Value.ToString("dd/MM/yyyy")">@item.ThoiGianBD.Value.ToString("dd/MM")</a></li>
-}
+                                                                        {
+                                                                            if (i == 0)
+                                                                            {
+                                                                                <li><a href="#0" data-date="@item.ThoiGianBD.Value.ToString("dd/MM/yyyy")" class="selected">@item.ThoiGianBD.Value.ToString("dd/MM")</a></li>
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                <li><a href="#0" data-date="@item.ThoiGianBD.Value.ToString("dd/MM/yyyy")">@item.ThoiGianBD.Value.ToString("dd/MM")</a></li>
+                                                                            }
 
-i = 1;
-}
+                                                                            i = 1;
+                                                                        }
 
 
                                                                     </ol>
@@ -364,57 +364,57 @@ i = 1;
 
                                                                 @{ int a = 0;}
                                                                 @foreach (var item in Model.QuaTrinhCongTacs)
-            {
+                                                                {
 
-                if (a == 0)
-                {
-                                                    <li class="selected" data-date="@item.ThoiGianBD.Value.ToString("dd/MM/yyyy")">
-                                                        <table class="table table-hover">
-                                                            <tr class="test">
-                                                                <th>Thời gian</th>
-                                                                <td>@item.ThoiGianBD.Value.ToString("dd/MM/yyyy") - @item.ThoiGIanKT.Value.ToString("dd/MM/yyyy")</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th>Tên cơ quan công tác</th>
-                                                                <td>@item.TenCoQuan</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th>Tên phòng ban công tác</th>
-                                                                <td>@item.TenPhongBan</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th>Chức vụ</th>
-                                                                <td>@item.ChucVuCT</td>
-                                                            </tr>
-                                                        </table>
-                                                    </li>
-}
-else
-{
-                                                    <li data-date="@item.ThoiGianBD.Value.ToString("dd/MM/yyyy")">
-                                                        <table class="table table-hover">
-                                                            <tr>
-                                                                <th>Thời gian</th>
-                                                                <td>@item.ThoiGianBD.Value.ToString("dd/MM/yyyy") - @item.ThoiGIanKT.Value.ToString("dd/MM/yyyy")</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th>Tên cơ quan công tác</th>
-                                                                <td>@item.TenCoQuan</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th>Tên phòng ban công tác</th>
-                                                                <td>@item.TenPhongBan</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th>Chức vụ</th>
-                                                                <td>@item.ChucVuCT</td>
-                                                            </tr>
-                                                        </table>
-                                                    </li>
-}
-a = 1;
+                                                                    if (a == 0)
+                                                                    {
+                                                                        <li class="selected" data-date="@item.ThoiGianBD.Value.ToString("dd/MM/yyyy")">
+                                                                            <table class="table table-hover">
+                                                                                <tr class="test">
+                                                                                    <th>Thời gian</th>
+                                                                                    <td>@item.ThoiGianBD.Value.ToString("dd/MM/yyyy") - @item.ThoiGIanKT.Value.ToString("dd/MM/yyyy")</td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <th>Tên cơ quan công tác</th>
+                                                                                    <td>@item.TenCoQuan</td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <th>Tên phòng ban công tác</th>
+                                                                                    <td>@item.TenPhongBan</td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <th>Chức vụ</th>
+                                                                                    <td>@item.ChucVuCT</td>
+                                                                                </tr>
+                                                                            </table>
+                                                                        </li>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <li data-date="@item.ThoiGianBD.Value.ToString("dd/MM/yyyy")">
+                                                                            <table class="table table-hover">
+                                                                                <tr>
+                                                                                    <th>Thời gian</th>
+                                                                                    <td>@item.ThoiGianBD.Value.ToString("dd/MM/yyyy") - @item.ThoiGIanKT.Value.ToString("dd/MM/yyyy")</td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <th>Tên cơ quan công tác</th>
+                                                                                    <td>@item.TenCoQuan</td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <th>Tên phòng ban công tác</th>
+                                                                                    <td>@item.TenPhongBan</td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <th>Chức vụ</th>
+                                                                                    <td>@item.ChucVuCT</td>
+                                                                                </tr>
+                                                                            </table>
+                                                                        </li>
+                                                                    }
+                                                                    a = 1;
 
-}
+                                                                }
                                                             </ol>
                                                         </div>
                                                         <!-- .events-content -->
@@ -437,18 +437,18 @@ a = 1;
                                                                     <ol>
                                                                         @{ int b = 0;}
                                                                         @foreach (var item in Model.QuaTrinhDaoTaos)
-                        {
-                            if (b == 0)
-                            {
-                                                <li><a href="#0" data-date="@item.ThoiGianKT.Value.ToString("dd/MM/yyyy")" class="selected">@item.ThoiGianKT.Value.Year</a></li>
-}
-else
-{
-                                                <li><a href="#0" data-date="@item.ThoiGianKT.Value.ToString("dd/MM/yyyy")">@item.ThoiGianKT.Value.Year</a></li>
-}
+                                                                        {
+                                                                            if (b == 0)
+                                                                            {
+                                                                                <li><a href="#0" data-date="@item.ThoiGianKT.Value.ToString("dd/MM/yyyy")" class="selected">@item.ThoiGianKT.Value.Year</a></li>
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                <li><a href="#0" data-date="@item.ThoiGianKT.Value.ToString("dd/MM/yyyy")">@item.ThoiGianKT.Value.Year</a></li>
+                                                                            }
 
-b = 1;
-}
+                                                                            b = 1;
+                                                                        }
 
 
                                                                     </ol>
@@ -469,62 +469,62 @@ b = 1;
 
                                                                 @{ int c = 0;}
                                                                 @foreach (var item in Model.QuaTrinhDaoTaos)
-                {
+                                                                {
 
-                    if (c == 0)
-                    {
-                                                                <li class="selected" data-date="@item.ThoiGianKT.Value.ToString("dd/MM/yyyy")">
-                                                                    <table class="table table-hover">
-                                                                        <tr>
-                                                                            <th>Học vị</th>
-                                                                            <td>@item.HocVi.TenHocVi</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th>Cơ sở đào tạo</th>
-                                                                            <td>@item.CoSoDaoTao</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th>Ngành đào tạo</th>
-                                                                            <td>@item.NganhDaoTao.TenNganhDaoTao</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th>Năm tốt nghiệp</th>
-                                                                            <td>@item.ThoiGianKT.Value.Year</td>
-                                                                        </tr>
-                                                                    </table>
-                                                                </li>
-}
-else
-{
-                                                <li data-date="@item.ThoiGianKT.Value.ToString("dd/MM/yyyy")">
-                                                    <table class="table table-hover">
-                                                        <tr>
-                                                            <th>Bậc đào tạo</th>
-                                                            <td>@item.HocVi.TenHocVi</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th>Cơ sở đào tạo</th>
-                                                            <td>@item.CoSoDaoTao</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th>Ngành đào tạo</th>
-                                                            <td>@item.NganhDaoTao.TenNganhDaoTao</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th>Năm tốt nghiệp</th>
-                                                            <td>@item.ThoiGianKT.Value.Year</td>
-                                                        </tr>
-                                                    </table>
-                                                </li>
-}
-c = 1;
+                                                                    if (c == 0)
+                                                                    {
+                                                                        <li class="selected" data-date="@item.ThoiGianKT.Value.ToString("dd/MM/yyyy")">
+                                                                            <table class="table table-hover">
+                                                                                <tr>
+                                                                                    <th>Học vị</th>
+                                                                                    <td>@item.HocVi.TenHocVi</td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <th>Cơ sở đào tạo</th>
+                                                                                    <td>@item.CoSoDaoTao</td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <th>Ngành đào tạo</th>
+                                                                                    <td>@item.NganhDaoTao.TenNganhDaoTao</td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <th>Năm tốt nghiệp</th>
+                                                                                    <td>@item.ThoiGianKT.Value.Year</td>
+                                                                                </tr>
+                                                                            </table>
+                                                                        </li>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <li data-date="@item.ThoiGianKT.Value.ToString("dd/MM/yyyy")">
+                                                                            <table class="table table-hover">
+                                                                                <tr>
+                                                                                    <th>Bậc đào tạo</th>
+                                                                                    <td>@item.HocVi.TenHocVi</td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <th>Cơ sở đào tạo</th>
+                                                                                    <td>@item.CoSoDaoTao</td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <th>Ngành đào tạo</th>
+                                                                                    <td>@item.NganhDaoTao.TenNganhDaoTao</td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <th>Năm tốt nghiệp</th>
+                                                                                    <td>@item.ThoiGianKT.Value.Year</td>
+                                                                                </tr>
+                                                                            </table>
+                                                                        </li>
+                                                                    }
+                                                                    c = 1;
 
-}
+                                                                }
                                                             </ol>
                                                         </div>
                                                         <!-- .events-content -->
                                                     </section>
-                                                    
+
                                                 </div>
                                             </div>
                                         </li>
@@ -545,9 +545,11 @@ c = 1;
                         <a href="@Url.Action("Edit", "NhaKhoaHocs", new { id = Model.MaNKH })" class="btn btn-primary">Chỉnh Sửa</a>
                     }
                 }
-                    <a href="@Url.Action("Index","NhaKhoaHocs")" class="btn btn-danger">Quay Lại</a>
-                </div>
-        <br />
+                <a href="@Url.Action("GetReport","NhaKhoaHocs", new { id = Model.MaNKH })" class="btn btn-danger">Xuất Lí Lịch</a>
+
+                <a href="@Url.Action("Index","NhaKhoaHocs")" class="btn btn-danger">Quay Lại</a>
+            </div>
+            <br />
         </div>
     </div>
 </section>
