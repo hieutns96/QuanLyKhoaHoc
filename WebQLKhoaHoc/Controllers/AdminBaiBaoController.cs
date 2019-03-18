@@ -52,7 +52,7 @@ namespace WebQLKhoaHoc.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create(HttpPostedFileBase linkUpload,[Bind(Include = "MaBaiBao,MaISSN,TenBaiBao,LaTrongNuoc,CQXuatBan,MaLoaiTapChi,MaCapTapChi,NamDangBao,TapPhatHanh,SoPhatHanh,TrangBaiBao,LienKetWeb")] BaiBao baiBao)
+        public async Task<ActionResult> Create(HttpPostedFileBase linkUpload, [Bind(Include = "MaBaiBao,MaISSN,TenBaiBao,LaTrongNuoc,CQXuatBan,MaLoaiTapChi,MaCapTapChi,NamDangBao,TapPhatHanh,SoPhatHanh,TrangBaiBao,LienKetWeb")] BaiBao baiBao)
         {
             if (ModelState.IsValid)
             {
@@ -99,7 +99,7 @@ namespace WebQLKhoaHoc.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit(HttpPostedFileBase linkUpload,[Bind(Include = "MaBaiBao,MaISSN,TenBaiBao,LaTrongNuoc,CQXuatBan,MaLoaiTapChi,MaCapTapChi,NamDangBao,TapPhatHanh,SoPhatHanh,TrangBaiBao,LienKetWeb,LinkFileUpLoad")] BaiBao baiBao)
+        public async Task<ActionResult> Edit(HttpPostedFileBase linkUpload, [Bind(Include = "MaBaiBao,MaISSN,TenBaiBao,LaTrongNuoc,CQXuatBan,MaLoaiTapChi,MaCapTapChi,NamDangBao,TapPhatHanh,SoPhatHanh,TrangBaiBao,LienKetWeb,LinkFileUpLoad")] BaiBao baiBao)
         {
             if (ModelState.IsValid)
             {
@@ -161,7 +161,7 @@ namespace WebQLKhoaHoc.Controllers
                 baiBao.LinhVucs.Remove(item);
             }
 
-           
+
             db.BaiBaos.Remove(baiBao);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
@@ -199,11 +199,11 @@ namespace WebQLKhoaHoc.Controllers
 
             ViewBag.MaNKH = new SelectList(lstAllNKH, "MaNKH", "TenNKH");
             ViewBag.tenbaibao = db.BaiBaos.Find(id).TenBaiBao;
-            ViewBag.mabaibao = id;           
+            ViewBag.mabaibao = id;
             return View();
         }
 
-       
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> CreateDanhSachNguoiThamGiaBaiBao([Bind(Include = "MaBaiBao,MaNKH,LaTacGiaChinh")] DSNguoiThamGiaBaiBao dSNguoiThamGiaBaiBao)
@@ -223,11 +223,11 @@ namespace WebQLKhoaHoc.Controllers
 
             ViewBag.MaNKH = new SelectList(lstAllNKH, "MaNKH", "TenNKH");
             ViewBag.tenbaibao = db.BaiBaos.Find(dSNguoiThamGiaBaiBao.MaBaiBao).TenBaiBao;
-            ViewBag.mabaibao = dSNguoiThamGiaBaiBao.MaBaiBao;          
+            ViewBag.mabaibao = dSNguoiThamGiaBaiBao.MaBaiBao;
             return View();
         }
 
-      /* EDit nguoi tham gia bai bao*/
+        /* EDit nguoi tham gia bai bao*/
         public async Task<ActionResult> EditDanhSachNguoiThamGiaBaiBao(int? id, int? manhakhoahoc)
         {
             if (id == null)
@@ -238,7 +238,7 @@ namespace WebQLKhoaHoc.Controllers
             if (dSNguoiThamGiaBaiBao == null)
             {
                 return HttpNotFound();
-            }                 
+            }
             return View(dSNguoiThamGiaBaiBao);
         }
 
@@ -251,17 +251,17 @@ namespace WebQLKhoaHoc.Controllers
         {
             if (ModelState.IsValid)
             {
-                
-               db.DSNguoiThamGiaBaiBaos.AddOrUpdate(dSNguoiThamGiaBaiBao);
-             
+
+                db.DSNguoiThamGiaBaiBaos.AddOrUpdate(dSNguoiThamGiaBaiBao);
+
                 await db.SaveChangesAsync();
                 return RedirectToAction("DanhSachNguoiThamGiaBaiBao");
-            }           
+            }
             return View(dSNguoiThamGiaBaiBao);
         }
 
-      /* DElete guoi tha gia bai bao*/
-        public async Task<ActionResult> DeleteDanhSachNguoiThamGiaBaiBao(int? id,int? manhakhoahoc)
+        /* DElete guoi tha gia bai bao*/
+        public async Task<ActionResult> DeleteDanhSachNguoiThamGiaBaiBao(int? id, int? manhakhoahoc)
         {
             if (id == null)
             {
@@ -277,6 +277,97 @@ namespace WebQLKhoaHoc.Controllers
             return RedirectToAction("DanhSachNguoiThamGiaBaiBao");
         }
 
+        /* Linhvuc baibao con Create chu hoan thanh*/
+        public async Task<ActionResult> LinhVucBaiBao()
+        {
+
+            List<BaiBao> baiBao = await db.BaiBaos.ToListAsync();
+            if (baiBao == null)
+            {
+                return HttpNotFound();
+            }
+            return View(baiBao);
+        }
+
+        public async Task<ActionResult> EditLinhVucBaiBao(int? id, int? idBaiBao)
+        {
+            if (id == null || idBaiBao == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            BaiBao baiBao = await db.BaiBaos.FindAsync(idBaiBao);
+            if (baiBao == null)
+            {
+                return HttpNotFound();
+            }
+
+            var lv = baiBao.LinhVucs.Select(p=>p.MaLinhVuc).ToList();
+            var linhvuc = await db.LinhVucs.Where(p=> !lv.Contains(p.MaLinhVuc)).ToListAsync();
+            ViewBag.MaLinhVucCu = id;
+            ViewBag.MaLinhVuc = new SelectList(linhvuc, "MaLinhVuc", "TenLinhVuc");
+            return View(baiBao);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> EditLinhVucBaiBao(int MaLinhVuc, int MaLinhVucCu, int MaBaiBao)
+        {
+            if (ModelState.IsValid)
+            {
+                BaiBao baiBao = await db.BaiBaos.FindAsync(MaBaiBao);
+                LinhVuc lvcu = await db.LinhVucs.FindAsync(MaLinhVucCu);
+                LinhVuc lv = await db.LinhVucs.FindAsync(MaLinhVuc);
+
+
+                baiBao.LinhVucs.Remove(lvcu);
+                baiBao.LinhVucs.Add(lv);
+                await db.SaveChangesAsync();
+                return RedirectToAction("LinhVucBaiBao");
+            }
+
+            BaiBao baibao = await db.BaiBaos.FindAsync(MaBaiBao);
+            var linhvuc = await db.LinhVucs.Except(baibao.LinhVucs).ToListAsync();
+            ViewBag.MaLinhVuc = new SelectList(linhvuc, "MaLinhVuc", "TenLinhVuc");
+            return View(baibao);
+
+        }    
+
+        
+        public async Task<ActionResult> CreateLinhVucBaiBaoPost(int? id, int? idBaiBao)
+        {
+
+            if (id == null || idBaiBao == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            BaiBao baiBao = await db.BaiBaos.FindAsync(idBaiBao);
+            LinhVuc linhVuc = await db.LinhVucs.FindAsync(id);
+            if (baiBao == null || linhVuc == null)
+            {
+                return HttpNotFound();
+            }
+            var linhvuc = await db.LinhVucs.Except(baiBao.LinhVucs).ToListAsync();
+            ViewBag.MaLinhVuc = new SelectList(linhvuc, "MaLinhVuc", "TenLinhVuc");
+            return View(baiBao);
+        }
+
+        public async Task<ActionResult> DeleteLinhVucBaiBao(int? id, int? idBaiBao )
+        {
+            if (id == null || idBaiBao == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            BaiBao baibao = await db.BaiBaos.Where(p => p.MaBaiBao == idBaiBao).FirstOrDefaultAsync();
+            LinhVuc linhvuc = await db.LinhVucs.Where(p => p.MaLinhVuc == id).FirstOrDefaultAsync();
+            if (baibao == null || linhvuc == null)
+            {
+                return HttpNotFound();
+            }
+            baibao.LinhVucs.Remove(linhvuc);
+            await db.SaveChangesAsync();
+            return RedirectToAction("LinhVucBaiBao");
+        }
 
         protected override void Dispose(bool disposing)
         {

@@ -1,0 +1,174 @@
+﻿@*@model IEnumerable<WebQLKhoaHoc.PhatMinhGiaiPhap>*@
+@using PagedList.Mvc;
+@using PagedList;
+@model IPagedList<WebQLKhoaHoc.PhatMinhGiaiPhap>
+@{
+    ViewBag.Title = "Phát minh giải pháp";
+    Layout = "~/Views/Shared/_MainPage.cshtml";
+    // tạo biến đếm cho collapse
+    int quantity = 0;
+}
+
+<!-- Start main-content -->
+<div class="main-content">
+    <section id="home" class="divider parallax layer-overlay overlay-dark-4" data-bg-img="http://csdlkhoahoc.hueuni.edu.vn/csdl/images/bg5.jpg" style="background-image: url(&quot;http://csdlkhoahoc.hueuni.edu.vn/csdl/images/bg5.jpg&quot;); background-position: 50% 91px;">
+        @using (Html.BeginForm("Index", "PhatMinhGiaiPhaps", FormMethod.Get))
+        {
+
+            <div class="display-table">
+                <div class="display-table-cell">
+                    <div class="container pt-30 pb-20">
+                        <div class="row">
+                            <div class="col-md-6 pt-10">
+                                <h2 class="title text-white">Dữ liệu <span class="text-theme-color-2">Đề Tài</span></h2>
+                                <ol class="breadcrumb text-left text-black mt-10">
+                                    <li> @Html.ActionLink("Trang Chủ", "Index", "Home")</li>
+                                    <li class="active text-gray-silver">Phát minh giải pháp</li>
+                                </ol>
+                                @if (Session["user"] != null)
+                                {
+                                    <!-- Hiển thị nút khi đã đăng nhập -->
+                                    <div class="col-xs-12 col-sm-4 pl-5 pr-5">
+                                        <div class="form-group mb-5">
+                                            <button type="submit" class="btn btn-colored btn-theme-color-2 text-white btn-lg btn-block btn-round border-radius-15px" data-loading-text="Please wait...">
+                                                Phát minh của tôi
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <!--    ***************            -->
+                                }
+                            </div>
+                            <div class="col-md-6">
+                                <!-- Appointment Form Starts -->
+                                <form class="subpage bg-white pt-20 pl-30 pr-30 pb-15" method="post" action="http://csdlkhoahoc.hueuni.edu.vn/index.php/scientist/search">
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-6 pl-5 pr-5">
+                                            <div class="form-group mb-5">
+                                                <div class="styled-select">
+                                                    <input name="QuocGiaCap" id="QuocGiaCap" class="form-control border-radius-15px" type="text" placeholder="Quốc gia cấp" value="@ViewBag.QuocGiaCap">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6 pl-5 pr-5">
+                                            <div class="form-group mb-5">
+                                                <div class="styled-select">
+                                                    <input name="NamCongBo" id="NamCongBo" class="form-control date-picker border-radius-15px" type="text" placeholder="Năm công bố" value="@ViewBag.NamCongBo" autocomplete="off">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                        @if (Session["user"] != null)
+                                        {
+                                            WebQLKhoaHoc.Models.UserLoginViewModel nkh = (WebQLKhoaHoc.Models.UserLoginViewModel)Session["user"];
+                                            <input name="nkhId" id="nkhId" type="hidden" value="@nkh.MaNKH">
+                                        }
+                                        <div class="col-xs-12 col-sm-8 pl-5 pr-5">
+                                            <div class="form-group mb-5">
+                                                <div class="styled-select">
+                                                    <input name="SearchValue" id="SearchValue" class="form-control border-radius-15px" type="text" placeholder="Từ khóa tìm kiếm" value="@ViewBag.SearchValue">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-4 pl-5 pr-5 ">
+                                            <div class="form-group mb-5 ">
+                                                <i class="glyphicon glyphicon-search icon-glyphicon-search-custom"></i>
+                                                <button type="submit" class="btn btn-colored text-white btn-block border-radius-15px btn-search-component" data-loading-text="Please wait...">
+                                                    Tìm Kiếm
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </section>
+    <section class="divider parallax layer-overlay overlay-light" data-bg-img="../../Image/research-background.png" style='background-image: url("../../Image/research-background.png")'>
+        <div class="container">
+            <div class="section-content">
+                <section id="services" class="bg-white-transparent-6 border-radius-10px">
+                    <div class="container pt-40">
+                        <div class="section-title mb-11">
+                            <div class="row">
+                                <div class="col-md-11">
+                                    <h2 class="text-uppercase title line-bottom ml-20" style="color:deepskyblue;">
+                                        Phát minh giải pháp
+                                    </h2>
+                                </div>
+                                @if (Session["user"] != null)
+                                {
+                                    <div class="col-md-1">
+                                        <a href="@Url.Action("Create", "PhatMinhGiaiPhaps")" class="btn btn-success border-radius-10px pull-right">Thêm mới</a>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+
+
+                        <div class="row mtli-row-clearfix">
+                            @foreach (var item in Model)
+                            {
+                                <div class="col-xs-12">
+                                    <div class="bg-white round p-15 mb-30 border-1px">
+                                        <span class="mb-20 mt-5 p-5 bg-theme-colored-transparent-6 text-white pull-right border-radius-10px">
+                                            @item.SoHieuPM
+                                        </span>
+
+                                        <a href="javascript:" data-toggle="modal" data-target="#mydata" onclick="modal_load('@Url.Action("Details", "PhatMinhGiaiPhaps", new { id = item.MaPM })')">
+                                            <h4 class="icon-box-title font1 font-weight-600 mb-20">
+                                                @Html.DisplayFor(modelItem => item.TenPM)
+                                            </h4>
+                                        </a>
+
+                                        <p class="text-gray font-13 mb-0">
+                                            <i class="fa fa-users" aria-hidden="true"></i>
+                                            <b>Người tham gia:</b>
+                                            @for (int i = 0; i < item.DSPhatMinhNKHs.Count; i++)
+                                            {
+                                                var nkh = item.DSPhatMinhNKHs.ToList()[i];
+                                                var name = nkh.NhaKhoaHoc.HoNKH + " " + nkh.NhaKhoaHoc.TenNKH;
+                                                if (nkh.LaChuSoHuu.Value)
+                                                {
+                                                    name += " (Chủ sở hữu)";
+                                                }
+                                                if (i < (item.DSPhatMinhNKHs.Count - 1))
+                                                {
+                                                    name += ", ";
+                                                }
+
+                                                <a class="customlink" href="@Url.Action("Details", "NhaKhoaHocs", new { id = nkh.MaNKH })">@name</a>
+                                            }
+                                            <br>
+                                            <i class="fa fa-calendar" aria-hidden="true"></i>
+                                            <b> Năm công bố : </b>
+                                            @Html.DisplayFor(modelItem => item.NamCongBo)
+                                            <br>
+                                            <i class="fa fa-globe" aria-hidden="true"></i>
+                                            <b>Quốc gia cấp:</b>
+                                            @Html.DisplayFor(modelItem => item.QuocGiaCap)
+                                            <br>
+                                        </p>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+
+                        <div class="row mt-20 text-center">
+                            @Html.PagedListPager(Model, Page_No => Url.Action("Index", "PhatMinhGiaiPhaps", new
+                       {
+                           Page_No,
+                           QuocGiaCap = Request.QueryString["QuocGiaCap"],
+                           NamCongBo = Request.QueryString["NamCongBo"],
+                           SearchValue = Request.QueryString["SearchValue"],
+                           nkhId = Request.QueryString["nkhId"]
+                       }))
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </section>
+</div>

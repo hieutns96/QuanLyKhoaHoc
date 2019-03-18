@@ -119,24 +119,24 @@
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th class="text-center">Loại kinh phí</th>
-                        <th class="text-center">Năm cấp</th>
-                        <th class="text-center">Số tiền</th>
-                        <th class="text-center">Loại tiền</th>                       
+                        <th class="text-center" style="font-size: 14px; color:#03a9f4;">Loại kinh phí</th>
+                        <th class="text-center" style="font-size: 14px; color:#03a9f4;">Năm cấp</th>
+                        <th class="text-center" style="font-size: 14px; color:#03a9f4;">Số tiền</th>
+                        <th class="text-center" style="font-size: 14px; color:#03a9f4;">Loại tiền</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach (var kinhphi in Model.KinhPhiDeTais)
                     {
                         <tr>
-                            <td class="text-right">@kinhphi.LoaiKinhPhi</td>
-                            <td class="text-right">@kinhphi.NamTiepNhan.Value.ToString("d")</td>
-                            <td class="text-right">@kinhphi.SoTien</td>
-                            <td class="text-right">@kinhphi.LoaiTien</td>                            
+                            <td class="text-right" style="font-size: 14px;">@kinhphi.LoaiKinhPhi</td>
+                            <td class="text-right" style="font-size: 14px;">@kinhphi.NamTiepNhan.Value.ToString("d")</td>
+                            <td class="text-right" style="font-size: 14px;">@kinhphi.SoTien</td>
+                            <td class="text-right" style="font-size: 14px;">@kinhphi.LoaiTien</td>
                         </tr>
                     }
                 </tbody>
-            </table>        
+            </table>
         <dt>
             Người tham gia:
         </dt>

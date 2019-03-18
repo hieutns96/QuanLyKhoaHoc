@@ -1,0 +1,111 @@
+﻿@model WebQLKhoaHoc.PhatMinhGiaiPhap
+
+@{
+    ViewBag.Title = "Tạo Phát minh giải pháp";
+    Layout = "~/Views/Shared/_MainPage.cshtml";
+}
+<div class=" parallax layer-overlay overlay-light bg-white-transparent-4" data-bg-img="../../Image/research-background.png" style='background-image: url("../../Image/research-background.png")'>
+    <div class="container">
+        @using (Html.BeginForm("Create", "PhatMinhGiaiPhaps", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true)
+                <div class="modal-header bg-white-transparent-5">
+                    <h1 class="modal-title text-center text-theme-color-2 uppercase ">Thêm sách giáo trình </h1>
+                </div>
+
+                <div class="modal-body">
+                    <div class="row  bg-white-transparent-7">
+                        <div class="col-md-6">
+                            <dl class="dl-horizontal">
+                                <dt>
+                                    Số hiệu Phát minh:
+                                </dt>
+                                <dd>
+                                    @Html.EditorFor(model => model.SoHieuPM, new { htmlAttributes = new { @class = "form-control", @required = "@required" } })
+                                </dd>
+                                <dt>
+                                    Tên sách giáo trình:
+                                </dt>
+                                <dd>
+                                    @Html.EditorFor(model => model.TenPM, new { htmlAttributes = new { @class = "form-control", @required = "@required" } })
+                                </dd>
+                                <dt>
+                                    Quốc gia cấp:
+                                </dt>
+                                <dd>
+                                    @Html.EditorFor(model => model.QuocGiaCap, new { htmlAttributes = new { @class = "form-control", @required = "@required" } })
+                                </dd>
+                                <dt>
+                                    Năm xuất bản:
+                                </dt>
+                                <dd>
+                                    <input name="NamCongBo" id="NamCongBo" class="form-control" type="date" placeholder="Năm xuất bản" value="" autocomplete="off">
+                                </dd>
+                                <dt>
+                                    Mô tả phát minh:
+                                </dt>
+                                <dd>
+                                    @Html.EditorFor(model => model.MotaPM, new { htmlAttributes = new { @class = "form-control", @required = "@required" } })
+                                </dd>
+                                <dt>
+                                    Đối tượng sử dụng:
+                                </dt>
+                                <dd>
+                                    @Html.EditorFor(model => model.DoiTuongSuDung, new { htmlAttributes = new { @class = "form-control", @required = "@required" } })
+                                </dd>
+                                <dt>
+                                    Link liên kết:
+                                </dt>
+                                <dd>
+                                    @Html.EditorFor(model => model.LinkLienKet, new { htmlAttributes = new { @class = "form-control" } })
+                                </dd>
+                            </dl>
+
+                        </div>
+                        <div class="col-md-6">
+                            <dl class="dl-horizontal">
+                                <dt>
+                                    Link upload file:
+                                </dt>
+                                <dd>
+                                    <input type="file" class="form-control-plaintext" name="anhChup1" id="anhChup1" placeholder="Ảnh chụp sản phẩm 1" value="@Html.DisplayFor(model => model.AnhChupSanPham1)"/>
+                                </dd>
+                                <dt>
+                                    Link upload file:
+                                </dt>
+                                <dd>
+                                    <input type="file" class="form-control-plaintext" name="anhChup2" id="anhChup2" placeholder="Ảnh chụp sản phẩm 2" value="@Html.DisplayFor(model => model.AnhChupSanPham2)"/>
+                                </dd>
+                                <dt>
+                                    Link upload file:
+                                </dt>
+                                <dd>
+                                    <input type="file" class="form-control-plaintext" name="anhGiayChungNhan" id="anhGiayChungNhan" placeholder="Ảnh giấy chứng nhận" value="@Html.DisplayFor(model => model.AnhScanGiayChungNhan)"/>
+                                </dd>
+                                <dt>
+                                    Người tham gia:
+                                </dt>
+                                <dd>
+                                    @Html.ListBox("DSPhatMinhNKH", ViewBag.DSPhatMinhNKH as MultiSelectList, new { @class = "listbox" })
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+                <br />
+
+                <div class="modal-footer">
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Lưu Xuống" class="btn btn-warning btn-lg" />
+                            <a href="@Url.Action("Index","PhatMinhGiaiPhaps")" type="button" class="btn btn-danger btn-lg">Trở Về</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

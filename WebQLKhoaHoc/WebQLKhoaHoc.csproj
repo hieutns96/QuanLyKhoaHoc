@@ -705,6 +705,8 @@
     <Content Include="Views\AdminNganHangNKHs\Details.cshtml" />
     <Content Include="Views\AdminNganHangNKHs\Edit.cshtml" />
     <Content Include="Views\AdminNganHangNKHs\Index.cshtml" />
+    <Content Include="Views\AdminBaiBao\LinhVucBaiBao.cshtml" />
+    <Content Include="Views\AdminBaiBao\EditLinhVucBaiBao.cshtml" />
     <Content Include="Views\NhaKhoaHocs\GetReport.cshtml" />
     <None Include="Web.Debug.Config">
       <DependentUpon>Web.Config</DependentUpon>

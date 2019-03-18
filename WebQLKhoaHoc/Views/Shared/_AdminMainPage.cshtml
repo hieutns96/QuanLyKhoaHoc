@@ -71,14 +71,23 @@
                                         <!-- list children controllers -->
                                         <li><a href="@Url.Action("Index","AdminBaiBao")">Danh sách bài báo</a></li>
                                         <li><a href="@Url.Action("DanhSachNguoiThamGiaBaiBao","AdminBaiBao")">Danh sách người thàm gia bài báo</a></li>
+                                        <li><a href="@Url.Action("Index","AdminCapTapChi")">Cấp tạp chí</a></li>
+                                        <li><a href="@Url.Action("Index","AdminPhanLoaiTapChi")">Phân loại tạp chí</a></li>
+                                        <li><a href="@Url.Action("LinhVucBaiBao","AdminBaiBao")">Lĩnh vực bài báo</a></li>
                                     </ul>
                                 </li>
                                 <li>
-                                    <a href="javascript:;"><i class="fa fa-home"></i> Đơn vị quản lý<span class="fa fa-chevron-down"></span></a>
+                                    <a href="javascript:;"><i class="fa fa-home"></i> Đơn vị quản lý <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu" style="display: none;">
                                         <!-- list children controllers -->
-                                        <li><a href="@Url.Action("Index","AdminDonViQL")">Đơn vị quản lý</a></li>
-                                        <li><a href="@Url.Action("DanhSachNguoiThamGiaBaiBao","AdminBaiBao")">Danh sách người thàm gia bài báo</a></li>
+                                        <li><a href="@Url.Action("Index","AdminDonViQL")">Đơn vị quản lý</a></li>                                       
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="javascript:;"><i class="fa fa-home"></i> Lĩnh vực <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu" style="display: none;">
+                                        <!-- list children controllers -->
+                                        <li><a href="@Url.Action("Index","AdminLinhVuc")">Lĩnh vực</a></li>
                                     </ul>
                                 </li>
                             </ul>
