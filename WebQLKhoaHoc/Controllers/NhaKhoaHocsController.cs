@@ -108,6 +108,20 @@ namespace WebQLKhoaHoc.Controllers
             return View(nkh);
         }
 
+        public async Task<ActionResult> GetReport(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            NhaKhoaHoc nhaKhoaHoc = await db.NhaKhoaHocs.FindAsync(id);
+            if (nhaKhoaHoc == null)
+            {
+                return HttpNotFound();
+            }
+            return View(nhaKhoaHoc);
+        }
+
         // GET: NhaKhoaHocs/Create
         public ActionResult Create()
         {

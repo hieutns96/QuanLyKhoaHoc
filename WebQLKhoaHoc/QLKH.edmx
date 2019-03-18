@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="QLKhoaHocModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="QLKhoaHocModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="BacDaoTao">
           <Key>
             <PropertyRef Name="MaBacDT" />
@@ -312,6 +312,7 @@
           <Property Name="MaDonViQL" Type="int" />
           <Property Name="AnhCaNhan" Type="varbinary(max)" />
           <Property Name="MaNgachVienChuc" Type="int" />
+          <Property Name="SoCMND" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="NhaKhoaHoc_KH">
           <Key>
@@ -374,6 +375,7 @@
           <Property Name="AnhScanGiayChungNhan" Type="varbinary(max)" />
           <Property Name="AnhChupSanPham1" Type="varbinary(max)" />
           <Property Name="AnhChupSanPham2" Type="varbinary(max)" />
+          <Property Name="NamCongBo" Type="date" />
         </EntityType>
         <EntityType Name="QuaTrinhCongTac">
           <Key>
@@ -1313,8 +1315,7 @@
             <End Role="SachGiaoTrinh" EntitySet="SachGiaoTrinh" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="QLKhoaHocModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -1689,6 +1690,7 @@
           <NavigationProperty Name="QuaTrinhCongTacs" Relationship="Self.QuaTrinhCongTac_fk0" FromRole="NhaKhoaHoc" ToRole="QuaTrinhCongTac" />
           <NavigationProperty Name="QuaTrinhDaoTaos" Relationship="Self.QuaTrinhDaoTao_fk0" FromRole="NhaKhoaHoc" ToRole="QuaTrinhDaoTao" />
           <NavigationProperty Name="LinhVucs" Relationship="Self.LinhVucNghienCuuNKH" FromRole="NhaKhoaHoc" ToRole="LinhVuc" />
+          <Property Name="SoCMND" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="NhaKhoaHoc_KH">
           <Key>
@@ -1758,6 +1760,7 @@
           <Property Name="AnhChupSanPham1" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="AnhChupSanPham2" Type="Binary" MaxLength="Max" FixedLength="false" />
           <NavigationProperty Name="DSPhatMinhNKHs" Relationship="Self.FK_DSPhatMinh_PM" FromRole="PhatMinhGiaiPhap" ToRole="DSPhatMinhNKH" />
+          <Property Name="NamCongBo" Type="DateTime" Precision="0" />
         </EntityType>
         <EntityType Name="QuaTrinhCongTac">
           <Key>
@@ -2966,6 +2969,7 @@
           <EntitySetMapping Name="NhaKhoaHocs">
             <EntityTypeMapping TypeName="QLKhoaHocModel.NhaKhoaHoc">
               <MappingFragment StoreEntitySet="NhaKhoaHoc">
+                <ScalarProperty Name="SoCMND" ColumnName="SoCMND" />
                 <ScalarProperty Name="MaNKH" ColumnName="MaNKH" />
                 <ScalarProperty Name="MaNKHHoSo" ColumnName="MaNKHHoSo" />
                 <ScalarProperty Name="HoNKH" ColumnName="HoNKH" />
@@ -3040,6 +3044,7 @@
           <EntitySetMapping Name="PhatMinhGiaiPhaps">
             <EntityTypeMapping TypeName="QLKhoaHocModel.PhatMinhGiaiPhap">
               <MappingFragment StoreEntitySet="PhatMinhGiaiPhap">
+                <ScalarProperty Name="NamCongBo" ColumnName="NamCongBo" />
                 <ScalarProperty Name="MaPM" ColumnName="MaPM" />
                 <ScalarProperty Name="TenPM" ColumnName="TenPM" />
                 <ScalarProperty Name="SoHieuPM" ColumnName="SoHieuPM" />

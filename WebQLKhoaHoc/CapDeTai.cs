@@ -11,8 +11,7 @@ namespace WebQLKhoaHoc
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class CapDeTai
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,11 +19,8 @@ namespace WebQLKhoaHoc
         {
             this.DeTais = new HashSet<DeTai>();
         }
-        [Display(Name = "Mã cấp đề tài")]
+    
         public int MaCapDeTai { get; set; }
-        [Display(Name = "Tên cấp đề tài")]
-        [Required]
-        [MaxLength(50)]
         public string TenCapDeTai { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
