@@ -1,0 +1,87 @@
+﻿@model WebQLKhoaHoc.PhatMinhGiaiPhap
+
+@{
+    ViewBag.Title = "Chi Tiết Phát minh giải pháp";
+    Layout = "~/Views/Shared/PopUpLayout.cshtml";
+}
+
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">×</button>
+    <h4 class="modal-title"><span class="glyphicon glyphicon-info-sign"></span> Thông tin Phát minh giải pháp</h4>
+</div>
+
+<div class="modal-body">
+    <dl class="dl-horizontal">
+        <dt>
+            Số hiệu phát minh:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoHieuPM)
+        </dd>
+
+        <dt>
+            Tên phát minh giải pháp:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenPM)
+        </dd>
+
+        <dt>
+            Năm công bố:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NamCongBo)
+        </dd>
+
+        <dt>
+            Quốc gia cấp:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.QuocGiaCap)
+        </dd>
+
+        <dt>
+            Người tham gia:
+        </dt>
+
+        <dd>
+            @for (int i = 0; i < Model.DSPhatMinhNKHs.Count; i++)
+            {
+                var tg = Model.DSPhatMinhNKHs.ToList()[i];
+                var name = tg.NhaKhoaHoc.HoNKH + " " + tg.NhaKhoaHoc.TenNKH;
+                if (tg.LaChuSoHuu.Value)
+                {
+                    name += " (Chủ sở hữu)";
+                }
+                if (i < (Model.DSPhatMinhNKHs.Count - 1))
+                {
+                    name += ", ";
+                }
+                @Html.ActionLink(name.ToString(), "Details", "PhatMinhGiaiPhaps", new { id = tg.MaNKH }, new { Class = "customlink" });
+            }
+        </dd>
+    </dl>
+</div>
+
+<div class="modal-footer">
+    @if (Session["user"] != null)
+    {
+        QLKhoaHocEntities db = new QLKhoaHocEntities();
+        WebQLKhoaHoc.Models.UserLoginViewModel nkh = (WebQLKhoaHoc.Models.UserLoginViewModel)Session["user"];
+        if (db.DSPhatMinhNKHs.Any(p => p.MaNKH == nkh.MaNKH && p.LaChuSoHuu == true && p.MaPM == Model.MaPM))
+        {
+            <a href="@Url.Action("Edit","PhatMinhGiaiPhaps",new { id = Model.MaPM})" type="button" class="btn btn-primary">Chỉnh Sửa</a>
+        }
+    }
+    <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
+</div>
+
+<style>
+    a.customlink:hover {
+        color: red;
+    }
+</style>
