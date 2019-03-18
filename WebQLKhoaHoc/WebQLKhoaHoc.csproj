@@ -211,12 +211,13 @@
     <Compile Include="Controllers\AdminLinhVucController.cs" />
     <Compile Include="Controllers\AdminLoaiHinhDeTaiController.cs" />
     <Compile Include="Controllers\AdminNgachVienChucController.cs" />
+    <Compile Include="Controllers\AdminNganHangNKHsController.cs" />
     <Compile Include="Controllers\AdminNganhDaoTaoController.cs" />
     <Compile Include="Controllers\AdminNguoiDungController.cs" />
     <Compile Include="Controllers\AdminNhaKhoaHocController.cs" />
     <Compile Include="Controllers\AdminNhaXuatBanController.cs" />
     <Compile Include="Controllers\AdminNhomLinhVucController.cs" />
-    <Compile Include="Controllers\AdminnPhanLoaiSPController.cs" />
+    <Compile Include="Controllers\AdminPhanLoaiSPController.cs" />
     <Compile Include="Controllers\AdminPhanLoaiSachesController.cs" />
     <Compile Include="Controllers\AdminPhanLoaiTapChiController.cs" />
     <Compile Include="Controllers\AdminQuaTrinhCongTacController.cs" />
@@ -375,6 +376,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bin\Newtonsoft.Json.dll" />
     <Content Include="Content\Admin\animate.css" />
     <Content Include="Content\Admin\bootstrap-theme.min.css" />
     <Content Include="Content\Admin\bootstrap.min.css" />
@@ -393,6 +395,7 @@
     <Content Include="Content\lightbox\prev.png" />
     <Content Include="Content\menuzord-rounded-boxed.css" />
     <Content Include="Content\PagedList.css" />
+    <Content Include="Content\report.css" />
     <Content Include="Content\responsive.css" />
     <Content Include="Content\style-main.css" />
     <Content Include="Content\theme-skin-color-set-1.css" />
@@ -662,11 +665,11 @@
     <Content Include="Views\AdminPhanLoaiTapChi\Details.cshtml" />
     <Content Include="Views\AdminPhanLoaiTapChi\Edit.cshtml" />
     <Content Include="Views\AdminPhanLoaiTapChi\Index.cshtml" />
-    <Content Include="Views\AdminnPhanLoaiSP\Create.cshtml" />
-    <Content Include="Views\AdminnPhanLoaiSP\Delete.cshtml" />
-    <Content Include="Views\AdminnPhanLoaiSP\Details.cshtml" />
-    <Content Include="Views\AdminnPhanLoaiSP\Edit.cshtml" />
-    <Content Include="Views\AdminnPhanLoaiSP\Index.cshtml" />
+    <Content Include="Views\AdminPhanLoaiSP\Create.cshtml" />
+    <Content Include="Views\AdminPhanLoaiSP\Delete.cshtml" />
+    <Content Include="Views\AdminPhanLoaiSP\Details.cshtml" />
+    <Content Include="Views\AdminPhanLoaiSP\Edit.cshtml" />
+    <Content Include="Views\AdminPhanLoaiSP\Index.cshtml" />
     <Content Include="Views\AdminPhanLoaiSaches\Create.cshtml" />
     <Content Include="Views\AdminPhanLoaiSaches\Delete.cshtml" />
     <Content Include="Views\AdminPhanLoaiSaches\Details.cshtml" />
@@ -692,6 +695,19 @@
     <Content Include="Web.Config" />
     <Content Include="Views\Account\ChangePassword.cshtml" />
     <Content Include="Views\Shared\PopUpLayout.cshtml" />
+    <Content Include="Views\AdminTrinhDoNgoaiNguNKH\Create.cshtml" />
+    <Content Include="Views\AdminTrinhDoNgoaiNguNKH\Delete.cshtml" />
+    <Content Include="Views\AdminTrinhDoNgoaiNguNKH\Details.cshtml" />
+    <Content Include="Views\AdminTrinhDoNgoaiNguNKH\Edit.cshtml" />
+    <Content Include="Views\AdminTrinhDoNgoaiNguNKH\Index.cshtml" />
+    <Content Include="Views\AdminNganHangNKHs\Create.cshtml" />
+    <Content Include="Views\AdminNganHangNKHs\Delete.cshtml" />
+    <Content Include="Views\AdminNganHangNKHs\Details.cshtml" />
+    <Content Include="Views\AdminNganHangNKHs\Edit.cshtml" />
+    <Content Include="Views\AdminNganHangNKHs\Index.cshtml" />
+    <Content Include="Views\AdminBaiBao\LinhVucBaiBao.cshtml" />
+    <Content Include="Views\AdminBaiBao\EditLinhVucBaiBao.cshtml" />
+    <Content Include="Views\NhaKhoaHocs\GetReport.cshtml" />
     <None Include="Web.Debug.Config">
       <DependentUpon>Web.Config</DependentUpon>
     </None>
@@ -706,7 +722,9 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="packages.config" />
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

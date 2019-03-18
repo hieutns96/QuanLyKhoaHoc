@@ -1,25 +1,26 @@
-﻿@model WebQLKhoaHoc.CapDeTai
+﻿@model WebQLKhoaHoc.PhanLoaiSP
 
 @{
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_AdminMainPage.cshtml";
 }
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
-        <h1  class="text-center">Cấp đề tài</h1>
+        <h1 class="text-center">Phân loại sản phẩm đề tài</h1>
         <hr />
         @Html.ValidationSummary(true)
+       
         <div class="form-group">
             <div class="col-md-2 col-md-offset-1">
-                <h2>@Html.DisplayNameFor(model=>model.TenCapDeTai)</h2>
+                <h2>@Html.DisplayNameFor(model => model.TenPhanLoai)</h2>
             </div>
             <div class="col-md-7">
-                @Html.TextBoxFor(model => model.TenCapDeTai,new { @class="form-control"})
-                @Html.ValidationMessageFor(model => model.TenCapDeTai)
+                @Html.TextBoxFor(model => model.TenPhanLoai, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.TenPhanLoai)
             </div>
         </div>
 
@@ -31,3 +32,4 @@
         </div>
     </div>
 }
+

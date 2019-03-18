@@ -69,6 +69,7 @@ namespace WebQLKhoaHoc.Controllers
         {
             if(username != null && username != "" && password != null && password != "")
             {
+
                 NguoiDung nguoiDung = db.NguoiDungs.SingleOrDefault(p => p.Usernames == username && p.IsActive ==true);
 
                 if (nguoiDung == null)

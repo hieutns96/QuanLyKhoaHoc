@@ -18,7 +18,7 @@ namespace WebQLKhoaHoc.Controllers
         // GET: AdminXepLoai
         public async Task<ActionResult> Index()
         {
-            return View(await db.XepLoais.ToListAsync());
+            return View(await db.XepLoais.OrderBy(p=>p.MaXepLoai).ToListAsync());
         }
 
         // GET: AdminXepLoai/Details/5
@@ -111,6 +111,12 @@ namespace WebQLKhoaHoc.Controllers
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
             XepLoai xepLoai = await db.XepLoais.FindAsync(id);
+            List<DeTai> deTai = await db.DeTais.Where(p => p.MaXepLoai == xepLoai.MaXepLoai).ToListAsync();
+            foreach (var detai in deTai)
+            {
+                detai.XepLoai = null;
+                await db.SaveChangesAsync();
+            }
             db.XepLoais.Remove(xepLoai);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");

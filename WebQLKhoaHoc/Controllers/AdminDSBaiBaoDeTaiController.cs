@@ -40,8 +40,8 @@ namespace WebQLKhoaHoc.Controllers
         // GET: AdminDSBaiBaoDeTai/Create
         public ActionResult Create()
         {
-            ViewBag.MaBaiBao = new SelectList(db.BaiBaos, "MaBaiBao", "MaISSN");
-            ViewBag.MaDeTai = new SelectList(db.DeTais, "MaDeTai", "MaDeTaiHoSo");
+            ViewBag.MaBaiBao = new SelectList(db.BaiBaos, "MaBaiBao", "TenBaiBao");
+            ViewBag.MaDeTai = new SelectList(db.DeTais, "MaDeTai", "TenDeTai");
             return View();
         }
 
@@ -59,8 +59,8 @@ namespace WebQLKhoaHoc.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.MaBaiBao = new SelectList(db.BaiBaos, "MaBaiBao", "MaISSN", dSBaiBaoDeTai.MaBaiBao);
-            ViewBag.MaDeTai = new SelectList(db.DeTais, "MaDeTai", "MaDeTaiHoSo", dSBaiBaoDeTai.MaDeTai);
+            ViewBag.MaBaiBao = new SelectList(db.BaiBaos, "MaBaiBao", "MaBaiBao", dSBaiBaoDeTai.MaBaiBao);
+            ViewBag.MaDeTai = new SelectList(db.DeTais, "MaDeTai", "TenDeTai", dSBaiBaoDeTai.MaDeTai);
             return View(dSBaiBaoDeTai);
         }
 
@@ -76,8 +76,8 @@ namespace WebQLKhoaHoc.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.MaBaiBao = new SelectList(db.BaiBaos, "MaBaiBao", "MaISSN", dSBaiBaoDeTai.MaBaiBao);
-            ViewBag.MaDeTai = new SelectList(db.DeTais, "MaDeTai", "MaDeTaiHoSo", dSBaiBaoDeTai.MaDeTai);
+            ViewBag.MaBaiBao = new SelectList(db.BaiBaos, "MaBaiBao", "TenBaiBao", dSBaiBaoDeTai.MaBaiBao);
+            ViewBag.MaDeTai = new SelectList(db.DeTais, "MaDeTai", "TenDeTai", dSBaiBaoDeTai.MaDeTai);
             return View(dSBaiBaoDeTai);
         }
 
@@ -86,7 +86,7 @@ namespace WebQLKhoaHoc.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "MaDeTai,MaBaiBao,GhiChu")] DSBaiBaoDeTai dSBaiBaoDeTai)
+        public async Task<ActionResult> Edit([Bind(Include = "MaTT,MaDeTai,MaBaiBao,GhiChu")] DSBaiBaoDeTai dSBaiBaoDeTai)
         {
             if (ModelState.IsValid)
             {
@@ -94,8 +94,8 @@ namespace WebQLKhoaHoc.Controllers
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            ViewBag.MaBaiBao = new SelectList(db.BaiBaos, "MaBaiBao", "MaISSN", dSBaiBaoDeTai.MaBaiBao);
-            ViewBag.MaDeTai = new SelectList(db.DeTais, "MaDeTai", "MaDeTaiHoSo", dSBaiBaoDeTai.MaDeTai);
+            ViewBag.MaBaiBao = new SelectList(db.BaiBaos, "MaBaiBao", "TenBaiBao", dSBaiBaoDeTai.MaBaiBao);
+            ViewBag.MaDeTai = new SelectList(db.DeTais, "MaDeTai", "TenDeTai", dSBaiBaoDeTai.MaDeTai);
             return View(dSBaiBaoDeTai);
         }
 

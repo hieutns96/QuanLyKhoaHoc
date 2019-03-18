@@ -11,7 +11,6 @@ namespace WebQLKhoaHoc
 {
     using System;
     using System.Collections.Generic;
-    
     public partial class LoaiHinhDeTai
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,10 +18,10 @@ namespace WebQLKhoaHoc
         {
             this.DeTais = new HashSet<DeTai>();
         }
-    
+
         public int MaLoaiDT { get; set; }
         public string TenLoaiDT { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DeTai> DeTais { get; set; }
     }

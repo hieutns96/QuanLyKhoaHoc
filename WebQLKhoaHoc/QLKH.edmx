@@ -312,6 +312,7 @@
           <Property Name="MaDonViQL" Type="int" />
           <Property Name="AnhCaNhan" Type="varbinary(max)" />
           <Property Name="MaNgachVienChuc" Type="int" />
+          <Property Name="SoCMND" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="NhaKhoaHoc_KH">
           <Key>
@@ -1689,6 +1690,7 @@
           <NavigationProperty Name="QuaTrinhCongTacs" Relationship="Self.QuaTrinhCongTac_fk0" FromRole="NhaKhoaHoc" ToRole="QuaTrinhCongTac" />
           <NavigationProperty Name="QuaTrinhDaoTaos" Relationship="Self.QuaTrinhDaoTao_fk0" FromRole="NhaKhoaHoc" ToRole="QuaTrinhDaoTao" />
           <NavigationProperty Name="LinhVucs" Relationship="Self.LinhVucNghienCuuNKH" FromRole="NhaKhoaHoc" ToRole="LinhVuc" />
+          <Property Name="SoCMND" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="NhaKhoaHoc_KH">
           <Key>
@@ -2967,6 +2969,7 @@
           <EntitySetMapping Name="NhaKhoaHocs">
             <EntityTypeMapping TypeName="QLKhoaHocModel.NhaKhoaHoc">
               <MappingFragment StoreEntitySet="NhaKhoaHoc">
+                <ScalarProperty Name="SoCMND" ColumnName="SoCMND" />
                 <ScalarProperty Name="MaNKH" ColumnName="MaNKH" />
                 <ScalarProperty Name="MaNKHHoSo" ColumnName="MaNKHHoSo" />
                 <ScalarProperty Name="HoNKH" ColumnName="HoNKH" />

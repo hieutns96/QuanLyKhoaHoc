@@ -4,8 +4,8 @@
 @{
     ViewBag.Title = "Dữ Liệu Sách && Giáo Trình";
     Layout = "~/Views/Shared/_MainPage.cshtml";
-    // tạo biến đếm cho collapse
-    int quantity = 0;
+  
+   
 }
 
 @using PagedList.Mvc;
@@ -123,52 +123,51 @@
                                             @item.MaISBN
                                         </span>
                                         <div class="dropdown">
-                                            <button class="btn btn-link left" style="padding-left:unset" role="link" href="javascript:" data-toggle="modal" data-target="#mydata" onclick="modal_load('@Url.Action("Details", "SachGiaoTrinhs", new { id = item.MaSach })')">
+                                            <a href="javascript:" data-toggle="modal" data-target="#mydata" onclick="modal_load('@Url.Action("Details", "SachGiaoTrinhs", new { id = item.MaSach })')">
                                                 <h4 class="icon-box-title font-16 font-weight-600 m-0 mb-5 pr-15">
                                                     @Html.DisplayFor(modelItem => item.TenSach)
                                                 </h4>
-                                            </button>
-                                            <button class="btn btn-default btn-round" data-toggle="collapse" data-target="#research-@quantity "><i class="fas fa-caret-down"></i></button>
-                                            <div id="research-@quantity" class="collapse">
-                                                <p class="text-gray font-13 mb-0">
-                                                    <i class="fa fa-university" aria-hidden="true"></i>
-                                                    <b> Nhà xuất bản:</b>
-                                                    @Html.DisplayFor(modelItem => item.NhaXuatBan.TenNXB)
-                                                    <br>
-                                                    <i class="fa fa-tag" aria-hidden="true"></i>
-                                                    <b> Thể loại : </b>
-                                                    @Html.DisplayFor(modelItem => item.PhanLoaiSach.TenLoai)
-                                                    <br>
-                                                    <i class="fa fa-university" aria-hidden="true"></i>
-                                                    <b> Lĩnh vự :</b>
-                                                    @Html.DisplayFor(modelItem => item.LinhVuc.TenLinhVuc)
-                                                    <br>
-                                                    <i class="fa fa-users" aria-hidden="true"></i>
-                                                    <b>Người tham gia:</b>
-                                                    @for (int i = 0; i < item.DSTacGias.Count; i++)
+                                            </a>
+                                           
+                                         
+                                            <p class="text-gray font-13 mb-0">
+                                                <i class="fa fa-university" aria-hidden="true"></i>
+                                                <b> Nhà xuất bản:</b>
+                                                @Html.DisplayFor(modelItem => item.NhaXuatBan.TenNXB)
+                                                <br>
+                                                <i class="fa fa-tag" aria-hidden="true"></i>
+                                                <b> Thể loại : </b>
+                                                @Html.DisplayFor(modelItem => item.PhanLoaiSach.TenLoai)
+                                                <br>
+                                                <i class="fa fa-university" aria-hidden="true"></i>
+                                                <b> Lĩnh vự :</b>
+                                                @Html.DisplayFor(modelItem => item.LinhVuc.TenLinhVuc)
+                                                <br>
+                                                <i class="fa fa-users" aria-hidden="true"></i>
+                                                <b>Người tham gia:</b>
+                                                @for (int i = 0; i < item.DSTacGias.Count; i++)
+                                                {
+                                                    var tg = item.DSTacGias.ToList()[i];
+                                                    var name = tg.NhaKhoaHoc.HoNKH + " " + tg.NhaKhoaHoc.TenNKH;
+                                                    if (tg.LaChuBien.Value)
                                                     {
-                                                        var tg = item.DSTacGias.ToList()[i];
-                                                        var name = tg.NhaKhoaHoc.HoNKH + " " + tg.NhaKhoaHoc.TenNKH;
-                                                        if (tg.LaChuBien.Value)
-                                                        {
-                                                            name += " (Chủ biên)";
-                                                        }
-                                                        if (i < (item.DSTacGias.Count - 1))
-                                                        {
-                                                            name += ", ";
-                                                        }
-
-                                                        <a class="customlink" href="@Url.Action("Details", "NhaKhoaHocs", new { id = tg.MaNKH })">@name</a>
-
-
+                                                        name += " (Chủ biên)";
                                                     }
-                                                    @*<a href="#"></a>*@
-                                                    @{ quantity++;}
-                                                    <br>
-                                                </p>
+                                                    if (i < (item.DSTacGias.Count - 1))
+                                                    {
+                                                        name += ", ";
+                                                    }
 
-                                            </div>
+                                                    <a class="customlink" href="@Url.Action("Details", "NhaKhoaHocs", new { id = tg.MaNKH })">@name</a>
+
+
+                                                }
+                                              
+                                                <br>
+                                            </p>
+
                                         </div>
+                                       
                                     </div>
                                 </div>
                             }

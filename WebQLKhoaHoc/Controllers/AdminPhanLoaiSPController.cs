@@ -11,7 +11,7 @@ using WebQLKhoaHoc;
 
 namespace WebQLKhoaHoc.Controllers
 {
-    public class AdminnPhanLoaiSPController : Controller
+    public class AdminPhanLoaiSPController : Controller
     {
         private QLKhoaHocEntities db = new QLKhoaHocEntities();
 
@@ -111,6 +111,12 @@ namespace WebQLKhoaHoc.Controllers
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
             PhanLoaiSP phanLoaiSP = await db.PhanLoaiSPs.FindAsync(id);
+            List<DeTai> deTai = await db.DeTais.Where(p => p.MaPhanLoaiSP == phanLoaiSP.MaPhanLoai).ToListAsync();
+            foreach (var detai in deTai)
+            {
+                detai.PhanLoaiSP = null;
+                await db.SaveChangesAsync();
+            }
             db.PhanLoaiSPs.Remove(phanLoaiSP);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");

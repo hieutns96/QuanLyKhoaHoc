@@ -2,39 +2,78 @@
 
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_MainPage.cshtml";
+    Layout = "~/Views/Shared/_AdminMainPage.cshtml";
 }
 
-<h2>Index</h2>
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>
+                   Đơn vị chủ trì
+                </h2>
+                <ul class="nav navbar-right panel_toolbox">
+                    <li class="dropdown">
+                        <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>
+                                @Html.ActionLink("Create New", "Create", "AdminDonViChuTri")
+                            </li>
+                        </ul>
+                    </li>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.TenDVChuTri)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DiaChi)
-        </th>
-        <th></th>
-    </tr>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <div id="datatable_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+                    <!-- list component  -->
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <table id="datatable" class="table table-striped table-bordered dataTable no-footer" role="grid" aria-describedby="datatable_info">
+                                <thead>
+                                    <tr role="row">
+                                        <th>
+                                            Tên đơn vị chủ trì:
+                                        </th> 
+                                        <th>
+                                            Địa chỉ:
+                                        </th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <!-- grid nkh  -->
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr role="row" class="even">
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.TenDVChuTri)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DiaChi)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.MaDVChuTri }) |
-            @Html.ActionLink("Details", "Details", new { id=item.MaDVChuTri }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.MaDVChuTri })
-        </td>
-    </tr>
-}
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.TenDVChuTri)
+                                            </td>
 
-</table>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.DiaChi)
+                                            </td>
+
+                                            <td>
+                                                <a href="@Url.Action("Edit", "AdminDonViChuTri", new {id = item.MaDVChuTri})">
+                                                    <i class="far fa-edit"></i>
+                                                </a>
+                                                <a href="@Url.Action("Delete", "AdminDonViChuTri", new {id = item.MaDVChuTri})">
+                                                    <i class="far fa-trash-alt"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    }
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
