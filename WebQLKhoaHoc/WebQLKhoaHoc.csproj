@@ -232,6 +232,7 @@
     <Compile Include="Controllers\DeTaisController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\NhaKhoaHocsController.cs" />
+    <Compile Include="Controllers\PhatMinhGiaiPhapsController.cs" />
     <Compile Include="Controllers\SachGiaoTrinhsController.cs" />
     <Compile Include="DanhGiaNgoaiNgu.cs">
       <DependentUpon>QLKH.tt</DependentUpon>
@@ -287,9 +288,11 @@
     <Compile Include="Models\DeTaiSearchViewModel.cs" />
     <Compile Include="Models\Encryptor.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\ImageViewModel.cs" />
     <Compile Include="Models\LinhVucViewMenuModel.cs" />
     <Compile Include="Models\NhaKhoaHocSearchViewModel.cs" />
     <Compile Include="Models\NhaKhoaHocViewModel.cs" />
+    <Compile Include="Models\PhatMinhGiaiPhapSearchViewModel.cs" />
     <Compile Include="Models\quantumChartViewModel.cs" />
     <Compile Include="Models\topicChartViewModel.cs" />
     <Compile Include="Models\topicdata.cs" />
@@ -376,6 +379,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\uploads\detai_file\readme.txt" />
     <Content Include="bin\Newtonsoft.Json.dll" />
     <Content Include="Content\Admin\animate.css" />
     <Content Include="Content\Admin\bootstrap-theme.min.css" />
@@ -708,6 +712,13 @@
     <Content Include="Views\AdminBaiBao\LinhVucBaiBao.cshtml" />
     <Content Include="Views\AdminBaiBao\EditLinhVucBaiBao.cshtml" />
     <Content Include="Views\NhaKhoaHocs\GetReport.cshtml" />
+    <Content Include="Views\SachGiaoTrinhs\GetAllImage.cshtml" />
+    <Content Include="Views\PhatMinhGiaiPhaps\Create.cshtml" />
+    <Content Include="Views\PhatMinhGiaiPhaps\Delete.cshtml" />
+    <Content Include="Views\PhatMinhGiaiPhaps\Details.cshtml" />
+    <Content Include="Views\PhatMinhGiaiPhaps\Edit.cshtml" />
+    <Content Include="Views\PhatMinhGiaiPhaps\Index.cshtml" />
+    <Content Include="Views\PhatMinhGiaiPhaps\GetAllImage.cshtml" />
     <None Include="Web.Debug.Config">
       <DependentUpon>Web.Config</DependentUpon>
     </None>
@@ -716,7 +727,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
+    <Folder Include="App_Data\uploads\baibao_file\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

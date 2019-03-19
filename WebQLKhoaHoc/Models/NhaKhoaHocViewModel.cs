@@ -27,7 +27,6 @@ namespace WebQLKhoaHoc.Models
         public int? MaHocVi { get; set; }
         public int? MaCNDaoTao { get; set; }
         public int? MaDonViQL { get; set; }
-        public string AnhDaiDien { get; set; }
         public string AnhCaNhan { get; set; }
         public int? MaNgachVienChuc { get; set; }
         public virtual ICollection<ChuyenMonNKH> ChuyenMonNKHs { get; set; }

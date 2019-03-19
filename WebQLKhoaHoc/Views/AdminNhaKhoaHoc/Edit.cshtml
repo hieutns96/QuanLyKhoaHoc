@@ -610,7 +610,7 @@
                                     <h2>
                                         Tài khoản ngân hàng
                                     </h2>
-                                    @if (Model.NganHangNKH.MaNKH == 0)
+                                    @if (Model.NganHangNKH == null)
                                     {
                                     <ul class="nav navbar-right panel_toolbox">
                                         <li class="dropdown">
@@ -641,31 +641,34 @@
 
                                         <!-- grid nkh  -->
                                         <tbody>
-                                         
-                                            <tr role="row" class="even">
-                                                <td>
-                                                    @Html.DisplayFor(model=>model.NganHangNKH.STKNH)
-                                                </td>
-                                                <td>
-                                                    @Html.DisplayFor(model=>model.NganHangNKH.NganHang.TenNH)
-                                                </td>
-                                                <td>
-                                                    @Html.DisplayFor(model=>model.NganHangNKH.ChiNhanhNH)
-                                                </td>
-                                                <td>
-                                                    @Html.DisplayFor(model=>model.NganHangNKH.GhiChu)
-                                                </td>                                               
-                                                <td>
-                                                    <a href="@Url.Action("Delete", "AdminNganHangNKHs", new {id = Model.NganHangNKH.MaNH , manhakhoahoc = Model.NganHangNKH.MaNKH})">
-                                                        <i class="far fa-trash-alt"></i>
-                                                    </a>
-                                                    <a href="@Url.Action("Edit", "AdminNganHangNKHs", new {id = Model.NganHangNKH.MaNH , manhakhoahoc = Model.NganHangNKH.MaNKH})">
-                                                        <i class="far fa-edit"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            
+                                            @{ var nganhang = Model.NganHangNKH;
+                                                if (nganhang != null)
+                                                {
+                                                    <tr role="row" class="even">
+                                                        <td>
+                                                            @Html.DisplayFor(model => nganhang.STKNH)
+                                                        </td>
+                                                        <td>
+                                                            @Html.DisplayFor(model => nganhang.NganHang.TenNH)
+                                                        </td>
+                                                        <td>
+                                                            @Html.DisplayFor(model => nganhang.ChiNhanhNH)
+                                                        </td>
+                                                        <td>
+                                                            @Html.DisplayFor(model => nganhang.GhiChu)
+                                                        </td>
 
+                                                        <td>
+                                                            <a href="@Url.Action("Delete", "AdminNganHangNKHs", new {id = nganhang.MaNH , manhakhoahoc = nganhang.MaNKH})">
+                                                                <i class="far fa-trash-alt"></i>
+                                                            </a>
+                                                            <a href="@Url.Action("Edit", "AdminNganHangNKHs", new {id = nganhang.MaNH , manhakhoahoc = nganhang.MaNKH})">
+                                                                <i class="far fa-edit"></i>
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            }
                                         </tbody>
                                     </table>
                                 </form>

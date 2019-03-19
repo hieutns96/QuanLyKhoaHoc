@@ -182,6 +182,8 @@ namespace WebQLKhoaHoc.Controllers
                     MaNKH = user.MaNKH
                 });
 
+                
+
                 if (DSNguoiThamGiaBaiBao != null)
                 {
                     foreach (var mankh in DSNguoiThamGiaBaiBao)
@@ -196,6 +198,7 @@ namespace WebQLKhoaHoc.Controllers
                         db.SaveChanges();
                     }
                 }
+
                 if (DeTaiBaiBao != null)
                 {
                     foreach (var madetai in DeTaiBaiBao)
@@ -306,7 +309,6 @@ namespace WebQLKhoaHoc.Controllers
                 {
                     baiBao.LinkFileUpLoad = baibao.LinkFileUpLoad;
                 }
-                db.BaiBaos.AddOrUpdate(baiBao);
                 /* phần xửa lý lĩnh vực*/
 
                 if (LinhVuc != null)
@@ -326,15 +328,16 @@ namespace WebQLKhoaHoc.Controllers
                 }
                 else
                 {
-                    foreach (var x in baibao.LinhVucs)
-                    {
-                        baibao.LinhVucs.Remove(x);
-                    }
+                    baibao.LinhVucs = null;
                 }
 
 
                 /* xừ lý người tham gia bài báo*/
-                if (DSNguoiThamGiaBaiBao != null)
+                if (DSNguoiThamGiaBaiBao == null)
+                {
+                    db.DSNguoiThamGiaBaiBaos.Where(p => p.MaBaiBao == baibao.MaBaiBao && p.LaTacGiaChinh == false).ForEach(z => db.DSNguoiThamGiaBaiBaos.Remove(z));
+                }
+                else
                 {
                     db.DSNguoiThamGiaBaiBaos.Where(p => p.MaBaiBao == baibao.MaBaiBao && p.LaTacGiaChinh == false).ForEach(z => db.DSNguoiThamGiaBaiBaos.Remove(z));
                     foreach (var mankh in DSNguoiThamGiaBaiBao)
@@ -350,7 +353,11 @@ namespace WebQLKhoaHoc.Controllers
                 }
 
                 /* xử lý đề tài bài báo*/
-                if (DeTaiBaiBao != null)
+                if (DSNguoiThamGiaBaiBao == null)
+                {
+                    db.DSBaiBaoDeTais.Where(p => p.MaBaiBao == baibao.MaBaiBao).ForEach(z => db.DSBaiBaoDeTais.Remove(z));
+                }
+                else
                 {
                     db.DSBaiBaoDeTais.Where(p => p.MaBaiBao == baibao.MaBaiBao).ForEach(z => db.DSBaiBaoDeTais.Remove(z));
                     foreach (var madetai in DeTaiBaiBao)
@@ -362,7 +369,6 @@ namespace WebQLKhoaHoc.Controllers
                         };
                         db.DSBaiBaoDeTais.Add(detai);
                     }
-
                 }
 
                 await db.SaveChangesAsync();
