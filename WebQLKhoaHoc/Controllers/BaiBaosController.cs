@@ -196,6 +196,7 @@ namespace WebQLKhoaHoc.Controllers
                         db.SaveChanges();
                     }
                 }
+
                 if (DeTaiBaiBao != null)
                 {
                     foreach (var madetai in DeTaiBaiBao)
@@ -334,36 +335,32 @@ namespace WebQLKhoaHoc.Controllers
 
 
                 /* xừ lý người tham gia bài báo*/
-                if (DSNguoiThamGiaBaiBao != null)
+                
+                db.DSNguoiThamGiaBaiBaos.Where(p => p.MaBaiBao == baibao.MaBaiBao && p.LaTacGiaChinh == false).ForEach(z => db.DSNguoiThamGiaBaiBaos.Remove(z));
+                foreach (var mankh in DSNguoiThamGiaBaiBao)
                 {
-                    db.DSNguoiThamGiaBaiBaos.Where(p => p.MaBaiBao == baibao.MaBaiBao && p.LaTacGiaChinh == false).ForEach(z => db.DSNguoiThamGiaBaiBaos.Remove(z));
-                    foreach (var mankh in DSNguoiThamGiaBaiBao)
+                    DSNguoiThamGiaBaiBao nguoiTGBB = new DSNguoiThamGiaBaiBao
                     {
-                        DSNguoiThamGiaBaiBao nguoiTGBB = new DSNguoiThamGiaBaiBao
-                        {
-                            LaTacGiaChinh = false,
-                            MaBaiBao = baibao.MaBaiBao,
-                            MaNKH = Int32.Parse(mankh)
-                        };
-                        baibao.DSNguoiThamGiaBaiBaos.Add(nguoiTGBB);
-                    }
+                        LaTacGiaChinh = false,
+                        MaBaiBao = baibao.MaBaiBao,
+                        MaNKH = Int32.Parse(mankh)
+                    };
+                    baibao.DSNguoiThamGiaBaiBaos.Add(nguoiTGBB);
                 }
 
                 /* xử lý đề tài bài báo*/
-                if (DeTaiBaiBao != null)
+               
+                db.DSBaiBaoDeTais.Where(p => p.MaBaiBao == baibao.MaBaiBao).ForEach(z => db.DSBaiBaoDeTais.Remove(z));
+                foreach (var madetai in DeTaiBaiBao)
                 {
-                    db.DSBaiBaoDeTais.Where(p => p.MaBaiBao == baibao.MaBaiBao).ForEach(z => db.DSBaiBaoDeTais.Remove(z));
-                    foreach (var madetai in DeTaiBaiBao)
+                    DSBaiBaoDeTai detai = new DSBaiBaoDeTai
                     {
-                        DSBaiBaoDeTai detai = new DSBaiBaoDeTai
-                        {
-                            MaBaiBao = baiBao.MaBaiBao,
-                            MaDeTai = Int32.Parse(madetai)
-                        };
-                        db.DSBaiBaoDeTais.Add(detai);
-                    }
-
+                        MaBaiBao = baiBao.MaBaiBao,
+                        MaDeTai = Int32.Parse(madetai)
+                    };
+                    db.DSBaiBaoDeTais.Add(detai);
                 }
+
 
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
