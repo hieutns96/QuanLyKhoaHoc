@@ -225,17 +225,6 @@
                                         </div>
 
                                         <ul class="tip-list">
-                                            @foreach (var item in db.DeTais.OrderByDescending(p => p.NamBD).Take(5))
-                                            {
-                                                <li class="tip-list-item">
-
-                                                    <a href="@Url.Action("Details","DeTais",new {id = item.MaDeTai })">
-                                                        @item.NoiDungDeTai <span class="cdate font1" style="color: #f00; font-size: 11px; font-weight: normal !important;"> (@item.NamBD.Value.ToShortDateString())</span>
-                                                    </a>
-
-
-                                                </li>
-                                            }
                                             @foreach (var item in db.BaiBaos.OrderByDescending(p => p.NamDangBao).Take(5))
                                             {
                                                 <li class="tip-list-item">
@@ -253,17 +242,6 @@
                                         </div>
 
                                         <ul class="tip-list">
-                                            @foreach (var item in db.DeTais.OrderByDescending(p => p.NamBD).Take(5))
-                                            {
-                                                <li class="tip-list-item">
-
-                                                    <a href="@Url.Action("Details","DeTais",new {id = item.MaDeTai })">
-                                                        @item.NoiDungDeTai <span class="cdate font1" style="color: #f00; font-size: 11px; font-weight: normal !important;"> (@item.NamBD.Value.ToShortDateString())</span>
-                                                    </a>
-
-
-                                                </li>
-                                            }
                                             @foreach (var item in db.SachGiaoTrinhs.OrderByDescending(p => p.NamXuatBan).Take(5))
                                             {
                                                 <li class="tip-list-item">
