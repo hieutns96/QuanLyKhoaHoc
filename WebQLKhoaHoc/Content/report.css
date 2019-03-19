@@ -674,7 +674,7 @@ table th {
     line-height: 1.0;
     orphans: 2;
     widows: 2;
-    text-align: justify;
+    text-align: center;
     height: 12pt
 }
 

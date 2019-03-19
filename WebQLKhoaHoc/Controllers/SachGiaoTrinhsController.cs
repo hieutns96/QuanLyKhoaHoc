@@ -89,6 +89,25 @@ namespace WebQLKhoaHoc.Controllers
             }
             return View(sachGiaoTrinh);
         }
+        public async Task<ActionResult> GetAllImage(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            SachGiaoTrinh sachGiaoTrinh = await db.SachGiaoTrinhs.FindAsync(id);
+            if (sachGiaoTrinh == null)
+            {
+                return HttpNotFound();
+            }
+            List<ImageViewModel> lstImage = new List<ImageViewModel>
+            {
+                 new ImageViewModel(sachGiaoTrinh.AnhBia1),
+                new ImageViewModel(sachGiaoTrinh.AnhBia4),
+                new ImageViewModel(sachGiaoTrinh.AnhBiaISBN)
+            };
+            return View(lstImage);
+        }
 
         // GET: SachGiaoTrinhs/Create
         public ActionResult Create()
