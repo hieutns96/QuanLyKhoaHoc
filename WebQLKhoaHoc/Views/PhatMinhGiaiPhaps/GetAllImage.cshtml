@@ -1,0 +1,26 @@
+﻿@model List<WebQLKhoaHoc.Models.ImageViewModel>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>GetAllImage</title>
+</head>
+<body>
+<div>
+    @foreach (var item in Model)
+    {
+        if (String.IsNullOrEmpty(item.Image))
+        {
+            <img class="img-fullwidth" src="@item.Image" style="max-height: 100vw;" />
+        }
+
+    }
+</div>
+</body>
+</html>

@@ -75,6 +75,25 @@ namespace WebQLKhoaHoc.Controllers
             }
             return View(phatMinhGiaiPhap);
         }
+        public async Task<ActionResult> GetAllImage(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            PhatMinhGiaiPhap phatMinhGiaiPhap = await db.PhatMinhGiaiPhaps.FindAsync(id);
+            if (phatMinhGiaiPhap == null)
+            {
+                return HttpNotFound();
+            }
+            List<ImageViewModel> lstImage = new List<ImageViewModel>
+            {
+                new ImageViewModel(phatMinhGiaiPhap.AnhChupSanPham1),
+                new ImageViewModel(phatMinhGiaiPhap.AnhChupSanPham2),
+                new ImageViewModel(phatMinhGiaiPhap.AnhScanGiayChungNhan)
+            };
+            return View(phatMinhGiaiPhap);
+        }
 
         // GET: PhatMinhGiaiPhaps/Create
         public ActionResult Create()
