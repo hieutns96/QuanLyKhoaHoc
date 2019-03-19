@@ -309,7 +309,6 @@ namespace WebQLKhoaHoc.Controllers
                 {
                     baiBao.LinkFileUpLoad = baibao.LinkFileUpLoad;
                 }
-                db.BaiBaos.AddOrUpdate(baiBao);
                 /* phần xửa lý lĩnh vực*/
 
                 if (LinhVuc != null)
@@ -329,40 +328,48 @@ namespace WebQLKhoaHoc.Controllers
                 }
                 else
                 {
-                    foreach (var x in baibao.LinhVucs)
-                    {
-                        baibao.LinhVucs.Remove(x);
-                    }
+                    baibao.LinhVucs = null;
                 }
 
 
                 /* xừ lý người tham gia bài báo*/
-                
-                db.DSNguoiThamGiaBaiBaos.Where(p => p.MaBaiBao == baibao.MaBaiBao && p.LaTacGiaChinh == false).ForEach(z => db.DSNguoiThamGiaBaiBaos.Remove(z));
-                foreach (var mankh in DSNguoiThamGiaBaiBao)
+                if (DSNguoiThamGiaBaiBao == null)
                 {
-                    DSNguoiThamGiaBaiBao nguoiTGBB = new DSNguoiThamGiaBaiBao
+                    db.DSNguoiThamGiaBaiBaos.Where(p => p.MaBaiBao == baibao.MaBaiBao && p.LaTacGiaChinh == false).ForEach(z => db.DSNguoiThamGiaBaiBaos.Remove(z));
+                }
+                else
+                {
+                    db.DSNguoiThamGiaBaiBaos.Where(p => p.MaBaiBao == baibao.MaBaiBao && p.LaTacGiaChinh == false).ForEach(z => db.DSNguoiThamGiaBaiBaos.Remove(z));
+                    foreach (var mankh in DSNguoiThamGiaBaiBao)
                     {
-                        LaTacGiaChinh = false,
-                        MaBaiBao = baibao.MaBaiBao,
-                        MaNKH = Int32.Parse(mankh)
-                    };
-                    baibao.DSNguoiThamGiaBaiBaos.Add(nguoiTGBB);
+                        DSNguoiThamGiaBaiBao nguoiTGBB = new DSNguoiThamGiaBaiBao
+                        {
+                            LaTacGiaChinh = false,
+                            MaBaiBao = baibao.MaBaiBao,
+                            MaNKH = Int32.Parse(mankh)
+                        };
+                        baibao.DSNguoiThamGiaBaiBaos.Add(nguoiTGBB);
+                    }
                 }
 
                 /* xử lý đề tài bài báo*/
-               
-                db.DSBaiBaoDeTais.Where(p => p.MaBaiBao == baibao.MaBaiBao).ForEach(z => db.DSBaiBaoDeTais.Remove(z));
-                foreach (var madetai in DeTaiBaiBao)
+                if (DSNguoiThamGiaBaiBao == null)
                 {
-                    DSBaiBaoDeTai detai = new DSBaiBaoDeTai
-                    {
-                        MaBaiBao = baiBao.MaBaiBao,
-                        MaDeTai = Int32.Parse(madetai)
-                    };
-                    db.DSBaiBaoDeTais.Add(detai);
+                    db.DSBaiBaoDeTais.Where(p => p.MaBaiBao == baibao.MaBaiBao).ForEach(z => db.DSBaiBaoDeTais.Remove(z));
                 }
-
+                else
+                {
+                    db.DSBaiBaoDeTais.Where(p => p.MaBaiBao == baibao.MaBaiBao).ForEach(z => db.DSBaiBaoDeTais.Remove(z));
+                    foreach (var madetai in DeTaiBaiBao)
+                    {
+                        DSBaiBaoDeTai detai = new DSBaiBaoDeTai
+                        {
+                            MaBaiBao = baiBao.MaBaiBao,
+                            MaDeTai = Int32.Parse(madetai)
+                        };
+                        db.DSBaiBaoDeTais.Add(detai);
+                    }
+                }
 
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");

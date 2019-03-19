@@ -74,7 +74,7 @@
                                                 <a href="@Url.Action("Edit", "AdminNhaKhoaHoc", new {id = item.MaNKH})">
                                                     <i class="far fa-edit"></i>
                                                 </a>
-                                                <a  href="javascript:" data-toggle="modal" data-target="#mydata" onclick="modal_load('@Url.Action("Details", "AdminNhaKhoaHoc", new { id = item.MaNKH })')">
+                                                <a href="@Url.Action("Details", "AdminNhaKhoaHoc", new { id = item.MaNKH })">
                                                     <i class="fas fa-info"></i>
                                                 </a>
                                                 <a href="@Url.Action("Delete", "AdminNhaKhoaHoc", new {id = item.MaNKH})">

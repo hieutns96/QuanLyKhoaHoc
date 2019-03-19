@@ -112,7 +112,7 @@ namespace WebQLKhoaHoc.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            NhaKhoaHoc nkh = await db.NhaKhoaHocs.FindAsync(id);
+            NhaKhoaHoc nkh = await db.NhaKhoaHocs.Include(p => p.NganHangNKH).Where(p=>p.MaNKH == id).FirstOrDefaultAsync();
             if (nkh == null)
             {
                 return HttpNotFound();
@@ -179,6 +179,9 @@ namespace WebQLKhoaHoc.Controllers
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
             NhaKhoaHoc nhaKhoaHoc = await db.NhaKhoaHocs.FindAsync(id);
+            NguoiDung nguoiDung = await db.NguoiDungs.Where(p=>p.Usernames == nhaKhoaHoc.MaNKHHoSo).FirstOrDefaultAsync();
+            nguoiDung.NhaKhoaHoc = null;
+            nguoiDung.IsActive = false;
             db.NhaKhoaHocs.Remove(nhaKhoaHoc);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
