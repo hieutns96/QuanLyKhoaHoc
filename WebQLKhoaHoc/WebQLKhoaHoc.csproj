@@ -379,6 +379,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\uploads\detai_file\readme.txt" />
     <Content Include="bin\Newtonsoft.Json.dll" />
     <Content Include="Content\Admin\animate.css" />
     <Content Include="Content\Admin\bootstrap-theme.min.css" />
@@ -725,9 +726,7 @@
       <DependentUpon>Web.Config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />

@@ -92,7 +92,7 @@ namespace WebQLKhoaHoc.Controllers
 
         public async Task<ActionResult> Create()
         {
-            var lstAllNKH = db.NhaKhoaHocs.Where(p => p.MaNKH != 1).Select(p => new
+            var lstAllNKH = db.NhaKhoaHocs.Select(p => new
             {
                 p.MaNKH,
                 TenNKH = p.HoNKH + " " + p.TenNKH
@@ -244,7 +244,7 @@ namespace WebQLKhoaHoc.Controllers
                 return HttpNotFound();
             }
 
-            var lstAllNKH = db.NhaKhoaHocs.Where(p => p.MaNKH != 1).Select(p => new
+            var lstAllNKH = db.NhaKhoaHocs.Select(p => new
             {
                 p.MaNKH,
                 TenNKH = p.HoNKH + " " + p.TenNKH

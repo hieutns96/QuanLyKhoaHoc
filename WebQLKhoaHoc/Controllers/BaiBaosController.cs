@@ -182,6 +182,8 @@ namespace WebQLKhoaHoc.Controllers
                     MaNKH = user.MaNKH
                 });
 
+                
+
                 if (DSNguoiThamGiaBaiBao != null)
                 {
                     foreach (var mankh in DSNguoiThamGiaBaiBao)
