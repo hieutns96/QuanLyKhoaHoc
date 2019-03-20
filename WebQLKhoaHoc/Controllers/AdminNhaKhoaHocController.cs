@@ -11,6 +11,9 @@ using WebQLKhoaHoc.Models;
 
 namespace WebQLKhoaHoc.Controllers
 {
+
+    [CustomizeAuthorize(Roles = "1,2")]
+
     public class AdminNhaKhoaHocController : Controller
     {
         private QLKhoaHocEntities db = new QLKhoaHocEntities();
@@ -67,27 +70,28 @@ namespace WebQLKhoaHoc.Controllers
 
             if (ModelState.IsValid)
             {
-                        
+
                 if (repo.HasFile(fileUpload))
                 {
                     string mimeType = fileUpload.ContentType;
                     Stream fileStream = fileUpload.InputStream;
                     string fileName = Path.GetFileName(fileUpload.FileName);
                     int fileLength = fileUpload.ContentLength;
-                    byte[] fileData = new byte[fileLength];                   
+                    byte[] fileData = new byte[fileLength];
                     fileStream.Read(fileData, 0, fileLength);
                     nhaKhoaHoc.AnhCaNhan = fileData;
-                  
+
                 }
 
                 db.NhaKhoaHocs.Add(nhaKhoaHoc);
                 await db.SaveChangesAsync();
 
                 string salt = "".GenRandomKey(); //update by Khiet
-                NguoiDung newuser = new NguoiDung {
+                NguoiDung newuser = new NguoiDung
+                {
                     MaNKH = nhaKhoaHoc.MaNKH,
                     Usernames = nhaKhoaHoc.MaNKHHoSo,
-                    Passwords = Encryptor.MD5Hash("12345"+salt), //update by Khiet
+                    Passwords = Encryptor.MD5Hash("12345" + salt), //update by Khiet
                     MaChucNang = 2,
                     RandomKey = salt //update by Khiet
                 };
@@ -112,7 +116,7 @@ namespace WebQLKhoaHoc.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            NhaKhoaHoc nkh = await db.NhaKhoaHocs.Include(p => p.NganHangNKH).Where(p=>p.MaNKH == id).FirstOrDefaultAsync();
+            NhaKhoaHoc nkh = await db.NhaKhoaHocs.Include(p => p.NganHangNKH).Where(p => p.MaNKH == id).FirstOrDefaultAsync();
             if (nkh == null)
             {
                 return HttpNotFound();
@@ -131,7 +135,7 @@ namespace WebQLKhoaHoc.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit(HttpPostedFileBase fileUpload,[Bind(Include = "MaNKH,MaNKHHoSo,HoNKH,TenNKH,GioiTinhNKH,NgaySinh,DiaChiLienHe,DienThoai,EmailLienHe,MaHocHam,MaHocVi,MaCNDaoTao,MaDonViQL,MaNgachVienChuc")] NhaKhoaHoc nhaKhoaHoc)
+        public async Task<ActionResult> Edit(HttpPostedFileBase fileUpload, [Bind(Include = "MaNKH,MaNKHHoSo,HoNKH,TenNKH,GioiTinhNKH,NgaySinh,DiaChiLienHe,DienThoai,EmailLienHe,MaHocHam,MaHocVi,MaCNDaoTao,MaDonViQL,MaNgachVienChuc")] NhaKhoaHoc nhaKhoaHoc)
         {
             if (ModelState.IsValid)
             {
@@ -142,10 +146,10 @@ namespace WebQLKhoaHoc.Controllers
                     Stream fileStream = fileUpload.InputStream;
                     string fileName = Path.GetFileName(fileUpload.FileName);
                     int fileLength = fileUpload.ContentLength;
-                    byte[] fileData = new byte[fileLength];                   
+                    byte[] fileData = new byte[fileLength];
                     fileStream.Read(fileData, 0, fileLength);
                     nhaKhoaHoc.AnhCaNhan = fileData;
-                    
+
                 }
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
@@ -179,7 +183,7 @@ namespace WebQLKhoaHoc.Controllers
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
             NhaKhoaHoc nhaKhoaHoc = await db.NhaKhoaHocs.FindAsync(id);
-            NguoiDung nguoiDung = await db.NguoiDungs.Where(p=>p.Usernames == nhaKhoaHoc.MaNKHHoSo).FirstOrDefaultAsync();
+            NguoiDung nguoiDung = await db.NguoiDungs.Where(p => p.Usernames == nhaKhoaHoc.MaNKHHoSo).FirstOrDefaultAsync();
             nguoiDung.NhaKhoaHoc = null;
             nguoiDung.IsActive = false;
             db.NhaKhoaHocs.Remove(nhaKhoaHoc);
