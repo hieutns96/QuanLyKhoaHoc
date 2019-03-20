@@ -283,6 +283,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BaiBaoSearchViewModel.cs" />
     <Compile Include="Models\ChangePasswordModel.cs" />
+    <Compile Include="Models\CustomizeAuthorize.cs" />
     <Compile Include="Models\HomeSearchViewModel.cs" />
     <Compile Include="Models\degreeChartViewModel.cs" />
     <Compile Include="Models\DeTaiSearchViewModel.cs" />

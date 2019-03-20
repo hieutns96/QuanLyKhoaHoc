@@ -1796,7 +1796,6 @@
                         <td>
                             @item.BaiBao.LinkFileUpLoad
                         </td>
-                        <td></td>
                     </tr>
                     count++;
                 }
@@ -1853,7 +1852,9 @@
                             <td>
                                 @item.SachGiaoTrinh.PhanLoaiSach.TenLoai
                             </td>
-                            <td></td>
+                            <td>
+                                @Url.Action("GetAllImage", "SachGiaoTrinhs", new { id = item.MaSach }, protocol: Request.Url.Scheme)
+                            </td>
                         </tr>
                         count++;
                     }
@@ -1912,7 +1913,9 @@
                             <td>
                                 @item.PhatMinhGiaiPhap.SoHieuPM
                             </td>
-                            <td></td>
+                            <td>
+                                @Url.Action("GetAllImage", "PhatMinhGiaiPhaps", new { id = item.MaPM }, protocol: Request.Url.Scheme)
+                            </td>
                         </tr>
                         count++;
                     }
