@@ -26,7 +26,9 @@
             var images = Array();
             var img = markup.find('img');
             for (var i = 0; i < img.length; i++) {
-
+                // Calculate dimensions of output image
+                var w = Math.min(img[i].width, options.maxWidth);
+                var h = img[i].height * (w / img[i].width);
                 // Create canvas for converting image to data URL
                 var canvas = document.createElement("CANVAS");
                 canvas.width = w;
