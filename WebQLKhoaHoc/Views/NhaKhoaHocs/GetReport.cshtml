@@ -587,12 +587,11 @@
                         <td>
                             @item.BaiBao.LinkFileUpLoad
                         </td>
-<<<<<<< HEAD
-=======
+
                         <td>
-                            @Url.Action("GetAllImage", "SachGiaoTrinhs", new { id = item.MaSach }, protocol: Request.Url.Scheme)
+                            @item.BaiBao.LinkFileUpLoad
                         </td>
->>>>>>> f73fa2997604cb8318c3204b3207e2a0566fef23
+
                     </tr>
                     count++;
                 }
@@ -635,12 +634,10 @@
                         <td>
                             @item.BaiBao.LinkFileUpLoad
                         </td>
-<<<<<<< HEAD
-=======
                         <td>
-                            @Url.Action("GetAllImage", "PhatMinhGiaiPhaps", new { id = item.MaPM }, protocol: Request.Url.Scheme)
+                            @item.BaiBao.LinkFileUpLoad
                         </td>
->>>>>>> f73fa2997604cb8318c3204b3207e2a0566fef23
+
                     </tr>
                     count++;
                 }
@@ -697,7 +694,9 @@
                             <td>
                                 @item.SachGiaoTrinh.PhanLoaiSach.TenLoai
                             </td>
-                            <td></td>
+                            <td>
+                                @Url.Action("GetAllImage", "SachGiaoTrinhs", new { id = item.MaSach }, protocol: Request.Url.Scheme)
+                            </td>
                         </tr>
                         count++;
                     }
@@ -756,7 +755,9 @@
                             <td>
                                 @item.PhatMinhGiaiPhap.SoHieuPM
                             </td>
-                            <td></td>
+                            <td>
+                                @Url.Action("GetAllImage", "PhatMinhGiaiPhaps", new { id = item.MaPM }, protocol: Request.Url.Scheme)
+                            </td>
                         </tr>
                         count++;
                     }
