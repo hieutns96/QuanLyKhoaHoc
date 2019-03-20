@@ -10,9 +10,11 @@ using System.Web.Mvc;
 using WebQLKhoaHoc;
 using System.IO;
 using System.Data.Entity.Migrations;
+using WebQLKhoaHoc.Models;
 
 namespace WebQLKhoaHoc.Controllers
 {
+    [CustomizeAuthorize(Roles = "1,2")]
     public class AdminBaiBaoController : Controller
     {
         private QLKhoaHocEntities db = new QLKhoaHocEntities();

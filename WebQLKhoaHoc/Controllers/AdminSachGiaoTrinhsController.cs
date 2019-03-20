@@ -12,6 +12,7 @@ using System.Data.Entity.Migrations;
 
 namespace WebQLKhoaHoc.Controllers
 {
+    [CustomizeAuthorize(Roles = "1,2")]
     public class AdminSachGiaoTrinhsController : Controller
     {
         private QLKhoaHocEntities db = new QLKhoaHocEntities();
