@@ -72,7 +72,11 @@ namespace WebQLKhoaHoc.Controllers
             int No_Of_Page = (Page_No ?? 1);
 
             var sachGiaoTrinhs = db.SachGiaoTrinhs.Include(s => s.LinhVuc).Include(s => s.NhaXuatBan).Include(s => s.PhanLoaiSach).Include(s => s.DSTacGias).AsExpandable().Where(pre).OrderBy(p=>p.MaSach).Skip((No_Of_Page - 1) * 6).Take(6).ToList();
-            return View(sachGiaoTrinhs.ToPagedList(No_Of_Page, 6));
+            decimal totalItem = (decimal)db.SachGiaoTrinhs.Where(pre).OrderBy(p => p.MaSach).Count();
+            int totalPage = (int)Math.Ceiling(totalItem / 6);
+            ViewBag.TotalItem = totalItem;
+            IPagedList<SachGiaoTrinh> pageOrders = new StaticPagedList<SachGiaoTrinh>(sachGiaoTrinhs, No_Of_Page, 1, totalPage);
+            return View(pageOrders);
         }
 
         // GET: SachGiaoTrinhs/sachgiaotrinhls/5

@@ -11,7 +11,14 @@
 @using PagedList;
 
 @{
-    QLKhoaHocEntities db = new QLKhoaHocEntities();
+   
+    int currentitem = Model.PageNumber * 6;
+    if (Model.HasNextPage == false)
+    {
+        currentitem = (int)ViewBag.TotalItem;
+    }
+
+
 }
 
 
@@ -101,7 +108,13 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <h3 class="text-uppercase text-theme-colored title line-bottom">
-                                        Dữ liệu Nhà khoa học                                        
+                                        Dữ liệu Nhà khoa học                                       
+                                   
+                                    
+                                        <span class="text-uppercase pull-right text-theme-colored title ">
+                                            @currentitem / @ViewBag.TotalItem Kết quả
+                                        </span>
+                                    
                                     </h3>
                                 </div>
                             </div>

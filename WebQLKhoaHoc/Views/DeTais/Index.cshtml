@@ -4,18 +4,27 @@
 @{
     ViewBag.Title = "Dữ Liệu Đề Tài";
     Layout = "~/Views/Shared/_MainPage.cshtml";
-    
+
 }
 
 @using PagedList.Mvc;
 @using PagedList;
+@{
 
+    int currentitem = Model.PageNumber * 6;
+    if (Model.HasNextPage == false)
+    {
+        currentitem = (int)ViewBag.TotalItem;
+    }
+
+
+}
 <!-- Start main-content -->
 <div class="main-content">
     <section id="home" class="divider parallax layer-overlay overlay-dark-4" data-bg-img="http://csdlkhoahoc.hueuni.edu.vn/csdl/images/bg5.jpg" style="background-image: url(&quot;http://csdlkhoahoc.hueuni.edu.vn/csdl/images/bg5.jpg&quot;); background-position: 50% 91px;">
-        @using (Html.BeginForm("Index","Detais",FormMethod.Get))
+        @using (Html.BeginForm("Index", "Detais", FormMethod.Get))
         {
-            
+
             <div class="display-table">
                 <div class="display-table-cell">
                     <div class="container pt-30 pb-20">
@@ -28,15 +37,15 @@
                                 </ol>
                                 @if (Session["user"] != null)
                                 {
-                                <!-- Hiển thị nút khi đã đăng nhập -->
-                                <div class="col-xs-12 col-sm-4 pl-5 pr-5">
-                                    <div class="form-group mb-5">
-                                        <button type="submit" class="btn btn-colored btn-theme-color-2 text-white btn-lg btn-block btn-round border-radius-15px" data-loading-text="Please wait...">
-                                            Đề tài của tôi
-                                        </button>
+                                    <!-- Hiển thị nút khi đã đăng nhập -->
+                                    <div class="col-xs-12 col-sm-4 pl-5 pr-5">
+                                        <div class="form-group mb-5">
+                                            <button type="submit" class="btn btn-colored btn-theme-color-2 text-white btn-lg btn-block btn-round border-radius-15px" data-loading-text="Please wait...">
+                                                Đề tài của tôi
+                                            </button>
+                                        </div>
                                     </div>
-                                </div>
-                                <!--    ***************            -->
+                                    <!--    ***************            -->
                                 }
                             </div>
                             <div class="col-md-6">
@@ -108,23 +117,28 @@
             </div>
         }
     </section>
-    <section class="divider parallax layer-overlay overlay-light" data-bg-img="../../Image/research-background.png" style = 'background-image: url("../../Image/research-background.png")'>
+    <section class="divider parallax layer-overlay overlay-light" data-bg-img="../../Image/research-background.png" style='background-image: url("../../Image/research-background.png")'>
         <div class="container">
             <div class="section-content">
                 <section id="services" class="bg-white-transparent-6 border-radius-10px">
                     <div class="container pt-40">
                         <div class="section-title mb-11">
-                            <div class="row">                               
+                            <div class="row">
                                 <div class="col-md-11">
                                     <h2 class="text-uppercase title line-bottom ml-20" style="color:deepskyblue;">
                                         Dữ Liệu Đề Tài
+                                        
+                                        <span class="text-uppercase pull-right text-theme-colored title ">
+                                            @currentitem / @ViewBag.TotalItem Kết quả
+                                        </span>
+
                                     </h2>
-                                 </div>
+                                </div>
                                 @if (Session["user"] != null)
                                 {
-                                <div class="col-md-1">
-                                    <a href="@Url.Action("Create", "Detais")" class="btn btn-success border-radius-10px pull-right">Thêm mới</a>
-                                </div>
+                                    <div class="col-md-1">
+                                        <a href="@Url.Action("Create", "Detais")" class="btn btn-success border-radius-10px pull-right">Thêm mới</a>
+                                    </div>
                                 }
                             </div>
                         </div>

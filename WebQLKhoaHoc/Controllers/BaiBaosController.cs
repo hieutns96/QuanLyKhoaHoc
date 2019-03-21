@@ -106,8 +106,11 @@ namespace WebQLKhoaHoc.Controllers
             int No_Of_Page = (Page_No ?? 1);
 
             var baibaos = db.BaiBaos.Include(b => b.CapTapChi).Include(b => b.PhanLoaiTapChi).Include(b => b.LinhVucs).Include(b => b.DSNguoiThamGiaBaiBaos).AsExpandable().Where(pre).OrderBy(p => p.MaBaiBao).Skip((No_Of_Page - 1) * 6).Take(6).ToList();
-
-            return View(baibaos.ToPagedList(No_Of_Page, 6));
+            decimal totalItem = (decimal)db.BaiBaos.Where(pre).OrderBy(p => p.MaBaiBao).Count();
+            int totalPage = (int)Math.Ceiling(totalItem / 6);
+            ViewBag.TotalItem = totalItem;
+            IPagedList<BaiBao> pageOrders = new StaticPagedList<BaiBao>(baibaos, No_Of_Page, 1, totalPage);
+            return View(pageOrders);
         }
 
 
