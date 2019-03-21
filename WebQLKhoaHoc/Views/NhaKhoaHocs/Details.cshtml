@@ -296,24 +296,34 @@
                                                 <div class="media-body">
                                                     <h4 class="mt-0 mb-0 font-weight-600">Đơn vị quản lý</h4>
                                                     <hr class="mt-10 mb-10">
-                                                    <table class="table table-hover">
-                                                        <thead>
-                                                            <tr>
-                                                                <th>Đơn vị</th>
-                                                                <th>Địa chỉ cơ quan</th>
-                                                                <th>Điện thoại cơ quan</th>
-                                                                <th>Email cơ quan</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <tr>
-                                                                <td>@Model.DonViQL.TenDonVI</td>
-                                                                <td>@Model.DonViQL.DiaChiCQ</td>
-                                                                <td>@Model.DonViQL.DienThoaiCQ</td>
-                                                                <td>@Model.DonViQL.EmailCQ</td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
+                                                    @{ if (!string.IsNullOrEmpty(Model.DonViQL.TenDonVI) || !string.IsNullOrEmpty(Model.DonViQL.DiaChiCQ) ||
+                                                              !string.IsNullOrEmpty(Model.DonViQL.DienThoaiCQ) || !string.IsNullOrEmpty(Model.DonViQL.EmailCQ))
+                                                        {
+                                                            <table class="table table-hover">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>Đơn vị</th>
+                                                                        <th>Địa chỉ cơ quan</th>
+                                                                        <th>Điện thoại cơ quan</th>
+                                                                        <th>Email cơ quan</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td>@Model.DonViQL.TenDonVI</td>
+                                                                        <td>@Model.DonViQL.DiaChiCQ</td>
+                                                                        <td>@Model.DonViQL.DienThoaiCQ</td>
+                                                                        <td>@Model.DonViQL.EmailCQ</td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        }
+                                                        else
+                                                        {
+
+                                                        }
+
+                                                    } 
                                                 </div>
                                             </div>
                                         </li>
@@ -335,11 +345,11 @@
                                                                         {
                                                                             if (i == 0)
                                                                             {
-                                                                                <li><a href="#0" data-date="@item.ThoiGianBD.Value.ToString("dd/MM/yyyy")" class="selected">@item.ThoiGianBD.Value.ToString("dd/MM")</a></li>
+                                                                                <li><a href="#0" data-date="@item.ThoiGianBD.Value.ToString("dd/MM/yyyy")" class="selected">@item.ThoiGianBD.Value.ToString("yyyy")</a></li>
                                                                             }
                                                                             else
                                                                             {
-                                                                                <li><a href="#0" data-date="@item.ThoiGianBD.Value.ToString("dd/MM/yyyy")">@item.ThoiGianBD.Value.ToString("dd/MM")</a></li>
+                                                                                <li><a href="#0" data-date="@item.ThoiGianBD.Value.ToString("dd/MM/yyyy")">@item.ThoiGianBD.Value.ToString("yyyy")</a></li>
                                                                             }
 
                                                                             i = 1;
@@ -429,101 +439,109 @@
                                                 </div>
                                                 <div class="media-body" style="width:100%">
                                                     <h4 class="mt-0 mb-0 font-weight-600">Quá trình đào tạo</h4>
-                                                    <hr class="mt-10 mb-10">
-                                                    <section class="text-center section-padding cd-horizontal-timeline">
-                                                        <div class="timeline" style="margin-top: 50px">
-                                                            <div class="events-wrapper">
-                                                                <div class="events">
+                                                    @{
+                                                        if (Model.QuaTrinhDaoTaos.Count != 0)
+                                                        {
+
+                                                            <hr class="mt-10 mb-10">
+                                                            <section class="text-center section-padding cd-horizontal-timeline">
+                                                                <div class="timeline" style="margin-top: 50px">
+                                                                    <div class="events-wrapper">
+                                                                        <div class="events">
+                                                                            <ol>
+                                                                                @{ int b = 0;}
+                                                                                @foreach (var item in Model.QuaTrinhDaoTaos)
+                                                                                {
+                                                                                    if (b == 0)
+                                                                                    {
+                                                                                        <li><a href="#0" data-date="@item.ThoiGianKT.Value.ToString("dd/MM/yyyy")" class="selected">@item.ThoiGianKT.Value.Year</a></li>
+                                                                                    }
+                                                                                    else
+                                                                                    {
+                                                                                        <li><a href="#0" data-date="@item.ThoiGianKT.Value.ToString("dd/MM/yyyy")">@item.ThoiGianKT.Value.Year</a></li>
+                                                                                    }
+
+                                                                                    b = 1;
+                                                                                }
+
+
+                                                                            </ol>
+                                                                            <span class="filling-line" aria-hidden="true"></span>
+                                                                        </div>
+                                                                        <!-- .events -->
+                                                                    </div>
+                                                                    <!-- .events-wrapper -->
+                                                                    <ul class="cd-timeline-navigation">
+                                                                        <li><a href="#0" class="prev inactive"></a></li>
+                                                                        <li><a href="#0" class="next"></a></li>
+                                                                    </ul>
+                                                                    <!-- .cd-timeline-navigation -->
+                                                                </div>
+                                                                <!-- .timeline -->
+                                                                <div class="events-content">
                                                                     <ol>
-                                                                        @{ int b = 0;}
+
+                                                                        @{ int c = 0;}
                                                                         @foreach (var item in Model.QuaTrinhDaoTaos)
                                                                         {
-                                                                            if (b == 0)
+
+                                                                            if (c == 0)
                                                                             {
-                                                                                <li><a href="#0" data-date="@item.ThoiGianKT.Value.ToString("dd/MM/yyyy")" class="selected">@item.ThoiGianKT.Value.Year</a></li>
+                                                                                <li class="selected" data-date="@item.ThoiGianKT.Value.ToString("dd/MM/yyyy")">
+                                                                                    <table class="table table-hover">
+                                                                                        <tr>
+                                                                                            <th>Học vị</th>
+                                                                                            <td>@item.HocVi.TenHocVi</td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <th>Cơ sở đào tạo</th>
+                                                                                            <td>@item.CoSoDaoTao</td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <th>Ngành đào tạo</th>
+                                                                                            <td>@item.NganhDaoTao.TenNganhDaoTao</td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <th>Năm tốt nghiệp</th>
+                                                                                            <td>@item.ThoiGianKT.Value.Year</td>
+                                                                                        </tr>
+                                                                                    </table>
+                                                                                </li>
                                                                             }
                                                                             else
                                                                             {
-                                                                                <li><a href="#0" data-date="@item.ThoiGianKT.Value.ToString("dd/MM/yyyy")">@item.ThoiGianKT.Value.Year</a></li>
+                                                                                <li data-date="@item.ThoiGianKT.Value.ToString("dd/MM/yyyy")">
+                                                                                    <table class="table table-hover">
+                                                                                        <tr>
+                                                                                            <th>Bậc đào tạo</th>
+                                                                                            <td>@item.HocVi.TenHocVi</td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <th>Cơ sở đào tạo</th>
+                                                                                            <td>@item.CoSoDaoTao</td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <th>Ngành đào tạo</th>
+                                                                                            <td>@item.NganhDaoTao.TenNganhDaoTao</td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <th>Năm tốt nghiệp</th>
+                                                                                            <td>@item.ThoiGianKT.Value.Year</td>
+                                                                                        </tr>
+                                                                                    </table>
+                                                                                </li>
                                                                             }
+                                                                            c = 1;
 
-                                                                            b = 1;
                                                                         }
-
-
                                                                     </ol>
-                                                                    <span class="filling-line" aria-hidden="true"></span>
                                                                 </div>
-                                                                <!-- .events -->
-                                                            </div>
-                                                            <!-- .events-wrapper -->
-                                                            <ul class="cd-timeline-navigation">
-                                                                <li><a href="#0" class="prev inactive"></a></li>
-                                                                <li><a href="#0" class="next"></a></li>
-                                                            </ul>
-                                                            <!-- .cd-timeline-navigation -->
-                                                        </div>
-                                                        <!-- .timeline -->
-                                                        <div class="events-content">
-                                                            <ol>
+                                                                <!-- .events-content -->
+                                                            </section>
+                                                        }
 
-                                                                @{ int c = 0;}
-                                                                @foreach (var item in Model.QuaTrinhDaoTaos)
-                                                                {
+                                                    }
 
-                                                                    if (c == 0)
-                                                                    {
-                                                                        <li class="selected" data-date="@item.ThoiGianKT.Value.ToString("dd/MM/yyyy")">
-                                                                            <table class="table table-hover">
-                                                                                <tr>
-                                                                                    <th>Học vị</th>
-                                                                                    <td>@item.HocVi.TenHocVi</td>
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <th>Cơ sở đào tạo</th>
-                                                                                    <td>@item.CoSoDaoTao</td>
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <th>Ngành đào tạo</th>
-                                                                                    <td>@item.NganhDaoTao.TenNganhDaoTao</td>
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <th>Năm tốt nghiệp</th>
-                                                                                    <td>@item.ThoiGianKT.Value.Year</td>
-                                                                                </tr>
-                                                                            </table>
-                                                                        </li>
-                                                                    }
-                                                                    else
-                                                                    {
-                                                                        <li data-date="@item.ThoiGianKT.Value.ToString("dd/MM/yyyy")">
-                                                                            <table class="table table-hover">
-                                                                                <tr>
-                                                                                    <th>Bậc đào tạo</th>
-                                                                                    <td>@item.HocVi.TenHocVi</td>
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <th>Cơ sở đào tạo</th>
-                                                                                    <td>@item.CoSoDaoTao</td>
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <th>Ngành đào tạo</th>
-                                                                                    <td>@item.NganhDaoTao.TenNganhDaoTao</td>
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <th>Năm tốt nghiệp</th>
-                                                                                    <td>@item.ThoiGianKT.Value.Year</td>
-                                                                                </tr>
-                                                                            </table>
-                                                                        </li>
-                                                                    }
-                                                                    c = 1;
-
-                                                                }
-                                                            </ol>
-                                                        </div>
-                                                        <!-- .events-content -->
-                                                    </section>
 
                                                 </div>
                                             </div>

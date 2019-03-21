@@ -1,4 +1,4 @@
-1) Phần chung
+﻿1) Phần chung
 1.1 Cập nhật số lượng kết quả sau mỗi lần search cho các page NhaKhoaHoc, DeTai, BaiBao, SachGiaoTrinh, PhatMinh (giống như mô tả mục 2.1)
 1.2	Yêu cầu có thông báo
 - xác minh (confirm lại) khi có thao tác xóa.
