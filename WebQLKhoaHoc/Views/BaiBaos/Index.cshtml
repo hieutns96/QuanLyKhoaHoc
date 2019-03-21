@@ -8,13 +8,23 @@
 
 @using PagedList.Mvc;
 @using PagedList;
+@{
+
+    int currentitem = Model.PageNumber * 6;
+    if (Model.HasNextPage == false)
+    {
+        currentitem = (int)ViewBag.TotalItem;
+    }
+
+
+}
 
 <!-- Start main-content -->
 <div class="main-content">
     <section id="home" class="divider parallax layer-overlay overlay-dark-4" data-bg-img="http://csdlkhoahoc.hueuni.edu.vn/csdl/images/bg5.jpg" style="background-image: url(&quot;http://csdlkhoahoc.hueuni.edu.vn/csdl/images/bg5.jpg&quot;); background-position: 50% 91px;">
         @using (Html.BeginForm("Index", "BaiBaos", FormMethod.Get))
         {
-            
+
             <div class="display-table">
                 <div class="display-table-cell">
                     <div class="container pt-30 pb-20">
@@ -39,7 +49,7 @@
                             <div class="col-md-6">
                                 <!-- Appointment Form Starts -->
                                 <form class="subpage bg-white pt-20 pl-30 pr-30 pb-15" method="post" action="http://csdlkhoahoc.hueuni.edu.vn/index.php/scientist/search">
-                                    <div class="row">                                        
+                                    <div class="row">
                                         <div class="col-xs-12 col-sm-12 pl-5 pr-5">
                                             <div class="form-group mb-5">
                                                 @Html.DropDownList("MaLinhVuc", (IEnumerable<SelectListItem>)ViewBag.MaLinhVuc, "--Chọn lĩnh vực--", new { @class = "form-control border-radius-15px" })
@@ -91,7 +101,7 @@
                                         {
                                             WebQLKhoaHoc.Models.UserLoginViewModel nkh = (WebQLKhoaHoc.Models.UserLoginViewModel)Session["user"];
                                             <input name="nkhId" id="nkhId" type="hidden" value="@nkh.MaNKH">
-                                        }                                        
+                                        }
                                         <div class="col-xs-12 col-sm-4 pl-5 pr-5">
                                             <div class="form-group mb-5">
                                                 <i class="glyphicon glyphicon-search icon-glyphicon-search-custom"></i>
@@ -118,16 +128,21 @@
                         <div class="section-title mb-10">
                             <div class="row">
                                 <div class="col-md-11">
-                                    <h2 class="text-uppercase title line-bottom" style="color:deepskyblue;">
+                                    <h2 class="text-uppercase  title line-bottom ml-20" style="color:deepskyblue;">
                                         Dữ liệu bài báo
+
+                                        <span class="text-uppercase pull-right text-theme-colored title ">
+                                            @currentitem / @ViewBag.TotalItem Kết quả
+                                        </span>
                                     </h2>
                                 </div>
-                                @if (Session["user"]!=null) {
+                                @if (Session["user"] != null)
+                                {
                                     <div class="col-md-1">
                                         <a href="@Url.Action("Create", "BaiBaos")" class="btn btn-success border-radius-10px pull-right">Thêm mới</a>
                                     </div>
                                 }
-                            </div>                           
+                            </div>
                         </div>
 
 
@@ -140,7 +155,7 @@
                                             <h4 class="icon-box-title font-16 font-weight-600 m-0 mb-5 pr-15">
                                                 @Html.DisplayFor(modelItem => item.TenBaiBao)
                                             </h4>
-                                        </a>   
+                                        </a>
                                         <p class="text-gray font-13 mb-0">
                                             @Html.DisplayFor(modelItem => item.CQXuatBan), @Html.DisplayFor(modelItem => item.NamDangBao.Value.Year)
                                             <br>
@@ -154,8 +169,9 @@
                                                 }
                                                 else if (lv.Count > 1)
                                                 {
-                                                    for (int i = 0; i < lv.Count - 1; i++){
-                                                    @Html.DisplayFor(modelLV => lv[i].TenLinhVuc) @:,
+                                                    for (int i = 0; i < lv.Count - 1; i++)
+                                                    {
+                                                        @Html.DisplayFor(modelLV => lv[i].TenLinhVuc) @:,
                                                     }
 
                                                     @Html.DisplayFor(modelLV => lv[lv.Count - 1].TenLinhVuc)
@@ -180,10 +196,10 @@
                                                 <a class="customlink" href="@Url.Action("Details", "NhaKhoaHocs", new { id = tg.MaNKH })">@name</a>
 
                                             }
-                                          
+
                                             <br>
                                         </p>
-                                       
+
                                     </div>
                                 </div>
                             }

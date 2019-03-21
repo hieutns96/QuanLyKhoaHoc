@@ -57,8 +57,11 @@ namespace WebQLKhoaHoc.Controllers
 
             int No_Of_Page = (Page_No ?? 1);
             var phatminhs = db.PhatMinhGiaiPhaps.Include(d => d.DSPhatMinhNKHs).AsExpandable().Where(pre).OrderBy(p => p.MaPM).Skip((No_Of_Page - 1) * 6).Take(6).ToList();
-
-            return View(phatminhs.ToPagedList(No_Of_Page, 6));
+            decimal totalItem = (decimal)db.PhatMinhGiaiPhaps.Where(pre).OrderBy(p => p.MaPM).Count();
+            int totalPage = (int)Math.Ceiling(totalItem / 6);
+            ViewBag.TotalItem = totalItem;
+            IPagedList<PhatMinhGiaiPhap> pageOrders = new StaticPagedList<PhatMinhGiaiPhap>(phatminhs, No_Of_Page, 1, totalPage);
+            return View(pageOrders);
         }
 
         // GET: PhatMinhGiaiPhaps/Details/5
