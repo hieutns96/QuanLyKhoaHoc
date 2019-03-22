@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -6,11 +7,14 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using Serilog;
+using WebGrease;
 
 namespace WebQLKhoaHoc
 {
     public class MvcApplication : System.Web.HttpApplication
     {
+       
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
@@ -21,7 +25,14 @@ namespace WebQLKhoaHoc
             if (!File.Exists(Server.MapPath("Count_Visited.txt")))
                 File.WriteAllText(Server.MapPath("Count_Visited.txt"), "0");
             Application["DaTruyCap"] = int.Parse(File.ReadAllText(Server.MapPath("~/Count_Visited.txt")));
+
         }
+        void Application_Error(Object sender, EventArgs e)
+        {
+            Exception ex = Server.GetLastError().GetBaseException();
+            Log.Error(ex,"Error : ");
+        }
+
         void Session_Start(object sender, EventArgs e)
 
         {
