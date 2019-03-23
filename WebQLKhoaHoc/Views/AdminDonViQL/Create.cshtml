@@ -5,56 +5,61 @@
     Layout = "~/Views/Shared/_AdminMainPage.cshtml";
 }
 
-<h2>Create</h2>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>DonViQL</h4>
-        <hr />
-        @Html.ValidationSummary(true)
-        <div class="form-group">
-            @Html.LabelFor(model => model.TenDonVI, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.TenDonVI)
-                @Html.ValidationMessageFor(model => model.TenDonVI)
-            </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.DiaChiCQ, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.DiaChiCQ)
-                @Html.ValidationMessageFor(model => model.DiaChiCQ)
-            </div>
+<div class="form-horizontal">
+    <h1 class="text-center">Đơn vị quản lý</h1>
+    <hr />
+    @Html.ValidationSummary(true)
+    <div class="form-group">
+        <div class="col-md-2 col-md-offset-1">
+            <h2>Tên đơn vị quản lý</h2>
         </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.DienThoaiCQ, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.DienThoaiCQ)
-                @Html.ValidationMessageFor(model => model.DienThoaiCQ)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.EmailCQ, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.EmailCQ)
-                @Html.ValidationMessageFor(model => model.EmailCQ)
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
+        <div class="col-md-7">
+            @Html.TextBoxFor(model => model.TenDonVI, new { @class = "form-control", @required = "required" })
+            @Html.ValidationMessageFor(model => model.TenDonVI)
         </div>
     </div>
+
+    <div class="form-group">
+        <div class="col-md-2 col-md-offset-1">
+            <h2>Địa chỉ cơ quan</h2>
+        </div>
+        <div class="col-md-7">
+            @Html.TextBoxFor(model => model.DiaChiCQ, new { @class = "form-control", @required = "required" })
+            @Html.ValidationMessageFor(model => model.DiaChiCQ)
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-2 col-md-offset-1">
+            <h2>Điện thoại cơ quan</h2>
+        </div>
+        <div class="col-md-7">
+            @Html.TextBoxFor(model => model.DienThoaiCQ, new { @class = "form-control", @required = "required" })
+            @Html.ValidationMessageFor(model => model.DienThoaiCQ)
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-2 col-md-offset-1">
+            <h2>Email cơ quan</h2>
+        </div>
+        <div class="col-md-7">
+            @Html.TextBoxFor(model => model.EmailCQ, new { @class = "form-control", @required = "required" })
+            @Html.ValidationMessageFor(model => model.EmailCQ)
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-8">
+            @Html.ActionLink("Trở về", "Index", null, new { @class = "btn btn-default pull-right" })
+            <input type="submit" value="Create" class="btn btn-default pull-right" />
+        </div>
+    </div>
+</div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>

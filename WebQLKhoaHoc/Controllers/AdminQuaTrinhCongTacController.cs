@@ -8,9 +8,11 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using WebQLKhoaHoc;
+using WebQLKhoaHoc.Models;
 
 namespace WebQLKhoaHoc.Controllers
 {
+    [CustomizeAuthorize(Roles = "1,2")]
     public class AdminQuaTrinhCongTacController : Controller
     {
         private QLKhoaHocEntities db = new QLKhoaHocEntities();

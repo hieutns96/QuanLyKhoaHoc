@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using WebQLKhoaHoc;
 using System.Data.Entity.Migrations;
+using WebQLKhoaHoc.Models;
 
 namespace WebQLKhoaHoc.Controllers
 {

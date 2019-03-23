@@ -13,7 +13,6 @@ namespace WebQLKhoaHoc.Controllers
 {
 
     [CustomizeAuthorize(Roles = "1,2")]
-
     public class AdminNhaKhoaHocController : Controller
     {
         private QLKhoaHocEntities db = new QLKhoaHocEntities();

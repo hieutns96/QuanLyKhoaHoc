@@ -7,8 +7,7 @@
 
 @using (Html.BeginForm())
 {
-    @Html.AntiForgeryToken()
-
+    @Html.AntiForgeryToken()    
     <div class="form-horizontal">
         <h1 class="text-center">Xếp loại đề tài</h1>
         <hr />
@@ -16,10 +15,10 @@
         @Html.HiddenFor(model=>model.MaXepLoai)
         <div class="form-group">
             <div class="col-md-2 col-md-offset-1">
-                <h2>@Html.DisplayNameFor(model => model.TenXepLoai)</h2>
+                <h2>Tên xếp loại</h2>
             </div>
             <div class="col-md-7">
-                @Html.TextBoxFor(model => model.TenXepLoai, new { @class = "form-control" })
+                @Html.TextBoxFor(model => model.TenXepLoai, new { @class = "form-control",@required="required" })
                 @Html.ValidationMessageFor(model => model.TenXepLoai)
             </div>
         </div>
