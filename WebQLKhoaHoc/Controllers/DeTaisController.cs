@@ -83,8 +83,11 @@ namespace WebQLKhoaHoc.Controllers
            
             int No_Of_Page = (Page_No ?? 1);
             var detais = db.DeTais.Include(d => d.CapDeTai).Include(d => d.LoaiHinhDeTai).Include(d => d.DonViChuTri).Include(d => d.DonViQL).Include(d => d.LinhVuc).Include(d => d.XepLoai).Include(d => d.TinhTrangDeTai).Include(d => d.PhanLoaiSP).Include(d => d.DSNguoiThamGiaDeTais).AsExpandable().Where(pre).OrderBy(p=>p.MaDeTai).Skip((No_Of_Page-1)*6).Take(6).ToList();
-
-            return View(detais.ToPagedList(No_Of_Page, 6));
+            decimal totalItem = (decimal)db.DeTais.Where(pre).OrderBy(p => p.MaDeTai).Count();
+            int totalPage = (int)Math.Ceiling(totalItem / 6);
+            ViewBag.TotalItem = totalItem;
+            IPagedList<DeTai> pageOrders = new StaticPagedList<DeTai>(detais, No_Of_Page, 1, totalPage);
+            return View(pageOrders);
         }
 
 

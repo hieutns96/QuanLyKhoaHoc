@@ -4,18 +4,28 @@
 @{
     ViewBag.Title = "Dữ Liệu Sách && Giáo Trình";
     Layout = "~/Views/Shared/_MainPage.cshtml";
-  
-   
+
+
 }
 
 @using PagedList.Mvc;
 @using PagedList;
+@{
+
+    int currentitem = Model.PageNumber * 6;
+    if (Model.HasNextPage == false)
+    {
+        currentitem = (int)ViewBag.TotalItem;
+    }
+
+
+}
 
 <div class="main-content">
     <section id="home" class="divider parallax layer-overlay overlay-dark-4" data-bg-img="http://csdlkhoahoc.hueuni.edu.vn/csdl/images/bg5.jpg" style="background-image: url(&quot;http://csdlkhoahoc.hueuni.edu.vn/csdl/images/bg5.jpg&quot;); background-position: 50% 91px;">
         @using (Html.BeginForm("Index", "SachGiaoTrinhs", FormMethod.Get))
         {
-            
+
             <div class="display-table">
                 <div class="display-table-cell">
                     <div class="container pt-30 pb-20">
@@ -92,16 +102,20 @@
             </div>
         }
     </section>
-    <section class="divider parallax layer-overlay overlay-light" data-bg-img="../../Image/research-background.png" style = 'background-image: url("../../Image/research-background.png")'>
+    <section class="divider parallax layer-overlay overlay-light" data-bg-img="../../Image/research-background.png" style='background-image: url("../../Image/research-background.png")'>
         <div class="container">
             <div class="section-content">
                 <section id="services" class="bg-white-transparent-6 border-radius-10px">
                     <div class="container pt-40">
                         <div class="section-title mb-11">
                             <div class="row">
-                                <div class="col-md-12">
-                                    <h2 class="text-uppercase title" style="color:deepskyblue; border-bottom:1px double #008aff">
+                                <div class="col-md-11">
+                                    <h2 class="text-uppercase title line-bottom ml-20" style="color:deepskyblue;">
                                         Dữ liệu Sách và Giáo Trình
+
+                                        <span class="text-uppercase pull-right text-theme-colored title ">
+                                            @currentitem / @ViewBag.TotalItem Kết quả
+                                        </span>
                                     </h2>
                                 </div>
                                 @if (Session["user"] != null)
@@ -128,8 +142,8 @@
                                                     @Html.DisplayFor(modelItem => item.TenSach)
                                                 </h4>
                                             </a>
-                                           
-                                         
+
+
                                             <p class="text-gray font-13 mb-0">
                                                 <i class="fa fa-university" aria-hidden="true"></i>
                                                 <b> Nhà xuất bản:</b>
@@ -162,12 +176,12 @@
 
 
                                                 }
-                                              
+
                                                 <br>
                                             </p>
 
                                         </div>
-                                       
+
                                     </div>
                                 </div>
                             }

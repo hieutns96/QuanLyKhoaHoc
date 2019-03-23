@@ -1,6 +1,9 @@
-1) Phần chung
+﻿1) Phần chung
 1.1 Cập nhật số lượng kết quả sau mỗi lần search cho các page NhaKhoaHoc, DeTai, BaiBao, SachGiaoTrinh, PhatMinh (giống như mô tả mục 2.1)
-1.2	Yêu cầu có thông báo xác minh (confirm lại) khi có thao tác xóa. Và thông báo thành công khi lưu hoặc thêm mới.
+1.2	Yêu cầu có thông báo
+- xác minh (confirm lại) khi có thao tác xóa.
+- thành công khi lưu hoặc thêm mới
+	==> [Khiết-Rollback-Không thực hiện được vì khi lưu thành công server đổi update view].
 1.3 Yêu cầu phát sinh 1 page lỗi. Khi xảy ra lỗi, cho người dùng viết phản hồi -> lưu trữ lại db.
 1.4 Yêu cầu ghi file log cho mọi hoạt động theo cấu trúc :
 datetime-username-tabmenu-action-id_value
@@ -10,7 +13,7 @@ trong đó:
 -tabmenu: là login và 1 trong 5 tab trên menu bar (NhaKhoaHoc, DeTai, BaiBao, SachGiaoTrinh, PhatMinh, ThongKe)
 action: hoạt đông thêm - xóa - sửa
 id_value: cho biết đối tượng bị ảnh hưởng ( ví dụ mã bài báo khi thay đổi, ...)
-
+	==> [Khiết-Rollback-Không thực hiện được vì đợi check code toàn bộ].
 
 2)Tab NhaKhoaHoc
 2.1 Phần search: Sau khi search hoặc referen  thì hiển thị tổng số lượng kết quả ( xem hình nhakhoahoc_list_search , thêm đoạn [X kết quả]  sau dòng chữ "Dữ liệu Nhà Khoa Học", trong đó X là số dữ liệu data có. Tương tự cho các page khác )
@@ -24,12 +27,26 @@ id_value: cho biết đối tượng bị ảnh hưởng ( ví dụ mã bài bá
 2.5 Phần edit khi login
 - Yêu cầu bắt yêu cầu ngày bắt đầu < ngày kết thúc (ko bỏ trống)
 - Yêu cầu hiển thị nút thêm mới nhà khoa học (để dùng cho quyền mod) tại giao diện người dùng.
+- Bấm nút lưu load lại trang??? (sử dụng ajax hỗ trợ)
 
 
 3) Đề tài
 3.1 Phần search: Sửa theo yêu cầu chung
 3.2 Xem lại javascript, lúc popup được lúc không để hiển thị chi tiết đề tài ( test kỹ bugs chỗ này-> nếu thanh menu navbar bị mất là popup mất???)
+3.3 Detail cho đề tài
+- Chỉnh thẻ href new tab mới khi nhấp vào link web liên kết.
+- Chỉnh thẻ href new tab mới khi nhấp vào tên file (mở file sang tab mới, yêu cầu đường link trên thanh url mã hóa)
+
+4) Bài báo -> Tương tự phần 3)
 
 5) Đăng nhập
 - Phần đổi password thêm hiệu ứng matching tương tự như https://codepen.io/kwakwak/pen/kvEig
 - Việt hóa các câu báo lỗi hoăc để song ngữ
+
+6) Sách giáo khoa
+
+
+7) Phát minh
+
+
+8) Thống kê

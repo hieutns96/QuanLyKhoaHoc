@@ -28,7 +28,7 @@
                 <div class="left_col scroll-view">
                     <div class="navbar nav_title" style="border: 0;">
                         <!-- load page again -->
-                        <a href="#" class="site_title"><span>ADMIN PAGE</span></a>
+                        <a href="#" class="site_title"><span>Trang Quản Lý</span></a>
                     </div>
                     <div class="clearfix"></div>
 
@@ -126,22 +126,11 @@
                                     <span class=" fa fa-angle-down"></span>
                                 </a>
                                 <ul class="dropdown-menu dropdown-usermenu pull-right">
+                                   
                                     <li>
-                                        <a href="javascript:;"> Profile</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:;">
-                                            <span class="badge bg-red pull-right">50%</span>
-                                            <span>Settings</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:;">Help</a>
-                                    </li>
-                                    <li>
-                                        <a href="login.html">
+                                        <a href="@Url.Action("LogOff","Account")">
                                             <i class="fa fa-sign-out pull-right"></i>
-                                            Log Out
+                                            Đăng Xuất
                                         </a>
                                     </li>
                                 </ul>
@@ -157,9 +146,6 @@
                 </div>
             </div>
             <footer>
-                <div class="pull-right">
-                    Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
-                </div>
                 <div class="clearfix"></div>
             </footer>
         </div>

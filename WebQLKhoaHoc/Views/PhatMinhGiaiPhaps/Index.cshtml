@@ -5,8 +5,18 @@
 @{
     ViewBag.Title = "Phát minh giải pháp";
     Layout = "~/Views/Shared/_MainPage.cshtml";
+
+}
+@{
     // tạo biến đếm cho collapse
     int quantity = 0;
+    int currentitem = Model.PageNumber * 6;
+    if (Model.HasNextPage == false)
+    {
+        currentitem = (int)ViewBag.TotalItem;
+    }
+
+
 }
 
 <!-- Start main-content -->
@@ -96,6 +106,10 @@
                                 <div class="col-md-11">
                                     <h2 class="text-uppercase title line-bottom ml-20" style="color:deepskyblue;">
                                         Phát minh giải pháp
+
+                                        <span class="text-uppercase pull-right text-theme-colored title ">
+                                            @currentitem / @ViewBag.TotalItem Kết quả
+                                        </span>
                                     </h2>
                                 </div>
                                 @if (Session["user"] != null)

@@ -71,7 +71,7 @@ namespace WebQLKhoaHoc.Controllers
             ViewBag.SearchValue = nhaKhoaHoc.SearchValue;
             
             int No_Of_Page = (Page_No ?? 1);
-            var nhaKhoaHocs = db.NhaKhoaHocs.Include(n => n.ChuyenNganh).Include(n => n.DonViQL).Include(n => n.HocHam).Include(n => n.HocVi).Include(n => n.NgachVienChuc).AsExpandable().Where(pre).OrderBy(p => p.MaNKH).Skip(No_Of_Page-1).Take(6).ToList(); 
+            var nhaKhoaHocs = db.NhaKhoaHocs.Include(n => n.ChuyenNganh).Include(n => n.DonViQL).Include(n => n.HocHam).Include(n => n.HocVi).Include(n => n.NgachVienChuc).AsExpandable().Where(pre).OrderBy(p => p.MaNKH).Skip((No_Of_Page-1)*6).Take(6).ToList(); 
 
             var lstNKH = new List<NhaKhoaHocViewModel>();
             for (int i = 0; i < nhaKhoaHocs.Count; i++)
@@ -80,10 +80,11 @@ namespace WebQLKhoaHoc.Controllers
                lstNKH.Add(nkh);
             }
 
-            
-            int totalPage = (int)Math.Ceiling( (decimal)db.NhaKhoaHocs.Count() / 6);
+            decimal totalItem = (decimal) db.NhaKhoaHocs.Where(pre).OrderBy(p => p.MaNKH).Count();
+            int totalPage = (int)Math.Ceiling( totalItem / 6);
+            ViewBag.TotalItem = totalItem;
             IPagedList<NhaKhoaHocViewModel> pageOrders = new StaticPagedList<NhaKhoaHocViewModel>(lstNKH, No_Of_Page, 1, totalPage);
-
+            
             return View(pageOrders);
         }
 
