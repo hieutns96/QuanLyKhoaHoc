@@ -116,7 +116,7 @@ namespace WebQLKhoaHoc.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create(HttpPostedFileBase anhChup1, HttpPostedFileBase anhChup2, HttpPostedFileBase anhGiayChungNhan, List<string> DSPhatMinhNKH, [Bind(Include = "MaPM,TenPM,SoHieuPM,MotaPM,DoiTuongSuDung,QuocGiaCap,LinkLienKet,AnhScanGiayChungNhan,AnhChupSanPham1,AnhChupSanPham2")] PhatMinhGiaiPhap phatMinhGiaiPhap)
+        public async Task<ActionResult> Create(HttpPostedFileBase anhChup1, HttpPostedFileBase anhChup2, HttpPostedFileBase anhGiayChungNhan, List<string> DSPhatMinhNKH, [Bind(Include = "MaPM,TenPM,SoHieuPM,MotaPM,DoiTuongSuDung,QuocGiaCap,LinkLienKet,NamCongBo,AnhScanGiayChungNhan,AnhChupSanPham1,AnhChupSanPham2")] PhatMinhGiaiPhap phatMinhGiaiPhap)
         {
             if (ModelState.IsValid)
             {
@@ -221,7 +221,7 @@ namespace WebQLKhoaHoc.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit(HttpPostedFileBase anhChup1, HttpPostedFileBase anhChup2, HttpPostedFileBase anhGiayChungNhan, List<string> DSPhatMinhNKH, [Bind(Include = "MaPM,TenPM,SoHieuPM,MotaPM,DoiTuongSuDung,QuocGiaCap,LinkLienKet,AnhScanGiayChungNhan,AnhChupSanPham1,AnhChupSanPham2")] PhatMinhGiaiPhap phatMinhGiaiPhap)
+        public async Task<ActionResult> Edit(HttpPostedFileBase anhChup1, HttpPostedFileBase anhChup2, HttpPostedFileBase anhGiayChungNhan, List<string> DSPhatMinhNKH, [Bind(Include = "MaPM,TenPM,SoHieuPM,MotaPM,DoiTuongSuDung,QuocGiaCap,LinkLienKet,NamCongBo,AnhScanGiayChungNhan,AnhChupSanPham1,AnhChupSanPham2")] PhatMinhGiaiPhap phatMinhGiaiPhap)
         {
             if (ModelState.IsValid)
             {
