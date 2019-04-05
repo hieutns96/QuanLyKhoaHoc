@@ -230,9 +230,13 @@
                                                         <div class="media-body">
                                                             <h5 class="mt-0 mb-0 font-weight-600">Chức danh:</h5>
                                                             <p>
-                                                                <span>@Model.HocHam.TenHocHam</span>
-                                                                -
-                                                                <span>@Model.NamKetThucDaoTao.Year</span>
+                                                                @if(!String.IsNullOrEmpty(Model.HocHam.TenHocHam))
+                                                                {
+                                                                    <span>@Model.HocHam.TenHocHam</span>
+                                                                  
+                                                                    <span> - @Model.NamKetThucDaoTao.Year</span>
+                                                                }
+                                                              
                                                                 <br>
                                                             </p>
                                                             <h5 class="mt-0 mb-0 font-weight-600">Ngành đào tạo:</h5>
