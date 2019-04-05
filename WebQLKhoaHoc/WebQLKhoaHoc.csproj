@@ -388,6 +388,7 @@
   <ItemGroup>
     <Content Include="App_Data\uploads\detai_file\readme.txt" />
     <Content Include="bin\Newtonsoft.Json.dll" />
+    <Content Include="Content\admin-login.css" />
     <Content Include="Content\Admin\animate.css" />
     <Content Include="Content\Admin\bootstrap-theme.min.css" />
     <Content Include="Content\Admin\bootstrap.min.css" />
@@ -699,6 +700,7 @@
     <Content Include="Views\PhatMinhGiaiPhaps\Edit.cshtml" />
     <Content Include="Views\PhatMinhGiaiPhaps\Index.cshtml" />
     <Content Include="Views\PhatMinhGiaiPhaps\GetAllImage.cshtml" />
+    <Content Include="Views\Account\AdminLogin.cshtml" />
     <None Include="Web.Debug.Config">
       <DependentUpon>Web.Config</DependentUpon>
     </None>

@@ -27,6 +27,15 @@ namespace WebQLKhoaHoc.Controllers
 
             return View();
         }
+        public ActionResult AdminLogin()
+        {
+            if (Session["user"] != null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            return View();
+        }
 
         public ActionResult ChangePassword()
         {
@@ -129,7 +138,73 @@ namespace WebQLKhoaHoc.Controllers
                 return View();
             }
         }
-        
+        [HttpPost]
+        public ActionResult AdminLogin(string username, string password)
+        {
+            if (username != null && username != "" && password != null && password != "")
+            {
+
+                NguoiDung nguoiDung = db.NguoiDungs.SingleOrDefault(p => p.Usernames == username && p.IsActive == true && p.MaChucNang == 1);
+
+                if (nguoiDung == null)
+                {
+                    ViewBag.Error = "Tài khoản không đúng hoặc không phải Admin!";
+                    return View();
+                }
+
+                if (Encryptor.GetHashString(nguoiDung.Passwords) == Encryptor.GetHashString(Encryptor.MD5Hash(password + nguoiDung.RandomKey)))
+                {
+                    //cap nhat lastlogin //update by Khiet
+                    nguoiDung.LastLogin = DateTime.Now;
+                    db.SaveChanges();
+
+                    NhaKhoaHoc nhaKhoaHoc = db.NhaKhoaHocs.Find(nguoiDung.MaNKH);
+                    string hovaten = nhaKhoaHoc.HoNKH + " " + nhaKhoaHoc.TenNKH;
+                    string anhdaidien = nhaKhoaHoc.AnhCaNhan != null ? string.Format("data:image/jpeg;base64,{0}", Convert.ToBase64String(nhaKhoaHoc.AnhCaNhan)) : String.Empty; ;
+
+                    // lấy tên viết tắt
+                    string tenhocham = "";
+                    if (db.HocHams.Find(nhaKhoaHoc.MaHocHam) != null)
+                    {
+                        tenhocham = db.HocHams.Find(nhaKhoaHoc.MaHocHam).TenVietTat;
+                    }
+                    string tenhocvi = "";
+                    if (db.HocVis.Find(nhaKhoaHoc.MaHocVi) != null)
+                    {
+                        tenhocvi = db.HocVis.Find(nhaKhoaHoc.MaHocVi).TenVietTat;
+                    }
+                    string chucvi = "";
+                    if (tenhocham != "" && tenhocvi != "")
+                    {
+                        chucvi = tenhocham + "." + tenhocvi;
+                    }
+                    else if (tenhocham != "" && tenhocvi == "")
+                    {
+                        chucvi = tenhocham + " - ";
+                    }
+                    else
+                    {
+                        chucvi = tenhocvi + " - ";
+                    }
+
+                    int machucnang = Convert.ToInt16(nguoiDung.MaChucNang);
+                    UserLoginViewModel user = UserLoginViewModel.Mapping(nhaKhoaHoc.TenNKH, nhaKhoaHoc.MaNKH, hovaten, anhdaidien, chucvi, machucnang, username);
+
+                    Session["user"] = user;
+                    return RedirectToAction("Index", "AdminNhaKhoaHoc");
+                }
+                else
+                {
+                    ViewBag.Error = "Tài khoản mật khẩu không đúng";
+                    return View();
+                }
+            }
+            else
+            {
+                ViewBag.Error = "Tài khoản và mật khẩu không thể bỏ trống";
+                return View();
+            }
+        }
         public ActionResult LogOff()
         {
             if(Session["user"] != null)
