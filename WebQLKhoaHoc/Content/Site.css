@@ -198,7 +198,7 @@ body .container .well-royal, body .container .jumbotron-royal, body .container-f
 
 fieldset[disabled][disabled] .btn, .btn.disabled, .btn:disabled, .btn[disabled][disabled], fieldset[disabled][disabled] .input-group-btn .btn, .input-group-btn .btn.disabled, .input-group-btn .btn:disabled, .input-group-btn .btn[disabled][disabled], fieldset[disabled][disabled] .btn-group, .btn-group.disabled, .btn-group:disabled, .btn-group[disabled][disabled], fieldset[disabled][disabled] .btn-group-vertical, .btn-group-vertical.disabled, .btn-group-vertical:disabled, .btn-group-vertical[disabled][disabled] {
     color: rgba(0,0,0,.26);
-    background: transparent
+    background: #dddddd;
 }
 
 .theme-dark fieldset[disabled][disabled] .btn, .theme-dark .btn.disabled, .theme-dark .btn:disabled, .theme-dark .btn[disabled][disabled], .theme-dark fieldset[disabled][disabled] .input-group-btn .btn, .theme-dark .input-group-btn .btn.disabled, .theme-dark .input-group-btn .btn:disabled, .theme-dark .input-group-btn .btn[disabled][disabled], .theme-dark fieldset[disabled][disabled] .btn-group, .theme-dark .btn-group.disabled, .theme-dark .btn-group:disabled, .theme-dark .btn-group[disabled][disabled], .theme-dark fieldset[disabled][disabled] .btn-group-vertical, .theme-dark .btn-group-vertical.disabled, .theme-dark .btn-group-vertical:disabled, .theme-dark .btn-group-vertical[disabled][disabled] {

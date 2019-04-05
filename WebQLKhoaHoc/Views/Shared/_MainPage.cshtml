@@ -81,7 +81,7 @@
                             <ul class="menuzord-menu menuzord-indented scrollable pull-right" style="max-height: 400px;">
 
                                 @if (Session["user"] == null)
-        {
+                                {
                                     <li>
                                         @Html.ActionLink("Đăng nhập", "Login", "Account", null, new { @class = "bg-theme-color-2 text-white font-14" })
                                     </li>
@@ -93,7 +93,7 @@
                                     <li>
                                         <a><img src="@nd.AnhCaNhan" style="width:30px;height:30px;border-radius: 50%;display: inline-block;" /> @nd.ChucVi @nd.HoVaTen</a>
                                         <ul class="dropdown">
-                                            <li>@Html.ActionLink("Đổi Mật Khẩu", "ChangePassword","Account")</li>
+                                            <li>@Html.ActionLink("Đổi Mật Khẩu", "ChangePassword", "Account")</li>
                                             <li><a>Thông tin tài khoản</a></li>
                                             <li>@Html.ActionLink("Đăng xuất", "LogOff", "Account")</li>
                                         </ul>
@@ -110,15 +110,15 @@
         @RenderBody()
     </div>
     <!-- Footer -->
-    <footer id="footer" class="footer divider layer-overlay overlay-dark-9");">
+    <footer id="footer" class="footer divider layer-overlay overlay-dark-9" );">
         <div class="container">
-            <div class="row">               
+            <div class="row">
                 <div class="col-sm-4 col-md-6 text-center">
                     <div class="widget dark">
                         <img class="mt-5" width="300" alt="" src="~/Image/logo_hcmup.png">
                         <p class="font1 widget-title m-0 widget-title reset_pass">Bản quyền thuộc Đại học Sư Phạm TPHCM © 2018.</p>
                     </div>
-                   
+
                 </div>
 
                 <div class="col-sm-8 col-md-6 text-center">
@@ -130,7 +130,7 @@
                                 Phòng Công Nghệ Thông Tin
                                 <br />Đại học Sư Phạm TPHCM
                                 <br /><i class="fa fa-map text-theme-color-2 mr-5"></i>
-                                 Số 280 An Dương Vương - TP HCM
+                                Số 280 An Dương Vương - TP HCM
                             </li>
                             <li class="m-0 pl-10 pr-10">
                                 <i class="fa fa-user text-theme-color-2 mr-5"></i>
@@ -153,6 +153,7 @@
             </div>
         </div>
     </div>
+
     <a class="scrollToTop" href="#"><i class="fa fa-angle-up"></i></a>
     <!-- end wrapper -->
     <!-- Footer Scripts -->
@@ -160,15 +161,34 @@
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/qlkh")
     @RenderSection("scripts", required: false)
-    @RenderSection("NhaKhoaHocScripts",required:false)
+    @RenderSection("NhaKhoaHocScripts", required: false)
     @RenderSection("charts", required: false)
     <script>
         function modal_load(url) {
             $('#mydata .modal-content').load(url);
         };
 
+        $("#Todate").off('change').on('change', function (e) {
 
-        
+            var $this = $(this);
+            var dateFromVal = $this.parents('.row').find('#Fromdate').val();
+            var dateToVal = $this.val();
+            var searchEl = $this.parents('.row').find('.btn-search-component');
+
+            if (!dateFromVal) {
+                return;
+            }
+
+            if (dateFromVal > dateToVal) {
+                alert("Vui lòng nhập ngày đến thời điểm sau ngày từ thời điểm");
+                searchEl.attr('disabled', 'disabled');
+            } else {
+                searchEl.removeAttr("disabled");
+            }
+
+        });
+
+
     </script>
 </body>
 <!-- END BODY -->
