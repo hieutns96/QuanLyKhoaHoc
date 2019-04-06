@@ -15,12 +15,11 @@
             <div class="display-table">
                 <div class="display-table-cell">
                     <h1 class="text-white text-center mb-4">
-                        CƠ SỞ DỮ LIỆU
-                        <span class="text-theme-color-2">KHOA HỌC</span> VÀ CÔNG NGHỆ
+                        CƠ SỞ DỮ LIỆU KHOA HỌC VÀ CÔNG NGHỆ                        
                     </h1>
                     <div class="row">
                         <div class="col-lg-3 col-md-3 col-sm-6">
-                            <div class="card card-royal card-body overflow-hidden text-center  zoomInUp animation-delay-2" style="visibility: visible;">
+                            <div class="border-radius-15px card card-royal card-body overflow-hidden text-center  zoomInUp animation-delay-2" style="visibility: visible;">
                                 <a class="text-white font-18" href="@Url.Action("Index","NhaKhoaHocs")">
                                     <h2 class="counter">@db.NhaKhoaHocs.Count()</h2>
                                     <i class="fa fa-4x fa-briefcase color-royal"></i>
@@ -29,7 +28,7 @@
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-3 col-sm-6">
-                            <div class="card card-warning card-body overflow-hidden text-center  zoomInUp animation-delay-3" style="visibility: visible;">
+                            <div class="border-radius-15px card card-warning card-body overflow-hidden text-center  zoomInUp animation-delay-3" style="visibility: visible;">
                                 <a class="text-white font-18" href="@Url.Action("Index","DeTais")">
                                     <h2 class="counter"> @db.DeTais.Count()</h2>
                                     <i class="fa fa-4x fa-lightbulb color-warning"></i>
@@ -38,17 +37,16 @@
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-3 col-sm-6">
-                            <div class="card card-danger card-body overflow-hidden text-center  zoomInUp animation-delay-4" style="visibility: visible;">
+                            <div class="border-radius-15px card card-danger card-body overflow-hidden text-center  zoomInUp animation-delay-4" style="visibility: visible;">
                                 <a class="text-white font-18" href="@Url.Action("Index","BaiBaos")">
-                                    @*<h2 class="counter">@db.BaiBaos.Count()</h2>*@
-                                    <h2 class="counter">450</h2>
+                                    <h2 class="counter">@db.BaiBaos.Count()</h2>                                    
                                     <i class="fa fa-4x fa-newspaper color-danger"></i>
                                     <p class="mt-2 no-mb lead small-caps">BÀI BÁO KHOA HỌC</p>
                                 </a>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-3 col-sm-6">
-                            <div class="card card-info card-body overflow-hidden text-center  zoomInUp animation-delay-5" style="visibility: visible;">
+                            <div class="border-radius-15px card card-info card-body overflow-hidden text-center  zoomInUp animation-delay-5" style="visibility: visible;">
                                 <a class="text-white font-18" href="@Url.Action("Index","SachGiaoTrinhs")">
                                     <h2 class="counter">@db.SachGiaoTrinhs.Count()</h2>
                                     <i class="fa fa-4x fa-book color-info"></i>
@@ -63,31 +61,31 @@
                             @Html.AntiForgeryToken()
                             <!-- Appointment Form Starts -->
                             <form id="home_appointment_form" name="home_appointment_form" class="booking-form form-home bg-white p-30" method="post" action="http://csdlkhoahoc.hueuni.edu.vn/index.php/home/search">
-                                <h3 class="mt-0 mb-20 text-white text-center">Tìm Kiếm <span class="text-theme-color-2">Dữ Liệu</span></h3>
+                                <h3 class="mt-0 mb-20 text-white text-center">Tìm Kiếm Dữ Liệu</h3>
                                 <div class="row">
                                     <div class="col-sm-3">
                                         <div class="form-group mb-10">
-                                            <input id="SearchValue" name="SearchValue" class="form-control" type="text" placeholder="Nhập từ khóa...">
+                                            <input id="SearchValue" name="SearchValue" class="form-control border-radius-15px" type="text" placeholder="Nhập từ khóa...">
                                         </div>
                                     </div>
                                     <div class="col-sm-3">
                                         <div class="form-group mb-10">
                                             <div class="styled-select">
-                                                @Html.DropDownList("MaDonViQLThucHien", (IEnumerable<SelectListItem>)ViewBag.MaDonViQLThucHien, "--Chọn đơn vị--", new { @class = "form-control" })
+                                                @Html.DropDownList("MaDonViQLThucHien", (IEnumerable<SelectListItem>)ViewBag.MaDonViQLThucHien, "--Chọn đơn vị--", new { @class = "form-control  border-radius-15px" })
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-sm-3">
                                         <div class="form-group mb-10">
                                             <div class="styled-select">
-                                                @Html.DropDownList("MaDanhMuc", (IEnumerable<SelectListItem>)ViewBag.MaDanhMuc, new { @class = "form-control" })
+                                                @Html.DropDownList("MaDanhMuc", (IEnumerable<SelectListItem>)ViewBag.MaDanhMuc, new { @class = "form-control  border-radius-15px" })
                                             </div>
                                         </div>
                                     </div>
                                     <div class ="col-sm-3">
                                         <div class="form-group mb-0">
                                             <input name="form_botcheck" class="form-control" type="hidden" value="">
-                                            <button type="submit" class="btn btn-colored btn-theme-color-2 text-white btn-lg btn-block" data-loading-text="Please wait...">
+                                            <button type="submit" class="btn btn-colored btn-search-component text-white btn-lg btn-block border-radius-15px" data-loading-text="Please wait...">
                                                 Tìm Kiếm
                                             </button>
                                         </div>
@@ -171,14 +169,14 @@
                     </div>
                 </section>
                 <!-- Section: Second -->
-                <section class="">
+                @*<section class="">
                     <div class="container" style="height: 300px">
                         <div class="section-content">
                            <h3>New Section </h3>
                             <p>LoRem</p>
                         </div>
                     </div>
-                </section>
+                </section>*@
                 <!-- Section: List News -->
                 <section id="event">
                     <div class="container pb-50">
