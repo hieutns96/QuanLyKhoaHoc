@@ -30,7 +30,11 @@ namespace WebQLKhoaHoc.Models
             return true;
         }
 
-        
+        protected override void HandleUnauthorizedRequest(AuthorizationContext filterContext)
+        {
+            //filterContext.Result = new HttpUnauthorizedResult(); // Try this but i'm not sure
+            filterContext.Result = new RedirectResult("~/Account/AdminLogin");
+        }
 
 
 
