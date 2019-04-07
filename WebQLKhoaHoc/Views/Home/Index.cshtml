@@ -226,7 +226,7 @@
                                             @foreach (var item in db.BaiBaos.OrderByDescending(p => p.NamDangBao).Take(5))
                                             {
                                                 <li class="tip-list-item">
-                                                    <a href="@Url.Action("Details","DeTais",new {id = item.MaBaiBao })">
+                                                    <a href="@Url.Action("Details","BaiBaos",new {id = item.MaBaiBao })">
                                                         @item.TenBaiBao <span class="cdate font1" style="color: #f00; font-size: 11px; font-weight: normal !important;"> (@item.NamDangBao.Value.ToShortDateString())</span>
                                                     </a>
                                                 </li>
@@ -243,7 +243,7 @@
                                             @foreach (var item in db.SachGiaoTrinhs.OrderByDescending(p => p.NamXuatBan).Take(5))
                                             {
                                                 <li class="tip-list-item">
-                                                    <a href="@Url.Action("Details","DeTais",new {id = item.MaSach })">
+                                                    <a href="@Url.Action("Details","SachGiaoTrinhs",new {id = item.MaSach })">
                                                         @item.TenSach <span class="cdate font1" style="color: #f00; font-size: 11px; font-weight: normal !important;"> (@item.NamXuatBan.Value.ToShortDateString())</span>
                                                     </a>
                                                 </li>
