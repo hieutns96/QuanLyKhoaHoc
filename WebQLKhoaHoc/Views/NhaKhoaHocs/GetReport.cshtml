@@ -1228,16 +1228,16 @@
                             <td align="center">
                                 @count
                             </td>
-                            <td align="center">
+                            <td align="right">
                                 @item.ThoiGianBD.Value.ToString("yyyy")-@item.ThoiGianKT.Value.ToString("yyyy")
                             </td>
-                            <td align="center">
+                            <td align="left">
                                 @item.CoSoDaoTao
                             </td>
-                            <td align="center">
+                            <td align="left">
                                 @item.NganhDaoTao.TenNganhDaoTao
                             </td>
-                            <td align="center">
+                            <td align="left">
                                 @item.HocVi.TenVietTat
                             </td>
                         </tr>
@@ -1274,16 +1274,16 @@
                             <td align="center">
                                 @count
                             </td>
-                            <td align="center">
+                            <td align="right">
                                 @item.ThoiGianBD.Value.ToString("yyyy")-@item.ThoiGIanKT.Value.ToString("yyyy")
                             </td>
-                            <td align="center">
+                            <td align="left">
                                 @item.TenCoQuan
                             </td>
-                            <td align="center">
+                            <td align="left">
                                 @item.DiaChiQoQuan
                             </td>
-                            <td align="center">
+                            <td align="left">
                                 @item.ChucVuCT
                             </td>
                         </tr>
@@ -1325,16 +1325,16 @@
                     @foreach (var item in Model.NgoaiNguNKHs)
                     {
                         <tr>
-                            <td align="center">
+                            <td align="left">
                                 @item.TrinhDoNgoaiNgu.TenTrinhDo
                             </td>
-                            <td align="center">
+                            <td align="left">
                                 @item.DanhGiaNgoaiNgu.TenLoai
                             </td>
-                            <td align="center">
+                            <td align="left">
                                 @item.DanhGiaNgoaiNgu1.TenLoai
                             </td>
-                            <td align="center">
+                            <td align="left">
                                 @item.DanhGiaNgoaiNgu2.TenLoai
                             </td>
                         </tr>
@@ -1404,7 +1404,7 @@
                             <td align="left">
                                 @item.DeTai.CoQuanTaiTro
                             </td>
-                            <td align="left">
+                            <td align="right">
                                 @item.DeTai.NamBD.Value.Year-@item.DeTai.NamKT.Value.Year
                             </td>
                             <td align="left">
@@ -1462,19 +1462,19 @@
                             <td align="center">
                                 1.@count
                             </td>
-                            <td align="center" style="width: 150px">
+                            <td align="left" style="width: 150px">
                                 @item.NhaKhoaHoc.HoNKH @item.NhaKhoaHoc.TenNKH
                             </td>
-                            <td align="center" style="width: 50px">
+                            <td align="right" style="width: 50px">
                                 @item.BaiBao.NamDangBao.Value.Year
                             </td>
                             <td align="left" style="width: 120px">
                                 @item.BaiBao.TenBaiBao
                             </td>
-                            <td align="center" >
+                            <td align="right" >
                                 @item.BaiBao.CQXuatBan;@item.BaiBao.TapPhatHanh;@item.BaiBao.SoPhatHanh;@item.BaiBao.TrangBaiBao
                             </td>
-                            <td align="center" style="width: 50px" >
+                            <td align="right" style="width: 50px" >
                                 @item.BaiBao.MaISSN
                             </td>
                             <td align="center" style="width: 80px" class="break-word">
@@ -1503,13 +1503,13 @@
                     <td align="center">
                         2.@count
                     </td>
-                    <td align="center" style="width: 150px">
+                    <td align="left" style="width: 150px">
                         @item.NhaKhoaHoc.HoNKH @item.NhaKhoaHoc.TenNKH
                     </td>
-                    <td align="center" style="width: 50px">
+                    <td align="right" style="width: 50px">
                         @item.BaiBao.NamDangBao.Value.Year
                     </td>
-                    <td align="center" style="width: 120px">
+                    <td align="left" style="width: 120px">
                         @item.BaiBao.TenBaiBao
                     </td>
                     <td align="center">
@@ -1542,13 +1542,13 @@
                         <td align="center">
                             3.@count
                         </td>
-                        <td align="center" style="width: 150px">
+                        <td align="left" style="width: 150px">
                             @item.NhaKhoaHoc.HoNKH @item.NhaKhoaHoc.TenNKH
                         </td>
-                        <td align="center" style="width: 50px">
+                        <td align="right" style="width: 50px">
                             @item.BaiBao.NamDangBao.Value.Year
                         </td>
-                        <td align="center" style="width: 120px">
+                        <td align="left" style="width: 120px">
                             @item.BaiBao.TenBaiBao
                         </td>
                         <td align="center">
@@ -1580,13 +1580,13 @@
                         <td align="center">
                             4.@count
                         </td>
-                        <td align="center" style="width: 150px">
+                        <td align="left" style="width: 150px">
                             @item.NhaKhoaHoc.HoNKH @item.NhaKhoaHoc.TenNKH
                         </td>
-                        <td align="center" style="width: 50px">
+                        <td align="right" style="width: 50px">
                             @item.BaiBao.NamDangBao.Value.Year
                         </td>
-                        <td align="center" style="width: 120px">
+                        <td align="left" style="width: 120px">
                             @item.BaiBao.TenBaiBao
                         </td>
                         <td align="center">
@@ -1618,13 +1618,13 @@
                     <td align="center">
                         5.@count
                     </td>
-                    <td align="center" style="width: 150px">
+                    <td align="left" style="width: 150px">
                         @item.NhaKhoaHoc.HoNKH @item.NhaKhoaHoc.TenNKH
                     </td>
-                    <td align="center" style="width: 50px">
+                    <td align="right" style="width: 50px">
                         @item.BaiBao.NamDangBao.Value.Year
                     </td>
-                    <td align="center" style="width: 120px">
+                    <td align="left" style="width: 120px">
                         @item.BaiBao.TenBaiBao
                     </td>
                     <td align="center">
@@ -1678,19 +1678,19 @@
                         <td align="center">
                             @count
                         </td>
-                        <td align="center" style="width: 150px">
+                        <td align="left" style="width: 150px">
                             @item.NhaKhoaHoc.HoNKH @item.NhaKhoaHoc.TenNKH
                         </td>
-                        <td align="center" style="width: 50px">
+                        <td align="right" style="width: 50px">
                             @item.SachGiaoTrinh.NamXuatBan.Value.Year
                         </td>
-                        <td align="center" style="width: 120px">
+                        <td align="left" style="width: 120px">
                             @item.SachGiaoTrinh.TenSach
                         </td>
-                        <td align="center">
+                        <td align="right">
                             @item.SachGiaoTrinh.MaISBN
                         </td>
-                        <td align="center">
+                        <td align="left">
                             @item.SachGiaoTrinh.PhanLoaiSach.TenLoai
                         </td>
                         <td align="center" class="break-word" style="width: 80px">
@@ -1741,19 +1741,19 @@
                             <td align="center">
                                 @count
                             </td>
-                            <td align="center" style="width: 150px">
+                            <td align="left" style="width: 150px">
                                 @item.NhaKhoaHoc.HoNKH @item.NhaKhoaHoc.TenNKH
                             </td>
-                            <td align="center" style="width: 50px">
+                            <td align="right" style="width: 50px">
                                 @item.PhatMinhGiaiPhap.NamCongBo.Value.Year
                             </td>
-                            <td align="center" style="width: 120px">
+                            <td align="left" style="width: 120px">
                                 @item.PhatMinhGiaiPhap.TenPM
                             </td>
-                            <td align="center">
+                            <td align="left">
                                 @item.PhatMinhGiaiPhap.QuocGiaCap
                             </td>
-                            <td align="center">
+                            <td align="right">
                                 @item.PhatMinhGiaiPhap.SoHieuPM
                             </td>
                             <td align="center" class="break-word" style="width: 80px">
