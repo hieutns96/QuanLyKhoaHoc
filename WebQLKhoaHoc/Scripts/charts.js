@@ -25,6 +25,13 @@
                 });
                 chart = new google.visualization.PieChart(document.getElementById(container));
                 break;
+            case 'column':
+                options = Object.assign(options, {
+                    height: 500,
+                    legend: { position: "none" }
+                });
+                chart = new google.visualization.ColumnChart(document.getElementById(container));
+                break;
             default:
         }
         if (chart !== null) {
