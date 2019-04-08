@@ -399,20 +399,7 @@ namespace WebQLKhoaHoc.Controllers
             return View(baiBao);
         }
 
-        // GET: BaiBaos/Delete/5
-        public async Task<ActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            BaiBao baiBao = await db.BaiBaos.FindAsync(id);
-            if (baiBao == null)
-            {
-                return HttpNotFound();
-            }
-            return View(baiBao);
-        }
+    
 
         // POST: BaiBaos/Delete/5
         [HttpPost, ActionName("Delete")]

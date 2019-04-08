@@ -237,21 +237,6 @@ namespace WebQLKhoaHoc.Controllers
             return View(sachGiaoTrinh);
         }
 
-        // GET: SachGiaoTrinhs/Delete/5
-        public async Task<ActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            SachGiaoTrinh sachGiaoTrinh = await db.SachGiaoTrinhs.FindAsync(id);
-            if (sachGiaoTrinh == null)
-            {
-                return HttpNotFound();
-            }
-            return View(sachGiaoTrinh);
-        }
-
         // POST: SachGiaoTrinhs/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
