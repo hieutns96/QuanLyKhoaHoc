@@ -11,6 +11,7 @@ using WebQLKhoaHoc;
 using System.IO;
 using System.Data.Entity.Migrations;
 using WebQLKhoaHoc.Models;
+using System.Text.RegularExpressions;
 
 namespace WebQLKhoaHoc.Controllers
 {
@@ -274,6 +275,81 @@ namespace WebQLKhoaHoc.Controllers
             await db.SaveChangesAsync();
             return RedirectToAction("DanhSachNguoiThamGiaDeTai");
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryTokenAttribute]
+        public async Task<ActionResult> ImportCSVFile(HttpPostedFileBase fileCSV)
+        {
+
+            if (fileCSV != null && fileCSV.ContentLength > 0)
+            {
+                string extension = Path.GetExtension(fileCSV.FileName);
+                if (extension == ".csv")
+                {
+                    string filename = Path.GetFileName(fileCSV.FileName);
+                    string path = Path.Combine(Server.MapPath("~/App_Data/uploads/csv"), filename);
+
+                    try
+                    {
+                        fileCSV.SaveAs(path);
+                        AddRecordFromCSV(path);
+                    }
+                    catch (Exception exception)
+                    {
+                        TempData["ImportCSVFileError"] = exception.Message;
+                    }
+                }
+                else
+                {
+                    TempData["ImportCSVFileError"] = "Xin vui lòng nhập file định dạng CSV";
+                }
+            }
+            return RedirectToAction("Index");
+        }
+
+        public void AddRecordFromCSV(string fileName)
+        {
+            using (StreamReader sr = new StreamReader(fileName))
+            {
+                try
+                {
+                    string line;
+                    while ((line = sr.ReadLine()) != null)
+                    {
+
+                        string[] resultArray;
+                        DeTai detai = new DeTai();
+                       
+                        Regex r = new Regex(",(?=(?:[^\"]*\"[^\"]*\")*(?![^\"]*\"))");
+                        resultArray = r.Split(line);
+                        string madetaihoso = resultArray[0];
+                        DeTai checkdetai = db.DeTais.Where(p => p.MaDeTaiHoSo == madetaihoso).FirstOrDefault();
+                        if (checkdetai == null)
+                        {
+                            // madetaihoso, tendetai, muctieudetai, noidungdetai, ketquadetai, lienketweb, coquantaitro
+                            detai.MaDeTaiHoSo = resultArray[0];
+                            detai.TenDeTai = resultArray[1];
+                            detai.MucTieuDeTai = resultArray[2];
+                            detai.NoiDungDeTai = resultArray[3];
+                            detai.KetQuaDeTai = resultArray[4];
+                            detai.LienKetWeb = resultArray[5];
+                            detai.CoQuanTaiTro = resultArray[6];
+
+
+                            db.DeTais.Add(detai);
+                            db.SaveChanges();
+                        }
+                    }
+                }
+                catch (Exception exception)
+                {
+                    throw exception;
+                }
+            }
+
+        }
+
+
 
 
         protected override void Dispose(bool disposing)
