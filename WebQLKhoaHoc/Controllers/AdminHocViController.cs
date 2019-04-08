@@ -23,21 +23,7 @@ namespace WebQLKhoaHoc.Controllers
             return View(await db.HocVis.ToListAsync());
         }
 
-        // GET: AdminHocVi/Details/5
-        public async Task<ActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            HocVi hocVi = await db.HocVis.FindAsync(id);
-            if (hocVi == null)
-            {
-                return HttpNotFound();
-            }
-            return View(hocVi);
-        }
-
+       
         // GET: AdminHocVi/Create
         public ActionResult Create()
         {

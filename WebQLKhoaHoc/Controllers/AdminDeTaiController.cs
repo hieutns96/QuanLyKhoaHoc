@@ -27,21 +27,7 @@ namespace WebQLKhoaHoc.Controllers
             return View(await deTais.ToListAsync());
         }
 
-        // GET: AdminDeTai/Details/5
-        public async Task<ActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            DeTai deTai = await db.DeTais.FindAsync(id);
-            if (deTai == null)
-            {
-                return HttpNotFound();
-            }
-            return View(deTai);
-        }
-
+      
         // GET: AdminDeTai/Create
         public ActionResult Create()
         {

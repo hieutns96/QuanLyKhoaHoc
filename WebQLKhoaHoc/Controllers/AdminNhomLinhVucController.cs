@@ -23,21 +23,7 @@ namespace WebQLKhoaHoc.Controllers
             return View(await db.NhomLinhVucs.ToListAsync());
         }
 
-        // GET: AdminNhomLinhVuc/Details/5
-        public async Task<ActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            NhomLinhVuc nhomLinhVuc = await db.NhomLinhVucs.FindAsync(id);
-            if (nhomLinhVuc == null)
-            {
-                return HttpNotFound();
-            }
-            return View(nhomLinhVuc);
-        }
-
+       
         // GET: AdminNhomLinhVuc/Create
         public ActionResult Create()
         {

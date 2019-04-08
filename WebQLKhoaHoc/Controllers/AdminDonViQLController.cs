@@ -23,20 +23,7 @@ namespace WebQLKhoaHoc.Controllers
             return View(await db.DonViQLs.ToListAsync());
         }
 
-        // GET: AdminDonViQL/Details/5
-        public async Task<ActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            DonViQL donViQL = await db.DonViQLs.FindAsync(id);
-            if (donViQL == null)
-            {
-                return HttpNotFound();
-            }
-            return View(donViQL);
-        }
+       
 
         // GET: AdminDonViQL/Create
         public ActionResult Create()

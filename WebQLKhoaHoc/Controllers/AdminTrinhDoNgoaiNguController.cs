@@ -23,21 +23,7 @@ namespace WebQLKhoaHoc.Controllers
             return View(await db.TrinhDoNgoaiNgus.ToListAsync());
         }
 
-        // GET: AdminTrinhDoNgoaiNgu/Details/5
-        public async Task<ActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            TrinhDoNgoaiNgu trinhDoNgoaiNgu = await db.TrinhDoNgoaiNgus.FindAsync(id);
-            if (trinhDoNgoaiNgu == null)
-            {
-                return HttpNotFound();
-            }
-            return View(trinhDoNgoaiNgu);
-        }
-
+      
         // GET: AdminTrinhDoNgoaiNgu/Create
         public ActionResult Create()
         {

@@ -95,7 +95,7 @@ namespace WebQLKhoaHoc.Controllers
                 new ImageViewModel(phatMinhGiaiPhap.AnhChupSanPham2),
                 new ImageViewModel(phatMinhGiaiPhap.AnhScanGiayChungNhan)
             };
-            return View(phatMinhGiaiPhap);
+            return View(lstImage);
         }
 
         // GET: PhatMinhGiaiPhaps/Create
@@ -285,21 +285,7 @@ namespace WebQLKhoaHoc.Controllers
             return View(phatMinhGiaiPhap);
         }
 
-        // GET: PhatMinhGiaiPhaps/Delete/5
-        public async Task<ActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            PhatMinhGiaiPhap phatMinhGiaiPhap = await db.PhatMinhGiaiPhaps.FindAsync(id);
-            if (phatMinhGiaiPhap == null)
-            {
-                return HttpNotFound();
-            }
-            return View(phatMinhGiaiPhap);
-        }
-
+      
         // POST: PhatMinhGiaiPhaps/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]

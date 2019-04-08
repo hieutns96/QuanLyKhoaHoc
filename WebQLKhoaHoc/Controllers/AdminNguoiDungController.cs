@@ -24,21 +24,7 @@ namespace WebQLKhoaHoc.Controllers
             return View(await nguoiDungs.ToListAsync());
         }
 
-        // GET: AdminNguoiDung/Details/5
-        public async Task<ActionResult> Details(string id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            NguoiDung nguoiDung = await db.NguoiDungs.FindAsync(id);
-            if (nguoiDung == null)
-            {
-                return HttpNotFound();
-            }
-            return View(nguoiDung);
-        }
-
+      
         // GET: AdminNguoiDung/Create
         public ActionResult Create()
         {

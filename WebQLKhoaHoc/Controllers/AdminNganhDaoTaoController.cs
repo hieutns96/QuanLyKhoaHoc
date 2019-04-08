@@ -23,21 +23,7 @@ namespace WebQLKhoaHoc.Controllers
             return View(await db.NganhDaoTaos.ToListAsync());
         }
 
-        // GET: AdminNganhDaoTao/Details/5
-        public async Task<ActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            NganhDaoTao nganhDaoTao = await db.NganhDaoTaos.FindAsync(id);
-            if (nganhDaoTao == null)
-            {
-                return HttpNotFound();
-            }
-            return View(nganhDaoTao);
-        }
-
+       
         // GET: AdminNganhDaoTao/Create
         public ActionResult Create()
         {

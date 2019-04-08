@@ -23,21 +23,7 @@ namespace WebQLKhoaHoc.Controllers
             return View(await db.XepLoais.OrderBy(p=>p.MaXepLoai).ToListAsync());
         }
 
-        // GET: AdminXepLoai/Details/5
-        public async Task<ActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            XepLoai xepLoai = await db.XepLoais.FindAsync(id);
-            if (xepLoai == null)
-            {
-                return HttpNotFound();
-            }
-            return View(xepLoai);
-        }
-
+      
         // GET: AdminXepLoai/Create
         public ActionResult Create()
         {

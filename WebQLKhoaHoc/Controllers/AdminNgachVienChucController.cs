@@ -23,20 +23,6 @@ namespace WebQLKhoaHoc.Controllers
             return View(await db.NgachVienChucs.ToListAsync());
         }
 
-        // GET: AdminNgachVienChuc/Details/5
-        public async Task<ActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            NgachVienChuc ngachVienChuc = await db.NgachVienChucs.FindAsync(id);
-            if (ngachVienChuc == null)
-            {
-                return HttpNotFound();
-            }
-            return View(ngachVienChuc);
-        }
 
         // GET: AdminNgachVienChuc/Create
         public ActionResult Create()

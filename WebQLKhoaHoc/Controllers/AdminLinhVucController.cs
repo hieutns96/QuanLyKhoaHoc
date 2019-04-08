@@ -24,20 +24,7 @@ namespace WebQLKhoaHoc.Controllers
             return View(await linhVucs.ToListAsync());
         }
 
-        // GET: AdminLinhVuc/Details/5
-        public async Task<ActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            LinhVuc linhVuc = await db.LinhVucs.FindAsync(id);
-            if (linhVuc == null)
-            {
-                return HttpNotFound();
-            }
-            return View(linhVuc);
-        }
+       
 
         // GET: AdminLinhVuc/Create
         public ActionResult Create()

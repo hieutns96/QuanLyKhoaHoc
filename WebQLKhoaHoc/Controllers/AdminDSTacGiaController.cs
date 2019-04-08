@@ -25,21 +25,7 @@ namespace WebQLKhoaHoc.Controllers
             return View(await dSTacGias.ToListAsync());
         }
 
-        // GET: AdminDSTacGia/Details/5
-        public async Task<ActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            DSTacGia dSTacGia = await db.DSTacGias.FindAsync(id);
-            if (dSTacGia == null)
-            {
-                return HttpNotFound();
-            }
-            return View(dSTacGia);
-        }
-
+      
         // GET: AdminDSTacGia/Create
         public ActionResult Create(int? id, int? manhakhoahoc )
         {

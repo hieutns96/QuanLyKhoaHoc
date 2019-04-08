@@ -23,21 +23,7 @@ namespace WebQLKhoaHoc.Controllers
             return View(await db.HocHams.ToListAsync());
         }
 
-        // GET: AdminHocHam/Details/5
-        public async Task<ActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            HocHam hocHam = await db.HocHams.FindAsync(id);
-            if (hocHam == null)
-            {
-                return HttpNotFound();
-            }
-            return View(hocHam);
-        }
-
+    
         // GET: AdminHocHam/Create
         public ActionResult Create()
         {

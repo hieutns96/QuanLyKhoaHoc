@@ -24,21 +24,7 @@ namespace WebQLKhoaHoc.Controllers
             return View(await kinhPhiDeTais.ToListAsync());
         }
 
-        // GET: AdminKinhPhiDeTai/Details/5
-        public async Task<ActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            KinhPhiDeTai kinhPhiDeTai = await db.KinhPhiDeTais.FindAsync(id);
-            if (kinhPhiDeTai == null)
-            {
-                return HttpNotFound();
-            }
-            return View(kinhPhiDeTai);
-        }
-
+       
         // GET: AdminKinhPhiDeTai/Create
         public ActionResult Create()
         {

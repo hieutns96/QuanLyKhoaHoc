@@ -498,24 +498,6 @@ namespace WebQLKhoaHoc.Controllers
 
 
 
-        // GET: NhaKhoaHocs/Delete/5
-        public async Task<ActionResult> Delete(string id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            NhaKhoaHoc nhaKhoaHoc = await db.NhaKhoaHocs.FindAsync(id);
-            if (nhaKhoaHoc == null)
-            {
-                return HttpNotFound();
-            }
-            return View(nhaKhoaHoc);
-        }
-
-
-
-
         // POST: NhaKhoaHocs/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]

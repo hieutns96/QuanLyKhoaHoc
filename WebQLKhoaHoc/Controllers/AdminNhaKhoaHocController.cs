@@ -30,6 +30,7 @@ namespace WebQLKhoaHoc.Controllers
                 NhaKhoaHocViewModel nkh = NhaKhoaHocViewModel.Mapping(nhaKhoaHocs[i]);
                 lstNKH.Add(nkh);
             }
+            ViewBag.Error = TempData["ImportCSVFileError"] ?? null;
             return View(lstNKH);
         }
 
@@ -197,72 +198,79 @@ namespace WebQLKhoaHoc.Controllers
         [ValidateAntiForgeryTokenAttribute]
         public async Task<ActionResult> ImportCSVFile (HttpPostedFileBase fileCSV)
         {
-
+           
             if (fileCSV != null && fileCSV.ContentLength > 0)
             {
-                string filename = Path.GetFileName(fileCSV.FileName);
-                string path = Path.Combine(Server.MapPath("~/App_Data/uploads/csv"), filename);
-               
-                try
+                string extension = Path.GetExtension(fileCSV.FileName);
+                if (extension == ".csv")
                 {
-                    fileCSV.SaveAs(path);
-                    AddRecordFromCSV(path);
-                }
-                catch(Exception exception)
-                {
-                    ViewBag.Error = exception.Message;
-                }
+                    string filename = Path.GetFileName(fileCSV.FileName);
+                    string path = Path.Combine(Server.MapPath("~/App_Data/uploads/csv"), filename);
 
-            
+                    try
+                    {
+                        fileCSV.SaveAs(path);
+                        AddRecordFromCSV(path);
+                    }
+                    catch (Exception exception)
+                    {
+                        TempData["ImportCSVFileError"] = exception.Message;
+                    }
+                }
+                else
+                {
+                    TempData["ImportCSVFileError"] = "Xin vui lòng nhập file định dạng CSV";
+                }
             }
             return RedirectToAction("Index");
         }
 
         public void AddRecordFromCSV(string fileName)
         {
-            string filename = fileName;
             using (StreamReader sr = new StreamReader(fileName))
             {
                 try
                 {
-                    while (!sr.EndOfStream)
+                    string line;
+                    while ((line = sr.ReadLine()) != null)
                     {
-                        string line;
+
                         string[] resultArray;
                         NhaKhoaHoc nkh = new NhaKhoaHoc();
 
                         Regex r = new Regex(",(?=(?:[^\"]*\"[^\"]*\")*(?![^\"]*\"))");
-                        line = sr.ReadLine();
                         resultArray = r.Split(line);
-
-
-                        //MaNKHHoSo,HoNKH,TenNKH,GioiTinh,NgaySinh,DiaChi,DienThoai,Email,SoCMND*/
-                        nkh.MaNKHHoSo = resultArray[0];
-                        nkh.HoNKH = resultArray[1];
-                        nkh.TenNKH = resultArray[2];
-                        nkh.GioiTinhNKH = resultArray[3];
-                        nkh.NgaySinh = Convert.ToDateTime(resultArray[4]);
-                        nkh.DiaChiLienHe = resultArray[5];
-                        nkh.DienThoai = resultArray[6];
-                        nkh.EmailLienHe = resultArray[7];
-                        nkh.SoCMND = resultArray[8];
-
-
-                        db.NhaKhoaHocs.Add(nkh);
-                        db.SaveChanges();
-
-                        string salt = "".GenRandomKey(); //update by Khiet
-                        NguoiDung newuser = new NguoiDung
+                        string mankhhoso = resultArray[0];
+                        NhaKhoaHoc checknkh = db.NhaKhoaHocs.Where(p => p.MaNKHHoSo == mankhhoso).FirstOrDefault();
+                        if (checknkh == null)
                         {
-                            MaNKH = nkh.MaNKH,
-                            Usernames = nkh.MaNKHHoSo,
-                            Passwords = Encryptor.MD5Hash("12345" + salt), //update by Khiet
-                            MaChucNang = 2,
-                            RandomKey = salt //update by Khiet
-                        };
-                        db.NguoiDungs.Add(newuser);
-                        db.SaveChanges();
+                            //MaNKHHoSo,HoNKH,TenNKH,GioiTinh,NgaySinh,DiaChi,DienThoai,Email,SoCMND*/
+                            nkh.MaNKHHoSo = resultArray[0];
+                            nkh.HoNKH = resultArray[1];
+                            nkh.TenNKH = resultArray[2];
+                            nkh.GioiTinhNKH = resultArray[3];
+                            nkh.NgaySinh = (resultArray[4] != "") ? Convert.ToDateTime(resultArray[4]) : DateTime.Now;
+                            nkh.DiaChiLienHe = resultArray[5];
+                            nkh.DienThoai = resultArray[6];
+                            nkh.EmailLienHe = resultArray[7];
+                            nkh.SoCMND = resultArray[8];
 
+
+                            db.NhaKhoaHocs.Add(nkh);
+                            db.SaveChanges();
+
+                            string salt = "".GenRandomKey(); //update by Khiet
+                            NguoiDung newuser = new NguoiDung
+                            {
+                                MaNKH = nkh.MaNKH,
+                                Usernames = nkh.MaNKHHoSo,
+                                Passwords = Encryptor.MD5Hash("12345" + salt), //update by Khiet
+                                MaChucNang = 2,
+                                RandomKey = salt //update by Khiet
+                            };
+                            db.NguoiDungs.Add(newuser);
+                            db.SaveChanges();
+                        }
                     }
                 }
                 catch (Exception exception)

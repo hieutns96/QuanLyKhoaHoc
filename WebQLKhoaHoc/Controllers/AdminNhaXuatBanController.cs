@@ -23,21 +23,7 @@ namespace WebQLKhoaHoc.Controllers
             return View(await db.NhaXuatBans.ToListAsync());
         }
 
-        // GET: AdminNhaXuatBan/Details/5
-        public async Task<ActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            NhaXuatBan nhaXuatBan = await db.NhaXuatBans.FindAsync(id);
-            if (nhaXuatBan == null)
-            {
-                return HttpNotFound();
-            }
-            return View(nhaXuatBan);
-        }
-
+      
         // GET: AdminNhaXuatBan/Create
         public ActionResult Create()
         {

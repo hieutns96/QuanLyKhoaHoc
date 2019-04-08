@@ -24,21 +24,7 @@ namespace WebQLKhoaHoc.Controllers
             return View(await nganHangNKHs.ToListAsync());
         }
 
-        // GET: AdminNganHangNKHs/Details/5
-        public async Task<ActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            NganHangNKH nganHangNKH = await db.NganHangNKHs.FindAsync(id);
-            if (nganHangNKH == null)
-            {
-                return HttpNotFound();
-            }
-            return View(nganHangNKH);
-        }
-
+      
         // GET: AdminNganHangNKHs/Create
         public ActionResult Create(int manhakhoahoc)
         {

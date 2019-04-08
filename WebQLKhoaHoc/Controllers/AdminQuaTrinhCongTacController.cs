@@ -24,21 +24,7 @@ namespace WebQLKhoaHoc.Controllers
             return View(await quaTrinhCongTacs.ToListAsync());
         }
 
-        // GET: AdminQuaTrinhCongTac/Details/5
-        public async Task<ActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            QuaTrinhCongTac quaTrinhCongTac = await db.QuaTrinhCongTacs.FindAsync(id);
-            if (quaTrinhCongTac == null)
-            {
-                return HttpNotFound();
-            }
-            return View(quaTrinhCongTac);
-        }
-
+       
         // GET: AdminQuaTrinhCongTac/Create
         public ActionResult Create(int? manhakhoahoc)
         {

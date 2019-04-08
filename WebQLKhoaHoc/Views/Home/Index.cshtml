@@ -110,7 +110,7 @@
                         <div class="section-content">
                             <div class="row">
                                 <div class="col-md-6 wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.3s" style="visibility: visible; animation-duration: 1s; animation-delay: 0.3s;">
-                                    <h2 class="text-uppercase mt-0 font-weight-600 font1">Giới Thiệu Tổng Quan Về<br> <span class="text-theme-color-2">Đại Học Sư Phạm TPHCM</span></h2>
+                                    <h2 class="text-uppercase mt-0 font-weight-600 font1">Giới Thiệu Tổng Quan Về<br> Đại Học Sư Phạm TPHCM</h2>
                                     <p style="text-align:justify">
                                         <span style="color:#ff6600; font-family:georgia,palatino; font-size:x-large"><strong>61</strong></span><span class="font1" style="color:#132f5b">
                                             năm hình thành và phát triển, Đại học Sư Phạm TPHCM ngày nay là một trung tâm đào tạo và nghiên cứu khoa học lớn của miền Trung Việt Nam. Là một trong 14 trường Đại học trọng điểm của cả nước, Đại học Sư Phạm TPHCM đã khẳng định được vị thế, uy tín của mình trong hệ thống giáo dục đại học Việt Nam. Nguồn nhân lực KHCN bao gồm một đội ngũ đông đảo các nhà giáo, nhà nghiên cứu có trình độ cao. Tính cho đến nay Đại học Sư Phạm TPHCM có <span style="color:#ff0000"><strong>3770</strong></span>&nbsp;cán bộ công chức. Số lượng giảng viên là
@@ -226,7 +226,7 @@
                                             @foreach (var item in db.BaiBaos.OrderByDescending(p => p.NamDangBao).Take(5))
                                             {
                                                 <li class="tip-list-item">
-                                                    <a href="@Url.Action("Details","DeTais",new {id = item.MaBaiBao })">
+                                                    <a href="@Url.Action("Details","BaiBaos",new {id = item.MaBaiBao })">
                                                         @item.TenBaiBao <span class="cdate font1" style="color: #f00; font-size: 11px; font-weight: normal !important;"> (@item.NamDangBao.Value.ToShortDateString())</span>
                                                     </a>
                                                 </li>
@@ -243,7 +243,7 @@
                                             @foreach (var item in db.SachGiaoTrinhs.OrderByDescending(p => p.NamXuatBan).Take(5))
                                             {
                                                 <li class="tip-list-item">
-                                                    <a href="@Url.Action("Details","DeTais",new {id = item.MaSach })">
+                                                    <a href="@Url.Action("Details","SachGiaoTrinhs",new {id = item.MaSach })">
                                                         @item.TenSach <span class="cdate font1" style="color: #f00; font-size: 11px; font-weight: normal !important;"> (@item.NamXuatBan.Value.ToShortDateString())</span>
                                                     </a>
                                                 </li>

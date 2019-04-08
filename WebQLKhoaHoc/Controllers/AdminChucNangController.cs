@@ -23,20 +23,7 @@ namespace WebQLKhoaHoc.Controllers
             return View(await db.ChucNangs.ToListAsync());
         }
 
-        // GET: AdminChucNang/Details/5
-        public async Task<ActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            ChucNang chucNang = await db.ChucNangs.FindAsync(id);
-            if (chucNang == null)
-            {
-                return HttpNotFound();
-            }
-            return View(chucNang);
-        }
+       
 
         // GET: AdminChucNang/Create
         public ActionResult Create()

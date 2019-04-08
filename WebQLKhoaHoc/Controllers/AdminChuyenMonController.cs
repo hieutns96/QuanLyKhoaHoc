@@ -23,21 +23,7 @@ namespace WebQLKhoaHoc.Controllers
             return View(await db.ChuyenMons.ToListAsync());
         }
 
-        // GET: AdminChuyenMon/Details/5
-        public async Task<ActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            ChuyenMon chuyenMon = await db.ChuyenMons.FindAsync(id);
-            if (chuyenMon == null)
-            {
-                return HttpNotFound();
-            }
-            return View(chuyenMon);
-        }
-
+      
         // GET: AdminChuyenMon/Create
         public ActionResult Create()
         {

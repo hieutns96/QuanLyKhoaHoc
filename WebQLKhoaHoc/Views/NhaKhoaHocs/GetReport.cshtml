@@ -18,14 +18,16 @@
 
 
 <body  style="background-color: #ffffff;
-            max-width: 498.6pt;
             padding: 70.9pt 56.7pt 70.9pt 56.7pt">
     <div id="source-html">
         <style type="text/css">
             ol.lst-kix_list_1-3 {
                 list-style-type: none
             }
-
+            table {
+                width: 100%;
+            }
+                
             ol.lst-kix_list_1-4 {
                 list-style-type: none
             }
@@ -173,9 +175,13 @@
 
             table td,
             table th {
-                padding: 0
+                padding: 0;
+                word-wrap: break-word;
+                white-space: normal;
             }
-
+            .break-word {
+                word-break: break-all;
+            }
             .c51 {
                 border-right-style: solid;
                 padding: 0pt 5.4pt 0pt 5.4pt;
@@ -708,7 +714,7 @@
                 line-height: 1.0791666666666666;
                 orphans: 2;
                 widows: 2;
-                text-align: center
+                text-align: left
             }
 
             .c2 {
@@ -757,7 +763,7 @@
                 line-height: 1.0;
                 orphans: 2;
                 widows: 2;
-                text-align: center
+                text-align: left
             }
 
             .c44 {
@@ -766,7 +772,7 @@
                 line-height: 1.0791666666666666;
                 orphans: 2;
                 widows: 2;
-                text-align: center
+                text-align: left
             }
 
             .c13 {
@@ -1002,7 +1008,7 @@
                 font-size: 14px;
                 font-weight: normal;
                 line-height: 1.428571429;
-                text-align: center;
+                text-align: left;
                 white-space: nowrap;
                 vertical-align: middle;
                 cursor: pointer;
@@ -1022,35 +1028,45 @@
         <p class="c19">
             <span class="c2">
                 M&#7851;u s&#7889;:
-                &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;.
+                &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;
+
             </span>
         </p>
-        <p class="c19" style="margin-right: -10px;">
+        <p class="c19" >
             <span class="c2">
                 M&atilde; s&#7889; c&aacute;n b&#7897; vi&ecirc;n
                 ch&#7913;c: @Model.MaNKHHoSo
             </span>
         </p>
-        <p class="c19 c20"><span class="c2"></span></p>
-        <p class="c44">
+    <p class="c19 c20"><span class="c2"></span></p>
+    <table border="0" cellspacing="15" cellpadding="10">
+        <thead>
+            <tr>
+                <td style='height:20' colspan='4' align='Center'>
+                    <img alt="" src="~/Image/logo_hcmup.png"
+                         style="max-width: 100px; max-height: 50px; vertical-align: middle"
+                         title="">
+                </td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style='height:20' colspan='4' align='Center'>
+                    TRƯỜNG ĐẠI HỌC SƯ PHẠM <br/>
+                    THÀNH PHỐ HỒ CHÍ MINH
+                </td>
+                <td width='300px' style='height:30' colspan='6' align='Center'>
+                    CỘNG HÒA XÃ HỘI CHŨ NGHĨA VIỆT NAM <BR />
+                    Độc lập - Tự do - Hạnh phúc
+                </td>
+            </tr>
+        </tbody>          
+    </table>
 
-            <img alt="" src="~/Image/logo_hcmup.png"
-                 style="max-width: 100px; max-height: 50px; vertical-align: middle; margin-bottom: -20px; margin-left: -110px; margin-top: 20px; -webkit-transform: rotate(0.00rad) translateZ(0px);"
-                 title="">
-            <span class="c2" style="margin-left: 10px; line-height: 0.1;">
-                C&#7896;NG H&Ograve;A X&Atilde; H&#7896;I
-                CH&#7910; NGH&#296;A VI&#7878;T
-                NAM<br> &#272;&#7897;c l&#7853;p &ndash; T&#7921; do &ndash; H&#7841;nh ph&uacute;c
-            </span>
-        </p>
 
 
         <p class="c44 c20"><span class="c27"></span></p>
         <p class="c44 c20"><span class="c27"></span></p>
-        <p class="c17" id="h.gjdgxs">
-            <span class="c2">TR&#431;&#7900;NG &#272;&#7840;I H&#7884;C S&#431; PH&#7840;M</span>
-        </p>
-        <p class="c17"><span class="c2">&nbsp;TH&Agrave;NH PH&#7888; H&#7890; CH&Iacute; MINH</span></p>
         <p class="c44 c20"><span class="c27"></span></p>
         <p class="c44"><span class="c27">L&Iacute; L&#7882;CH KHOA H&#7884;C</span></p>
         <p class="c44 c20"><span class="c2"></span></p>
@@ -1062,49 +1078,49 @@
             <table border="1" cellspacing="1" cellpadding="10">
                 <tbody>
                     <tr>
-                        <td align="center">
+                        <td align="left">
                             H&#7885; v&agrave; t&ecirc;n
                         </td>
-                        <td align="center">
+                        <td align="left">
                             @Model.HoNKH @Model.TenNKH
                         </td>
-                        <td align="center">
+                        <td align="left">
                             N&#259;m sinh
                         </td>
-                        <td align="center">
+                        <td align="left">
                             @Model.NgaySinh.Value.ToString("dd-MM-yyyy")
                         </td>
                     </tr>
                     <tr>
-                        <td align="center">
+                        <td align="left">
                             Ch&#7913;c danh khoa h&#7885;c
                         </td>
-                        <td align="center">
+                        <td align="left">
                             @Model.HocHam.TenVietTat @Model.HocVi.TenVietTat
                         </td>
-                        <td align="center">
+                        <td align="left">
                             Gi&#7899;i t&iacute;nh
                         </td>
-                        <td align="center">
+                        <td align="left">
                             @Model.GioiTinhNKH
                         </td>
                     </tr>
                     <tr>
-                        <td align="center">
+                        <td align="left">
                             Ch&#7913;c v&#7909; h&agrave;nh ch&iacute;nh
                         </td>
-                        <td align="center">
+                        <td align="left">
                             @quatrinhcongtac.ChucVuCT
                         </td>
-                        <td align="center">
+                        <td align="left">
                             S&#7889; CMND, CCCD
                         </td>
-                        <td align="center">
+                        <td align="left">
                             @Model.SoCMND
                         </td>
                     </tr>
                     <tr>
-                        <td align="center">
+                        <td align="left">
                             T&ecirc;n ph&ograve;ng, ban, b&#7897; m&ocirc;n
                         </td>
                         <td colspan="3">
@@ -1112,7 +1128,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td align="center">
+                        <td align="left">
                             T&ecirc;n c&#417; quan c&ocirc;ng t&aacute;c
                         </td>
                         <td colspan="3">
@@ -1120,21 +1136,21 @@
                         </td>
                     </tr>
                     <tr>
-                        <td align="center">
+                        <td align="left">
                             &#272;&#7883;a ch&#7881; c&#417; quan
                         </td>
-                        <td align="center">
+                        <td align="left">
                             @quatrinhcongtac.DiaChiQoQuan
                         </td>
-                        <td align="center">
+                        <td align="left">
                             T&#7881;nh, th&agrave;nh ph&#7889;
                         </td>
-                        <td align="center">
+                        <td align="left">
                             @quatrinhcongtac.TinhTP
                         </td>
                     </tr>
                     <tr>
-                        <td align="center">
+                        <td align="left">
                             &#272;i&#7879;n tho&#7841;i li&ecirc;n l&#7841;c
                         </td>
                         <td colspan="3">
@@ -1142,7 +1158,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td align="center">
+                        <td align="left">
                             Email ch&iacute;nh
                         </td>
                         <td colspan="3">
@@ -1150,15 +1166,15 @@
                         </td>
                     </tr>
                     <tr>
-                        <td align="center">
+                        <td align="left">
                             Email thay th&#7871;
                         </td>
                         <td colspan="3">
-                            @Model.EmailLienHe
+                           
                         </td>
                     </tr>
                     <tr>
-                        <td align="center">
+                        <td align="left">
                             S&#7889; t&agrave;i kho&#7843;n
                         </td>
                         <td colspan="3">
@@ -1166,7 +1182,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td align="center">
+                        <td align="left">
                             M&#7903; t&#7841;i ng&acirc;n h&agrave;ng
                         </td>
                         <td colspan="3">
@@ -1174,7 +1190,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td align="center">
+                        <td align="left">
                             Chi nh&aacute;nh ng&acirc;n h&agrave;ng
                         </td>
                         <td colspan="3">
@@ -1212,16 +1228,16 @@
                             <td align="center">
                                 @count
                             </td>
-                            <td align="center">
+                            <td align="right">
                                 @item.ThoiGianBD.Value.ToString("yyyy")-@item.ThoiGianKT.Value.ToString("yyyy")
                             </td>
-                            <td align="center">
+                            <td align="left">
                                 @item.CoSoDaoTao
                             </td>
-                            <td align="center">
+                            <td align="left">
                                 @item.NganhDaoTao.TenNganhDaoTao
                             </td>
-                            <td align="center">
+                            <td align="left">
                                 @item.HocVi.TenVietTat
                             </td>
                         </tr>
@@ -1258,16 +1274,16 @@
                             <td align="center">
                                 @count
                             </td>
-                            <td align="center">
+                            <td align="right">
                                 @item.ThoiGianBD.Value.ToString("yyyy")-@item.ThoiGIanKT.Value.ToString("yyyy")
                             </td>
-                            <td align="center">
+                            <td align="left">
                                 @item.TenCoQuan
                             </td>
-                            <td align="center">
+                            <td align="left">
                                 @item.DiaChiQoQuan
                             </td>
-                            <td align="center">
+                            <td align="left">
                                 @item.ChucVuCT
                             </td>
                         </tr>
@@ -1309,16 +1325,16 @@
                     @foreach (var item in Model.NgoaiNguNKHs)
                     {
                         <tr>
-                            <td align="center">
+                            <td align="left">
                                 @item.TrinhDoNgoaiNgu.TenTrinhDo
                             </td>
-                            <td align="center">
+                            <td align="left">
                                 @item.DanhGiaNgoaiNgu.TenLoai
                             </td>
-                            <td align="center">
+                            <td align="left">
                                 @item.DanhGiaNgoaiNgu1.TenLoai
                             </td>
-                            <td align="center">
+                            <td align="left">
                                 @item.DanhGiaNgoaiNgu2.TenLoai
                             </td>
                         </tr>
@@ -1382,16 +1398,16 @@
                             <td align="center">
                                 @count
                             </td>
-                            <td align="center">
+                            <td align="left">
                                 @item.DeTai.TenDeTai
                             </td>
-                            <td align="center">
+                            <td align="left">
                                 @item.DeTai.CoQuanTaiTro
                             </td>
-                            <td align="center">
+                            <td align="right">
                                 @item.DeTai.NamBD.Value.Year-@item.DeTai.NamKT.Value.Year
                             </td>
-                            <td align="center">
+                            <td align="left">
                                 @if (item.LaChuNhiem.Value)
                                 {
                                     <span class="c2">Chủ Nhiệm</span>
@@ -1414,21 +1430,30 @@
         <p class="c0"><span class="c2"></span></p><a id="t.273eee4e33563e72abd0d9f30b98de4b99f8f4b7"></a><a id="t.5"></a>
         <div class="table-responsive">
             <table border="1" cellspacing="1" cellpadding="10">
-                <thead>
-                    <tr>
-                        <th>TT</th>
-                        <th>
-                            Tên tác giả
-                        </th>
-                        <th>
-                            Năm công bố
-                        </th>
-                        <th>Tên công trình</th>
-                        <th>Tên tạp chí, NXB/ số, tập, trang đăng công trình</th>
-                        <th>ISSN/ ISBN</th>
-                        <th>Upload minh chứng</th>
-                    </tr>
-                </thead>
+            <thead>
+            <tr>
+                <th>TT</th>
+                <th style="width: 150px">
+                    Tên tác giả
+                </th>
+                <th style="width: 50px" >
+                    Năm công bố
+                </th>
+                <th style="width: 120px">Tên công trình</th>
+                <th>Tên tạp chí, NXB/ số, tập, trang đăng công trình</th>
+                <th style="width: 50px" >ISSN/ ISBN</th>
+                <th style="width: 80px" >Upload minh chứng</th>
+            </tr>
+            </thead>
+            <thead>
+            <tr>
+                <th>1</th>
+                <th colspan="6">
+                    Bài báo thuộc danh mục WoS (SCI,SCIE,SSCI,A&HCI,ESCI)
+                </th>
+             
+            </tr>
+            </thead>
                 <tbody>
                     @{ count = 1;}
                     @foreach (var item in baibaoWoS)
@@ -1437,22 +1462,22 @@
                             <td align="center">
                                 1.@count
                             </td>
-                            <td align="center">
+                            <td align="left" style="width: 150px">
                                 @item.NhaKhoaHoc.HoNKH @item.NhaKhoaHoc.TenNKH
                             </td>
-                            <td align="center">
+                            <td align="right" style="width: 50px">
                                 @item.BaiBao.NamDangBao.Value.Year
                             </td>
-                            <td align="center">
+                            <td align="left" style="width: 120px">
                                 @item.BaiBao.TenBaiBao
                             </td>
-                            <td align="center">
+                            <td align="right" >
                                 @item.BaiBao.CQXuatBan;@item.BaiBao.TapPhatHanh;@item.BaiBao.SoPhatHanh;@item.BaiBao.TrangBaiBao
                             </td>
-                            <td align="center">
+                            <td align="right" style="width: 50px" >
                                 @item.BaiBao.MaISSN
                             </td>
-                            <td align="center">
+                            <td align="center" style="width: 80px" class="break-word">
                                 @item.BaiBao.LinkFileUpLoad
                             </td>
                         </tr>
@@ -1463,14 +1488,10 @@
                 <thead>
                     <tr>
                         <th>2</th>
-                        <th>
+                        <th colspan="6">
                             Bài báo thuộc danh mục Scopus
                         </th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
+                       
                     </tr>
                 </thead>
 
@@ -1478,29 +1499,29 @@
                 @{ count = 1;}
                 @foreach (var item in baibaoScopus)
                 {
-                    <tr>
-                        <td align="center">
-                            2.@count
-                        </td>
-                        <td align="center">
-                            @item.NhaKhoaHoc.HoNKH @item.NhaKhoaHoc.TenNKH
-                        </td>
-                        <td align="center">
-                            @item.BaiBao.NamDangBao.Value.Year
-                        </td>
-                        <td align="center">
-                            @item.BaiBao.TenBaiBao
-                        </td>
-                        <td align="center">
-                            @item.BaiBao.CQXuatBan;@item.BaiBao.TapPhatHanh;@item.BaiBao.SoPhatHanh;@item.BaiBao.TrangBaiBao
-                        </td>
-                        <td align="center">
-                            @item.BaiBao.MaISSN
-                        </td>
-                        <td align="center">
-                            @item.BaiBao.LinkFileUpLoad
-                        </td>
-                    </tr>
+                <tr>
+                    <td align="center">
+                        2.@count
+                    </td>
+                    <td align="left" style="width: 150px">
+                        @item.NhaKhoaHoc.HoNKH @item.NhaKhoaHoc.TenNKH
+                    </td>
+                    <td align="right" style="width: 50px">
+                        @item.BaiBao.NamDangBao.Value.Year
+                    </td>
+                    <td align="left" style="width: 120px">
+                        @item.BaiBao.TenBaiBao
+                    </td>
+                    <td align="center">
+                        @item.BaiBao.CQXuatBan;@item.BaiBao.TapPhatHanh;@item.BaiBao.SoPhatHanh;@item.BaiBao.TrangBaiBao
+                    </td>
+                    <td align="center" style="width: 50px">
+                        @item.BaiBao.MaISSN
+                    </td>
+                    <td align="center" class="break-word" style="width: 80px;">
+                        @item.BaiBao.LinkFileUpLoad
+                    </td>
+                </tr>
                     count++;
                 }
 
@@ -1508,14 +1529,10 @@
                 <thead>
                     <tr>
                         <th>3</th>
-                        <th>
+                        <th colspan="6">
                             Bài báo quốc tế khác
                         </th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
+                        
                     </tr>
                 </thead>
                 @{ count = 1;}
@@ -1525,22 +1542,22 @@
                         <td align="center">
                             3.@count
                         </td>
-                        <td align="center">
+                        <td align="left" style="width: 150px">
                             @item.NhaKhoaHoc.HoNKH @item.NhaKhoaHoc.TenNKH
                         </td>
-                        <td align="center">
+                        <td align="right" style="width: 50px">
                             @item.BaiBao.NamDangBao.Value.Year
                         </td>
-                        <td align="center">
+                        <td align="left" style="width: 120px">
                             @item.BaiBao.TenBaiBao
                         </td>
                         <td align="center">
                             @item.BaiBao.CQXuatBan;@item.BaiBao.TapPhatHanh;@item.BaiBao.SoPhatHanh;@item.BaiBao.TrangBaiBao
                         </td>
-                        <td align="center">
+                        <td align="center" style="width: 50px">
                             @item.BaiBao.MaISSN
                         </td>
-                        <td align="center">
+                        <td align="center" class="break-word" style="width: 80px">
                             @item.BaiBao.LinkFileUpLoad
                         </td>
                     </tr>
@@ -1550,14 +1567,10 @@
                 <thead>
                     <tr>
                         <th>4</th>
-                        <th>
+                        <th colspan="6">
                             Bài báo trên các tạp chí khoa học quốc gia
                         </th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
+                       
                     </tr>
                 </thead>
                 @{ count = 1;}
@@ -1567,22 +1580,22 @@
                         <td align="center">
                             4.@count
                         </td>
-                        <td align="center">
+                        <td align="left" style="width: 150px">
                             @item.NhaKhoaHoc.HoNKH @item.NhaKhoaHoc.TenNKH
                         </td>
-                        <td align="center">
+                        <td align="right" style="width: 50px">
                             @item.BaiBao.NamDangBao.Value.Year
                         </td>
-                        <td align="center">
+                        <td align="left" style="width: 120px">
                             @item.BaiBao.TenBaiBao
                         </td>
                         <td align="center">
                             @item.BaiBao.CQXuatBan;@item.BaiBao.TapPhatHanh;@item.BaiBao.SoPhatHanh;@item.BaiBao.TrangBaiBao
                         </td>
-                        <td align="center">
+                        <td align="center" style="width: 50px">
                             @item.BaiBao.MaISSN
                         </td>
-                        <td align="center">
+                        <td align="center" class="break-word" style="width: 80px">
                             @item.BaiBao.LinkFileUpLoad
                         </td>
                     </tr>
@@ -1592,43 +1605,39 @@
                 <thead>
                     <tr>
                         <th>5</th>
-                        <th>
+                        <th colspan="6">
                             Bài báo khoa học khác (tạp chí khoa học trường, ngành; kỉ yếu hội nghị, hội thảo khoa học)
                         </th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
+                       
                     </tr>
                 </thead>
                 @{ count = 1;}
                 @foreach (var item in baibaoKhac)
                 {
-                    <tr>
-                        <td align="center">
-                            5.@count
-                        </td>
-                        <td align="center">
-                            @item.NhaKhoaHoc.HoNKH @item.NhaKhoaHoc.TenNKH
-                        </td>
-                        <td align="center">
-                            @item.BaiBao.NamDangBao.Value.Year
-                        </td>
-                        <td align="center">
-                            @item.BaiBao.TenBaiBao
-                        </td>
-                        <td align="center">
-                            @item.BaiBao.CQXuatBan;@item.BaiBao.TapPhatHanh;@item.BaiBao.SoPhatHanh;@item.BaiBao.TrangBaiBao
-                        </td>
-                        <td align="center">
-                            @item.BaiBao.MaISSN
-                        </td>
-                        <td align="center">
-                            @item.BaiBao.LinkFileUpLoad
-                        </td>
+                <tr>
+                    <td align="center">
+                        5.@count
+                    </td>
+                    <td align="left" style="width: 150px">
+                        @item.NhaKhoaHoc.HoNKH @item.NhaKhoaHoc.TenNKH
+                    </td>
+                    <td align="right" style="width: 50px">
+                        @item.BaiBao.NamDangBao.Value.Year
+                    </td>
+                    <td align="left" style="width: 120px">
+                        @item.BaiBao.TenBaiBao
+                    </td>
+                    <td align="center">
+                        @item.BaiBao.CQXuatBan;@item.BaiBao.TapPhatHanh;@item.BaiBao.SoPhatHanh;@item.BaiBao.TrangBaiBao
+                    </td>
+                    <td align="center" style="width: 50px">
+                        @item.BaiBao.MaISSN
+                    </td>
+                    <td align="center" class="break-word" style="width: 80px">
+                        @item.BaiBao.LinkFileUpLoad
+                    </td>
 
-                    </tr>
+                </tr>
                     count++;
                 }
 
@@ -1665,29 +1674,29 @@
                     @{ count = 1;}
                     @foreach (var item in Model.DSTacGias)
                     {
-                        <tr>
-                            <td align="center">
-                                @count
-                            </td>
-                            <td align="center">
-                                @item.NhaKhoaHoc.HoNKH @item.NhaKhoaHoc.TenNKH
-                            </td>
-                            <td align="center">
-                                @item.SachGiaoTrinh.NamXuatBan.Value.Year
-                            </td>
-                            <td align="center">
-                                @item.SachGiaoTrinh.TenSach
-                            </td>
-                            <td align="center">
-                                @item.SachGiaoTrinh.MaISBN
-                            </td>
-                            <td align="center">
-                                @item.SachGiaoTrinh.PhanLoaiSach.TenLoai
-                            </td>
-                            <td align="center">
-                                @Url.Action("GetAllImage", "SachGiaoTrinhs", new { id = item.MaSach }, protocol: Request.Url.Scheme)
-                            </td>
-                        </tr>
+                    <tr>
+                        <td align="center">
+                            @count
+                        </td>
+                        <td align="left" style="width: 150px">
+                            @item.NhaKhoaHoc.HoNKH @item.NhaKhoaHoc.TenNKH
+                        </td>
+                        <td align="right" style="width: 50px">
+                            @item.SachGiaoTrinh.NamXuatBan.Value.Year
+                        </td>
+                        <td align="left" style="width: 120px">
+                            @item.SachGiaoTrinh.TenSach
+                        </td>
+                        <td align="right">
+                            @item.SachGiaoTrinh.MaISBN
+                        </td>
+                        <td align="left">
+                            @item.SachGiaoTrinh.PhanLoaiSach.TenLoai
+                        </td>
+                        <td align="center" class="break-word" style="width: 80px">
+                            @Url.Action("GetAllImage", "SachGiaoTrinhs", new { id = item.MaSach }, protocol: Request.Url.Scheme)
+                        </td>
+                    </tr>
                         count++;
                     }
 
@@ -1702,7 +1711,9 @@
                     thu&#7853;t (minh ch&#7913;ng l&agrave; b&#7843;n scan gi&#7845;y ch&#7913;ng nh&#7853;n)
                 </span>
             </li>
-        </ol><a id="t.56c4a923174b06c8d79eae3d92450fa2b755b3f7"></a><a id="t.7"></a>
+        </ol>
+    <p class="c0"><span class="c2"></span></p>
+    <a id="t.56c4a923174b06c8d79eae3d92450fa2b755b3f7"></a><a id="t.7"></a>
 
         <div class="table-responsive">
             <table border="1" cellspacing="1" cellpadding="10">
@@ -1730,22 +1741,22 @@
                             <td align="center">
                                 @count
                             </td>
-                            <td align="center">
+                            <td align="left" style="width: 150px">
                                 @item.NhaKhoaHoc.HoNKH @item.NhaKhoaHoc.TenNKH
                             </td>
-                            <td align="center">
+                            <td align="right" style="width: 50px">
                                 @item.PhatMinhGiaiPhap.NamCongBo.Value.Year
                             </td>
-                            <td align="center">
+                            <td align="left" style="width: 120px">
                                 @item.PhatMinhGiaiPhap.TenPM
                             </td>
-                            <td align="center">
+                            <td align="left">
                                 @item.PhatMinhGiaiPhap.QuocGiaCap
                             </td>
-                            <td align="center">
+                            <td align="right">
                                 @item.PhatMinhGiaiPhap.SoHieuPM
                             </td>
-                            <td align="center">
+                            <td align="center" class="break-word" style="width: 80px">
                                 @Url.Action("GetAllImage", "PhatMinhGiaiPhaps", new { id = item.MaPM }, protocol: Request.Url.Scheme)
                             </td>
                         </tr>

@@ -23,21 +23,7 @@ namespace WebQLKhoaHoc.Controllers
             return View(await db.PhanLoaiSaches.ToListAsync());
         }
 
-        // GET: AdminPhanLoaiSaches/Details/5
-        public async Task<ActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            PhanLoaiSach phanLoaiSach = await db.PhanLoaiSaches.FindAsync(id);
-            if (phanLoaiSach == null)
-            {
-                return HttpNotFound();
-            }
-            return View(phanLoaiSach);
-        }
-
+    
         // GET: AdminPhanLoaiSaches/Create
         public ActionResult Create()
         {

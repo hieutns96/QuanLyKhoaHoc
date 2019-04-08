@@ -24,21 +24,7 @@ namespace WebQLKhoaHoc.Controllers
             return View(await dSBaiBaoDeTais.ToListAsync());
         }
 
-        // GET: AdminDSBaiBaoDeTai/Details/5
-        public async Task<ActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            DSBaiBaoDeTai dSBaiBaoDeTai = await db.DSBaiBaoDeTais.FindAsync(id);
-            if (dSBaiBaoDeTai == null)
-            {
-                return HttpNotFound();
-            }
-            return View(dSBaiBaoDeTai);
-        }
-
+      
         // GET: AdminDSBaiBaoDeTai/Create
         public ActionResult Create()
         {
