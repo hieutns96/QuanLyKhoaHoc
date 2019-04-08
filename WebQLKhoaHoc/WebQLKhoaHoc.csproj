@@ -710,6 +710,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\uploads\baibao_file\" />
+    <Folder Include="App_Data\uploads\csv\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

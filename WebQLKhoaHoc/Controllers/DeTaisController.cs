@@ -119,7 +119,10 @@ namespace WebQLKhoaHoc.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create(List<string> DSNguoiThamGiaDT, [Bind(Include = "MaDeTai,MaDeTaiHoSo,TenDeTai,MaLoaiDeTai,MaCapDeTai,MaDVChuTri,MaDonViQLThucHien,MaLinhVuc,MucTieuDeTai,NoiDungDeTai,KetQuaDeTai,NamBD,NamKT,KinhPhi,MaXepLoai,MaTinhTrang,MaPhanLoaiSP,LienKetWeb")] DeTai deTai, HttpPostedFileBase linkUpload, string KinhPhiMoi)
+        public async Task<ActionResult> Create(List<string> DSNguoiThamGiaDT, [Bind(Include = "MaDeTai,MaDeTaiHoSo,TenDeTai,MaLoaiDeTai,MaCapDeTai," +
+            "MaDVChuTri,MaDonViQLThucHien,MaLinhVuc,MucTieuDeTai,NoiDungDeTai," +
+            "KetQuaDeTai,NamBD,NamKT,KinhPhi,MaXepLoai,MaTinhTrang,MaPhanLoaiSP,LienKetWeb")] DeTai deTai, 
+            HttpPostedFileBase linkUpload, string KinhPhiMoi)
         {
             if (ModelState.IsValid)
             {

@@ -11,8 +11,14 @@
         <div class="x_panel">
             <div class="x_title">
                 <h2>
-                    Danh Sách Nhà Khoa Học  
+                    Danh Sách Nhà Khoa Học
                 </h2>
+                @using (Html.BeginForm("ImportCSVFile", "AdminNhaKhoaHoc", FormMethod.Post, new { @class = "form-horizontal form-label-right", @enctype = "multipart/form-data" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <input type="file" name="fileCSV" class="form-control" placeholder="CSV File">
+                    <input type="submit" />
+                }
                 <ul class="nav navbar-right panel_toolbox">
                     <li class="dropdown">
                         <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
@@ -22,7 +28,7 @@
                             </li>
                         </ul>
                     </li>
-                                             
+
                 </ul>
                 <div class="clearfix"></div>
             </div>

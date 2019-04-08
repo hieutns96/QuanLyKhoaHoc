@@ -35,14 +35,19 @@
                     <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
                         <div class="menu_section active">
                             <ul class="nav side-menu" style="">
+
+                                <li>
+                                    <a href="@Url.Action("Index","Home")"><i class="fa fa-home"></i> Trang chính </a>
+
+                                </li>
                                 <!-- list controllers -->
                                 <li>
-                                    <a href="@Url.Action("Index","AdminNhaKhoaHoc")"><i class="fa fa-home"></i> Nhà Khoa Học </a>
+                                    <a href="@Url.Action("Index","AdminNhaKhoaHoc")"><i class="fa fa-users"></i> Nhà Khoa Học </a>
 
                                 </li>
                                 <li>
 
-                                    <a href="javascript:;"><i class="fa fa-home"></i> Đề Tài <span class="fa fa-chevron-down"></span></a>
+                                    <a href="javascript:;"><i class="fas fa-file-signature"></i> Đề Tài <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu" style="display: none;">
                                         <!-- list children controllers -->
                                         <li><a href="@Url.Action("Index","AdminDeTai")">Danh sách đề tài</a></li>
@@ -58,7 +63,7 @@
                                     </ul>
                                 </li>
                                 <li>
-                                    <a href="javascript:;"><i class="fa fa-home"></i> Sách và Giáo Trình <span class="fa fa-chevron-down"></span></a>
+                                    <a href="javascript:;"><i class="fa fa-book"></i> Sách và Giáo Trình <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu" style="display: none;">
                                         <!-- list children controllers -->
                                         <li><a href="@Url.Action("Index","AdminSachGiaoTrinhs")">Sách giáo trình</a></li>
@@ -68,7 +73,7 @@
                                     </ul>
                                 </li>
                                 <li>
-                                    <a href="javascript:;"><i class="fa fa-home"></i> Bài Báo <span class="fa fa-chevron-down"></span></a>
+                                    <a href="javascript:;"><i class="fa fa-newspaper"></i> Bài Báo <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu" style="display: none;">
                                         <!-- list children controllers -->
                                         <li><a href="@Url.Action("Index","AdminBaiBao")">Danh sách bài báo</a></li>
@@ -79,14 +84,14 @@
                                     </ul>
                                 </li>
                                 <li>
-                                    <a href="javascript:;"><i class="fa fa-home"></i> Đơn vị quản lý <span class="fa fa-chevron-down"></span></a>
+                                    <a href="javascript:;"><i class="fas fa-marker"></i> Đơn vị quản lý <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu" style="display: none;">
                                         <!-- list children controllers -->
-                                        <li><a href="@Url.Action("Index","AdminDonViQL")">Đơn vị quản lý</a></li>                                       
+                                        <li><a href="@Url.Action("Index","AdminDonViQL")">Đơn vị quản lý</a></li>
                                     </ul>
                                 </li>
                                 <li>
-                                    <a href="javascript:;"><i class="fa fa-home"></i> Lĩnh vực <span class="fa fa-chevron-down"></span></a>
+                                    <a href="javascript:;"><i class="fa fa-tasks"></i> Lĩnh vực <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu" style="display: none;">
                                         <!-- list children controllers -->
                                         <li><a href="@Url.Action("Index","AdminLinhVuc")">Lĩnh vực</a></li>

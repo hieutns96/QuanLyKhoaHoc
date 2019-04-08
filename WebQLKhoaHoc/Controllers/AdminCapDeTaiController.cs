@@ -22,21 +22,7 @@ namespace WebQLKhoaHoc.Controllers
         {
             return View(await db.CapDeTais.ToListAsync());
         }
-
-        // GET: AdminCapDeTai/Details/5
-        public async Task<ActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            CapDeTai capDeTai = await db.CapDeTais.FindAsync(id);
-            if (capDeTai == null)
-            {
-                return HttpNotFound();
-            }
-            return View(capDeTai);
-        }
+        
 
         // GET: AdminCapDeTai/Create
         public ActionResult Create()

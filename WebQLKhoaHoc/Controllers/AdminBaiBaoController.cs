@@ -25,22 +25,7 @@ namespace WebQLKhoaHoc.Controllers
             var baiBaos = db.BaiBaos.Include(b => b.CapTapChi).Include(b => b.PhanLoaiTapChi);
             return View(await baiBaos.ToListAsync());
         }
-
-        // GET: AdminBaiBao/Details/5
-        public async Task<ActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            BaiBao baiBao = await db.BaiBaos.FindAsync(id);
-            if (baiBao == null)
-            {
-                return HttpNotFound();
-            }
-            return View(baiBao);
-        }
-
+        
         // GET: AdminBaiBao/Create
         public ActionResult Create()
         {

@@ -8,6 +8,8 @@ using System.Web;
 using System.Web.Mvc;
 using System.Text;
 using WebQLKhoaHoc.Models;
+using System;
+using System.Text.RegularExpressions;
 
 namespace WebQLKhoaHoc.Controllers
 {
@@ -189,6 +191,89 @@ namespace WebQLKhoaHoc.Controllers
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryTokenAttribute]
+        public async Task<ActionResult> ImportCSVFile (HttpPostedFileBase fileCSV)
+        {
+
+            if (fileCSV != null && fileCSV.ContentLength > 0)
+            {
+                string filename = Path.GetFileName(fileCSV.FileName);
+                string path = Path.Combine(Server.MapPath("~/App_Data/uploads/csv"), filename);
+               
+                try
+                {
+                    fileCSV.SaveAs(path);
+                    AddRecordFromCSV(path);
+                }
+                catch(Exception exception)
+                {
+                    ViewBag.Error = exception.Message;
+                }
+
+            
+            }
+            return RedirectToAction("Index");
+        }
+
+        public void AddRecordFromCSV(string fileName)
+        {
+            string filename = fileName;
+            using (StreamReader sr = new StreamReader(fileName))
+            {
+                try
+                {
+                    while (!sr.EndOfStream)
+                    {
+                        string line;
+                        string[] resultArray;
+                        NhaKhoaHoc nkh = new NhaKhoaHoc();
+
+                        Regex r = new Regex(",(?=(?:[^\"]*\"[^\"]*\")*(?![^\"]*\"))");
+                        line = sr.ReadLine();
+                        resultArray = r.Split(line);
+
+
+                        //MaNKHHoSo,HoNKH,TenNKH,GioiTinh,NgaySinh,DiaChi,DienThoai,Email,SoCMND*/
+                        nkh.MaNKHHoSo = resultArray[0];
+                        nkh.HoNKH = resultArray[1];
+                        nkh.TenNKH = resultArray[2];
+                        nkh.GioiTinhNKH = resultArray[3];
+                        nkh.NgaySinh = Convert.ToDateTime(resultArray[4]);
+                        nkh.DiaChiLienHe = resultArray[5];
+                        nkh.DienThoai = resultArray[6];
+                        nkh.EmailLienHe = resultArray[7];
+                        nkh.SoCMND = resultArray[8];
+
+
+                        db.NhaKhoaHocs.Add(nkh);
+                        db.SaveChanges();
+
+                        string salt = "".GenRandomKey(); //update by Khiet
+                        NguoiDung newuser = new NguoiDung
+                        {
+                            MaNKH = nkh.MaNKH,
+                            Usernames = nkh.MaNKHHoSo,
+                            Passwords = Encryptor.MD5Hash("12345" + salt), //update by Khiet
+                            MaChucNang = 2,
+                            RandomKey = salt //update by Khiet
+                        };
+                        db.NguoiDungs.Add(newuser);
+                        db.SaveChanges();
+
+                    }
+                }
+                catch (Exception exception)
+                {
+                    throw exception;
+                }
+            }
+          
+        }
+
+
 
         protected override void Dispose(bool disposing)
         {
