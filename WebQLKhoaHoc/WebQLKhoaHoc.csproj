@@ -291,7 +291,7 @@
     <Compile Include="Models\ChangePasswordModel.cs" />
     <Compile Include="Models\CustomizeAuthorize.cs" />
     <Compile Include="Models\HomeSearchViewModel.cs" />
-    <Compile Include="Models\degreeChartViewModel.cs" />
+    <Compile Include="Models\TrinhDoChartViewModel.cs" />
     <Compile Include="Models\DeTaiSearchViewModel.cs" />
     <Compile Include="Models\Encryptor.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -300,7 +300,7 @@
     <Compile Include="Models\NhaKhoaHocSearchViewModel.cs" />
     <Compile Include="Models\NhaKhoaHocViewModel.cs" />
     <Compile Include="Models\PhatMinhGiaiPhapSearchViewModel.cs" />
-    <Compile Include="Models\quantumChartViewModel.cs" />
+    <Compile Include="Models\NgachVienChucChartViewModel.cs" />
     <Compile Include="Models\topicChartViewModel.cs" />
     <Compile Include="Models\topicdata.cs" />
     <Compile Include="Models\SachGiaoTrinhSearchViewModel.cs" />
@@ -458,6 +458,7 @@
       <DependentUpon>QLKH.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\charts.js" />
     <Content Include="Scripts\custom-admin.js" />
     <Content Include="Scripts\custom.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -488,8 +489,8 @@
     <Content Include="Views\NhaKhoaHocs\Edit.cshtml" />
     <Content Include="Views\NhaKhoaHocs\Index.cshtml" />
     <Content Include="Views\Charts\Index.cshtml" />
-    <Content Include="Views\Charts\degreeCharts.cshtml" />
-    <Content Include="Views\Charts\quantumCharts.cshtml" />
+    <Content Include="Views\Charts\TrinhDoCharts.cshtml" />
+    <Content Include="Views\Charts\NgachCharts.cshtml" />
     <Content Include="Views\Charts\book.cshtml" />
     <Content Include="Views\Charts\article.cshtml" />
     <Content Include="Views\Charts\totalCharts.cshtml" />
