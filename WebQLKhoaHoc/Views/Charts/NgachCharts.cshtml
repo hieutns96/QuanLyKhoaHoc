@@ -96,19 +96,12 @@
                 </div>
                 @{
 
-                    List<List<Object>> data1 = GoogleChartData(db, 7, 0);
-                    List<List<Object>> data2 = GoogleChartData(db, 7, 7);
+                    List<List<Object>> data1 = GoogleChartData(db, Model.Count(), 0);
                 }
                 <input type="hidden" id="data1" value="@Json.Encode(data1)" />
-                <input type="hidden" id="data2" value="@Json.Encode(data2)" />
                 <div class="panel">
                     <div class="panel-body">
                         <div id="ngachChart1"></div>
-                    </div>
-                </div>
-                <div class="panel">
-                    <div class="panel-body">
-                        <div id="ngachChart2"></div>
                     </div>
                 </div>
             </div>
@@ -117,14 +110,11 @@
 </div>
 
 @section charts{
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     @Scripts.Render("~/bundles/charts")
     <script type="text/javascript">
         $(document).ready(function () {
             var json_data1 = $('#data1').val();
-            var json_data2 = $('#data2').val();
             googleChart(json_data1, 'column', 'ngachChart1');
-            googleChart(json_data2, 'column', 'ngachChart2');
         });
     </script>
 }
