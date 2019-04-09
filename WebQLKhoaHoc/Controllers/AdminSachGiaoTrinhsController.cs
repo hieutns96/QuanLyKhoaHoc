@@ -10,6 +10,8 @@ using System.Web.Mvc;
 using WebQLKhoaHoc;
 using System.Data.Entity.Migrations;
 using WebQLKhoaHoc.Models;
+using System.IO;
+using System.Text.RegularExpressions;
 
 namespace WebQLKhoaHoc.Controllers
 {
@@ -230,6 +232,73 @@ namespace WebQLKhoaHoc.Controllers
             await db.SaveChangesAsync();
            
             return RedirectToAction("DanhSachTacGia");
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryTokenAttribute]
+        public async Task<ActionResult> ImportCSVFile(HttpPostedFileBase fileCSV)
+        {
+
+            if (fileCSV != null && fileCSV.ContentLength > 0)
+            {
+                string extension = Path.GetExtension(fileCSV.FileName);
+                if (extension == ".csv")
+                {
+                    string filename = Path.GetFileName(fileCSV.FileName);
+                    string path = Path.Combine(Server.MapPath("~/App_Data/uploads/csv"), filename);
+
+                    try
+                    {
+                        fileCSV.SaveAs(path);
+                        AddRecordFromCSV(path);
+                    }
+                    catch (Exception exception)
+                    {
+                        TempData["ImportCSVFileError"] = exception.Message;
+                    }
+                }
+                else
+                {
+                    TempData["ImportCSVFileError"] = "Xin vui lòng nhập file định dạng CSV";
+                }
+            }
+            return RedirectToAction("Index");
+        }
+
+        public void AddRecordFromCSV(string fileName)
+        {
+            using (StreamReader sr = new StreamReader(fileName))
+            {
+                try
+                {
+                    string line;
+                    while ((line = sr.ReadLine()) != null)
+                    {
+
+                        string[] resultArray;
+                        SachGiaoTrinh sachgiaotrinh = new SachGiaoTrinh();
+                        
+                        Regex r = new Regex(",(?=(?:[^\"]*\"[^\"]*\")*(?![^\"]*\"))");
+                        resultArray = r.Split(line);
+                        string maibsn = resultArray[0];
+                        SachGiaoTrinh checksach = db.SachGiaoTrinhs.Where(p => p.MaISBN == maibsn).FirstOrDefault();
+                        if (checksach == null)
+                        {
+                            //maisbn,tensach,mota
+                            sachgiaotrinh.MaISBN = resultArray[0];
+                            sachgiaotrinh.TenSach = resultArray[1];
+                            sachgiaotrinh.Mota = resultArray[2];
+                            db.SachGiaoTrinhs.Add(sachgiaotrinh);
+                            db.SaveChanges();
+                        }
+                    }
+                }
+                catch (Exception exception)
+                {
+                    throw exception;
+                }
+            }
+
         }
 
         protected override void Dispose(bool disposing)

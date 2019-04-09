@@ -11,6 +11,7 @@ using WebQLKhoaHoc;
 using System.IO;
 using System.Data.Entity.Migrations;
 using WebQLKhoaHoc.Models;
+using System.Text.RegularExpressions;
 
 namespace WebQLKhoaHoc.Controllers
 {
@@ -355,6 +356,80 @@ namespace WebQLKhoaHoc.Controllers
             await db.SaveChangesAsync();
             return RedirectToAction("LinhVucBaiBao");
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryTokenAttribute]
+        public async Task<ActionResult> ImportCSVFile(HttpPostedFileBase fileCSV)
+        {
+
+            if (fileCSV != null && fileCSV.ContentLength > 0)
+            {
+                string extension = Path.GetExtension(fileCSV.FileName);
+                if (extension == ".csv")
+                {
+                    string filename = Path.GetFileName(fileCSV.FileName);
+                    string path = Path.Combine(Server.MapPath("~/App_Data/uploads/csv"), filename);
+
+                    try
+                    {
+                        fileCSV.SaveAs(path);
+                        AddRecordFromCSV(path);
+                    }
+                    catch (Exception exception)
+                    {
+                        TempData["ImportCSVFileError"] = exception.Message;
+                    }
+                }
+                else
+                {
+                    TempData["ImportCSVFileError"] = "Xin vui lòng nhập file định dạng CSV";
+                }
+            }
+            return RedirectToAction("Index");
+        }
+
+        public void AddRecordFromCSV(string fileName)
+        {
+            using (StreamReader sr = new StreamReader(fileName))
+            {
+                try
+                {
+                    string line;
+                    while ((line = sr.ReadLine()) != null)
+                    {
+
+                        string[] resultArray;
+                        BaiBao baibao = new BaiBao();
+                        
+                        Regex r = new Regex(",(?=(?:[^\"]*\"[^\"]*\")*(?![^\"]*\"))");
+                        resultArray = r.Split(line);
+                        string maissn = resultArray[0];
+                        BaiBao checkbaibao = db.BaiBaos.Where(p => p.MaISSN == maissn).FirstOrDefault();
+                        if (checkbaibao == null)
+                        {
+                            //maissn,tenbaibao,cqxuatban,tapphathanh,sophathanh,trangbaibao,lienketweb
+                            baibao.MaISSN = resultArray[0];
+                            baibao.TenBaiBao = resultArray[1];
+                            baibao.CQXuatBan = resultArray[2];
+                            baibao.TapPhatHanh = resultArray[3];
+                            baibao.SoPhatHanh = resultArray[4];
+                            baibao.TrangBaiBao = resultArray[5];
+                            baibao.LienKetWeb = resultArray[6];
+
+                            db.BaiBaos.Add(baibao);
+                            db.SaveChanges();
+                        }
+                    }
+                }
+                catch (Exception exception)
+                {
+                    throw exception;
+                }
+            }
+
+        }
+
+
 
         protected override void Dispose(bool disposing)
         {

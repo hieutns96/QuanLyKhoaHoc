@@ -23,6 +23,12 @@
                     </li>
 
                 </ul>
+                 @using (Html.BeginForm("ImportCSVFile", "AdminSachGiaoTrinhs", FormMethod.Post, new { @class = "form-inline nav navbar-right form-label-right", @enctype = "multipart/form-data" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <input type="file" name="fileCSV" class="form-control" placeholder="CSV File">
+                    <input type="submit" class="form-control" />
+                }
                 <div class="clearfix"></div>
             </div>
             <div class="x_content">
