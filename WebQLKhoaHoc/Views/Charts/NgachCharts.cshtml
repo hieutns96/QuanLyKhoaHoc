@@ -57,41 +57,42 @@
                                         <br>Tính đến thời điểm (hiện tại)
                                     </span>
                                 </div>
-                                <table class="table table-bordered">
-                                    <thead>
-                                        <tr>
-                                            @foreach (var item in Model)
-                                            {
-                                                <th class="text-center">Số lượng<br>@item.TenNgach</th>
-                                            }
-                                        </tr>
-                                    </thead>
-                                    @{
-                                        // lấy thông tin các khoa
-                                        QLKhoaHocEntities db = new QLKhoaHocEntities();
-                                    }
-                                    <tbody>
-                                        <tr>
-                                            @foreach (var item in Model)
-                                            {
+                                <div style="overflow-x:auto;">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                @foreach (var item in Model)
+                                                {
+                                                    <th class="text-center">Số lượng<br>@item.TenNgach</th>
+                                                }
+                                            </tr>
+                                        </thead>
+                                        @{
+                                            // lấy thông tin các khoa
+                                            QLKhoaHocEntities db = new QLKhoaHocEntities();
+                                        }
+                                        <tbody>
+                                            <tr>
+                                                @foreach (var item in Model)
+                                                {
 
-                                                <td class="text-center">
-                                                    @if (item.SoLuong > 0)
-                                                    {
-                                                        @item.SoLuong;
-                                                    }
-                                                    else
-                                                    {
-                                                        <span>-</span>
-                                                    }
-                                                </td>
+                                                    <td class="text-center">
+                                                        @if (item.SoLuong > 0)
+                                                        {
+                                                            @item.SoLuong;
+                                                        }
+                                                        else
+                                                        {
+                                                            <span>-</span>
+                                                        }
+                                                    </td>
 
-                                            }
-                                        </tr>
-                                    </tbody>
-                                </table>
+                                                }
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
-                        </div>
                     </div>
                 </div>
                 @{
