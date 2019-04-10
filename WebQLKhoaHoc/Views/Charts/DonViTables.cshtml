@@ -1,0 +1,160 @@
+﻿@model WebQLKhoaHoc.Models.DonViTablesViewModel
+@{
+    ViewBag.Title = "DonViTables";
+    Layout = "~/Views/Shared/_MainPage.cshtml";
+}
+<style>
+    .datepicker .datepicker-days {
+        display: none;
+    }
+    /*.datepicker .datepicker-years {
+        display: block;
+    }*/
+
+</style>
+<div class="main-content">
+    <!-- Section: About -->
+    <section class="">
+        <div class="container">
+            <div class="section-content">
+                <div class="panel">
+                    <div class="panel-body">
+                        <div>
+                            <form action="ThongKe" class="form-horizontal" method="post" accept-charset="utf-8">
+                                <div class="form-group">
+                                    <div class="col-md-2 text-right">
+                                        <label class="control-label">Thống kê theo:</label>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <select name="unit" class="form-control">
+                                            <option value="total">Tổng hợp</option>
+                                            <option value="degree">Trình độ</option>
+                                            <option value="quantum" selected>Ngạch công chức</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-2"></div>
+                                    <div class="col-md-9">
+                                        <button type="submit" class="btn btn-primary">Thống kê</button>
+                                    </div>
+                                </div>
+                            </form>
+                            <div>
+                                <div class="text-center">
+                                    <span class="statistic-title">
+                                        <br>Tính đến thời điểm (hiện tại)
+                                    </span>
+                                </div>
+                                <div class="text-center">
+                                    <span class="statistic-title">
+                                        <input type="text" name="NamDangBao" id="datepicker" value="@DateTime.Today.Year"/>
+                                    </span>
+                                </div>
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            @foreach (var item in Model.Header)
+                                            {
+                                                <th class="text-center">@item.ToString()</th>
+                                            }
+                                        </tr>
+                                    </thead>
+                                    @{
+                                        // lấy thông tin các khoa
+                                        QLKhoaHocEntities db = new QLKhoaHocEntities();
+                                    }
+                                    <tbody>
+                                        @foreach (var row in Model.Rows)
+                                        {
+                                            <tr>
+                                                @for (int i = 0; i < row.Count; i++)
+                                                {
+                                                    if (i == 0)
+                                                    {
+                                                        <td class="text-center">
+                                                            @row[i].ToString()
+                                                        </td>
+                                                    }
+                                                    else
+                                                    {
+                                                        <td class="text-center">
+
+                                                            @if (row[i].ToString() != "0")
+                                                            {
+                                                                @row[i].ToString()
+                                                            }
+                                                            else
+                                                            {
+                                                                <span>-</span>
+                                                            }
+                                                        </td>
+                                                    }
+                                                }
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section-content">
+                <select name="viettat_hocham_hocvi" id="viettat_hocham_hocvi">
+                    @{
+                        foreach (var item in db.HocVis.Select(p => new { p.TenVietTat, p.TenHocVi }))
+                        {
+                            <option value="@item.TenVietTat">@item.TenHocVi</option>
+                        }
+                        foreach (var item in db.HocHams.Select(p => new { p.TenVietTat, p.TenHocHam }))
+                        {
+                            <option value="@item.TenVietTat">@item.TenHocHam</option>
+                        }
+                    }
+                </select>
+                <div id="donViChartsContainer">
+                    @*
+                       Ajax call is here    
+                    *@
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+@section scripts{
+    @Scripts.Render("~/bundles/charts")
+    <script type="text/javascript">
+        $(document).ready(function () {
+            GetChart($('#viettat_hocham_hocvi').val());
+            $('#viettat_hocham_hocvi').change(function () {
+                var viettat_hocham_hocvi = $(this).val();
+                GetChart(viettat_hocham_hocvi);
+            });
+        });
+        function GetChart(viettat_hocham_hocvi) {
+            $.ajax({
+                url: "/Charts/DonViCharts",
+                type: "GET",
+                contentType: "application/json; charset=utf-8",
+                data: { "viettat_hocham_hocvi": viettat_hocham_hocvi },
+                async: true,
+                success: function (data) {
+                    //console.log('success');
+                    console.log(data);
+                    $('#donViChartsContainer').html(data);
+                    var json_data1 = $('#dataChart1').val();
+                    var json_data2 = $('#dataChart2').val();
+                    var json_data3 = $('#dataChart3').val();
+                    var json_data4 = $('#dataChart4').val();
+                    googleChart(json_data1, 'column', 'donViCharts1');
+                    googleChart(json_data2, 'column', 'donViCharts2');
+                    googleChart(json_data3, 'column', 'donViCharts3');
+                    googleChart(json_data4, 'column', 'donViCharts4');
+                }
+
+            });
+        }
+    </script>
+}
