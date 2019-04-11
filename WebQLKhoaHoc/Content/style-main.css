@@ -4891,8 +4891,8 @@ fieldset[disabled] .btn-gray.focus {
 }
 /* -------- Btn-lg ---------- */
 .btn-lg {
-  font-size: 14px;
-  padding: 10px 26px;
+    font-size: 14px;
+    padding: 10px 10px;
 }
 /* -------- Btn-xl ---------- */
 .btn-xl {
