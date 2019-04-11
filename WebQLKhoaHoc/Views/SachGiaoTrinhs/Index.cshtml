@@ -32,16 +32,12 @@
                         <div class="row">
                             <div class="col-md-6 pt-10">
                                 <h2 class="title text-white">Dữ liệu Sách Giáo Trình</h2>
-                                <ol class="breadcrumb text-left text-black mt-10">
-                                    <li> @Html.ActionLink("Trang Chủ", "Index", "Home", new { @class = "text-gray-silver", @style = "font-size: inherit;" })</li>
-                                    <li class="active text-gray-silver">Sách Giáo Trình</li>
-                                </ol>
                                 @if (Session["user"] != null)
                                 {
                                     <!-- Hiển thị nút khi đã đăng nhập -->
                                     <div class="col-xs-12 col-sm-4 pl-5 pr-5">
                                         <div class="form-group mb-5">
-                                            <button type="submit" class="btn btn-colored btn-theme-color-2 text-white btn-lg btn-block btn-round" data-loading-text="Please wait...">
+                                            <button type="submit" class="btn btn-colored btn-theme-color-2 text-white btn-lg btn-block btn-round border-radius-15px" data-loading-text="Please wait...">
                                                 Sách Giáo Trình của tôi
                                             </button>
                                         </div>
