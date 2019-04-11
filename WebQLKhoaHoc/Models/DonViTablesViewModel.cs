@@ -7,8 +7,14 @@ namespace WebQLKhoaHoc.Models
 {
     public class DonViTablesViewModel
     {
-        public List<Object> Header { get; set; } = new List<Object>();
-        public List<List<Object>> Rows { get; set; } = new List<List<Object>>();
+        public List<Object> Header { get; set; } 
+        public List<List<Object>> Rows { get; set; }
+
+         public DonViTablesViewModel()
+        {
+            this.Header = new List<Object>();
+            this.Rows = new List<List<Object>>();
+        }
     }
 
     //public static DonViTablesViewModel Mapping(List<Object> header, List<List<Object>> rows)

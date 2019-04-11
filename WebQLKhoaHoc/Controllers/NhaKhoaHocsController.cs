@@ -111,7 +111,9 @@ namespace WebQLKhoaHoc.Controllers
 
         public async Task<ActionResult> GetReport(int? id)
         {
-            if (id == null)
+            UserLoginViewModel user = Session["user"] as UserLoginViewModel;
+            
+            if (id == null || user == null || user.MaNKH != id)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
