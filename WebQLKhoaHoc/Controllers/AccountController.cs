@@ -212,6 +212,14 @@ namespace WebQLKhoaHoc.Controllers
                 Session.Remove("user");
             }
             return RedirectToAction("Login", "Account");
-        }   
+        }
+        public ActionResult AdminLogOff()
+        {
+            if (Session["user"] != null)
+            {
+                Session.Remove("user");
+            }
+            return RedirectToAction("AdminLogin", "Account");
+        }
     }
 }
