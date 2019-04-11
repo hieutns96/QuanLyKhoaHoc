@@ -1,0 +1,52 @@
+﻿@model List<List<Object>>
+@{
+    ViewBag.Title = "DonViCharts";
+}
+@functions{
+    public List<List<Object>> GoogleChartData(int skip = 0, int take = 10)
+    {
+        List<List<Object>> data = new List<List<Object>>(){new List<Object>() {
+                            "Tên đơn vị",
+                            "Số lượng"
+                        }};
+        var data_rows = Model.Skip(skip).Take(take);
+        foreach (var row in data_rows)
+        {
+
+            data.Add(row);
+        }
+        return data;
+    }
+}
+@{
+    List<List<Object>> data1 = GoogleChartData(0);
+    List<List<Object>> data2 = GoogleChartData(10);
+    List<List<Object>> data3 = GoogleChartData(20);
+    List<List<Object>> data4 = GoogleChartData(30);
+}
+<input type="hidden" id="dataChart1" value="@Json.Encode(data1)" />
+<input type="hidden" id="dataChart2" value="@Json.Encode(data2)" />
+<input type="hidden" id="dataChart3" value="@Json.Encode(data3)" />
+<input type="hidden" id="dataChart4" value="@Json.Encode(data4)" />
+<div class="panel">
+    <div class="panel-body">
+        <div id="donViCharts1"></div>
+    </div>
+</div>
+<div class="panel">
+    <div class="panel-body">
+        <div id="donViCharts2"></div>
+    </div>
+</div>
+<div class="panel">
+    <div class="panel-body">
+        <div id="donViCharts3"></div>
+    </div>
+</div>
+<div class="panel">
+    <div class="panel-body">
+        <div id="donViCharts4"></div>
+    </div>
+</div>
+
+

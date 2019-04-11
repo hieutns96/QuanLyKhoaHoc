@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -22,7 +23,7 @@ namespace WebQLKhoaHoc.Controllers
         {
             if (unit == "total")
             {
-                return RedirectToAction("totalCharts");
+                return RedirectToAction("DonViTables");
             }
             else if (unit == "degree")
             {
@@ -61,9 +62,9 @@ namespace WebQLKhoaHoc.Controllers
             List<HocVi> listHV = db.HocVis.ToList();
             foreach (var item in listHV)
             {
-                // lấy số giao sư của khoa
+                
                 int soLuong = db.NhaKhoaHocs.Where(p => p.MaHocVi == item.MaHocVi).ToList().Count();
-                // cộng dồn số lượng
+               
                 TrinhDoChartViewModel trinhdovm = TrinhDoChartViewModel.Mapping(item.TenHocVi, soLuong);
                 res.Add(trinhdovm);
             }
@@ -75,14 +76,124 @@ namespace WebQLKhoaHoc.Controllers
             List<NgachVienChuc> listNVC = db.NgachVienChucs.ToList();
             foreach (var item in listNVC)
             {
-                // lấy số giao sư của khoa
+                
                 int soLuong = db.NhaKhoaHocs.Where(p => p.MaNgachVienChuc == item.MaNgach).ToList().Count();
-                // cộng dồn số lượng
+                
                 NgachVienChucChartViewModel ngachvm = NgachVienChucChartViewModel.Mapping(item.TenNgach, soLuong);
                 res.Add(ngachvm);
             }
             return View(res);
         }
+
+        public ActionResult DonViTables()
+        {
+            DonViTablesViewModel resModel = new DonViTablesViewModel();
+            List<DonViQL> listDVQL = db.DonViQLs.ToList();
+            List<HocVi> listHV = db.HocVis.ToList();
+            List<HocHam> listHH = db.HocHams.ToList();
+
+            resModel.Header.Add("Tên đơn vị");
+            foreach (var hocVi in listHV)
+            {
+                resModel.Header.Add(hocVi.TenHocVi);
+            }
+            foreach (var hocHam in listHH)
+            {
+                resModel.Header.Add(hocHam.TenHocHam);
+            }
+            resModel.Header.Add("Tổng số bài");
+            resModel.Header.Add("Trong nước");
+            resModel.Header.Add("Ngoài nước");
+            foreach (var item_donVi in listDVQL)
+            {
+                List<Object> row = new List<Object>() { item_donVi.TenDonVI };
+                foreach (var hocVi in listHV)
+                {
+                    int soLuong = db.NhaKhoaHocs.Where(p => p.MaHocVi == hocVi.MaHocVi && p.MaDonViQL == item_donVi.MaDonVi).Count();
+                    row.Add(soLuong);
+                }
+                foreach (var hocHam in listHH)
+                {
+                    int soLuong = db.NhaKhoaHocs.Where(p => p.MaHocHam == hocHam.MaHocHam && p.MaDonViQL == item_donVi.MaDonVi).Count();
+                    row.Add(soLuong);
+                }
+                var baiBaoTheoDonVi = db.BaiBaos.Join(
+                                        db.DSNguoiThamGiaBaiBaos,
+                                        baiBao => baiBao.MaBaiBao,
+                                        dsThamGiaBB => dsThamGiaBB.MaBaiBao,
+                                        (baiBao, dsThamGiaBB) => new { baiBao, dsThamGiaBB.MaNKH })
+                                     .Join(db.NhaKhoaHocs,
+                                        baiBao_dsThamGiaBB => baiBao_dsThamGiaBB.MaNKH,
+                                        nhaKhoaHoc => nhaKhoaHoc.MaNKH,
+                                        (baiBao_dsThamGiaBB, nhaKhoaHoc) => new { baiBao_dsThamGiaBB.baiBao, nhaKhoaHoc.MaDonViQL })
+                                     .Join(db.DonViQLs.Where(p => p.MaDonVi == item_donVi.MaDonVi),
+                                        bb_ds_nkh => bb_ds_nkh.MaDonViQL,
+                                        donVi => donVi.MaDonVi,
+                                        (bb_ds_nkh, donVi) => new { bb_ds_nkh.baiBao })
+                                     .Select(bb_ds_nkh_dv => new { bb_ds_nkh_dv.baiBao } );
+                var soBB_theoDonVi = baiBaoTheoDonVi.Count();
+                var soBB_theoDonVi_TrongNuoc = baiBaoTheoDonVi.Where(p => (bool)(p.baiBao.LaTrongNuoc == true)).Count();
+                var soBB_theoDonVi_NgoaiNuoc = baiBaoTheoDonVi.Where(p => (bool)(p.baiBao.LaTrongNuoc == false)).Count();
+                row.Add(soBB_theoDonVi);
+                row.Add(soBB_theoDonVi_TrongNuoc);
+                row.Add(soBB_theoDonVi_NgoaiNuoc);
+                resModel.Rows.Add(row);
+            }
+            return View(resModel);
+        }
+
+        public ActionResult DonViCharts(string viettat_hocham_hocvi)
+        {
+            List<List<Object>> data = new List<List<Object>>();
+            List<DonViQL> listDVQL = db.DonViQLs.ToList();
+            HocVi hvi = db.HocVis.SingleOrDefault(p => p.TenVietTat == viettat_hocham_hocvi);
+            if (hvi != null)
+            {
+                foreach (var item_donVi in listDVQL)
+                {
+                    List<Object> row = new List<Object>() { item_donVi.TenDonVI };
+                    var hocViTheoDonVi = db.NhaKhoaHocs
+                                     .Join(
+                                        db.HocVis.Where(hv => hv.TenVietTat == viettat_hocham_hocvi),
+                                        nkh => nkh.MaHocVi,
+                                        hocvis => hocvis.MaHocVi,
+                                        (nkh, hocvis) => new { nkh })
+                                     .Join(
+                                        db.DonViQLs.Where(dv => dv.MaDonVi == item_donVi.MaDonVi),
+                                        nkh_hocvis => nkh_hocvis.nkh.MaDonViQL,
+                                        dvis => dvis.MaDonVi,
+                                        (nkh_hocvis, dvis) => new { nkh_hocvis.nkh.MaNKH })
+                                     .Select(nkh_hvis_dvis => new { nkh_hvis_dvis.MaNKH });
+                    var soHV_theoDonVi = hocViTheoDonVi.Count();
+                    row.Add(soHV_theoDonVi);
+                    data.Add(row);
+                }
+            }
+            else
+            {
+                foreach (var item_donVi in listDVQL)
+                {
+                    List<Object> row = new List<Object>() { item_donVi.TenDonVI };
+                    var hocHamTheoDonVi = db.NhaKhoaHocs
+                                     .Join(
+                                        db.HocHams.Where(hh => hh.TenVietTat == viettat_hocham_hocvi),
+                                        nkh => nkh.MaHocVi,
+                                        hochams => hochams.MaHocHam,
+                                        (nkh, hocvis) => new { nkh })
+                                     .Join(
+                                        db.DonViQLs.Where(dv => dv.MaDonVi == item_donVi.MaDonVi),
+                                        nkh_hocvis => nkh_hocvis.nkh.MaDonViQL,
+                                        dvis => dvis.MaDonVi,
+                                        (nkh_hocvis, dvis) => new { nkh_hocvis.nkh.MaNKH })
+                                     .Select(nkh_hvis_dvis => new { nkh_hvis_dvis.MaNKH });
+                    var soHH_theoDonVi = hocHamTheoDonVi.Count();
+                    row.Add(soHH_theoDonVi);
+                    data.Add(row);
+                }
+            }
+            return PartialView(data);
+        }
+
 
         //// chart about books/documents
         //public ActionResult book()
