@@ -4893,6 +4893,7 @@ fieldset[disabled] .btn-gray.focus {
 .btn-lg {
     font-size: 14px;
     padding: 10px 10px;
+    font-family: inherit;
 }
 /* -------- Btn-xl ---------- */
 .btn-xl {
