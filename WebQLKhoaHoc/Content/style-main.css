@@ -1568,8 +1568,7 @@ section {
 }
 section > .container,
 section > .container-fluid {
-  padding-top: 70px;
-  padding-bottom: 70px;
+  padding-top: 35px;  
 }
 /* -------- Background Video ---------- */
 .bg-video {
