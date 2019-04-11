@@ -7,6 +7,7 @@
 
 }
 
+
 <section class="">
     <!-- Section: Scientist header -->
     <section id="home" class="divider parallax layer-overlay overlay-dark-4" data-bg-img="http://csdlkhoahoc.hueuni.edu.vn/csdl/images/bg5.jpg" style="background-image: url(&quot;http://csdlkhoahoc.hueuni.edu.vn/csdl/images/bg5.jpg&quot;); background-position: 50% 91px;">
@@ -565,10 +566,11 @@
                     if (nkh.MaNKH == Model.MaNKH)
                     {
                         <a href="@Url.Action("Edit", "NhaKhoaHocs", new { id = Model.MaNKH })" class="btn btn-primary">Chỉnh Sửa</a>
+                        <a href="@Url.Action("GetReport","NhaKhoaHocs", new { id = Model.MaNKH })" target="_blank" class="btn btn-danger">Xuất Lí Lịch</a>
+
                     }
                 }
-                <a href="@Url.Action("GetReport","NhaKhoaHocs", new { id = Model.MaNKH })" class="btn btn-danger">Xuất Lí Lịch</a>
-
+               
                 <a href="@Url.Action("Index","NhaKhoaHocs")" class="btn btn-danger">Quay Lại</a>
             </div>
             <br />
