@@ -54,7 +54,6 @@
                                         BIỂU THỐNG KÊ SÁCH, GIÁO TRÌNH
                                     </span>
                                 </div>
-                                <input type="hidden" id="dataChart" value="@Json.Encode(Model)" />
                                 <div class="panel">
                                     <div class="panel-body">
                                         <div id="sachCharts"></div>
@@ -73,10 +72,11 @@
     @Scripts.Render("~/bundles/charts")
     <script type="text/javascript">
         $(document).ready(function () {
+            var cachThongKe = $('#cachThongKe').val();
+            var from_date = $('#from_date').val();
+            var to_date = $('#to_date').val();
+            GetChart(cachThongKe, from_date, to_date);
             $('#btnThongKe').click(function () {
-                var cachThongKe = $('#cachThongKe').val();
-                var from_date = $('#from_date').val();
-                var to_date = $('#to_date').val();
                 GetChart(cachThongKe, from_date, to_date);
             });
         });
