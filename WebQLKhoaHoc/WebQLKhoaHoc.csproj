@@ -495,7 +495,7 @@
     <Content Include="Views\Charts\Index.cshtml" />
     <Content Include="Views\Charts\TrinhDoCharts.cshtml" />
     <Content Include="Views\Charts\NgachCharts.cshtml" />
-    <Content Include="Views\Charts\book.cshtml" />
+    <Content Include="Views\Charts\SachCharts.cshtml" />
     <Content Include="Views\Charts\article.cshtml" />
     <Content Include="Views\Charts\totalCharts.cshtml" />
     <Content Include="Views\Charts\topicsChart.cshtml" />

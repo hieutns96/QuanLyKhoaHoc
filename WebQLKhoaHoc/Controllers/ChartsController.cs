@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LinqKit;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -122,14 +123,11 @@ namespace WebQLKhoaHoc.Controllers
                                         baiBao => baiBao.MaBaiBao,
                                         dsThamGiaBB => dsThamGiaBB.MaBaiBao,
                                         (baiBao, dsThamGiaBB) => new { baiBao, dsThamGiaBB.MaNKH })
-                                     .Join(db.NhaKhoaHocs,
+                                     .Join(
+                                        db.NhaKhoaHocs.Where(nkh => nkh.MaDonViQL == item_donVi.MaDonVi),
                                         baiBao_dsThamGiaBB => baiBao_dsThamGiaBB.MaNKH,
                                         nhaKhoaHoc => nhaKhoaHoc.MaNKH,
-                                        (baiBao_dsThamGiaBB, nhaKhoaHoc) => new { baiBao_dsThamGiaBB.baiBao, nhaKhoaHoc.MaDonViQL })
-                                     .Join(db.DonViQLs.Where(p => p.MaDonVi == item_donVi.MaDonVi),
-                                        bb_ds_nkh => bb_ds_nkh.MaDonViQL,
-                                        donVi => donVi.MaDonVi,
-                                        (bb_ds_nkh, donVi) => new { bb_ds_nkh.baiBao })
+                                        (baiBao_dsThamGiaBB, nhaKhoaHoc) => new { baiBao_dsThamGiaBB.baiBao })
                                      .Select(bb_ds_nkh_dv => new { bb_ds_nkh_dv.baiBao } );
                 var soBB_theoDonVi = baiBaoTheoDonVi.Count();
                 var soBB_theoDonVi_TrongNuoc = baiBaoTheoDonVi.Where(p => (bool)(p.baiBao.LaTrongNuoc == true)).Count();
@@ -152,18 +150,13 @@ namespace WebQLKhoaHoc.Controllers
                 foreach (var item_donVi in listDVQL)
                 {
                     List<Object> row = new List<Object>() { item_donVi.TenDonVI };
-                    var hocViTheoDonVi = db.NhaKhoaHocs
+                    var hocViTheoDonVi = db.NhaKhoaHocs.Where(nkh => nkh.MaDonViQL == item_donVi.MaDonVi)
                                      .Join(
                                         db.HocVis.Where(hv => hv.TenVietTat == viettat_hocham_hocvi),
                                         nkh => nkh.MaHocVi,
                                         hocvis => hocvis.MaHocVi,
-                                        (nkh, hocvis) => new { nkh })
-                                     .Join(
-                                        db.DonViQLs.Where(dv => dv.MaDonVi == item_donVi.MaDonVi),
-                                        nkh_hocvis => nkh_hocvis.nkh.MaDonViQL,
-                                        dvis => dvis.MaDonVi,
-                                        (nkh_hocvis, dvis) => new { nkh_hocvis.nkh.MaNKH })
-                                     .Select(nkh_hvis_dvis => new { nkh_hvis_dvis.MaNKH });
+                                        (nkh, hocvis) => new { nkh.MaNKH })
+                                     .Select(nkh_hvis => new { nkh_hvis.MaNKH });
                     var soHV_theoDonVi = hocViTheoDonVi.Count();
                     row.Add(soHV_theoDonVi);
                     data.Add(row);
@@ -174,18 +167,13 @@ namespace WebQLKhoaHoc.Controllers
                 foreach (var item_donVi in listDVQL)
                 {
                     List<Object> row = new List<Object>() { item_donVi.TenDonVI };
-                    var hocHamTheoDonVi = db.NhaKhoaHocs
+                    var hocHamTheoDonVi = db.NhaKhoaHocs.Where(nkh => nkh.MaDonViQL == item_donVi.MaDonVi)
                                      .Join(
                                         db.HocHams.Where(hh => hh.TenVietTat == viettat_hocham_hocvi),
                                         nkh => nkh.MaHocVi,
                                         hochams => hochams.MaHocHam,
-                                        (nkh, hocvis) => new { nkh })
-                                     .Join(
-                                        db.DonViQLs.Where(dv => dv.MaDonVi == item_donVi.MaDonVi),
-                                        nkh_hocvis => nkh_hocvis.nkh.MaDonViQL,
-                                        dvis => dvis.MaDonVi,
-                                        (nkh_hocvis, dvis) => new { nkh_hocvis.nkh.MaNKH })
-                                     .Select(nkh_hvis_dvis => new { nkh_hvis_dvis.MaNKH });
+                                        (nkh, hocvis) => new { nkh.MaNKH })
+                                     .Select(nkh_hvis => new { nkh_hvis.MaNKH });
                     var soHH_theoDonVi = hocHamTheoDonVi.Count();
                     row.Add(soHH_theoDonVi);
                     data.Add(row);
@@ -195,103 +183,65 @@ namespace WebQLKhoaHoc.Controllers
         }
 
 
-        //// chart about books/documents
-        //public ActionResult book()
-        //{
-        //    //ViewBag.DVQL = new SelectList(db.DonViQLs, "MaDonVi", "TenDonVI");
-        //    return View();
-        //}
+        // chart about books/documents
+        public ActionResult SachCharts()
+        {
+            return View();
+        }
 
-        //[HttpPost]
-        //public ActionResult book(int unit,DateTime? from_date, DateTime? to_date)
-        //{
-        //    List<DSTacGia> dSTacGias = db.DSTacGias.Where(p => p.LaChuBien == true).ToList();
-        //    List<NhaKhoaHoc> nhaKhoaHocs = new List<NhaKhoaHoc>();
-        //    if (unit == 0)
-        //    {
-        //        nhaKhoaHocs = db.NhaKhoaHocs.ToList();
-        //    }
-        //    else
-        //    {
-        //        nhaKhoaHocs = db.NhaKhoaHocs.Where(p => p.MaDonViQL == unit).ToList();
-        //    }
-        //    List<SachGiaoTrinh> sachGiaoTrinhs = new List<SachGiaoTrinh>();
-        //    if (from_date != null && to_date != null)
-        //    {
-        //        sachGiaoTrinhs = db.SachGiaoTrinhs.Where(p => p.NamXuatBan >= from_date && p.NamXuatBan <= to_date).ToList();
-        //    }
-        //    else if (from_date == null && to_date != null)
-        //    {
-        //        sachGiaoTrinhs = db.SachGiaoTrinhs.Where(p => p.NamXuatBan <= to_date).ToList();
-        //    }
-        //    else if (from_date != null && to_date == null)
-        //    {
-        //        sachGiaoTrinhs = db.SachGiaoTrinhs.Where(p => p.NamXuatBan >= from_date).ToList();
-        //    }
-        //    else
-        //    {
-        //        sachGiaoTrinhs = db.SachGiaoTrinhs.ToList();
-        //    }
+        public JsonResult DataSachCharts(string cachThongKe, DateTime? from_date, DateTime? to_date)
+        {
+            var pre = PredicateBuilder.New<SachGiaoTrinh>(true);
 
-        //    List<DSTacGia> tacgias = new List<DSTacGia>();
-        //    // find all books of scientists 
-        //    for (int i = 0; i < dSTacGias.ToList().Count(); i++)
-        //    {
-        //        for (int j = 0; j < nhaKhoaHocs.ToList().Count(); j++)
-        //        {
-        //            if (dSTacGias[i].MaNKH== nhaKhoaHocs[j].MaNKH)
-        //            {
-        //                tacgias.Add(dSTacGias[i]);
-        //                break;
-        //            }
-        //        }
-        //    }
-        //    //var tacgias = (from nkh in nhaKhoaHocs
-        //    //               join tg  in dSTacGias
-        //    //               on nkh.MaNKH equals tg.MaNKH
-        //    //               select new
-        //    //               {
-        //    //                   tg.MaSach,
-        //    //                   tg.MaNKH
-        //    //               }).ToList();
+            if (from_date != null && to_date != null)
+            {
+                pre = pre.And(s => ((s.NamXuatBan >= from_date) && (s.NamXuatBan <= to_date)));
+            }
+            var sachs = db.SachGiaoTrinhs.AsExpandable().Where(pre);
+            List<List<Object>> res = null;
+            if (cachThongKe == "phanloai")
+            {
+                var loaiSachs = db.PhanLoaiSaches.ToList();
+                var sach_phanloai = sachs.Join(
+                                        db.PhanLoaiSaches,
+                                        sach => sach.MaLoai,
+                                        phanloai => phanloai.MaLoai,
+                                        (sach, phanloai) => new { sach.MaSach, phanloai.MaLoai }
+                                    );
+                res = new List<List<object>>() { new List<object>() { "Loại", "Số lượng" } };
+                foreach (var loai in loaiSachs)
+                {
+                    var soLuongSach = sach_phanloai.Where(p => p.MaLoai == loai.MaLoai).Count();
+                    res.Add(new List<object>() { loai.TenLoai, soLuongSach });
+                }
+            }
+            else
+            {
+                var nhaXuatBans = db.NhaXuatBans.ToList();
+                var sach_nhaxuatban = sachs.Join(
+                                        db.NhaXuatBans,
+                                        sach => sach.MaNXB,
+                                        nhaxuatban => nhaxuatban.MaNXB,
+                                        (sach, nhaxuatban) => new { sach.MaSach, nhaxuatban.MaNXB }
+                                    );
+                res = new List<List<object>>() { new List<object>() { "Nhà xuất bản", "Số lượng" } };
+                foreach (var nxb in nhaXuatBans)
+                {
+                    var soLuongSach = sach_nhaxuatban.Where(p => p.MaNXB == nxb.MaNXB).Count();
+                    res.Add(new List<object>() { nxb.TenNXB, soLuongSach });
+                }
+            }
+            return Json(res, JsonRequestBehavior.AllowGet);
+        }
 
-        //    //var sachs = (from sach in sachGiaoTrinhs
-        //    //             join tgs in tacgias
-        //    //             on sach.MaSach equals tgs.MaSach
-        //    //             select new
-        //    //             {
-        //    //                 sach.MaSach,
-        //    //                 sach.MaLoai,
-        //    //                 sach.TenSach
-        //    //             }).ToList();
-        //    List<SachGiaoTrinh> giaoTrinhs = new List<SachGiaoTrinh>();
+        /*
+        [HttpPost]
+        public ActionResult book(int unit, DateTime? from_date, DateTime? to_date)
+        {
 
-        //    for (int i = 0; i < sachGiaoTrinhs.ToList().Count(); i++)
-        //    {
-        //        for (int j = 0; j < tacgias.ToList().Count(); j++)
-        //        {
-        //            if (sachGiaoTrinhs[i].MaSach == tacgias[j].MaSach)
-        //            {
-        //                giaoTrinhs.Add(sachGiaoTrinhs[i]);
-        //            }
-        //        }
-        //    }
-        //    // phân loại sách từng loại
-
-        //    int ngiaoTrinh = giaoTrinhs.Where(p => p.MaLoai == 2).ToList().Count();
-        //    int nChuyenKhao = giaoTrinhs.Where(p => p.MaLoai == 1).ToList().Count();
-        //    int nThamKhao = giaoTrinhs.Where(p => p.MaLoai == 3).ToList().Count();
-        //    int nKhac = giaoTrinhs.Where(p => p.MaLoai == 4).ToList().Count();
-
-        //    ViewBag.giaoTrinh = ngiaoTrinh;
-        //    ViewBag.chuyenKhao = nChuyenKhao;
-        //    ViewBag.thamKhao = nThamKhao;
-        //    ViewBag.Khac = nKhac;
-        //    ViewBag.unit = unit;
-        //    ViewBag.fromdate = from_date;
-        //    ViewBag.todate = to_date;
-        //    return View();
-        //}
+            return View();
+        }
+        */
 
 
         //// about article

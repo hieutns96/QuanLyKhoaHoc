@@ -311,12 +311,17 @@
 
 
 function googleChart(json_data, chart_type, container, title) {
+    //console.log(json_data);
     google.charts.load('current', { packages: ['corechart'] });
     google.charts.setOnLoadCallback(function () {
         drawChart(json_data, container);
     });
     function drawChart(json_data, container) {
-        var arr_data = JSON.parse(json_data);
+        var type_data = typeof json_data;
+        if (type_data === 'string') {
+            json_data = JSON.parse(json_data);
+        }
+        var arr_data = json_data;
         //console.log(arr_data);
         
         var data = google.visualization.arrayToDataTable(arr_data);
