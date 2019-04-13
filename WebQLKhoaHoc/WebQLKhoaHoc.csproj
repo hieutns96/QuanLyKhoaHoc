@@ -421,6 +421,7 @@
     <Content Include="Image\admins.bmp" />
     <Content Include="Image\avatar.bmp" />
     <Content Include="Image\bg-cover.jpg" />
+    <Content Include="Image\bg5.jpg" />
     <Content Include="Image\hcmup_edu.ico" />
     <Content Include="Image\login_background.jpg" />
     <Content Include="Image\logo_hcmup.png" />
@@ -451,6 +452,7 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Content\custom.css" />
     <Content Include="Content\daterangepicker.css" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <EntityDeploy Include="QLKH.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
