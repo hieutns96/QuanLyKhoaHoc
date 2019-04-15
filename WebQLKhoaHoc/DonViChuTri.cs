@@ -11,6 +11,7 @@ namespace WebQLKhoaHoc
 {
     using System;
     using System.Collections.Generic;
+    
     public partial class DonViChuTri
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -18,7 +19,7 @@ namespace WebQLKhoaHoc
         {
             this.DeTais = new HashSet<DeTai>();
         }
-
+    
         public int MaDVChuTri { get; set; }
         public string TenDVChuTri { get; set; }
         public string DiaChi { get; set; }

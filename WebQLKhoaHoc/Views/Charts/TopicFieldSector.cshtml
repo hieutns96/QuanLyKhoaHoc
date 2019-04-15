@@ -1,4 +1,4 @@
-﻿@model WebQLKhoaHoc.Models.DonViTablesViewModel
+﻿@model Dictionary<string, int>
 @{
     ViewBag.Title = "Đề tài nghiên cứu khoa học";
     Layout = "~/Views/Shared/_MainPage.cshtml";
@@ -11,7 +11,7 @@
             <div class="section-content">
                 <div class="panel">
                     <div class="panel-body">
-                       
+
                         <form action="topicChart" class="form-horizontal" method="post" accept-charset="utf-8">
                             <div class="form-group">
                                 <div class="col-md-2 text-right">
@@ -46,39 +46,10 @@
                                 </div>
                             </div>
                         </form>
-                        <div class="table-responsive" style="overflow-x:scroll">
-                            <table class="table table-bordered">
-                                <thead>
-                                    <tr>
-                                        @foreach (var header in Model.Header)
-                                        {
-                                            <th style="font-size:14px">@header</th>
-                                        }
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @for (int i = 0; i < Model.Rows.Count; i++)
-                                    {
-                                        <tr>
-                                            <td>@ViewBag.TenDonVi[i]</td>
-                                            @for (int j = 0; j < Model.Rows[i].Count; j++)
-                                            {
 
-                                                if (Convert.ToInt32(Model.Rows[i][j]) > 0)
-                                                {
-                                                    <td>@Convert.ToInt32(Model.Rows[i][j])</td>
-                                                }
-                                                else
-                                                {
-                                                    @:<td>-</td>
-                                                }
-                                            }
-                                        </tr>
-                                    }
-                                </tbody>
-                            </table>
-                        </div>
-                        
+
+                        <div id="piechart" style="width: 900px; height: 500px;"></div>
+
                      
                     </div>
 
@@ -88,4 +59,30 @@
     </section>
 </div>
 
+
+@section scripts{
+    @Scripts.Render("~/bundles/charts")
+    <script type="text/javascript">
+        google.charts.load('current', { 'packages': ['corechart'] });
+        google.charts.setOnLoadCallback(drawChart);
+        function drawChart() {
+
+            var data = google.visualization.arrayToDataTable([
+                ['Task', 'Hours per Day'],
+                @foreach(var x in Model)
+                {
+                    @:["@Html.Raw(x.Key.ToString())",@x.Value],
+                }
+            ]);
+
+            var options = {
+                title: 'Nhóm lĩnh vực theo đề tài'
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+            chart.draw(data, options);
+        }
+    </script>
+}
 

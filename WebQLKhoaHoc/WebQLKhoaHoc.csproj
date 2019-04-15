@@ -498,7 +498,7 @@
     <Content Include="Views\Charts\book.cshtml" />
     <Content Include="Views\Charts\article.cshtml" />
     <Content Include="Views\Charts\totalCharts.cshtml" />
-    <Content Include="Views\Charts\topicsChart.cshtml" />
+    <Content Include="Views\Charts\TopicFieldSector.cshtml" />
     <Content Include="Views\Charts\topicChart.cshtml" />
     <Content Include="Views\Charts\atopicChart.cshtml" />
     <Content Include="Views\DeTais\Create.cshtml" />
