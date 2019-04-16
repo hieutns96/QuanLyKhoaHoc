@@ -214,9 +214,7 @@ namespace WebQLKhoaHoc.Controllers
             }
             return Json(res, JsonRequestBehavior.AllowGet);
         }
-
-
-
+        
         //// about topic
         public ActionResult topicChart()
         {
@@ -243,7 +241,8 @@ namespace WebQLKhoaHoc.Controllers
                     row.Add(datarow);
                     total = (datarow > 0) ? total + datarow : total;
                 }
-                if (total > 0) { 
+                if (total > 0)
+                { 
                     row.Add(total);
                     resModel.Rows.Add(row);
                 }
@@ -256,23 +255,15 @@ namespace WebQLKhoaHoc.Controllers
         [HttpPost]
         public ActionResult topicChart(string unit, DateTime? from_date, DateTime? to_date)
         {
-            DateTime fd = new DateTime();
-            DateTime td = new DateTime();
+            DateTime fd = DateTime.MinValue;
+            DateTime td = DateTime.MaxValue;
             if (from_date != null)
             {
                 fd = Convert.ToDateTime(from_date);
             }
-            else
-            {
-                fd = DateTime.MinValue;
-            }
             if (to_date != null)
             {
                 td = Convert.ToDateTime(to_date);
-            }
-            else
-            {
-                td = DateTime.MaxValue;
             }
 
             if (unit == "total")
@@ -336,7 +327,7 @@ namespace WebQLKhoaHoc.Controllers
             return View();
         }
 
-        //// about topic
+        //// about article
         public ActionResult articleChart()
         {
             DonViTablesViewModel resModel = new DonViTablesViewModel();
@@ -358,12 +349,16 @@ namespace WebQLKhoaHoc.Controllers
                 row.Add(datarow);
                 total = (datarow > 0) ? total + datarow : total;
             }
-            row.Add(total);
-            resModel.Rows.Add(row);
+            if (total > 0)
+            {
+                row.Add(total);
+                resModel.Rows.Add(row);
+            }
 
-
-            return View(resModel);
+            if (resModel.Rows.Count > 0) return View(resModel);
+            return View();
         }
+
         [HttpPost]
         public ActionResult articleChart(string unit, DateTime? from_date, DateTime? to_date)
         {
@@ -396,50 +391,42 @@ namespace WebQLKhoaHoc.Controllers
                 foreach (string captc in captapchi)
                 {
                     var datarow = db.BaiBaos.Where(p => (p.CapTapChi.TenCapTapChi == captc
-                        && p.NamDangBao.Value.Year > fd.Year && p.NamDangBao.Value.Year < td.Year)).Count();
+                                                && p.NamDangBao.Value.Year > fd.Year && p.NamDangBao.Value.Year < td.Year)).Count();
                     row.Add(datarow);
                     total = (datarow > 0) ? total + datarow : total;
                 }
-                row.Add(total);
+                if (total > 0)
+                {
+                    row.Add(total);
+                    resModel.Rows.Add(row);
+                }
 
-                resModel.Rows.Add(row);
-
-
-                return View(resModel);
+                if (resModel.Rows.Count > 0) return View(resModel);
+                return View();
             }
             else if (unit == "fieldSector")
             {
-                return RedirectToAction("ArticleFieldSector", new { from_date, to_date });
+                return RedirectToAction("ArticleFieldSector", new { from_date =fd, to_date=td });
             }
             else
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest, "Dữ liệu chỉ tiêu chưa chính xác");
             }
         }
-        public ActionResult ArticleFieldSector(DateTime? from_date, DateTime? to_date)
+
+        public ActionResult ArticleFieldSector(DateTime from_date, DateTime to_date)
         {
-            DateTime fd = DateTime.MinValue;
-            DateTime td = DateTime.MaxValue;
-            if (from_date != null)
-            {
-                fd = Convert.ToDateTime(from_date);
-            }
-            if (to_date != null)
-            {
-                td = Convert.ToDateTime(to_date);
-            }
-
-
+           
             IDictionary<string, int> linhvuc = new Dictionary<string, int>();
             List<string> nhomlinhvuc = db.NhomLinhVucs.Select(p => p.TenNhomLinhVuc).ToList();
             //int tongso
             foreach (string ten in nhomlinhvuc)
             {
                 linhvuc.Add(ten, db.BaiBaos.Where(p => (p.LinhVucs.Any(t => t.NhomLinhVuc.TenNhomLinhVuc == ten)
-                                                        && p.NamDangBao.Value.Year > fd.Year && p.NamDangBao.Value.Year < td.Year)).Count());
+                                                        && p.NamDangBao.Value.Year > from_date.Year && p.NamDangBao.Value.Year < to_date.Year)).Count());
             }
-            ViewBag.linhvuc = Json(linhvuc);
-            return View(linhvuc);
+            if(linhvuc.Count > 0) return View(linhvuc);
+            return View();
         }
 
     }
