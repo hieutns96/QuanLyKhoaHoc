@@ -413,6 +413,7 @@ namespace WebQLKhoaHoc.Controllers
                     total = (datarow > 0) ? total + datarow : total;
                 }
                 row.Add(total);
+
                 resModel.Rows.Add(row);
 
 
