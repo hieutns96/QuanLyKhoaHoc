@@ -29,13 +29,13 @@
                                     <label class="control-label">Từ ngày:</label>
                                 </div>
                                 <div class="col-md-3">
-                                    <input type="text" class="form-control  date-picker" name="from_date" id="Fromdate" value="" autocomplete="off">
+                                    <input type="date" class="form-control  date-picker" name="from_date" id="Fromdate" value="" autocomplete="off">
                                 </div>
                                 <div class="col-md-2 text-right">
                                     <label class="control-label">Đến ngày:</label>
                                 </div>
                                 <div class="col-md-3">
-                                    <input type="text" class="form-control date-picker" name="to_date" id="Todate" value="" autocomplete="off">
+                                    <input type="date" class="form-control date-picker" name="to_date" id="Todate" value="" autocomplete="off">
                                 </div>
                             </div>
 
@@ -46,8 +46,6 @@
                                 </div>
                             </div>
                         </form>
-                        @if (Model != null)
-                        {
                         <div class="table-responsive" style="overflow-x:scroll">
                             <table class="table table-bordered">
                                 <thead>
@@ -80,8 +78,8 @@
                                 </tbody>
                             </table>
                         </div>
-                        }
-
+                        
+                     
                     </div>
 
                 </div>

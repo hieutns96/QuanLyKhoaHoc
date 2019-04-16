@@ -343,33 +343,28 @@ namespace WebQLKhoaHoc.Controllers
             List<string> donviql = db.DonViQLs.Select(p => p.TenDonVI).ToList();
             /*Table Header*/
             resModel.Header.Add("Tên đơn vị quản lý");
-            foreach (string ten in capdetai)
+            foreach(string ten in capdetai)
             {
                 resModel.Header.Add(ten);
             }
             resModel.Header.Add("Tổng số");
-
+            
 
             /*table data*/
             foreach (string dvql in donviql)
             {
                 int total = 0;
                 List<object> row = new List<object>();
-                foreach (string capdt in capdetai)
-                {
+                foreach (string capdt in capdetai) {
                     var datarow = db.DeTais.Where(p => (p.CapDeTai.TenCapDeTai == capdt && p.DonViQL.TenDonVI == dvql)).Count();
                     row.Add(datarow);
                     total = (datarow > 0) ? total + datarow : total;
                 }
-                if (total > 0)
-                {
-                    row.Add(total);
-                    resModel.Rows.Add(row);
-                }
+                row.Add(total);
+                resModel.Rows.Add(row);
             }
             ViewBag.TenDonVi = donviql;
-            if (resModel.Rows.Count > 0) return View(resModel);
-            else return View();
+            return View(resModel);            
         }
 
         [HttpPost]
@@ -420,19 +415,15 @@ namespace WebQLKhoaHoc.Controllers
                         row.Add(datarow);
                         total = (datarow > 0) ? total + datarow : total;
                     }
-                    if (total > 0)
-                    {
-                        row.Add(total);
-                        resModel.Rows.Add(row);
-                    }
+                    row.Add(total);
+                    resModel.Rows.Add(row);
                 }
                 ViewBag.TenDonVi = donviql;
-                if (resModel.Rows.Count > 0) return View(resModel);
-                else return View();
+                return View(resModel);
             }
             else if(unit == "fieldSector")
             {
-                return RedirectToAction("TopicFieldSector",new { from_date = fd, to_date = td });
+                return RedirectToAction("TopicFieldSector",new { from_date, to_date });
             }
             else
             {
@@ -440,20 +431,38 @@ namespace WebQLKhoaHoc.Controllers
             }
         }
 
-        public ActionResult TopicFieldSector(DateTime from_date, DateTime to_date)
+        public ActionResult TopicFieldSector(DateTime? from_date,DateTime? to_date)
         {
+            DateTime fd = new DateTime();
+            DateTime td = new DateTime();
+            if (from_date != null)
+            {
+                fd = Convert.ToDateTime(from_date);
+            }
+            else
+            {
+                fd = DateTime.MinValue;
+            }
+            if (to_date != null)
+            {
+                td = Convert.ToDateTime(to_date);
+            }
+            else
+            {
+                td = DateTime.MaxValue;
+            }
+
             IDictionary<string, int> linhvuc = new Dictionary<string, int>();
             List<string> nhomlinhvuc = db.NhomLinhVucs.Select(p=>p.TenNhomLinhVuc).ToList();
-           
+            //int tongso
             foreach(string ten in nhomlinhvuc)
             {
                 int sodetai = db.DeTais.Where(p => (p.LinhVuc.NhomLinhVuc.TenNhomLinhVuc == ten 
-                        && p.NamBD.Value.Year > from_date.Year && p.NamKT.Value.Year < to_date.Year)).Count();
-                
-                if(sodetai > 0)  linhvuc.Add(ten,sodetai);
+                        && p.NamBD.Value.Year > fd.Year && p.NamKT.Value.Year < td.Year)).Count();
+                linhvuc.Add(ten,sodetai);
             }
-            if(linhvuc.Count != 0) return View(linhvuc);
-            return View();
+            ViewBag.linhvuc = Json(linhvuc);
+            return View(linhvuc);
         }
 
     }

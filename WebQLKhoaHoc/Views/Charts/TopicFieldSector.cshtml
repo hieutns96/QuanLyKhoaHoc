@@ -29,13 +29,13 @@
                                     <label class="control-label">Từ ngày:</label>
                                 </div>
                                 <div class="col-md-3">
-                                    <input type="text" class="form-control  date-picker" name="from_date" id="Fromdate" value="" autocomplete="off">
+                                    <input type="date" class="form-control  date-picker" name="from_date" id="Fromdate" value="" autocomplete="off">
                                 </div>
                                 <div class="col-md-2 text-right">
                                     <label class="control-label">Đến ngày:</label>
                                 </div>
                                 <div class="col-md-3">
-                                    <input type="text" class="form-control date-picker" name="to_date" id="Todate" value="" autocomplete="off">
+                                    <input type="date" class="form-control date-picker" name="to_date" id="Todate" value="" autocomplete="off">
                                 </div>
                             </div>
 
@@ -47,11 +47,10 @@
                             </div>
                         </form>
 
-                        @if (Model != null)
-                        {
-                            <div id="piechart" style="width: 900px; height: 500px;"></div>
-                        }
 
+                        <div id="piechart" style="width: 900px; height: 500px;"></div>
+
+                     
                     </div>
 
                 </div>
@@ -60,12 +59,10 @@
     </section>
 </div>
 
-@if (Model != null)
-{
-    @section scripts{
-        @Scripts.Render("~/bundles/charts")
 
-        <script type="text/javascript">
+@section scripts{
+    @Scripts.Render("~/bundles/charts")
+    <script type="text/javascript">
         google.charts.load('current', { 'packages': ['corechart'] });
         google.charts.setOnLoadCallback(drawChart);
         function drawChart() {
@@ -86,7 +83,6 @@
 
             chart.draw(data, options);
         }
-        </script>
-    }
+    </script>
 }
 
