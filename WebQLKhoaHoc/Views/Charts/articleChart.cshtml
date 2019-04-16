@@ -1,6 +1,7 @@
 ﻿@model WebQLKhoaHoc.Models.DonViTablesViewModel
+
 @{
-    ViewBag.Title = "Đề tài nghiên cứu khoa học";
+    ViewBag.Title = "Bài báo nghiên cứu khoa học";
     Layout = "~/Views/Shared/_MainPage.cshtml";
 }
 
@@ -11,15 +12,15 @@
             <div class="section-content">
                 <div class="panel">
                     <div class="panel-body">
-                       
-                        <form action="topicChart" class="form-horizontal" method="post" accept-charset="utf-8">
+
+                        <form action="articleChart" class="form-horizontal" method="post" accept-charset="utf-8">
                             <div class="form-group">
                                 <div class="col-md-2 text-right">
                                     <label class="control-label">Tiêu chí:</label>
                                 </div>
                                 <div class="col-md-9">
                                     <select name="unit" class="form-control">
-                                        <option value="total" selected>Tổng hợp</option>
+                                        <option value="total" selected>Đơn Vị</option>
                                         <option value="fieldSector">Nhóm Lĩnh vực</option>
                                     </select>
                                 </div>
@@ -49,37 +50,38 @@
                         <div class="table-responsive" style="overflow-x:scroll">
                             <table class="table table-bordered">
                                 <thead>
-                                    <tr>
-                                        @foreach (var header in Model.Header)
-                                        {
-                                            <th style="font-size:14px">@header</th>
-                                        }
-                                    </tr>
+                                <tr>
+                                    @foreach (var header in Model.Header)
+                                    {
+                                        <th style="font-size:14px">@header</th>
+                                    }
+                                </tr>
                                 </thead>
                                 <tbody>
-                                    @for (int i = 0; i < Model.Rows.Count; i++)
-                                    {
-                                        <tr>
-                                            <td>@ViewBag.TenDonVi[i]</td>
-                                            @for (int j = 0; j < Model.Rows[i].Count; j++)
-                                            {
+                                @for (int i = 0; i < Model.Rows.Count; i++)
+                                {
+                                    <tr>
+                                       
+                                        @for (int j = 0; j < Model.Rows[i].Count; j++)
+                                        {
 
-                                                if (Convert.ToInt32(Model.Rows[i][j]) > 0)
-                                                {
-                                                    <td>@Convert.ToInt32(Model.Rows[i][j])</td>
-                                                }
-                                                else
-                                                {
-                                                    @:<td>-</td>
-                                                }
+                                            if (Convert.ToInt32(Model.Rows[i][j]) > 0)
+                                            {
+                                                <td>@Convert.ToInt32(Model.Rows[i][j])</td>
                                             }
-                                        </tr>
-                                    }
+                                            else
+                                            {
+                                                @:<td>-</td>
+                                            }
+                                        }
+                                    </tr>
+                                }
                                 </tbody>
+                               
                             </table>
                         </div>
-                        
-                     
+
+
                     </div>
 
                 </div>
@@ -87,5 +89,3 @@
         </div>
     </section>
 </div>
-
-

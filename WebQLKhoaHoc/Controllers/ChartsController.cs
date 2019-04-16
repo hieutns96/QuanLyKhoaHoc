@@ -37,26 +37,6 @@ namespace WebQLKhoaHoc.Controllers
             }
         }
 
-        //public ActionResult totalCharts()
-        //{
-        //    List<totalChartViewModel> res = new List<totalChartViewModel>();
-        //    List<DonViQL> listDVQL = db.DonViQLs.ToList();
-        //    foreach (var item in listDVQL)
-        //    {
-        //        int nGSDD = db.NhaKhoaHocs.Where(p => p.MaDonViQL == item.MaDonVi && p.MaHocHam == 3).ToList().Count();
-        //        int nGS = db.NhaKhoaHocs.Where(p => p.MaDonViQL == item.MaDonVi && p.MaHocHam == 2).ToList().Count();
-        //        int nPGS = db.NhaKhoaHocs.Where(p => p.MaDonViQL == item.MaDonVi && p.MaHocHam == 1).ToList().Count();
-        //        int nTSKH = db.NhaKhoaHocs.Where(p => p.MaDonViQL == item.MaDonVi && p.MaHocVi == 7).ToList().Count();
-        //        int nTS = db.NhaKhoaHocs.Where(p => p.MaDonViQL == item.MaDonVi && p.MaHocVi == 6).ToList().Count();
-        //        int nThS = db.NhaKhoaHocs.Where(p => p.MaDonViQL == item.MaDonVi && p.MaHocVi == 5).ToList().Count();
-        //        int nGV = db.NhaKhoaHocs.Where(p => p.MaDonViQL == item.MaDonVi && (p.MaNgachVienChuc == 1 || p.MaNgachVienChuc == 2)).ToList().Count();
-        //        int nNCV = db.NhaKhoaHocs.Where(p => p.MaDonViQL == item.MaDonVi && p.MaNgachVienChuc == 10).ToList().Count();
-
-        //        totalChartViewModel totalchart = totalChartViewModel.Mapping(item.MaDonVi,nGSDD, nGS, nPGS, nTSKH, nTS, nThS, nGV, nNCV);
-        //        res.Add(totalchart);
-        //    }
-        //    return View(res);
-        //}
 
         public ActionResult TrinhDoCharts()
         {
@@ -64,9 +44,9 @@ namespace WebQLKhoaHoc.Controllers
             List<HocVi> listHV = db.HocVis.ToList();
             foreach (var item in listHV)
             {
-                
+
                 int soLuong = db.NhaKhoaHocs.Where(p => p.MaHocVi == item.MaHocVi).ToList().Count();
-               
+
                 TrinhDoChartViewModel trinhdovm = TrinhDoChartViewModel.Mapping(item.TenHocVi, soLuong);
                 res.Add(trinhdovm);
             }
@@ -78,9 +58,9 @@ namespace WebQLKhoaHoc.Controllers
             List<NgachVienChuc> listNVC = db.NgachVienChucs.ToList();
             foreach (var item in listNVC)
             {
-                
+
                 int soLuong = db.NhaKhoaHocs.Where(p => p.MaNgachVienChuc == item.MaNgach).ToList().Count();
-                
+
                 NgachVienChucChartViewModel ngachvm = NgachVienChucChartViewModel.Mapping(item.TenNgach, soLuong);
                 res.Add(ngachvm);
             }
@@ -129,7 +109,7 @@ namespace WebQLKhoaHoc.Controllers
                                         baiBao_dsThamGiaBB => baiBao_dsThamGiaBB.MaNKH,
                                         nhaKhoaHoc => nhaKhoaHoc.MaNKH,
                                         (baiBao_dsThamGiaBB, nhaKhoaHoc) => new { baiBao_dsThamGiaBB.baiBao })
-                                     .Select(bb_ds_nkh_dv => new { bb_ds_nkh_dv.baiBao } );
+                                     .Select(bb_ds_nkh_dv => new { bb_ds_nkh_dv.baiBao });
                 var soBB_theoDonVi = baiBaoTheoDonVi.Count();
                 var soBB_theoDonVi_TrongNuoc = baiBaoTheoDonVi.Where(p => (bool)(p.baiBao.LaTrongNuoc == true)).Count();
                 var soBB_theoDonVi_NgoaiNuoc = baiBaoTheoDonVi.Where(p => (bool)(p.baiBao.LaTrongNuoc == false)).Count();
@@ -235,105 +215,7 @@ namespace WebQLKhoaHoc.Controllers
             return Json(res, JsonRequestBehavior.AllowGet);
         }
 
-        /*
-        [HttpPost]
-        public ActionResult book(int unit, DateTime? from_date, DateTime? to_date)
-        {
 
-            return View();
-        }
-        */
-
-
-        //// about article
-        //public ActionResult article()
-        //{
-        //    return View();
-        //}
-
-        //[HttpPost]
-        //public ActionResult article(int unit, DateTime? from_date, DateTime? to_date)
-        //{
-        //    List<DSNguoiThamGiaBaiBao> dSNguoiThamGias = db.DSNguoiThamGiaBaiBaos.ToList();
-        //    List<NhaKhoaHoc> nhaKhoaHocs = new List<NhaKhoaHoc>();
-        //    if (unit == 0)
-        //    {
-        //        nhaKhoaHocs = db.NhaKhoaHocs.ToList();
-        //    }
-        //    else
-        //    {
-        //        nhaKhoaHocs = db.NhaKhoaHocs.Where(p => p.MaDonViQL == unit).ToList();
-        //    }
-        //    List<BaiBao> baiBaos = new List<BaiBao>();
-        //    if (from_date != null && to_date != null)
-        //    {
-        //        baiBaos = db.BaiBaos.Where(p => p.NamDangBao >= from_date && p.NamDangBao <= to_date).ToList();
-        //    }
-        //    else if (from_date == null && to_date != null)
-        //    {
-        //        baiBaos = db.BaiBaos.Where(p => p.NamDangBao <= to_date).ToList();
-        //    }
-        //    else if (from_date != null && to_date == null)
-        //    {
-        //        baiBaos = db.BaiBaos.Where(p => p.NamDangBao >= from_date).ToList();
-        //    }
-        //    else
-        //    {
-        //        baiBaos = db.BaiBaos.ToList();
-        //    }
-
-        //    List<DSNguoiThamGiaBaiBao> dSNguoiThamGiaBaiBaos = new List<DSNguoiThamGiaBaiBao>();
-        //    // find all article of scientists 
-        //    for (int i = 0; i < dSNguoiThamGias.Count(); i++)
-        //    {
-        //        for (int j = 0; j < nhaKhoaHocs.Count(); j++)
-        //        {
-        //            if (dSNguoiThamGias[i].MaNKH == nhaKhoaHocs[j].MaNKH)
-        //            {
-        //                dSNguoiThamGiaBaiBaos.Add(dSNguoiThamGias[i]);
-        //                break;
-        //            }
-        //        }
-        //    }
-
-        //    List<BaiBao> articles = new List<BaiBao>();
-
-        //    for (int i = 0; i < baiBaos.Count(); i++)
-        //    {
-        //        for (int j = 0; j < dSNguoiThamGiaBaiBaos.Count(); j++)
-        //        {
-        //            if (baiBaos[i].MaBaiBao == dSNguoiThamGiaBaiBaos[j].MaBaiBao)
-        //            {
-        //                articles.Add(baiBaos[i]);
-        //                break;
-        //            }
-        //        }
-        //    }
-
-        //    // phân loại trong và ngoai nước
-        //    List<BaiBao> articles_in = articles.Where(p => p.LaTrongNuoc == true).ToList();
-        //    List<BaiBao> articles_out = articles.Where(p => p.LaTrongNuoc == false).ToList();
-
-        //    int narticle_in_HDCDGS = articles_in.Where(p => p.MaCapTapChi == 2).ToList().Count();
-        //    int narticle_in_Khac = articles_in.Where(p => p.MaCapTapChi == 4).ToList().Count();
-
-        //    int narticle_ISI = articles_out.Where(p => p.MaCapTapChi == 1).ToList().Count();
-        //    int narticle_SCOPUS = articles_out.Where(p => p.MaCapTapChi == 3).ToList().Count();
-        //    int narticle_ESCI = articles_out.Where(p => p.MaCapTapChi == 5).ToList().Count();
-        //    int narticle_out_Khac = articles_out.Where(p => p.MaCapTapChi == 4).ToList().Count();
-
-        //    ViewBag.nHDCDGS = narticle_in_HDCDGS;
-        //    ViewBag.nKhac_in = narticle_in_Khac;
-        //    ViewBag.nISI = narticle_ISI;
-        //    ViewBag.nSCOPUS = narticle_SCOPUS;
-        //    ViewBag.nESCI = narticle_ESCI;
-        //    ViewBag.nKhac_out = narticle_out_Khac;
-
-        //    ViewBag.unit = unit;
-        //    ViewBag.fromdate = from_date;
-        //    ViewBag.todate = to_date;
-        //    return View();
-        //}
 
         //// about topic
         public ActionResult topicChart()
@@ -343,19 +225,20 @@ namespace WebQLKhoaHoc.Controllers
             List<string> donviql = db.DonViQLs.Select(p => p.TenDonVI).ToList();
             /*Table Header*/
             resModel.Header.Add("Tên đơn vị quản lý");
-            foreach(string ten in capdetai)
+            foreach (string ten in capdetai)
             {
                 resModel.Header.Add(ten);
             }
             resModel.Header.Add("Tổng số");
-            
+
 
             /*table data*/
             foreach (string dvql in donviql)
             {
                 int total = 0;
                 List<object> row = new List<object>();
-                foreach (string capdt in capdetai) {
+                foreach (string capdt in capdetai)
+                {
                     var datarow = db.DeTais.Where(p => (p.CapDeTai.TenCapDeTai == capdt && p.DonViQL.TenDonVI == dvql)).Count();
                     row.Add(datarow);
                     total = (datarow > 0) ? total + datarow : total;
@@ -364,7 +247,7 @@ namespace WebQLKhoaHoc.Controllers
                 resModel.Rows.Add(row);
             }
             ViewBag.TenDonVi = donviql;
-            return View(resModel);            
+            return View(resModel);
         }
 
         [HttpPost]
@@ -410,7 +293,7 @@ namespace WebQLKhoaHoc.Controllers
                     List<object> row = new List<object>();
                     foreach (string capdt in capdetai)
                     {
-                        var datarow = db.DeTais.Where(p => (p.CapDeTai.TenCapDeTai == capdt && p.DonViQL.TenDonVI == dvql 
+                        var datarow = db.DeTais.Where(p => (p.CapDeTai.TenCapDeTai == capdt && p.DonViQL.TenDonVI == dvql
                             && p.NamBD.Value.Year > fd.Year && p.NamKT.Value.Year < td.Year)).Count();
                         row.Add(datarow);
                         total = (datarow > 0) ? total + datarow : total;
@@ -421,9 +304,9 @@ namespace WebQLKhoaHoc.Controllers
                 ViewBag.TenDonVi = donviql;
                 return View(resModel);
             }
-            else if(unit == "fieldSector")
+            else if (unit == "fieldSector")
             {
-                return RedirectToAction("TopicFieldSector",new { from_date, to_date });
+                return RedirectToAction("TopicFieldSector", new { from_date, to_date });
             }
             else
             {
@@ -431,7 +314,7 @@ namespace WebQLKhoaHoc.Controllers
             }
         }
 
-        public ActionResult TopicFieldSector(DateTime? from_date,DateTime? to_date)
+        public ActionResult TopicFieldSector(DateTime? from_date, DateTime? to_date)
         {
             DateTime fd = new DateTime();
             DateTime td = new DateTime();
@@ -453,13 +336,119 @@ namespace WebQLKhoaHoc.Controllers
             }
 
             IDictionary<string, int> linhvuc = new Dictionary<string, int>();
-            List<string> nhomlinhvuc = db.NhomLinhVucs.Select(p=>p.TenNhomLinhVuc).ToList();
+            List<string> nhomlinhvuc = db.NhomLinhVucs.Select(p => p.TenNhomLinhVuc).ToList();
             //int tongso
-            foreach(string ten in nhomlinhvuc)
+            foreach (string ten in nhomlinhvuc)
             {
-                int sodetai = db.DeTais.Where(p => (p.LinhVuc.NhomLinhVuc.TenNhomLinhVuc == ten 
+                int sodetai = db.DeTais.Where(p => (p.LinhVuc.NhomLinhVuc.TenNhomLinhVuc == ten
                         && p.NamBD.Value.Year > fd.Year && p.NamKT.Value.Year < td.Year)).Count();
-                linhvuc.Add(ten,sodetai);
+                linhvuc.Add(ten, sodetai);
+            }
+            ViewBag.linhvuc = Json(linhvuc);
+            return View(linhvuc);
+        }
+
+        //// about topic
+        public ActionResult articleChart()
+        {
+            DonViTablesViewModel resModel = new DonViTablesViewModel();
+            List<string> captapchi = db.CapTapChis.Select(p => p.TenCapTapChi).ToList();
+
+            /*Table Header*/
+            foreach (string ten in captapchi)
+            {
+                resModel.Header.Add(ten);
+            }
+            resModel.Header.Add("Tổng số");
+            /*table data*/
+
+            int total = 0;
+            List<object> row = new List<object>();
+            foreach (string captc in captapchi)
+            {
+                var datarow = db.BaiBaos.Where(p => (p.CapTapChi.TenCapTapChi == captc)).Count();
+                row.Add(datarow);
+                total = (datarow > 0) ? total + datarow : total;
+            }
+            row.Add(total);
+            resModel.Rows.Add(row);
+
+
+            return View(resModel);
+        }
+        [HttpPost]
+        public ActionResult articleChart(string unit, DateTime? from_date, DateTime? to_date)
+        {
+            DateTime fd = DateTime.MinValue;
+            DateTime td = DateTime.MaxValue;
+            if (from_date != null)
+            {
+                fd = Convert.ToDateTime(from_date);
+            }
+            if (to_date != null)
+            {
+                td = Convert.ToDateTime(to_date);
+            }
+
+            if (unit == "total")
+            {
+                DonViTablesViewModel resModel = new DonViTablesViewModel();
+                List<string> captapchi = db.CapTapChis.Select(p => p.TenCapTapChi).ToList();
+
+                /*Table Header*/
+                foreach (string ten in captapchi)
+                {
+                    resModel.Header.Add(ten);
+                }
+                resModel.Header.Add("Tổng số");
+                /*table data*/
+
+                int total = 0;
+                List<object> row = new List<object>();
+                foreach (string captc in captapchi)
+                {
+                    var datarow = db.BaiBaos.Where(p => (p.CapTapChi.TenCapTapChi == captc
+                        && p.NamDangBao.Value.Year > fd.Year && p.NamDangBao.Value.Year < td.Year)).Count();
+                    row.Add(datarow);
+                    total = (datarow > 0) ? total + datarow : total;
+                }
+                row.Add(total);
+
+                resModel.Rows.Add(row);
+
+
+                return View(resModel);
+            }
+            else if (unit == "fieldSector")
+            {
+                return RedirectToAction("ArticleFieldSector", new { from_date, to_date });
+            }
+            else
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, "Dữ liệu chỉ tiêu chưa chính xác");
+            }
+        }
+        public ActionResult ArticleFieldSector(DateTime? from_date, DateTime? to_date)
+        {
+            DateTime fd = DateTime.MinValue;
+            DateTime td = DateTime.MaxValue;
+            if (from_date != null)
+            {
+                fd = Convert.ToDateTime(from_date);
+            }
+            if (to_date != null)
+            {
+                td = Convert.ToDateTime(to_date);
+            }
+
+
+            IDictionary<string, int> linhvuc = new Dictionary<string, int>();
+            List<string> nhomlinhvuc = db.NhomLinhVucs.Select(p => p.TenNhomLinhVuc).ToList();
+            //int tongso
+            foreach (string ten in nhomlinhvuc)
+            {
+                linhvuc.Add(ten, db.BaiBaos.Where(p => (p.LinhVucs.Any(t => t.NhomLinhVuc.TenNhomLinhVuc == ten)
+                                                        && p.NamDangBao.Value.Year > fd.Year && p.NamDangBao.Value.Year < td.Year)).Count());
             }
             ViewBag.linhvuc = Json(linhvuc);
             return View(linhvuc);
