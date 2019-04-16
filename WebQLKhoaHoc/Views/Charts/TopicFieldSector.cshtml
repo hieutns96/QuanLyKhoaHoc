@@ -48,10 +48,12 @@
                         </form>
 
 
-                        <div id="piechart" style="width: 900px; height: 500px;"></div>
+                        @if (Model != null)
+                        {
+                            <div id="piechart" style="width: 900px; height: 500px;"></div>
+                        }
 
-                     
-                    </div>
+                        </div>
 
                 </div>
             </div>
@@ -59,7 +61,8 @@
     </section>
 </div>
 
-
+@if (Model != null)
+{
 @section scripts{
     @Scripts.Render("~/bundles/charts")
     <script type="text/javascript">
@@ -69,7 +72,7 @@
 
             var data = google.visualization.arrayToDataTable([
                 ['Task', 'Hours per Day'],
-                @foreach(var x in Model)
+                @foreach (var x in Model)
                 {
                     @:["@Html.Raw(x.Key.ToString())",@x.Value],
                 }
@@ -86,3 +89,4 @@
     </script>
 }
 
+}
