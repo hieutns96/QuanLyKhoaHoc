@@ -171,9 +171,10 @@
         $("#Todate").off('change').on('change', function (e) {
 
             var $this = $(this);
-            var dateFromVal = $this.parents('.row').find('#Fromdate').val();
+            var dateFromVal = $this.parents().find('#Fromdate').val();
             var dateToVal = $this.val();
-            var searchEl = $this.parents('.row').find('.btn-search-component');
+            var searchEl;
+            $this.parents().find('.btn-search-component').length == 1 ? searchEl = $this.parents().find('.btn-search-component') : searchEl = $this.parents().find('.btn-primary');
 
             if (!dateFromVal) {
                 return;
