@@ -36,37 +36,37 @@ namespace WebQLKhoaHoc.Controllers
 
             var pre = PredicateBuilder.True<NhaKhoaHoc>();
 
-            //var nhaKhoaHocs = db.NhaKhoaHocs.Include(n => n.ChuyenNganh).Include(n => n.DonViQL).Include(n => n.HocHam).Include(n => n.HocVi).Include(n => n.NgachVienChuc).ToList();
+           
 
             if (!String.IsNullOrEmpty(nhaKhoaHoc.MaCNDaoTao))
             {
                 pre = pre.And(p => p.MaCNDaoTao.ToString() == nhaKhoaHoc.MaCNDaoTao);
-                //nhaKhoaHocs = nhaKhoaHocs.Where(p => p.MaCNDaoTao.ToString() == nhaKhoaHoc.MaCNDaoTao).ToList();
+                
             }
             if (!String.IsNullOrEmpty(nhaKhoaHoc.MaDonVi))
             {
                 pre = pre.And(p => p.MaDonViQL.ToString() == nhaKhoaHoc.MaDonVi);
-                //nhaKhoaHocs = nhaKhoaHocs.Where(p => p.MaDonViQL.ToString() == nhaKhoaHoc.MaDonVi).ToList();
+               
             }
             if (!String.IsNullOrEmpty(nhaKhoaHoc.MaHocHam))
             {
                 pre = pre.And(p => p.MaHocHam.ToString() == nhaKhoaHoc.MaHocHam);
-                //nhaKhoaHocs = nhaKhoaHocs.Where(p => p.MaHocHam.ToString() == nhaKhoaHoc.MaHocHam).ToList();
+               
             }
             if (!String.IsNullOrEmpty(nhaKhoaHoc.MaHocVi))
             {
                 pre = pre.And(p => p.MaHocVi.ToString() == nhaKhoaHoc.MaHocVi);
-                //nhaKhoaHocs = nhaKhoaHocs.Where(p => p.MaHocVi.ToString() == nhaKhoaHoc.MaHocVi).ToList();
+                
             }
             if (!String.IsNullOrEmpty(nhaKhoaHoc.MaNgach))
             {
                 pre = pre.And(p => p.MaNgachVienChuc.ToString() == nhaKhoaHoc.MaNgach);
-                //nhaKhoaHocs = nhaKhoaHocs.Where(p => p.MaNgachVienChuc.ToString() == nhaKhoaHoc.MaNgach).ToList();
+                
             }
             if (!String.IsNullOrEmpty(nhaKhoaHoc.SearchValue))
             {
                 pre = pre.And(p => (p.HoNKH + " " + p.TenNKH).ToLower().Contains(nhaKhoaHoc.SearchValue.ToLower()));
-                //nhaKhoaHocs = nhaKhoaHocs.Where(p => (p.HoNKH+ " " +p.TenNKH).ToLower().Contains(nhaKhoaHoc.SearchValue.ToLower())).ToList();
+               
             }
             ViewBag.SearchValue = nhaKhoaHoc.SearchValue;
             
@@ -214,7 +214,7 @@ namespace WebQLKhoaHoc.Controllers
             }).ToList();
 
             var lstTrinhDoNN = db.TrinhDoNgoaiNgus.Where(p => p.NgoaiNguNKHs.Select(nn => nn.MaNKH).Contains(nhaKhoaHoc.MaNKH)).Select(t=>t.MaTrinhDoNN).ToList();
-            //var lstTrinhDoNN = db.TrinhDoNgoaiNgus.Where(p => p.NhaKhoaHocs.Select(t => t.MaNKH).Contains(nhaKhoaHoc.MaNKH)).Select(p => p.MaTrinhDoNN).ToList();
+            
             ViewBag.DSTrinhDoNgoaiNgu = new MultiSelectList(lstAllTrinhDoNN, "MaTrinhDoNN", "TenTD", lstTrinhDoNN);
 
             var lstAllLinhVucNC = db.LinhVucs.Select(p => new
@@ -289,33 +289,7 @@ namespace WebQLKhoaHoc.Controllers
                         nhakh.LinhVucs.Remove(x);
                     }
                 }
-                /*
-                if (DSTrinhDoNN != null) {
-                    var deletednn = nhakh.NgoaiNguNKHs.Where(p => !DSTrinhDoNN.Contains(p.MaTrinhDoNN)).ToList();
-                    var addednn = DSTrinhDoNN.Except(nhakh.NgoaiNguNKHs.Select(p => p.MaTrinhDoNN)).ToList();
-                    var addnn = db.TrinhDoNgoaiNgus.Where(p => addednn.Contains(p.MaTrinhDoNN)).ToList();
-                    foreach (var x in deletednn)
-                    {
-                        nhakh.NgoaiNguNKHs.Remove(x);
-                    }
-                    foreach (var x in addnn)
-                    {
-                        var newnn = new NgoaiNguNKH
-                        {
-                            MaNKH = nhakh.MaNKH,
-                            MaTrinhDoNN = x.MaTrinhDoNN,
-
-                        };
-                        nhakh.NgoaiNguNKHs.Add(newnn);
-                    }
-                }
-                else
-                {
-                    foreach(var x in nhakh.NgoaiNguNKHs)
-                    {
-                        nhakh.NgoaiNguNKHs.Remove(x);
-                    }
-                }      */                         
+                
 
               
                 if (DSChuyenMonGD != null) {

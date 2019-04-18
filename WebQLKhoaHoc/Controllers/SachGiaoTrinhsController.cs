@@ -25,7 +25,7 @@ namespace WebQLKhoaHoc.Controllers
         public async Task<ActionResult> Index(int? Page_No, [Bind(Include = "MaLoai,MaNXB,MaLinhVuc,SearchValue")] SachGiaoTrinhSearchViewModel sachGiaoTrinh, int? nkhId)
         {
             var pre = PredicateBuilder.True<SachGiaoTrinh>();
-            //var sachGiaoTrinhs = db.SachGiaoTrinhs.Include(s => s.LinhVuc).Include(s => s.NhaXuatBan).Include(s => s.PhanLoaiSach).Include(s => s.DSTacGias).ToList();
+           
             
             if (nkhId == null)
             {
@@ -33,25 +33,25 @@ namespace WebQLKhoaHoc.Controllers
                 {
                     if (sachGiaoTrinh.MaLinhVuc[0] == 'a')
                         pre = pre.And(p => p.MaLinhVuc.ToString() == sachGiaoTrinh.MaLinhVuc.Substring(1, sachGiaoTrinh.MaLinhVuc.Length - 1));
-                        //sachGiaoTrinhs = sachGiaoTrinhs.Where(p => p.MaLinhVuc.ToString() == sachGiaoTrinh.MaLinhVuc.Substring(1, sachGiaoTrinh.MaLinhVuc.Length - 1)).ToList();
+                        
                     else
                      pre = pre.And(p => p.LinhVuc.MaNhomLinhVuc.ToString() == sachGiaoTrinh.MaLinhVuc);
-                    //sachGiaoTrinhs = sachGiaoTrinhs.Where(p => p.LinhVuc.MaNhomLinhVuc.ToString() == sachGiaoTrinh.MaLinhVuc).ToList();
+                    
                 }
                 if (!String.IsNullOrEmpty(sachGiaoTrinh.MaLoai))
                 {
                     pre = pre.And(p => p.MaLoai.ToString() == sachGiaoTrinh.MaLoai);
-                    //sachGiaoTrinhs = sachGiaoTrinhs.Where(p => p.MaLoai.ToString() == sachGiaoTrinh.MaLoai).ToList();
+                    
                 }
                 if (!String.IsNullOrEmpty(sachGiaoTrinh.MaNXB))
                 {
                     pre = pre.And(p => p.MaLoai.ToString() == sachGiaoTrinh.MaNXB);
-                    //sachGiaoTrinhs = sachGiaoTrinhs.Where(p => p.MaLoai.ToString() == sachGiaoTrinh.MaNXB).ToList();
+                   ;
                 }
                 if (!String.IsNullOrEmpty(sachGiaoTrinh.SearchValue))
                 {
                     pre = pre.And(p => p.TenSach.ToLower().Contains(sachGiaoTrinh.SearchValue.ToLower()));
-                    //sachGiaoTrinhs = sachGiaoTrinhs.Where(p => p.TenSach.ToLower().Contains(sachGiaoTrinh.SearchValue.ToLower())).ToList();
+                    
                 }
                 
 
@@ -61,7 +61,7 @@ namespace WebQLKhoaHoc.Controllers
                 
                 var maSachs = db.DSTacGias.Where(p => p.MaNKH == nkhId).Select(p => p.MaSach).ToList();
                 pre = pre.And(p => maSachs.Contains(p.MaSach));
-                //sachGiaoTrinhs = sachGiaoTrinhs.Where(p => maSachs.Contains(p.MaSach)).ToList();
+                
             }
 
             ViewBag.MaLinhVuc = new SelectList(QLKHrepo.GetListMenuLinhVuc(), "Id", "TenLinhVuc");

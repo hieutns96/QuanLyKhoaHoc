@@ -26,46 +26,46 @@ namespace WebQLKhoaHoc.Controllers
         {
 
             var pre = PredicateBuilder.True<DeTai>();
-            //var detais = db.DeTais.Include(d => d.CapDeTai).Include(d => d.LoaiHinhDeTai).Include(d => d.DonViChuTri).Include(d => d.DonViQL).Include(d => d.LinhVuc).Include(d => d.XepLoai).Include(d => d.TinhTrangDeTai).Include(d => d.PhanLoaiSP).Include(d => d.DSNguoiThamGiaDeTais).ToList();
+            
 
             if (nkhId == null)
             {
                 if (!String.IsNullOrEmpty(detai.MaDonViQLThucHien))
                 {
                     pre = pre.And(p => p.MaDonViQLThucHien.ToString() == detai.MaDonViQLThucHien);
-                    //detais = detais.Where(p => p.MaDonViQLThucHien.ToString() == detai.MaDonViQLThucHien).ToList();
+                    
                 }
 
                 if (!String.IsNullOrEmpty(detai.MaLinhVuc))
                 {
                     if (detai.MaLinhVuc[0] == 'a')
                         pre = pre.And(p => p.MaLinhVuc.ToString() == detai.MaLinhVuc.Substring(1, detai.MaLinhVuc.Length - 1));
-                    //detais = detais.Where(p => p.MaLinhVuc.ToString() == detai.MaLinhVuc.Substring(1, detai.MaLinhVuc.Length - 1)).ToList();
+                    
                     else
                      pre = pre.And(p => p.LinhVuc.MaNhomLinhVuc.ToString() == detai.MaLinhVuc);
-                    //detais = detais.Where(p => p.LinhVuc.MaNhomLinhVuc.ToString() == detai.MaLinhVuc).ToList();
+                    
                 }
                 if (detai.Fromdate > DateTime.MinValue)
                 {
                     pre = pre.And(p => p.NamBD >= detai.Fromdate);
-                    //detais = detais.Where(p => p.NamBD >= detai.Fromdate).ToList();
+                    
                 }
                 if (detai.Todate > DateTime.MinValue)
                 {
                     pre = pre.And(p => p.NamKT <= detai.Todate);
-                    //detais = detais.Where(p => p.NamKT <= detai.Todate).ToList();
+                    
                 }
                 if (!String.IsNullOrEmpty(detai.SearchValue))
                 {
                     pre = pre.And(p => p.TenDeTai.ToLower().Contains(detai.SearchValue.ToLower()));
-                    //detais = detais.Where(p => p.TenDeTai.ToLower().Contains(detai.SearchValue.ToLower())).ToList();
+                    
                 }
             }
             else
             {
                 var madetais = db.DSNguoiThamGiaDeTais.Where(p => p.MaNKH == nkhId).Select(p => p.MaDeTai).ToList();
                 pre = pre.And(p => madetais.Contains(p.MaDeTai));
-                //detais = detais.Where(p => madetais.Contains(p.MaDeTai)).ToList();
+                
             }
             
             /* Nếu Thời gian search được nhập thì mới đỏ vào view bag */

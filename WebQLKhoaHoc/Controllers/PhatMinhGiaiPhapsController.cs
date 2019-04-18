@@ -30,25 +30,25 @@ namespace WebQLKhoaHoc.Controllers
                 if (!String.IsNullOrEmpty(phatMinh.SearchValue))
                 {
                     pre = pre.And(p => p.TenPM.ToLower().Contains(phatMinh.SearchValue.ToLower()));
-                    //detais = detais.Where(p => p.TenDeTai.ToLower().Contains(detai.SearchValue.ToLower())).ToList();
+                    
                 }
                 if (!String.IsNullOrEmpty(phatMinh.QuocGiaCap))
                 {
                     pre = pre.And(p => p.QuocGiaCap.ToLower().Contains(phatMinh.QuocGiaCap.ToLower()));
-                    //detais = detais.Where(p => p.TenDeTai.ToLower().Contains(detai.SearchValue.ToLower())).ToList();
+                    
                 }
             }
             else
             {
                 var maphatminhs = db.DSPhatMinhNKHs.Where(p => p.MaNKH == nkhId).Select(p => p.MaPM).ToList();
                 pre = pre.And(p => maphatminhs.Contains(p.MaPM));
-                //detais = detais.Where(p => madetais.Contains(p.MaDeTai)).ToList();
+                
             }
             
             if (phatMinh.NamCongBo > DateTime.MinValue)
             {
                 pre = pre.And(p => p.NamCongBo >= phatMinh.NamCongBo);
-                //detais = detais.Where(p => p.NamBD >= detai.Fromdate).ToList();
+                
             }
 
             ViewBag.SearchValue = phatMinh.SearchValue;
