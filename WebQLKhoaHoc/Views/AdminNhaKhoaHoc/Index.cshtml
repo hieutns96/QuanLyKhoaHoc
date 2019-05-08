@@ -47,6 +47,10 @@
                                         <th>Ngày Sinh</th>
                                         <th>Địa Chỉ</th>
                                         <th>Điện Thoại</th>
+                                        <th>Học Vị</th>
+                                        <th>Học Hàm</th>
+                                        <th>Chuyên Ngành Đào Tạo</th>
+                                        <th>Ngạch Viên Chức</th>
                                         <th>Email</th>
                                         <th>Action</th>
                                     </tr>
@@ -56,41 +60,46 @@
                                 <tbody>
                                     @foreach (var item in Model)
                                     {
-                                        <tr role="row" class="even">
-                                            <td>
-                                                @{
-                                                    if (String.IsNullOrWhiteSpace(item.AnhCaNhan))
-                                                    {
-                                                        <img src=@Url.Content("~/Image/avatar.bmp") style="height: 58px; width:58px; border-radius: 50%;" />
-                                                    }
-                                                    else
-                                                    {
-                                                        <img src="@item.AnhCaNhan" style="height: 58px; width:58px; border-radius: 50%;" />
-                                                    }
+                                    <tr role="row" class="even">
+                                        <td>
+                                            @{
+                                                if (String.IsNullOrWhiteSpace(item.AnhCaNhan))
+                                                {
+                                                    <img src=@Url.Content("~/Image/avatar.bmp") style="height: 58px; width:58px; border-radius: 50%;" />
                                                 }
-                                            </td>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.HoNKH) @Html.DisplayFor(modelItem => item.TenNKH)
-                                            </td>
-                                            <td> @Html.DisplayFor(modelItem => item.GioiTinhNKH)</td>
-                                            <td> @item.NgaySinh.Value.ToShortDateString()</td>
-                                            <td class="">  @Html.DisplayFor(modelItem => item.DiaChiLienHe)</td>
-                                            <td class="sorting_1">  @Html.DisplayFor(modelItem => item.DienThoai)</td>
-                                            <td>  @Html.DisplayFor(modelItem => item.EmailLienHe)</td>
-                                            <td>
-                                                <a href="@Url.Action("Edit", "AdminNhaKhoaHoc", new {id = item.MaNKH})">
-                                                    <i class="far fa-edit"></i>
-                                                </a>
-                                                <a href="@Url.Action("Details", "AdminNhaKhoaHoc", new { id = item.MaNKH })">
-                                                    <i class="fas fa-info"></i>
-                                                </a>
-                                                <a href="@Url.Action("Delete", "AdminNhaKhoaHoc", new {id = item.MaNKH})">
-                                                    <i class="far fa-trash-alt"></i>
-                                                </a>
+                                                else
+                                                {
+                                                    <img src="@item.AnhCaNhan" style="height: 58px; width:58px; border-radius: 50%;" />
+                                                }
+                                            }
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.HoNKH) @Html.DisplayFor(modelItem => item.TenNKH)
+                                        </td>
+                                        <td> @Html.DisplayFor(modelItem => item.GioiTinhNKH)</td>
+                                        <td> @item.NgaySinh.Value.ToShortDateString()</td>
+                                        <td class="">  @Html.DisplayFor(modelItem => item.DiaChiLienHe)</td>
+                                        <td class="sorting_1">  @Html.DisplayFor(modelItem => item.DienThoai)</td>
+                                        <td class="">  @Html.DisplayFor(modelItem => item.HocVi.TenHocVi)</td>
+                                        <td class="">  @Html.DisplayFor(modelItem => item.HocHam.TenHocHam)</td>
+                                        <td class="">  @Html.DisplayFor(modelItem => item.ChuyenNganh.TenChuyenNganh)</td>
+                                        
+                                        <td class="">  @Html.DisplayFor(modelItem => item.NgachVienChuc.TenNgach)</td>
+                                        <td>  @Html.DisplayFor(modelItem => item.EmailLienHe)</td>
+                                        <td>
+                                            <a href="@Url.Action("Edit", "AdminNhaKhoaHoc", new {id = item.MaNKH})">
+                                                <i class="far fa-edit"></i>
+                                            </a>
+                                            <a href="@Url.Action("Details", "AdminNhaKhoaHoc", new { id = item.MaNKH })">
+                                                <i class="fas fa-info"></i>
+                                            </a>
+                                            <a href="@Url.Action("Delete", "AdminNhaKhoaHoc", new {id = item.MaNKH})">
+                                                <i class="far fa-trash-alt"></i>
+                                            </a>
 
 
-                                            </td>
-                                        </tr>
+                                        </td>
+                                    </tr>
                                     }
 
                                 </tbody>

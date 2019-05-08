@@ -17,6 +17,7 @@ namespace WebQLKhoaHoc.Models
         public string HoNKH { get; set; }
         public string TenNKH { get; set; }
         public string GioiTinhNKH { get; set; }
+        public string NoiSinh { get; set; }
         public Nullable<System.DateTime> NgaySinh { get; set; }
         public string DiaChiLienHe { get; set; }
         public string DienThoai { get; set; }
@@ -84,6 +85,7 @@ namespace WebQLKhoaHoc.Models
             nkhvm.DsDetai = nkh.DSNguoiThamGiaBaiBaos.Where(p => p.MaNKH == nkh.MaNKH).Count();
             nkhvm.NgoaiNguNKHs = nkh.NgoaiNguNKHs ?? new List<NgoaiNguNKH>();
             nkhvm.NganHangNKHs = nkh.NganHangNKH ?? new NganHangNKH();
+            nkhvm.NoiSinh = nkh.NoiSinh;
             return nkhvm;
         }
 

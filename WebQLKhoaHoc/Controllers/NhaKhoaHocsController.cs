@@ -170,7 +170,7 @@ namespace WebQLKhoaHoc.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "MaNKH,MaNKHHoSo,HoNKH,TenNKH,GioiTinhNKH,NgaySinh,DiaChiLienHe,DienThoai,EmailLienHe,MaHocHam,MaHocVi,MaCNDaoTao,MaDonViQL,AnhDaiDien,MaNgachVienChuc")] NhaKhoaHoc nhaKhoaHoc)
+        public async Task<ActionResult> Create([Bind(Include = "MaNKH,MaNKHHoSo,HoNKH,TenNKH,GioiTinhNKH,NgaySinh,DiaChiLienHe,DienThoai,EmailLienHe,MaHocHam,MaHocVi,MaCNDaoTao,MaDonViQL,AnhDaiDien,MaNgachVienChuc,NoiSinh")] NhaKhoaHoc nhaKhoaHoc)
         {
             if (ModelState.IsValid)
             {
@@ -243,7 +243,7 @@ namespace WebQLKhoaHoc.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit(HttpPostedFileBase fileUpload,List<int> DSLinhVucNC, List<int> DSChuyenMonGD, [Bind(Include = "MaNKH,MaNKHHoSo,HoNKH,TenNKH,GioiTinhNKH,NgaySinh,DiaChiLienHe,DienThoai,EmailLienHe,MaHocHam,MaHocVi,MaCNDaoTao,MaDonViQL,AnhDaiDien,MaNgachVienChuc")] NhaKhoaHoc nhaKhoaHoc, [Bind(Include = "MaNKH,STKNH,MaNH,ChiNhanhNH,GhiChu")] NganHangNKH nganHangNKH)
+        public async Task<ActionResult> Edit(HttpPostedFileBase fileUpload,List<int> DSLinhVucNC, List<int> DSChuyenMonGD, [Bind(Include = "MaNKH,MaNKHHoSo,HoNKH,TenNKH,GioiTinhNKH,NgaySinh,DiaChiLienHe,DienThoai,EmailLienHe,MaHocHam,MaHocVi,MaCNDaoTao,MaDonViQL,AnhDaiDien,MaNgachVienChuc,NoiSinh")] NhaKhoaHoc nhaKhoaHoc, [Bind(Include = "MaNKH,STKNH,MaNH,ChiNhanhNH,GhiChu")] NganHangNKH nganHangNKH)
         {
            
             if (ModelState.IsValid)

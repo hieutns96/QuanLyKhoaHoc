@@ -1082,7 +1082,7 @@
                             H&#7885; v&agrave; t&ecirc;n
                         </td>
                         <td align="left">
-                            @Model.HoNKH @Model.TenNKH
+                            @Model.HoNKH.ToUpper() @Model.TenNKH.ToUpper()
                         </td>
                         <td align="left">
                             N&#259;m sinh
@@ -1153,7 +1153,7 @@
                         <td align="left">
                             &#272;i&#7879;n tho&#7841;i li&ecirc;n l&#7841;c
                         </td>
-                        <td colspan="3">
+                        <td id="phone" colspan="3">
                             @Model.DienThoai
                         </td>
                     </tr>
@@ -1828,7 +1828,10 @@
 
     jQuery(document).ready(function ($) {
         $("a.word-export").click(function (event) {
+            var data = $("#phone").text();
+            $("#phone").text("");
             $("#source-html").wordExport();
+            $("#phone").text(data);
         });
     });
 

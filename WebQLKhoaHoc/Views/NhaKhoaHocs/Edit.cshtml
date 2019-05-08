@@ -111,12 +111,19 @@
                                                                         </select>
                                                                         <br>
                                                                     </div>
+                                                                    <div class="col-md-4">
+                                                                        <span class="mt-0 mb-0 font-weight-600">Nơi Sinh:</span>
+                                                                    </div>
+                                                                    <div class="col-md-8">
+                                                                        @Html.TextBoxFor(model => model.NoiSinh, new { @class = "form-control", @required = "required" })<br>
+                                                                    </div>
                                                                     <div class="col-md-4" style="padding-right:0px">
                                                                         <span class="mt-0 mb-0 font-weight-600">Ngày sinh</span>
                                                                     </div>
                                                                     <div class="col-md-8">
                                                                         <input name="NamBD" id="Fromdate" class="form-control date-picker" type="text" placeholder="Năm sinh" value="@Model.NgaySinh.Value.ToString("d") " autocomplete="off">
                                                                     </div>
+                                                                   
                                                                 </div>
                                                             </div>
 
@@ -139,17 +146,19 @@
                                                             <div class="bg-light media border-bottom mb-20 p-15">
 
                                                                 <div class="form-group">
+                                                                    
                                                                     <div class="col-md-4">
-                                                                        <span class="mt-0 mb-0 font-weight-600">Điện thoại liên hệ:</span>
+                                                                        <span class="mt-0 mb-0 font-weight-600">Điện thoại:</span>
                                                                     </div>
-                                                                    <div class="col-md-8">
-                                                                        @Html.TextBoxFor(model => model.DienThoai, new { @class = "form-control", @required = "required" })<br>
-                                                                    </div>
+                                                                        <div class="col-md-8">
+                                                                            @Html.TextBoxFor(model => model.DienThoai, new {@class = "form-control", @required = "required"})<br>
+                                                                        </div>
+                                                                  
                                                                     <div class="col-md-4">
                                                                         <span class="mt-0 mb-0 font-weight-600">Email:</span>
                                                                     </div>
                                                                     <div class="col-md-8">
-                                                                        @Html.TextBoxFor(model => model.EmailLienHe, new { @class = "form-control", @required = "required" })<br>
+                                                                        @Html.TextBoxFor(model => model.EmailLienHe, new {@class = "form-control", @required = "required"})<br>
                                                                     </div>
                                                                 </div>
                                                             </div>

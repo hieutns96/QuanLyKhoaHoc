@@ -45,6 +45,7 @@ namespace WebQLKhoaHoc
         public byte[] AnhCaNhan { get; set; }
         public Nullable<int> MaNgachVienChuc { get; set; }
         public string SoCMND { get; set; }
+        public string NoiSinh { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChuyenMonNKH> ChuyenMonNKHs { get; set; }
