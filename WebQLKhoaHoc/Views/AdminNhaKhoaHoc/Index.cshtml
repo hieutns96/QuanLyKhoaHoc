@@ -51,6 +51,7 @@
                                         <th>Học Hàm</th>
                                         <th>Chuyên Ngành Đào Tạo</th>
                                         <th>Ngạch Viên Chức</th>
+                                        <th>Đơn Vị Quản Lý</th>
                                         <th>Email</th>
                                         <th>Action</th>
                                     </tr>
@@ -83,8 +84,8 @@
                                         <td class="">  @Html.DisplayFor(modelItem => item.HocVi.TenHocVi)</td>
                                         <td class="">  @Html.DisplayFor(modelItem => item.HocHam.TenHocHam)</td>
                                         <td class="">  @Html.DisplayFor(modelItem => item.ChuyenNganh.TenChuyenNganh)</td>
-                                        
                                         <td class="">  @Html.DisplayFor(modelItem => item.NgachVienChuc.TenNgach)</td>
+                                        <td class="">  @Html.DisplayFor(modelItem => item.DonViQL.TenDonVI)</td>
                                         <td>  @Html.DisplayFor(modelItem => item.EmailLienHe)</td>
                                         <td>
                                             <a href="@Url.Action("Edit", "AdminNhaKhoaHoc", new {id = item.MaNKH})">
