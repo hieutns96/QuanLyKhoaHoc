@@ -1085,7 +1085,7 @@
                             @Model.HoNKH.ToUpper() @Model.TenNKH.ToUpper()
                         </td>
                         <td align="left">
-                            N&#259;m sinh
+                            Ngày tháng n&#259;m sinh
                         </td>
                         <td align="left">
                             @Model.NgaySinh.Value.ToString("dd-MM-yyyy")
@@ -1093,10 +1093,10 @@
                     </tr>
                     <tr>
                         <td align="left">
-                            Ch&#7913;c danh khoa h&#7885;c
+                            Nơi sinh
                         </td>
                         <td align="left">
-                            @Model.HocHam.TenVietTat @Model.HocVi.TenVietTat
+                            @Model.NoiSinh
                         </td>
                         <td align="left">
                             Gi&#7899;i t&iacute;nh
@@ -1121,10 +1121,24 @@
                     </tr>
                     <tr>
                         <td align="left">
-                            T&ecirc;n ph&ograve;ng, ban, b&#7897; m&ocirc;n
+                            T&ecirc;n khoa, ph&ograve;ng
                         </td>
                         <td colspan="3">
                             @quatrinhcongtac.TenPhongBan
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="left">
+                            Mã số cán bộ
+                        </td>
+                        <td align="left">
+                            @Model.MaNKHHoSo
+                        </td>
+                        <td align="left">
+                            Mã ngạch
+                        </td>
+                        <td align="left">
+                            @Model.NgachVienChuc.TenNgach
                         </td>
                     </tr>
                     <tr>
@@ -1151,6 +1165,38 @@
                     </tr>
                     <tr>
                         <td align="left">
+                            Học hàm
+                        </td>
+                        <td align="left">
+                            @Model.HocHam.TenHocHam
+                        </td>
+                        <td align="left">
+                            Năm được phong
+                        </td>
+                        <td align="left"></td>
+                    </tr>
+                    <tr>
+                        <td align="left">
+                            Học vị cao nhất
+                        </td>
+                        <td align="left">
+                            @Model.HocVi.TenHocVi
+                        </td>
+                        <td align="left">
+                            Năm bảo vệ
+                        </td>
+                        <td align="left"></td>
+                    </tr>
+                    <tr>
+                        <td align="left">
+                            Chuyên ngành
+                        </td>
+                        <td colspan="3">
+                            @Model.ChuyenNganh.TenChuyenNganh
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="left">
                             &#272;i&#7879;n tho&#7841;i li&ecirc;n l&#7841;c
                         </td>
                         <td id="phone" colspan="3">
@@ -1165,23 +1211,23 @@
                             @Model.EmailLienHe
                         </td>
                     </tr>
-                    <tr>
-                        <td align="left">
-                            Email thay th&#7871;
-                        </td>
-                        <td colspan="3">
-                           
-                        </td>
-                    </tr>
-                    <tr>
+
+                <tr>
+                    <td align="left">
+                        Địa chỉ thường trú
+                    </td>
+                    <td colspan="3"> @Model.DiaChiLienHe</td>
+                </tr>
+               
+                    @*<tr>
                         <td align="left">
                             S&#7889; t&agrave;i kho&#7843;n
                         </td>
                         <td colspan="3">
                             @Model.NganHangNKH.STKNH
                         </td>
-                    </tr>
-                    <tr>
+                    </tr>*@
+                    @*<tr>
                         <td align="left">
                             M&#7903; t&#7841;i ng&acirc;n h&agrave;ng
                         </td>
@@ -1196,7 +1242,7 @@
                         <td colspan="3">
                             @Model.NganHangNKH.ChiNhanhNH
                         </td>
-                    </tr>
+                    </tr>*@
                 </tbody>
             </table>
         </div>
