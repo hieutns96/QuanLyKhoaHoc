@@ -29,6 +29,7 @@
                                     @using (Html.BeginForm("Create", "AdminNhaKhoaHoc", FormMethod.Post, new { @class = "form-horizontal form-label-right", @enctype = "multipart/form-data" }))
                                     {
                                         @Html.AntiForgeryToken()
+                                      
                                         <div class="form-group">
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Mã nhà khoa học</label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
@@ -56,7 +57,7 @@
                                         <div class="form-group">
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Nơi sinh</label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input type="text" name="NoiSinh" class="form-control" placeholder="Nơi sinh nhà khoa học" value="@Model.NoiSinh">
+                                                <input type="text" name="NoiSinh" class="form-control" placeholder="Nơi sinh nhà khoa học" value="@Html.DisplayFor(model => model.NoiSinh)">
                                             </div>
                                         </div>
                                         <div class="form-group">
