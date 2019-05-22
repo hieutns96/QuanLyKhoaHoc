@@ -105,9 +105,11 @@
                                                                         <span class="mt-0 mb-0 font-weight-600">Giới tính:</span>
                                                                     </div>
                                                                     <div class="col-md-8">
-                                                                        <select class="form-control">
-                                                                            <option>Nam</option>
-                                                                            <option>Nữ</option>
+                                                                        <select class="form-control" name="GioiTinhNKH">
+                                                                            <option value="Nam" @if (Model.GioiTinhNKH == "Nam") {@:selected 
+                                                                                    }>Nam</option>
+                                                                            <option value="Nữ" @if (Model.GioiTinhNKH == "Nữ") {@:selected
+                                                                                    }>Nữ</option>
                                                                         </select>
                                                                         <br>
                                                                     </div>
@@ -121,7 +123,7 @@
                                                                         <span class="mt-0 mb-0 font-weight-600">Ngày sinh</span>
                                                                     </div>
                                                                     <div class="col-md-8">
-                                                                        <input name="NamBD" id="Fromdate" class="form-control date-picker" type="text" placeholder="Năm sinh" value="@Model.NgaySinh.Value.ToString("d") " autocomplete="off">
+                                                                        <input name="NgaySinh" id="Fromdate" class="form-control date-picker" type="text" placeholder="Năm sinh" value="@Model.NgaySinh.Value.ToString("d") " autocomplete="off" required>
                                                                     </div>
                                                                    
                                                                 </div>
