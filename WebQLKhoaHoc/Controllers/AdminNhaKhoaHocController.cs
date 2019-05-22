@@ -186,8 +186,13 @@ namespace WebQLKhoaHoc.Controllers
         {
             NhaKhoaHoc nhaKhoaHoc = await db.NhaKhoaHocs.FindAsync(id);
             NguoiDung nguoiDung = await db.NguoiDungs.Where(p => p.Usernames == nhaKhoaHoc.MaNKHHoSo).FirstOrDefaultAsync();
-            nguoiDung.NhaKhoaHoc = null;
-            nguoiDung.IsActive = false;
+            if (nguoiDung != null)
+            {
+                nguoiDung.MaNKH = null;
+                nguoiDung.IsActive = false;
+            }
+            
+           
             db.NhaKhoaHocs.Remove(nhaKhoaHoc);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
