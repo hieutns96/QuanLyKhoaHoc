@@ -133,51 +133,48 @@
                                         <span class="mb-20 mt-5 p-5 bg-theme-colored-transparent-6 text-white pull-right border-radius-10px">
                                             @item.MaISBN
                                         </span>
-                                        <div class="dropdown">
-                                            <a href="javascript:" data-toggle="modal" data-target="#mydata" onclick="modal_load('@Url.Action("Details", "SachGiaoTrinhs", new { id = item.MaSach })')">
-                                                <h4 class="icon-box-title font-16 font-weight-600 m-0 mb-5 pr-15">
-                                                    @Html.DisplayFor(modelItem => item.TenSach)
-                                                </h4>
-                                            </a>
+                                        <a href="javascript:" data-toggle="modal" data-target="#mydata" onclick="modal_load('@Url.Action("Details", "SachGiaoTrinhs", new { id = item.MaSach })')">
+                                            <h4 class="icon-box-title font-16 font-weight-600 m-0 mb-5 pr-15">
+                                                @Html.DisplayFor(modelItem => item.TenSach)
+                                            </h4>
+                                        </a>
 
 
-                                            <p class="text-gray font-13 mb-0">
-                                                <i class="fa fa-university" aria-hidden="true"></i>
-                                                <b> Nhà xuất bản:</b>
-                                                @Html.DisplayFor(modelItem => item.NhaXuatBan.TenNXB)
-                                                <br>
-                                                <i class="fa fa-tag" aria-hidden="true"></i>
-                                                <b> Thể loại : </b>
-                                                @Html.DisplayFor(modelItem => item.PhanLoaiSach.TenLoai)
-                                                <br>
-                                                <i class="fa fa-university" aria-hidden="true"></i>
-                                                <b> Lĩnh vự :</b>
-                                                @Html.DisplayFor(modelItem => item.LinhVuc.TenLinhVuc)
-                                                <br>
-                                                <i class="fa fa-users" aria-hidden="true"></i>
-                                                <b>Người tham gia:</b>
-                                                @for (int i = 0; i < item.DSTacGias.Count; i++)
+                                        <p class="text-gray font-13 mb-0">
+                                            <i class="fa fa-university" aria-hidden="true"></i>
+                                            <b> Nhà xuất bản:</b>
+                                            @Html.DisplayFor(modelItem => item.NhaXuatBan.TenNXB)
+                                            <br>
+                                            <i class="fa fa-tag" aria-hidden="true"></i>
+                                            <b> Thể loại : </b>
+                                            @Html.DisplayFor(modelItem => item.PhanLoaiSach.TenLoai)
+                                            <br>
+                                            <i class="fa fa-university" aria-hidden="true"></i>
+                                            <b> Lĩnh vự :</b>
+                                            @Html.DisplayFor(modelItem => item.LinhVuc.TenLinhVuc)
+                                            <br>
+                                            <i class="fa fa-users" aria-hidden="true"></i>
+                                            <b>Người tham gia:</b>
+                                            @for (int i = 0; i < item.DSTacGias.Count; i++)
+                                            {
+                                                var tg = item.DSTacGias.ToList()[i];
+                                                var name = tg.NhaKhoaHoc.HoNKH + " " + tg.NhaKhoaHoc.TenNKH;
+                                                if (tg.LaChuBien.Value)
                                                 {
-                                                    var tg = item.DSTacGias.ToList()[i];
-                                                    var name = tg.NhaKhoaHoc.HoNKH + " " + tg.NhaKhoaHoc.TenNKH;
-                                                    if (tg.LaChuBien.Value)
-                                                    {
-                                                        name += " (Chủ biên)";
-                                                    }
-                                                    if (i < (item.DSTacGias.Count - 1))
-                                                    {
-                                                        name += ", ";
-                                                    }
-
-                                                    <a class="customlink" href="@Url.Action("Details", "NhaKhoaHocs", new { id = tg.MaNKH })">@name</a>
-
-
+                                                    name += " (Chủ biên)";
+                                                }
+                                                if (i < (item.DSTacGias.Count - 1))
+                                                {
+                                                    name += ", ";
                                                 }
 
-                                                <br>
-                                            </p>
+                                                <a class="customlink" href="@Url.Action("Details", "NhaKhoaHocs", new { id = tg.MaNKH })">@name</a>
 
-                                        </div>
+
+                                            }
+
+                                            <br>
+                                        </p>
 
                                     </div>
                                 </div>
