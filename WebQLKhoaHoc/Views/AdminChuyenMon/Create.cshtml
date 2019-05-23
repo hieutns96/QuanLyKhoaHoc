@@ -5,32 +5,30 @@
     Layout = "~/Views/Shared/_AdminMainPage.cshtml";
 }
 
-<h2>Create</h2>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
-        <h4>ChuyenMon</h4>
+        <h1 class="text-center">Chuyên môn</h1>
         <hr />
         @Html.ValidationSummary(true)
         <div class="form-group">
-            @Html.LabelFor(model => model.TenChuyenMon, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.TenChuyenMon)
+            <div class="col-md-2 col-md-offset-1">
+                <h2>Tên chuyên môn</h2>
+            </div>
+            <div class="col-md-7">
+                @Html.TextBoxFor(model => model.TenChuyenMon, new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.TenChuyenMon)
             </div>
         </div>
 
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+            <div class="col-md-offset-2 col-md-8">
+                @Html.ActionLink("Trở về", "Index", null, new { @class = "btn btn-default pull-right" })
+                <input type="submit" value="Tạo" class="btn btn-default pull-right" />
             </div>
         </div>
     </div>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
