@@ -92,9 +92,10 @@ namespace WebQLKhoaHoc.Controllers
                 NguoiDung newuser = new NguoiDung
                 {
                     MaNKH = nhaKhoaHoc.MaNKH,
-                    Usernames = nhaKhoaHoc.MaNKHHoSo,
+                    Usernames = nhaKhoaHoc.EmailLienHe,
                     Passwords = Encryptor.MD5Hash("12345" + salt), //update by Khiet
                     MaChucNang = 2,
+                    IsActive = true,
                     RandomKey = salt //update by Khiet
                 };
                 db.NguoiDungs.Add(newuser);
@@ -269,9 +270,10 @@ namespace WebQLKhoaHoc.Controllers
                             NguoiDung newuser = new NguoiDung
                             {
                                 MaNKH = nkh.MaNKH,
-                                Usernames = nkh.MaNKHHoSo,
+                                Usernames = nkh.EmailLienHe,
                                 Passwords = Encryptor.MD5Hash("12345" + salt), //update by Khiet
                                 MaChucNang = 2,
+                                IsActive = true,
                                 RandomKey = salt //update by Khiet
                             };
                             db.NguoiDungs.Add(newuser);

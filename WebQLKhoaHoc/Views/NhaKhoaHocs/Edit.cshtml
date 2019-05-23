@@ -5,6 +5,8 @@
 @{
     ViewBag.Title = "Sửa  Dữ Liệu Nhà Khoa Học";
     Layout = "~/Views/Shared/_MainPage.cshtml";
+
+
 }
 
 <style>
@@ -187,23 +189,23 @@
                                                         <div class="form-group ">
                                                             <h5 class="mt-0 mb-0 font-weight-600">Chức danh:</h5>
                                                             <p>
-                                                                @Html.DropDownList("MaHocHam", (IEnumerable<SelectListItem>)ViewBag.MaHH, "--Chọn học hàm--", new { @class = "form-control" })
+                                                                @Html.DropDownList("MaHocHam", (IEnumerable<SelectListItem>)ViewBag.MaHH, new { @class = "form-control" })
                                                             </p>
                                                             <h5 class="mt-0 mb-0 font-weight-600">Học vị:</h5>
                                                             <p>
-                                                                @Html.DropDownList("MaHocVi", (IEnumerable<SelectListItem>)ViewBag.MaHV, "--Chọn học vị--", new { @class = "form-control" })
+                                                                @Html.DropDownList("MaHocVi", (IEnumerable<SelectListItem>)ViewBag.MaHV,  new { @class = "form-control" })
                                                             </p>
                                                             <h5 class="mt-0 mb-0 font-weight-600">Chuyên ngành đào tạo:</h5>
                                                             <p>
-                                                                @Html.DropDownList("MaCNDaoTao", (IEnumerable<SelectListItem>)ViewBag.MaCNDT, "--Chọn chuyên ngành--", new { @class = "form-control" })
+                                                                @Html.DropDownList("MaCNDaoTao", (IEnumerable<SelectListItem>)ViewBag.MaCNDT,  new { @class = "form-control" })
                                                             </p>
                                                             <h5 class="mt-0 mb-0 font-weight-600">Đơn vị quản lý:</h5>
                                                             <p>
-                                                                @Html.DropDownList("MaDonViQL", (IEnumerable<SelectListItem>)ViewBag.MaDVQL, "--Chọn đơn vị--", new { @class = "form-control" })
+                                                                @Html.DropDownList("MaDonViQL", (IEnumerable<SelectListItem>)ViewBag.MaDVQL,  new { @class = "form-control" })
                                                             </p>
                                                             <h5 class="mt-0 mb-0 font-weight-600">Ngạch viên chức:</h5>
                                                             <p>
-                                                                @Html.DropDownList("MaNgachVienChuc", (IEnumerable<SelectListItem>)ViewBag.MaNgachVC, "--Chọn ngạch--", new { @class = "form-control" })
+                                                                @Html.DropDownList("MaNgachVienChuc", (IEnumerable<SelectListItem>)ViewBag.MaNgachVC, new { @class = "form-control" })
                                                             </p>
                                                             <h5 class="mt-0 mb-0 font-weight-600">Chuyên Môn Giảng Dạy:</h5>
                                                             <p>
@@ -239,7 +241,15 @@
 
                                                             <h5 class="mt-0 mb-0 font-weight-600">Tên ngân hàng:</h5>
                                                             <p>
-                                                                @Html.DropDownList("MaNH", new SelectList(db.NganHangs, "MaNH", "TenNH", Model.NganHangNKHs.NganHang.MaNH), new { @class = "form-control" })
+                                                                @if (Model.NganHangNKHs.NganHang != null)
+                                                                {
+                                                                    @Html.DropDownList("MaNH", new SelectList(db.NganHangs, "MaNH", "TenNH", Model.NganHangNKHs.NganHang.MaNH), new {@class = "form-control"})
+                                                                }
+                                                                else
+                                                                {
+                                                                    @Html.DropDownList("MaNH", new SelectList(db.NganHangs, "MaNH", "TenNH","--Chọn ngân hàng--"), new {@class = "form-control"})
+                                                                }
+
                                                             </p>
 
                                                             <h5 class="mt-0 mb-0 font-weight-600">Chi nhánh:</h5>

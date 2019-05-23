@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Net;
@@ -29,7 +30,7 @@ namespace WebQLKhoaHoc.Controllers
         public ActionResult Create()
         {
             ViewBag.MaChucNang = new SelectList(db.ChucNangs, "MaChucNang", "TenChucNang");
-            ViewBag.MaNKH = new SelectList(db.NhaKhoaHocs, "MaNKH", "MaNKHHoSo");
+
             return View();
         }
 
@@ -38,22 +39,47 @@ namespace WebQLKhoaHoc.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Usernames,Passwords,MaNKH,MaChucNang")] NguoiDung nguoiDung)
+        public async Task<ActionResult> Create([Bind(Include = "Username,Password,MaChucNang")] NguoiDungViewModel nguoiDung)
         {
             if (ModelState.IsValid)
             {
-                db.NguoiDungs.Add(nguoiDung);
+                string salt = "".GenRandomKey(); //update by Khiet
+                NguoiDung newNguoiDung = new NguoiDung();
+                newNguoiDung.Usernames = nguoiDung.Username;
+                newNguoiDung.Passwords = Encryptor.MD5Hash(nguoiDung.Password + salt); //update by Khiet
+                newNguoiDung.RandomKey = salt;
+                newNguoiDung.IsActive = true;
+                db.NguoiDungs.Add(newNguoiDung);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
             ViewBag.MaChucNang = new SelectList(db.ChucNangs, "MaChucNang", "TenChucNang", nguoiDung.MaChucNang);
-            ViewBag.MaNKH = new SelectList(db.NhaKhoaHocs, "MaNKH", "MaNKHHoSo", nguoiDung.MaNKH);
+           
             return View(nguoiDung);
         }
 
         // GET: AdminNguoiDung/Edit/5
-        public async Task<ActionResult> Edit(string id)
+        public async Task<ActionResult> UnLock(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            NguoiDung nguoiDung =  db.NguoiDungs.Where(p => p.ID == id).FirstOrDefault();
+            if (nguoiDung != null)
+            {
+                nguoiDung.IsActive = !nguoiDung.IsActive;
+            }
+            db.NguoiDungs.AddOrUpdate(nguoiDung);
+        
+            await db.SaveChangesAsync();
+            return RedirectToAction("Index");
+
+        }
+
+        // GET: AdminNguoiDung/Edit/5
+        public async Task<ActionResult> Edit(int? id)
         {
             if (id == null)
             {
@@ -74,11 +100,16 @@ namespace WebQLKhoaHoc.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Usernames,Passwords,MaNKH,MaChucNang")] NguoiDung nguoiDung)
+        public async Task<ActionResult> Edit([Bind(Include = "ID,Usernames,MaChucNang")] NguoiDung nguoiDung)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(nguoiDung).State = EntityState.Modified;
+                NguoiDung user = db.NguoiDungs.Where( p => p.ID == nguoiDung.ID ).FirstOrDefault();
+                if (user != null)
+                {
+                    user.MaChucNang = nguoiDung.MaChucNang;
+                }
+                db.NguoiDungs.AddOrUpdate(user);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
@@ -88,7 +119,7 @@ namespace WebQLKhoaHoc.Controllers
         }
 
         // GET: AdminNguoiDung/Delete/5
-        public async Task<ActionResult> Delete(string id)
+        public async Task<ActionResult> Delete(int? id)
         {
             if (id == null)
             {
@@ -105,7 +136,7 @@ namespace WebQLKhoaHoc.Controllers
         // POST: AdminNguoiDung/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> DeleteConfirmed(string id)
+        public async Task<ActionResult> DeleteConfirmed(int id)
         {
             NguoiDung nguoiDung = await db.NguoiDungs.FindAsync(id);
             db.NguoiDungs.Remove(nguoiDung);

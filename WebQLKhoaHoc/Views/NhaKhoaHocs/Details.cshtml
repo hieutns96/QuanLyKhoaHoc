@@ -205,9 +205,12 @@
                                                                 <div class="media-body">
                                                                     <h5 class="mt-0 mb-0 font-weight-600">Tài khoản ngân hàng:</h5>
                                                                     <p>
-                                                                        <span>Số tài khoản:</span> @Model.NganHangNKHs.STKNH<br>
-                                                                        <span>Tên ngân hàng:</span> @Model.NganHangNKHs.NganHang.TenNH<br>
-                                                                        <span>Chi nhánh:</span> @Model.NganHangNKHs.ChiNhanhNH<br>
+                                                                        @if (Model.NganHangNKHs.MaNH != null)
+                                                                        {
+                                                                            <span>Số tài khoản:</span> @Model.NganHangNKHs.STKNH<br>
+                                                                            <span>Tên ngân hàng:</span> @Model.NganHangNKHs.NganHang.TenNH<br>
+                                                                            <span>Chi nhánh:</span> @Model.NganHangNKHs.ChiNhanhNH<br>
+                                                                        }
                                                                     </p>
                                                                 </div>
                                                             </div>
@@ -240,7 +243,11 @@
                                                             </p>
                                                             <h5 class="mt-0 mb-0 font-weight-600">Ngành đào tạo:</h5>
                                                             <p>
-                                                                <span>@Model.ChuyenNganh.NganhDaoTao.TenNganhDaoTao</span>
+                                                                @if (!String.IsNullOrEmpty(Model.ChuyenNganh.TenChuyenNganh))
+                                                                {
+                                                                    <span> @Model.ChuyenNganh.NganhDaoTao.TenNganhDaoTao </span>
+                                                                }
+
                                                             </p>
                                                             <h5 class="mt-0 mb-0 font-weight-600">Chuyên ngành đào tạo:</h5>
                                                             <p>

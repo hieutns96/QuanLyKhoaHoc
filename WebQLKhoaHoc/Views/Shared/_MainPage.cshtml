@@ -94,7 +94,8 @@
                                         <a><img src="@nd.AnhCaNhan" style="width:30px;height:30px;border-radius: 50%;display: inline-block;" /> @nd.ChucVi @nd.Ten</a>
                                         <ul class="dropdown">
                                             <li>@Html.ActionLink("Đổi Mật Khẩu", "ChangePassword", "Account")</li>
-                                            <li><a>Thông tin tài khoản</a></li>
+                                           
+                                            <li><a href="@Url.Action("Details","NhaKhoaHocs", new { id = nd.MaNKH })">Thông tin của tôi</a></li>
                                             <li>@Html.ActionLink("Đăng xuất", "LogOff", "Account")</li>
                                         </ul>
                                     </li>

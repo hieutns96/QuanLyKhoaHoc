@@ -37,6 +37,11 @@ namespace WebQLKhoaHoc.Controllers
             return View();
         }
 
+        public ActionResult SignUp()
+        {
+            return View();
+        }
+
         public ActionResult ChangePassword()
         {
             if (Session["user"] != null)
@@ -45,6 +50,51 @@ namespace WebQLKhoaHoc.Controllers
             }
             return RedirectToAction("Login", "Account");
         }
+
+        [HttpPost]
+        public ActionResult SignUp(SignUpModel model)
+        {
+            if (model.Email != null && model.Password != "")
+            {
+
+                NguoiDung nguoiDung = db.NguoiDungs.SingleOrDefault(p => p.Usernames == model.Email);
+                NhaKhoaHoc checknkh = db.NhaKhoaHocs.Where(p => p.EmailLienHe == model.Email).FirstOrDefault();
+                if (nguoiDung != null || checknkh != null)
+                {
+                    ViewBag.Error = "Tài khoản đã tồn tại";
+                    return View();
+                }
+                NhaKhoaHoc nkh = new NhaKhoaHoc();
+                nkh.HoNKH = model.Ho;
+                nkh.TenNKH = model.Ten;
+                nkh.EmailLienHe = model.Email;
+                db.NhaKhoaHocs.Add(nkh);
+                db.SaveChanges();
+
+                string salt = "".GenRandomKey(); //update by Khiet
+                NguoiDung newuser = new NguoiDung
+                {
+                    MaNKH = nkh.MaNKH,
+                    Usernames = nkh.EmailLienHe,
+                    Passwords = Encryptor.MD5Hash(model.Password + salt), //update by Khiet
+                    MaChucNang = 1,
+                    IsActive = true,
+                    RandomKey = salt //update by Khiet
+                };
+                db.NguoiDungs.Add(newuser);
+                db.SaveChanges();
+
+                return RedirectToAction("Login", "Account");
+
+            }
+            else
+            {
+                ViewBag.Error = "Mời bạn điền đầy đủ thông tin";
+                return View();
+            }
+        }
+
+
         [HttpPost]
         public async Task<ActionResult> ChangePassword(ChangePasswordModel model)
         {

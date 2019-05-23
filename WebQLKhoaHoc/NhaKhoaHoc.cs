@@ -38,6 +38,7 @@ namespace WebQLKhoaHoc
         public string DiaChiLienHe { get; set; }
         public string DienThoai { get; set; }
         public string EmailLienHe { get; set; }
+        public string EmailThayThe { get; set; }
         public Nullable<int> MaHocHam { get; set; }
         public Nullable<int> MaHocVi { get; set; }
         public Nullable<int> MaCNDaoTao { get; set; }
