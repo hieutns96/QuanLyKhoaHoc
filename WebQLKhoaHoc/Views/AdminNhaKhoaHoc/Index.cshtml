@@ -42,6 +42,7 @@
                                 <thead>
                                     <tr role="row">
                                         <th>Ảnh Đại Diện</th>
+                                        <th>Action</th>
                                         <th>Họ Tên</th>
                                         <th>Giới Tính</th>
                                         <th>Ngày Sinh</th>
@@ -53,7 +54,7 @@
                                         <th>Ngạch Viên Chức</th>
                                         <th>Đơn Vị Quản Lý</th>
                                         <th>Email</th>
-                                        <th>Action</th>
+
                                     </tr>
                                 </thead>
 
@@ -75,19 +76,6 @@
                                             }
                                         </td>
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.HoNKH) @Html.DisplayFor(modelItem => item.TenNKH)
-                                        </td>
-                                        <td> @Html.DisplayFor(modelItem => item.GioiTinhNKH)</td>
-                                        <td> @item.NgaySinh.Value.ToShortDateString()</td>
-                                        <td class="">  @Html.DisplayFor(modelItem => item.DiaChiLienHe)</td>
-                                        <td class="sorting_1">  @Html.DisplayFor(modelItem => item.DienThoai)</td>
-                                        <td class="">  @Html.DisplayFor(modelItem => item.HocVi.TenHocVi)</td>
-                                        <td class="">  @Html.DisplayFor(modelItem => item.HocHam.TenHocHam)</td>
-                                        <td class="">  @Html.DisplayFor(modelItem => item.ChuyenNganh.TenChuyenNganh)</td>
-                                        <td class="">  @Html.DisplayFor(modelItem => item.NgachVienChuc.TenNgach)</td>
-                                        <td class="">  @Html.DisplayFor(modelItem => item.DonViQL.TenDonVI)</td>
-                                        <td>  @Html.DisplayFor(modelItem => item.EmailLienHe)</td>
-                                        <td>
                                             <a href="@Url.Action("Edit", "AdminNhaKhoaHoc", new {id = item.MaNKH})">
                                                 <i class="far fa-edit"></i>
                                             </a>
@@ -100,6 +88,20 @@
 
 
                                         </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.HoNKH) @Html.DisplayFor(modelItem => item.TenNKH)
+                                        </td>
+                                        <td> @Html.DisplayFor(modelItem => item.GioiTinhNKH)</td>
+                                        <td> @item.NgaySinh.Value.ToShortDateString()</td>
+                                        <td class="">  @Html.DisplayFor(modelItem => item.DiaChiLienHe)</td>
+                                        <td class="sorting_1">  @Html.DisplayFor(modelItem => item.DienThoai)</td>
+                                        <td class="">  @Html.DisplayFor(modelItem => item.HocVi.TenHocVi)</td>
+                                        <td class="">  @Html.DisplayFor(modelItem => item.HocHam.TenHocHam)</td>
+                                        <td class="">  @Html.DisplayFor(modelItem => item.ChuyenNganh.TenChuyenNganh)</td>
+                                        <td class="">  @Html.DisplayFor(modelItem => item.NgachVienChuc.TenNgach)</td>
+                                        <td class="">  @Html.DisplayFor(modelItem => item.DonViQL.TenDonVI)</td>
+                                        <td>  @Html.DisplayFor(modelItem => item.EmailLienHe)</td>
+
                                     </tr>
                                     }
 
