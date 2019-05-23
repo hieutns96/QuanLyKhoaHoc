@@ -138,6 +138,16 @@ namespace WebQLKhoaHoc.Controllers
         {
             if (ModelState.IsValid)
             {
+                db.SachGiaoTrinhs.Add(sachGiaoTrinh);
+
+                UserLoginViewModel user = (UserLoginViewModel)Session["user"];
+                db.DSTacGias.Add(new DSTacGia
+                {
+                    LaChuBien = true,
+                    MaSach = sachGiaoTrinh.MaSach,
+                    MaNKH = user.MaNKH
+                });
+
                 if (DSTacGia != null)
                 {
                     foreach (var mankh in DSTacGia)
@@ -149,9 +159,7 @@ namespace WebQLKhoaHoc.Controllers
                             MaNKH = Int32.Parse(mankh)
                         };
                         db.DSTacGias.Add(tacGia);
-                        db.SaveChanges();
                     }
-                    db.SachGiaoTrinhs.Add(sachGiaoTrinh);
                 }
                 db.SaveChanges();
                 return RedirectToAction("Index");

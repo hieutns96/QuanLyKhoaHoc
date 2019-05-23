@@ -107,7 +107,7 @@ namespace WebQLKhoaHoc.Controllers
                 TenNKH = p.HoNKH + " " + p.TenNKH
             }).ToList();
 
-            ViewBag.DSPhatMinhNKHs = new MultiSelectList(lstAllNKH, "MaNKH", "TenNKH");
+            ViewBag.DSPhatMinhNKH = new MultiSelectList(lstAllNKH, "MaNKH", "TenNKH");
             return View();
         }
 
@@ -152,7 +152,6 @@ namespace WebQLKhoaHoc.Controllers
                     phatMinhGiaiPhap.AnhScanGiayChungNhan = fileData;
                 }
                 db.PhatMinhGiaiPhaps.Add(phatMinhGiaiPhap);
-                await db.SaveChangesAsync();
 
                 var id = phatMinhGiaiPhap.MaPM;
                 UserLoginViewModel user = (UserLoginViewModel)Session["user"];
@@ -177,7 +176,7 @@ namespace WebQLKhoaHoc.Controllers
                     }
                     db.DSPhatMinhNKHs.AddRange(ds);
                 }
-                await db.SaveChangesAsync();
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
@@ -186,7 +185,7 @@ namespace WebQLKhoaHoc.Controllers
                 p.MaNKH,
                 TenNKH = p.HoNKH + " " + p.TenNKH
             }).ToList();
-            ViewBag.DSPhatMinhNKHs = new MultiSelectList(lstAllNKH, "MaNKH", "TenNKH");
+            ViewBag.DSPhatMinhNKH = new MultiSelectList(lstAllNKH, "MaNKH", "TenNKH");
 
             return View(phatMinhGiaiPhap);
         }
