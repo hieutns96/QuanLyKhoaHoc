@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="QLKhoaHocModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="QLKhoaHocModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="BacDaoTao">
           <Key>
             <PropertyRef Name="MaBacDT" />
@@ -278,11 +278,15 @@
           <Property Name="Doc" Type="int" />
           <Property Name="Viet" Type="int" />
           <Property Name="Noi" Type="int" />
+          <Property Name="VanBang" Type="nvarchar" MaxLength="50" />
+          <Property Name="ChungChi" Type="nvarchar" MaxLength="50" />
+          <Property Name="GhiChu" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="NguoiDung">
           <Key>
-            <PropertyRef Name="Usernames" />
+            <PropertyRef Name="ID" />
           </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Usernames" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Passwords" Type="varbinary(max)" />
           <Property Name="MaNKH" Type="int" />
@@ -305,7 +309,8 @@
           <Property Name="NgaySinh" Type="datetime" />
           <Property Name="DiaChiLienHe" Type="nvarchar(max)" />
           <Property Name="DienThoai" Type="nvarchar" MaxLength="50" />
-          <Property Name="EmailLienHe" Type="varchar" MaxLength="50" />
+          <Property Name="EmailLienHe" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="EmailThayThe" Type="varchar" MaxLength="50" />
           <Property Name="MaHocHam" Type="int" />
           <Property Name="MaHocVi" Type="int" />
           <Property Name="MaCNDaoTao" Type="int" />
@@ -1316,7 +1321,8 @@
             <End Role="SachGiaoTrinh" EntitySet="SachGiaoTrinh" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="QLKhoaHocModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -1633,6 +1639,9 @@
           <Property Name="Doc" Type="Int32" />
           <Property Name="Viet" Type="Int32" />
           <Property Name="Noi" Type="Int32" />
+          <Property Name="VanBang" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ChungChi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GhiChu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="DanhGiaNgoaiNgu" Relationship="Self.FK_NgoaiNguNKH_DanhGiaDoc" FromRole="NgoaiNguNKH" ToRole="DanhGiaNgoaiNgu" />
           <NavigationProperty Name="DanhGiaNgoaiNgu1" Relationship="Self.FK_NgoaiNguNKH_DanhGiaViet" FromRole="NgoaiNguNKH" ToRole="DanhGiaNgoaiNgu" />
           <NavigationProperty Name="DanhGiaNgoaiNgu2" Relationship="Self.FK_NgoaiNguNKH_Noi" FromRole="NgoaiNguNKH" ToRole="DanhGiaNgoaiNgu" />
@@ -1641,8 +1650,9 @@
         </EntityType>
         <EntityType Name="NguoiDung">
           <Key>
-            <PropertyRef Name="Usernames" />
+            <PropertyRef Name="ID" />
           </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Usernames" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Passwords" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="MaNKH" Type="Int32" />
@@ -1667,13 +1677,16 @@
           <Property Name="NgaySinh" Type="DateTime" Precision="3" />
           <Property Name="DiaChiLienHe" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="DienThoai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="EmailLienHe" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EmailLienHe" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EmailThayThe" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="MaHocHam" Type="Int32" />
           <Property Name="MaHocVi" Type="Int32" />
           <Property Name="MaCNDaoTao" Type="Int32" />
           <Property Name="MaDonViQL" Type="Int32" />
           <Property Name="AnhCaNhan" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="MaNgachVienChuc" Type="Int32" />
+          <Property Name="SoCMND" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NoiSinh" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="ChuyenMonNKHs" Relationship="Self.ChuyenMonNKH_fk0" FromRole="NhaKhoaHoc" ToRole="ChuyenMonNKH" />
           <NavigationProperty Name="ChuyenNganh" Relationship="Self.NhaKhoaHoc_fk2" FromRole="NhaKhoaHoc" ToRole="ChuyenNganh" />
           <NavigationProperty Name="DonViQL" Relationship="Self.NhaKhoaHoc_fk3" FromRole="NhaKhoaHoc" ToRole="DonViQL" />
@@ -1691,8 +1704,6 @@
           <NavigationProperty Name="QuaTrinhCongTacs" Relationship="Self.QuaTrinhCongTac_fk0" FromRole="NhaKhoaHoc" ToRole="QuaTrinhCongTac" />
           <NavigationProperty Name="QuaTrinhDaoTaos" Relationship="Self.QuaTrinhDaoTao_fk0" FromRole="NhaKhoaHoc" ToRole="QuaTrinhDaoTao" />
           <NavigationProperty Name="LinhVucs" Relationship="Self.LinhVucNghienCuuNKH" FromRole="NhaKhoaHoc" ToRole="LinhVuc" />
-          <Property Name="SoCMND" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="NoiSinh" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="NhaKhoaHoc_KH">
           <Key>
@@ -1761,8 +1772,8 @@
           <Property Name="AnhScanGiayChungNhan" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="AnhChupSanPham1" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="AnhChupSanPham2" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <NavigationProperty Name="DSPhatMinhNKHs" Relationship="Self.FK_DSPhatMinh_PM" FromRole="PhatMinhGiaiPhap" ToRole="DSPhatMinhNKH" />
           <Property Name="NamCongBo" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="DSPhatMinhNKHs" Relationship="Self.FK_DSPhatMinh_PM" FromRole="PhatMinhGiaiPhap" ToRole="DSPhatMinhNKH" />
         </EntityType>
         <EntityType Name="QuaTrinhCongTac">
           <Key>
@@ -2950,12 +2961,16 @@
                 <ScalarProperty Name="Doc" ColumnName="Doc" />
                 <ScalarProperty Name="Viet" ColumnName="Viet" />
                 <ScalarProperty Name="Noi" ColumnName="Noi" />
+                <ScalarProperty Name="VanBang" ColumnName="VanBang" />
+                <ScalarProperty Name="ChungChi" ColumnName="ChungChi" />
+                <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="NguoiDungs">
             <EntityTypeMapping TypeName="QLKhoaHocModel.NguoiDung">
               <MappingFragment StoreEntitySet="NguoiDung">
+                <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Usernames" ColumnName="Usernames" />
                 <ScalarProperty Name="Passwords" ColumnName="Passwords" />
                 <ScalarProperty Name="MaNKH" ColumnName="MaNKH" />
@@ -2971,8 +2986,6 @@
           <EntitySetMapping Name="NhaKhoaHocs">
             <EntityTypeMapping TypeName="QLKhoaHocModel.NhaKhoaHoc">
               <MappingFragment StoreEntitySet="NhaKhoaHoc">
-                <ScalarProperty Name="NoiSinh" ColumnName="NoiSinh" />
-                <ScalarProperty Name="SoCMND" ColumnName="SoCMND" />
                 <ScalarProperty Name="MaNKH" ColumnName="MaNKH" />
                 <ScalarProperty Name="MaNKHHoSo" ColumnName="MaNKHHoSo" />
                 <ScalarProperty Name="HoNKH" ColumnName="HoNKH" />
@@ -2982,12 +2995,15 @@
                 <ScalarProperty Name="DiaChiLienHe" ColumnName="DiaChiLienHe" />
                 <ScalarProperty Name="DienThoai" ColumnName="DienThoai" />
                 <ScalarProperty Name="EmailLienHe" ColumnName="EmailLienHe" />
+                <ScalarProperty Name="EmailThayThe" ColumnName="EmailThayThe" />
                 <ScalarProperty Name="MaHocHam" ColumnName="MaHocHam" />
                 <ScalarProperty Name="MaHocVi" ColumnName="MaHocVi" />
                 <ScalarProperty Name="MaCNDaoTao" ColumnName="MaCNDaoTao" />
                 <ScalarProperty Name="MaDonViQL" ColumnName="MaDonViQL" />
                 <ScalarProperty Name="AnhCaNhan" ColumnName="AnhCaNhan" />
                 <ScalarProperty Name="MaNgachVienChuc" ColumnName="MaNgachVienChuc" />
+                <ScalarProperty Name="SoCMND" ColumnName="SoCMND" />
+                <ScalarProperty Name="NoiSinh" ColumnName="NoiSinh" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -3047,7 +3063,6 @@
           <EntitySetMapping Name="PhatMinhGiaiPhaps">
             <EntityTypeMapping TypeName="QLKhoaHocModel.PhatMinhGiaiPhap">
               <MappingFragment StoreEntitySet="PhatMinhGiaiPhap">
-                <ScalarProperty Name="NamCongBo" ColumnName="NamCongBo" />
                 <ScalarProperty Name="MaPM" ColumnName="MaPM" />
                 <ScalarProperty Name="TenPM" ColumnName="TenPM" />
                 <ScalarProperty Name="SoHieuPM" ColumnName="SoHieuPM" />
@@ -3058,6 +3073,7 @@
                 <ScalarProperty Name="AnhScanGiayChungNhan" ColumnName="AnhScanGiayChungNhan" />
                 <ScalarProperty Name="AnhChupSanPham1" ColumnName="AnhChupSanPham1" />
                 <ScalarProperty Name="AnhChupSanPham2" ColumnName="AnhChupSanPham2" />
+                <ScalarProperty Name="NamCongBo" ColumnName="NamCongBo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

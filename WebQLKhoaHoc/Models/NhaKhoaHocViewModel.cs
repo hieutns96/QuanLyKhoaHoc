@@ -31,6 +31,7 @@ namespace WebQLKhoaHoc.Models
         public string AnhCaNhan { get; set; }
         public int? MaNgachVienChuc { get; set; }
         public string SoCMND { get; set; }
+        public string EmailThayThe { get; set; }
         public virtual NhaKhoaHoc_KH NhaKhoaHoc_KH { get; set; }
         public virtual  ICollection<DSPhatMinhNKH> DSPhatMinhNKHs { get; set; }
         public virtual ICollection<ChuyenMonNKH> ChuyenMonNKHs { get; set; }
@@ -68,6 +69,8 @@ namespace WebQLKhoaHoc.Models
             nkhvm.MaCNDaoTao = nkh.MaCNDaoTao ;
             nkhvm.MaDonViQL = Convert.ToInt32(nkh.MaDonViQL) ;
             nkhvm.EmailLienHe = nkh.EmailLienHe ?? String.Empty;
+            //nkhvm.EmailThayThe = nkh.EmailThayThe ?? String.Empty;
+
             nkhvm.QuaTrinhCongTacs = nkh.QuaTrinhCongTacs ?? new List<QuaTrinhCongTac>();
             nkhvm.QuaTrinhDaoTaos = nkh.QuaTrinhDaoTaos ?? new List<QuaTrinhDaoTao>();
             nkhvm.DSNguoiThamGiaBaiBaos = nkh.DSNguoiThamGiaBaiBaos ?? new List<DSNguoiThamGiaBaiBao>();
@@ -75,9 +78,9 @@ namespace WebQLKhoaHoc.Models
             nkhvm.DSTacGias = nkh.DSTacGias ?? new List<DSTacGia>();
             nkhvm.TrinhDoNgoaiNgus = nkh.NgoaiNguNKHs.Select(p=>p.TrinhDoNgoaiNgu).ToList() ?? new List<TrinhDoNgoaiNgu>();
             nkhvm.MaNKHHoSo = nkh.MaNKHHoSo ?? String.Empty ;
-            nkhvm.MaHocVi = nkh.MaHocVi  ;
-            nkhvm.MaHocHam = nkh.MaHocHam  ;
-            nkhvm.MaNgachVienChuc = nkh.MaNgachVienChuc;
+            nkhvm.MaHocVi = nkh.MaHocVi ?? 0 ;
+            nkhvm.MaHocHam = nkh.MaHocHam  ?? 0  ;
+            nkhvm.MaNgachVienChuc = nkh.MaNgachVienChuc ?? 0;
             nkhvm.MaNKH = nkh.MaNKH;
             nkhvm.ChuyenMonNKHs = nkh.ChuyenMonNKHs ?? new List<ChuyenMonNKH>();
             nkhvm.GioiTinhNKH = nkh.GioiTinhNKH ?? String.Empty;

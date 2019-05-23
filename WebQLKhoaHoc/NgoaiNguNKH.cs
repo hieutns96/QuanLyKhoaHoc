@@ -20,6 +20,9 @@ namespace WebQLKhoaHoc
         public Nullable<int> Doc { get; set; }
         public Nullable<int> Viet { get; set; }
         public Nullable<int> Noi { get; set; }
+        public string VanBang { get; set; }
+        public string ChungChi { get; set; }
+        public string GhiChu { get; set; }
     
         public virtual DanhGiaNgoaiNgu DanhGiaNgoaiNgu { get; set; }
         public virtual DanhGiaNgoaiNgu DanhGiaNgoaiNgu1 { get; set; }

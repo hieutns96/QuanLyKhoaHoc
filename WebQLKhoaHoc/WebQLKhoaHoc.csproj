@@ -293,6 +293,7 @@
     <Compile Include="Models\DonViChartsViewModel.cs" />
     <Compile Include="Models\DonViTablesViewModel.cs" />
     <Compile Include="Models\HomeSearchViewModel.cs" />
+    <Compile Include="Models\SignUpModel.cs" />
     <Compile Include="Models\TrinhDoChartViewModel.cs" />
     <Compile Include="Models\DeTaiSearchViewModel.cs" />
     <Compile Include="Models\Encryptor.cs" />
@@ -694,6 +695,7 @@
     <Content Include="Views\Charts\DonViCharts.cshtml" />
     <Content Include="Views\Charts\articleChart.cshtml" />
     <Content Include="Views\Charts\ArticleFieldSector.cshtml" />
+    <Content Include="Views\Account\SignUp.cshtml" />
     <None Include="Web.Debug.Config">
       <DependentUpon>Web.Config</DependentUpon>
     </None>

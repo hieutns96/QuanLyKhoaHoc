@@ -14,6 +14,7 @@ namespace WebQLKhoaHoc
     
     public partial class NguoiDung
     {
+        public int ID { get; set; }
         public string Usernames { get; set; }
         public byte[] Passwords { get; set; }
         public Nullable<int> MaNKH { get; set; }

@@ -82,6 +82,22 @@
     order: -1;
 }
 
+.ControlInput--ten {
+    order: -3;
+}
+.Control-label--ten {
+    order: -4;
+}
+
+
+.ControlInput--ho {
+    order: -5;
+}
+.Control-label--ho {
+    order: -6;
+}
+
+
 .Control-label--email {
     order: -2;
 }
