@@ -118,11 +118,13 @@ namespace WebQLKhoaHoc.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             NhaKhoaHoc nhaKhoaHoc = await db.NhaKhoaHocs.FindAsync(id);
+            NhaKhoaHocViewModel nkh = NhaKhoaHocViewModel.Mapping(nhaKhoaHoc);
+            
             if (nhaKhoaHoc == null)
             {
                 return HttpNotFound();
             }
-            return View(nhaKhoaHoc);
+            return View(nkh);
         }
 
         // GET: NhaKhoaHocs/Create
