@@ -119,7 +119,7 @@ namespace WebQLKhoaHoc.Controllers
         }
 
         // GET: AdminNguoiDung/Delete/5
-        public async Task<ActionResult> Delete(int id)
+        public async Task<ActionResult> Delete(int? id)
         {
             if (id == null)
             {
