@@ -21,4 +21,13 @@ namespace WebQLKhoaHoc.Models
         [Required]
         public string Password { get; set; }
     }
+
+    public class NguoiDungViewModel
+    {
+        public string MaChucNang { get; set; }
+     
+        public string Username { get; set; }
+      
+        public string Password { get; set; }
+    }
 }

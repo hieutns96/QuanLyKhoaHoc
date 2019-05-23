@@ -30,7 +30,7 @@ namespace WebQLKhoaHoc.Controllers
         public ActionResult Create()
         {
             ViewBag.MaChucNang = new SelectList(db.ChucNangs, "MaChucNang", "TenChucNang");
-            ViewBag.MaNKH = new SelectList(db.NhaKhoaHocs, "MaNKH", "MaNKHHoSo");
+
             return View();
         }
 
@@ -39,17 +39,23 @@ namespace WebQLKhoaHoc.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Usernames,Passwords,MaNKH,MaChucNang")] NguoiDung nguoiDung)
+        public async Task<ActionResult> Create([Bind(Include = "Username,Password,MaChucNang")] NguoiDungViewModel nguoiDung)
         {
             if (ModelState.IsValid)
             {
-                db.NguoiDungs.Add(nguoiDung);
+                string salt = "".GenRandomKey(); //update by Khiet
+                NguoiDung newNguoiDung = new NguoiDung();
+                newNguoiDung.Usernames = nguoiDung.Username;
+                newNguoiDung.Passwords = Encryptor.MD5Hash(nguoiDung.Password + salt); //update by Khiet
+                newNguoiDung.RandomKey = salt;
+                newNguoiDung.IsActive = true;
+                db.NguoiDungs.Add(newNguoiDung);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
             ViewBag.MaChucNang = new SelectList(db.ChucNangs, "MaChucNang", "TenChucNang", nguoiDung.MaChucNang);
-            ViewBag.MaNKH = new SelectList(db.NhaKhoaHocs, "MaNKH", "MaNKHHoSo", nguoiDung.MaNKH);
+           
             return View(nguoiDung);
         }
 
