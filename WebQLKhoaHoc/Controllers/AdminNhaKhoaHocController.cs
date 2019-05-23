@@ -95,7 +95,7 @@ namespace WebQLKhoaHoc.Controllers
                     Usernames = nhaKhoaHoc.EmailLienHe,
                     Passwords = Encryptor.MD5Hash("12345" + salt), //update by Khiet
                     MaChucNang = 2,
-                    IsActive = false,
+                    IsActive = true,
                     RandomKey = salt //update by Khiet
                 };
                 db.NguoiDungs.Add(newuser);
@@ -273,7 +273,7 @@ namespace WebQLKhoaHoc.Controllers
                                 Usernames = nkh.EmailLienHe,
                                 Passwords = Encryptor.MD5Hash("12345" + salt), //update by Khiet
                                 MaChucNang = 2,
-                                IsActive = false,
+                                IsActive = true,
                                 RandomKey = salt //update by Khiet
                             };
                             db.NguoiDungs.Add(newuser);

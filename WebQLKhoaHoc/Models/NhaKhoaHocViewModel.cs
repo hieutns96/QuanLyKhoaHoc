@@ -69,8 +69,7 @@ namespace WebQLKhoaHoc.Models
             nkhvm.MaCNDaoTao = nkh.MaCNDaoTao ;
             nkhvm.MaDonViQL = Convert.ToInt32(nkh.MaDonViQL) ;
             nkhvm.EmailLienHe = nkh.EmailLienHe ?? String.Empty;
-            //nkhvm.EmailThayThe = nkh.EmailThayThe ?? String.Empty;
-
+            nkhvm.EmailThayThe = nkh.EmailThayThe ?? String.Empty;
             nkhvm.QuaTrinhCongTacs = nkh.QuaTrinhCongTacs ?? new List<QuaTrinhCongTac>();
             nkhvm.QuaTrinhDaoTaos = nkh.QuaTrinhDaoTaos ?? new List<QuaTrinhDaoTao>();
             nkhvm.DSNguoiThamGiaBaiBaos = nkh.DSNguoiThamGiaBaiBaos ?? new List<DSNguoiThamGiaBaiBao>();

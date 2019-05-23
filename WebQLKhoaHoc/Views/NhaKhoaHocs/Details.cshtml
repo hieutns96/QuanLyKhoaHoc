@@ -243,7 +243,11 @@
                                                             </p>
                                                             <h5 class="mt-0 mb-0 font-weight-600">Ngành đào tạo:</h5>
                                                             <p>
-                                                                <span> @Model.ChuyenNganh.NganhDaoTao.TenNganhDaoTao  </span>
+                                                                @if (!String.IsNullOrEmpty(Model.ChuyenNganh.TenChuyenNganh))
+                                                                {
+                                                                    <span> @Model.ChuyenNganh.NganhDaoTao.TenNganhDaoTao </span>
+                                                                }
+
                                                             </p>
                                                             <h5 class="mt-0 mb-0 font-weight-600">Chuyên ngành đào tạo:</h5>
                                                             <p>
