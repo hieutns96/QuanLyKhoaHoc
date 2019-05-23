@@ -11,13 +11,7 @@
     <h1 class="text-center">Chuyên môn nhà khoa học</h1>
     <br />
     <div class="form-group">
-        <div class="col-md-2 col-md-offset-1">
-            <h2>Tên chuyên môn</h2>
-        </div>
-        <div class="col-md-7">
-            @Html.TextBoxFor(model => model.TenChuyenMon, new { @class = "form-control", @disable = "disable" })
-
-        </div>
+        @Html.TextBoxFor(model => model.TenChuyenMon, new { @class = "form-control", @disabled = "disabled" })
     </div>
     @using (Html.BeginForm())
     {

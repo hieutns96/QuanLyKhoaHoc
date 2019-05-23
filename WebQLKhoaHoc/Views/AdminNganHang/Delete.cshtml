@@ -1,0 +1,63 @@
+﻿@model WebQLKhoaHoc.NganHang
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_AdminMainPage.cshtml";
+}
+
+
+<h1 class="text-center">Bạn có chắn chắn muốn xóa các thông tin bên dưới</h1>
+<div class="form-horizontal">
+    <h1 class="text-center">Ngân hàng nhà khoa học</h1>
+    <hr />
+    <div class="form-group">
+        <div class="col-md-2 col-md-offset-1">
+            <h2>Tên ngân hàng</h2>
+        </div>
+        <div class="col-md-7">
+            @Html.TextBoxFor(model => model.TenNH, new { @class = "form-control", @disabled = "disabled" })
+            
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-2 col-md-offset-1">
+            <h2>Tên tiếng anh</h2>
+        </div>
+        <div class="col-md-7">
+            @Html.TextBoxFor(model => model.TenTiengAnh, new { @class = "form-control", @disabled = "disabled" })
+            
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-2 col-md-offset-1">
+            <h2>Tên viết tắt</h2>
+        </div>
+        <div class="col-md-7">
+            @Html.TextBoxFor(model => model.TenVietTat, new { @class = "form-control", @disabled = "disabled" })
+           
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-2 col-md-offset-1">
+            <h2>Website</h2>
+        </div>
+        <div class="col-md-7">
+            @Html.TextBoxFor(model => model.Website, new { @class = "form-control", @disabled = "disabled" })
+            
+        </div>
+    </div>
+ 
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-8">
+                @Html.ActionLink("Trở về", "Index", null, new { @class = "btn btn-default pull-right" })
+                <input type="submit" value="Xóa" class="btn btn-default pull-right" />
+            </div>
+        </div>
+    }
+</div>
+
+

@@ -237,6 +237,7 @@
     <Compile Include="Controllers\ChartsController.cs" />
     <Compile Include="Controllers\DeTaisController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\AdminNganHangController.cs" />
     <Compile Include="Controllers\NhaKhoaHocsController.cs" />
     <Compile Include="Controllers\PhatMinhGiaiPhapsController.cs" />
     <Compile Include="Controllers\SachGiaoTrinhsController.cs" />
@@ -545,11 +546,6 @@
     <Content Include="Views\AdminChuyenMon\Delete.cshtml" />
     <Content Include="Views\AdminChuyenMon\Edit.cshtml" />
     <Content Include="Views\AdminChuyenMon\Index.cshtml" />
-    <Content Include="Views\AdminChuyenMonNKH\Create.cshtml" />
-    <Content Include="Views\AdminChuyenMonNKH\Delete.cshtml" />
-    <Content Include="Views\AdminChuyenMonNKH\Details.cshtml" />
-    <Content Include="Views\AdminChuyenMonNKH\Edit.cshtml" />
-    <Content Include="Views\AdminChuyenMonNKH\Index.cshtml" />
     <Content Include="Views\AdminChuyenNganh\Create.cshtml" />
     <Content Include="Views\AdminChuyenNganh\Delete.cshtml" />
     <Content Include="Views\AdminChuyenNganh\Edit.cshtml" />
@@ -695,7 +691,19 @@
     <Content Include="Views\Charts\DonViCharts.cshtml" />
     <Content Include="Views\Charts\articleChart.cshtml" />
     <Content Include="Views\Charts\ArticleFieldSector.cshtml" />
+
     <Content Include="Views\Account\SignUp.cshtml" />
+
+    <Content Include="Views\AdminNganHang\Create.cshtml" />
+    <Content Include="Views\AdminNganHang\Delete.cshtml" />
+    <Content Include="Views\AdminNganHang\Edit.cshtml" />
+    <Content Include="Views\AdminNganHang\Index.cshtml" />
+    <Content Include="Views\AdminChuyenMonNKH\Create.cshtml" />
+    <Content Include="Views\AdminChuyenMonNKH\Delete.cshtml" />
+    <Content Include="Views\AdminChuyenMonNKH\Details.cshtml" />
+    <Content Include="Views\AdminChuyenMonNKH\Edit.cshtml" />
+    <Content Include="Views\AdminChuyenMonNKH\Index.cshtml" />
+
     <None Include="Web.Debug.Config">
       <DependentUpon>Web.Config</DependentUpon>
     </None>
