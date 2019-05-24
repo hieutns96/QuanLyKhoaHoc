@@ -46,7 +46,8 @@ namespace WebQLKhoaHoc
                 "~/Scripts/Admin/jquery.dataTables.min.js",                
                 "~/Scripts/Admin/autosize.min.js",                
                 "~/Scripts/Admin/dataTables.bootstrap.min.js",
-                "~/Scripts/app_admin.min.js"
+                "~/Scripts/app_admin.min.js",
+                "~/Scripts/Admin/admin-custom.js"
             ));
 
             bundles.Add(new StyleBundle("~/Content/admincss").Include(
