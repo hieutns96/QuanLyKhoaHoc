@@ -1,0 +1,99 @@
+﻿@model WebQLKhoaHoc.PhatMinhGiaiPhap
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminMainPage.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>PhatMinhGiaiPhap</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TenPM)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenPM)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SoHieuPM)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoHieuPM)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MotaPM)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MotaPM)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DoiTuongSuDung)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DoiTuongSuDung)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.QuocGiaCap)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.QuocGiaCap)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LinkLienKet)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LinkLienKet)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AnhScanGiayChungNhan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AnhScanGiayChungNhan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AnhChupSanPham1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AnhChupSanPham1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AnhChupSanPham2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AnhChupSanPham2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NamCongBo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NamCongBo)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MaPM }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
