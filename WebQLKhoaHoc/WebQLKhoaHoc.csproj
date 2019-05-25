@@ -710,6 +710,9 @@
     <Content Include="Views\AdminPhatMinhGiaiPhap\Details.cshtml" />
     <Content Include="Views\AdminPhatMinhGiaiPhap\Edit.cshtml" />
     <Content Include="Views\AdminPhatMinhGiaiPhap\Index.cshtml" />
+    <Content Include="Views\AdminPhatMinhGiaiPhap\CreateDanhSachNguoiThamGiaPhatMinh.cshtml" />
+    <Content Include="Views\AdminPhatMinhGiaiPhap\EditDanhSachNguoiThamGiaPhatMinh.cshtml" />
+    <Content Include="Views\AdminPhatMinhGiaiPhap\DanhSachNguoiThamGiaPhatMinh.cshtml" />
     <None Include="Web.Debug.Config">
       <DependentUpon>Web.Config</DependentUpon>
     </None>

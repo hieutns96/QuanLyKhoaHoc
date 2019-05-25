@@ -13,7 +13,7 @@
             <div class="form-horizontal">
                 @Html.ValidationSummary(true)
                 <div class="modal-header bg-white-transparent-5">
-                    <h1 class="modal-title text-center text-theme-color-2 uppercase ">Thêm sách giáo trình </h1>
+                    <h1 class="modal-title text-center text-theme-color-2 uppercase ">Thêm phát minh giải pháp</h1>
                 </div>
 
                 <div class="modal-body">
@@ -27,7 +27,7 @@
                                     @Html.EditorFor(model => model.SoHieuPM, new { htmlAttributes = new { @class = "form-control", @required = "@required" } })
                                 </dd>
                                 <dt>
-                                    Tên sách giáo trình:
+                                    Tên phát minh:
                                 </dt>
                                 <dd>
                                     @Html.EditorFor(model => model.TenPM, new { htmlAttributes = new { @class = "form-control", @required = "@required" } })

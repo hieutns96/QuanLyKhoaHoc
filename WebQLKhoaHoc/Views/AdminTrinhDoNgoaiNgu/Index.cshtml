@@ -34,13 +34,14 @@
                             <table id="datatable" class="table table-striped table-bordered dataTable no-footer" role="grid" aria-describedby="datatable_info">
                                 <thead>
                                     <tr role="row">
+                                        <th>Action</th>
                                         <th>
                                             Tên ngoại ngữ
                                         </th>
                                         <th>
                                             Cấp độ ngoại ngữ
                                         </th>
-                                        <th>Action</th>
+                                        
                                     </tr>
                                 </thead>
                                 <!-- grid nkh  -->
@@ -48,14 +49,6 @@
                                     @foreach (var item in Model)
                                     {
                                         <tr role="row" class="even">
-
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.TenTrinhDo)
-                                            </td>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.CapDo)
-                                            </td>
-
                                             <td>
                                                 <a href="@Url.Action("Edit", "AdminTrinhDoNgoaiNgu", new {id = item.MaTrinhDoNN})">
                                                     <i class="far fa-edit"></i>
@@ -63,6 +56,13 @@
                                                 <a href="@Url.Action("Delete", "AdminTrinhDoNgoaiNgu", new { id = item.MaTrinhDoNN })">
                                                     <i class="far fa-trash-alt"></i>
                                                 </a>
+                                            </td>
+
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.TenTrinhDo)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.CapDo)
                                             </td>
                                         </tr>
                                     }

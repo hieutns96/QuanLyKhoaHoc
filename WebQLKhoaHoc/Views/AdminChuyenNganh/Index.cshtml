@@ -34,13 +34,14 @@
                             <table id="datatable" class="table table-striped table-bordered dataTable no-footer" role="grid" aria-describedby="datatable_info">
                                 <thead>
                                     <tr role="row">
+                                        <th>Action</th>
                                         <th>
                                             Tên chuyên ngành
                                         </th>
                                         <th>
                                            Ngành đào tạo
                                         </th>
-                                        <th>Action</th>
+                                        
                                     </tr>
                                 </thead>
                                 <!-- grid nkh  -->
@@ -50,13 +51,6 @@
                                         <tr role="row" class="even">
 
                                             <td>
-                                                @Html.DisplayFor(modelItem => item.TenChuyenNganh)
-                                            </td> 
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.NganhDaoTao.TenNganhDaoTao)
-                                            </td>
-
-                                            <td>
                                                 <a href="@Url.Action("Edit", "AdminChuyenNganh", new {id = item.MaChuyenNganh})">
                                                     <i class="far fa-edit"></i>
                                                 </a>
@@ -64,6 +58,13 @@
                                                     <i class="far fa-trash-alt"></i>
                                                 </a>
                                             </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.TenChuyenNganh)
+                                            </td> 
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.NganhDaoTao.TenNganhDaoTao)
+                                            </td>
+
                                         </tr>
                                     }
 

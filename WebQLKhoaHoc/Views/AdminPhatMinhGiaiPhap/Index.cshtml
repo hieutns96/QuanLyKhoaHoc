@@ -5,84 +5,90 @@
     Layout = "~/Views/Shared/_AdminMainPage.cshtml";
 }
 
-<h2>Index</h2>
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>
+                    Danh sách Phát minh giải pháp
+                </h2>
+                <ul class="nav navbar-right panel_toolbox">
+                    <li class="dropdown">
+                        <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>
+                                @Html.ActionLink("Create New", "Create", "AdminPhatMinhGiaiPhap")
+                            </li>
+                        </ul>
+                    </li>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.TenPM)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SoHieuPM)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MotaPM)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DoiTuongSuDung)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.QuocGiaCap)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.LinkLienKet)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AnhScanGiayChungNhan)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AnhChupSanPham1)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AnhChupSanPham2)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NamCongBo)
-        </th>
-        <th></th>
-    </tr>
+                </ul>
+                @using (Html.BeginForm("ImportCSVFile", "AdminPhatMinhGiaiPhap", FormMethod.Post, new { @class = "form-inline nav navbar-right form-label-right", @enctype = "multipart/form-data" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <input type="file" name="fileCSV" class="form-control" placeholder="CSV File">
+                    <input type="submit" class="form-control" />
+                }
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <div id="datatable_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+                    <!-- list component  -->
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <table id="datatable" class="table table-striped table-bordered dataTable no-footer" role="grid" aria-describedby="datatable_info">
+                                <thead>
+                                    <tr role="row">
+                                        <th>Số hiệu phát minh</th>
+                                        <th>Tên phát minh</th>
+                                        <th>Năm công bố</th>
+                                        <th>Quốc gia cấp</th>
+                                        <th>Đối tượng sử dụng</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.TenPM)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SoHieuPM)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MotaPM)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DoiTuongSuDung)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.QuocGiaCap)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LinkLienKet)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AnhScanGiayChungNhan)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AnhChupSanPham1)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AnhChupSanPham2)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NamCongBo)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.MaPM }) |
-            @Html.ActionLink("Details", "Details", new { id=item.MaPM }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.MaPM })
-        </td>
-    </tr>
-}
+                                <!-- grid nkh  -->
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr role="row" class="even">
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.SoHieuPM)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.TenPM)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.NamCongBo)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.QuocGiaCap)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.DoiTuongSuDung)
+                                            </td>
+                                            <td>
+                                                <a href="@Url.Action("Edit", "AdminPhatMinhGiaiPhap", new {id = item.MaPM})">
+                                                    <i class="far fa-edit"></i>
+                                                </a>
+                                                <a href="@Url.Action("Delete", "AdminPhatMinhGiaiPhap", new {id = item.MaPM})">
+                                                    <i class="far fa-trash-alt"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
 
-</table>
+                                    }
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

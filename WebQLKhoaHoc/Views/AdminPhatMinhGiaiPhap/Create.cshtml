@@ -22,44 +22,51 @@
                 </div>
             </div>
             <div class="form-group">
-                <h4 class="col-md-2 col-md-offset-1">Mã ISBN:</h4>
+                <h4 class="col-md-2 col-md-offset-1">Số hiệu phát minh:</h4>
                 <div class="col-md-7">
-                    <input required class="form-control" name="MaISBN" />
+                    <input required class="form-control" name="SoHieuPM" />
                 </div>
             </div>
 
             <div class="form-group">
-                <h4 class="col-md-2 col-md-offset-1">Tên sách:</h4>
+                <h4 class="col-md-2 col-md-offset-1">Tên phát minh:</h4>
                 <div class="col-md-7">
-                    <input required class="form-control" name="TenSach" />
+                    <input required class="form-control" name="TenPM" />
                 </div>
             </div>
 
             <div class="form-group">
-                <h4 class="col-md-2 col-md-offset-1">Năm xuất bản:</h4>
+                <h4 class="col-md-2 col-md-offset-1">Năm công bố:</h4>
                 <div class="col-md-7">
-                    <input required class="form-control" name="NamXuatBan" />
+                    <input required class="form-control" name="NamCongBo" />
                 </div>
             </div>
 
             <div class="form-group">
-                <h4 class="col-md-2 col-md-offset-1">Lĩnh vực sách:</h4>
+                <h4 class="col-md-2 col-md-offset-1">Quốc gia cấp:</h4>
                 <div class="col-md-7">
-                    @Html.DropDownList("MaLinhVuc", ViewBag.MaLinhVuc as SelectList, new { @class = "form-control" })
+                    <input required class="form-control" name="QuocGiaCap" />
                 </div>
             </div>
 
             <div class="form-group">
-                <h4 class="col-md-2 col-md-offset-1">Lĩnh vực đề tài:</h4>
+                <h4 class="col-md-2 col-md-offset-1">Đối tượng sử dụng:</h4>
                 <div class="col-md-7">
-                    @Html.DropDownList("MaNXB", ViewBag.MaNXB as SelectList, new { @class = "form-control" })
+                    <input required class="form-control" name="DoiTuongSuDung" />
                 </div>
             </div>
 
             <div class="form-group">
-                <h4 class="col-md-2 col-md-offset-1">Lĩnh vực đề tài:</h4>
+                <h4 class="col-md-2 col-md-offset-1">Web liên kết:</h4>
                 <div class="col-md-7">
-                    @Html.DropDownList("MaLoai", ViewBag.MaLoai as SelectList, new { @class = "form-control" })
+                    <input required class="form-control" name="LinkLienKet" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <h4 class="col-md-2 col-md-offset-1">Mô tả phát minh:</h4>
+                <div class="col-md-7">
+                    <textarea required class="form-control" name="MotaPM" />
                 </div>
             </div>
 

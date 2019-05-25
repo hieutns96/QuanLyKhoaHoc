@@ -55,7 +55,8 @@ namespace WebQLKhoaHoc.Controllers
                 db.SachGiaoTrinhs.Add(sachGiaoTrinh);                
                 await db.SaveChangesAsync();
 
-                DSTacGia dstacgia = new DSTacGia {
+                DSTacGia dstacgia = new DSTacGia
+                {
                     MaNKH = MaChuBien,
                     MaSach = sachGiaoTrinh.MaSach,
                     LaChuBien = true

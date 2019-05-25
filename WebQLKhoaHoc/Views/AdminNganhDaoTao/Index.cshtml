@@ -45,11 +45,6 @@
                                     @foreach (var item in Model)
                                     {
                                         <tr role="row" class="even">
-
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.TenNganhDaoTao)
-                                            </td>
-
                                             <td>
                                                 <a href="@Url.Action("Edit", "AdminNganhDaoTao", new {id = item.MaNganhDaoTao})">
                                                     <i class="far fa-edit"></i>
@@ -57,6 +52,10 @@
                                                 <a href="@Url.Action("Delete", "AdminNganhDaoTao", new {id = item.MaNganhDaoTao})">
                                                     <i class="far fa-trash-alt"></i>
                                                 </a>
+                                            </td>
+
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.TenNganhDaoTao)
                                             </td>
                                         </tr>
                                     }
