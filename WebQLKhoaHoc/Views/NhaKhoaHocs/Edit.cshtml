@@ -326,8 +326,15 @@
                                             <td style="display:none;">@Html.Hidden("[" + indexernn + "].ID", item.ID, new { @id = "ID" })</td>
                                             <td style="display:none;">@Html.Hidden("[" + indexernn + "].MaNKH", item.MaNKH)</td>
                                             <td>@Html.DropDownList("[" + indexernn + "].MaTrinhDoNN", new SelectList(db.TrinhDoNgoaiNgus, "MaTrinhDoNN", "TenTrinhDo", item.MaTrinhDoNN), new { @class = "form-control text-right" })</td>
-                                            <td>@Html.TextBox("[" + indexernn + "].GhiChu", item.GhiChu, new { @class = "form-control text-right", @disabled = "disabled" })</td>
-                                            <td>@Html.TextBox("[" + indexernn + "].VanBang", item.VanBang , new { @class = "form-control text-right" })</td>
+                                            @if (item.MaTrinhDoNN == 12)
+                                            {
+                                                <td>@Html.TextBox("[" + indexernn + "].GhiChu", item.GhiChu, new { @class = "form-control text-right" })</td>
+                                            }
+                                            else
+                                            {
+                                                <td>@Html.TextBox("[" + indexernn + "].GhiChu", item.GhiChu, new { @class = "form-control text-right", @disabled = "disabled" })</td>
+                                            }
+                                            <td>@Html.TextBox("[" + indexernn + "].VanBang", item.VanBang, new { @class = "form-control text-right" })</td>
                                             <td>@Html.TextBox("[" + indexernn + "].ChungChi", item.ChungChi, new { @class = "form-control text-right" })</td>
                                             <td><buton class="btn btn-danger" id="xoatrinhdo"><span class="glyphicon glyphicon-remove-sign"></span></buton></td>
                                         </tr>
@@ -609,14 +616,6 @@
 
 
              
-             var current_val = $("select:first").val();          
-             console.log(current_val);
-            var next_input = $(this).parent().next().children("input");
-            if (current_val == 12) {
-                next_input.removeAttr('disabled');
-            }
-             
-
              $('select').on('change', function () {
                  var current_val = $(this).val();
                  var next_input = $(this).parent().next().children("input");

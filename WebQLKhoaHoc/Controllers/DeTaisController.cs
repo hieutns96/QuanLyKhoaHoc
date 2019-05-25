@@ -65,7 +65,6 @@ namespace WebQLKhoaHoc.Controllers
             {
                 var madetais = db.DSNguoiThamGiaDeTais.Where(p => p.MaNKH == nkhId).Select(p => p.MaDeTai).ToList();
                 pre = pre.And(p => madetais.Contains(p.MaDeTai));
-                
             }
             
             /* Nếu Thời gian search được nhập thì mới đỏ vào view bag */
