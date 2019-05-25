@@ -108,10 +108,14 @@
                                                                     </div>
                                                                     <div class="col-md-8">
                                                                         <select class="form-control" name="GioiTinhNKH">
-                                                                            <option value="Nam" @if (Model.GioiTinhNKH == "Nam") {@:selected 
-                                                                                    }>Nam</option>
-                                                                            <option value="Nữ" @if (Model.GioiTinhNKH == "Nữ") {@:selected
-                                                                                    }>Nữ</option>
+                                                                            <option value="Nam" @if (Model.GioiTinhNKH == "Nam") { @: selected
+                                                                                    }>
+                                                                                Nam
+                                                                            </option>
+                                                                            <option value="Nữ" @if (Model.GioiTinhNKH == "Nữ") { @: selected
+                                                                                    }>
+                                                                                Nữ
+                                                                            </option>
                                                                         </select>
                                                                         <br>
                                                                     </div>
@@ -127,7 +131,7 @@
                                                                     <div class="col-md-8">
                                                                         <input name="NgaySinh" id="Fromdate" class="form-control date-picker" type="text" placeholder="Năm sinh" value="@Model.NgaySinh.Value.ToString("d") " autocomplete="off" required>
                                                                     </div>
-                                                                   
+
                                                                 </div>
                                                             </div>
 
@@ -150,26 +154,26 @@
                                                             <div class="bg-light media border-bottom mb-20 p-15">
 
                                                                 <div class="form-group">
-                                                                    
+
                                                                     <div class="col-md-4">
                                                                         <span class="mt-0 mb-0 font-weight-600">Điện thoại:</span>
                                                                     </div>
-                                                                        <div class="col-md-8">
-                                                                            @Html.TextBoxFor(model => model.DienThoai, new {@class = "form-control", @required = "required"})<br>
-                                                                        </div>
-                                                                  
+                                                                    <div class="col-md-8">
+                                                                        @Html.TextBoxFor(model => model.DienThoai, new { @class = "form-control", @required = "required" })<br>
+                                                                    </div>
+
                                                                     <div class="col-md-4">
                                                                         <span class="mt-0 mb-0 font-weight-600">Email:</span>
                                                                     </div>
                                                                     <div class="col-md-8">
-                                                                        @Html.TextBoxFor(model => model.EmailLienHe, new {@class = "form-control", @required = "required"})<br>
+                                                                        @Html.TextBoxFor(model => model.EmailLienHe, new { @class = "form-control", @required = "required" })<br>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </li>
-                                                    </ul>                                             
-                                                        
-                                                </div>                                               
+                                                    </ul>
+
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
@@ -193,15 +197,15 @@
                                                             </p>
                                                             <h5 class="mt-0 mb-0 font-weight-600">Học vị:</h5>
                                                             <p>
-                                                                @Html.DropDownList("MaHocVi", (IEnumerable<SelectListItem>)ViewBag.MaHV,  new { @class = "form-control" })
+                                                                @Html.DropDownList("MaHocVi", (IEnumerable<SelectListItem>)ViewBag.MaHV, new { @class = "form-control" })
                                                             </p>
                                                             <h5 class="mt-0 mb-0 font-weight-600">Chuyên ngành đào tạo:</h5>
                                                             <p>
-                                                                @Html.DropDownList("MaCNDaoTao", (IEnumerable<SelectListItem>)ViewBag.MaCNDT,  new { @class = "form-control" })
+                                                                @Html.DropDownList("MaCNDaoTao", (IEnumerable<SelectListItem>)ViewBag.MaCNDT, new { @class = "form-control" })
                                                             </p>
                                                             <h5 class="mt-0 mb-0 font-weight-600">Đơn vị quản lý:</h5>
                                                             <p>
-                                                                @Html.DropDownList("MaDonViQL", (IEnumerable<SelectListItem>)ViewBag.MaDVQL,  new { @class = "form-control" })
+                                                                @Html.DropDownList("MaDonViQL", (IEnumerable<SelectListItem>)ViewBag.MaDVQL, new { @class = "form-control" })
                                                             </p>
                                                             <h5 class="mt-0 mb-0 font-weight-600">Ngạch viên chức:</h5>
                                                             <p>
@@ -231,23 +235,23 @@
                                                     <div class="clearfix"></div>
                                                 </div>
                                                 <div class="volunteer-address x_content">
-                                                    <div class="bg-light media border-bottom p-15 mb-20" style="overflow: visible">                                                        
-                                                        <div class="form-group">                                                           
+                                                    <div class="bg-light media border-bottom p-15 mb-20" style="overflow: visible">
+                                                        <div class="form-group">
                                                             <h5 class="mt-0 mb-0 font-weight-600">Số tài khoản:</h5>
                                                             <p>
                                                                 <input type="text" name="STKNH" value="@Model.NganHangNKHs.STKNH" class="form-control" />
-                                                                
+
                                                             </p>
 
                                                             <h5 class="mt-0 mb-0 font-weight-600">Tên ngân hàng:</h5>
                                                             <p>
                                                                 @if (Model.NganHangNKHs.NganHang != null)
                                                                 {
-                                                                    @Html.DropDownList("MaNH", new SelectList(db.NganHangs, "MaNH", "TenNH", Model.NganHangNKHs.NganHang.MaNH), new {@class = "form-control"})
+                                                                    @Html.DropDownList("MaNH", new SelectList(db.NganHangs, "MaNH", "TenNH", Model.NganHangNKHs.NganHang.MaNH), new { @class = "form-control" })
                                                                 }
                                                                 else
                                                                 {
-                                                                    @Html.DropDownList("MaNH", new SelectList(db.NganHangs, "MaNH", "TenNH","--Chọn ngân hàng--"), new {@class = "form-control"})
+                                                                    @Html.DropDownList("MaNH", new SelectList(db.NganHangs, "MaNH", "TenNH", "--Chọn ngân hàng--"), new { @class = "form-control" })
                                                                 }
 
                                                             </p>
@@ -255,15 +259,15 @@
                                                             <h5 class="mt-0 mb-0 font-weight-600">Chi nhánh:</h5>
                                                             <p>
                                                                 <input type="text" name="ChiNhanhNH" value="@Model.NganHangNKHs.ChiNhanhNH" class="form-control" />
-                                                                
+
                                                             </p>
 
                                                             <h5 class="mt-0 mb-0 font-weight-600">Ghi chú:</h5>
                                                             <p>
                                                                 <input type="text" name="GhiChu" value="@Model.NganHangNKHs.GhiChu" class="form-control" />
-                                                                
+
                                                             </p>
-                                                            
+
                                                         </div>
                                                     </div>
                                                 </div>
@@ -306,11 +310,11 @@
                             <div class="col-md-12 x_content">
                                 <table class="table table-bordered table-striped" id="trinhdonn">
                                     <thead class="custom-tablebody">
-                                        <tr>                                           
+                                        <tr>
                                             <th>Tên Ngoại Ngữ</th>
-                                            <th>Đọc</th>
-                                            <th>Viết</th>
-                                            <th>Nói</th>
+                                            <th>Ghi Chú</th>
+                                            <th>Văn Bằng</th>
+                                            <th>Chứng Chỉ</th>
                                             <th><button class="btn btn-success" id="ThemTrinhDoNN" type="button"><span class="glyphicon glyphicon-plus-sign"></span></button></th>
                                         </tr>
                                     </thead>
@@ -322,9 +326,9 @@
                                             <td style="display:none;">@Html.Hidden("[" + indexernn + "].ID", item.ID, new { @id = "ID" })</td>
                                             <td style="display:none;">@Html.Hidden("[" + indexernn + "].MaNKH", item.MaNKH)</td>
                                             <td>@Html.DropDownList("[" + indexernn + "].MaTrinhDoNN", new SelectList(db.TrinhDoNgoaiNgus, "MaTrinhDoNN", "TenTrinhDo", item.MaTrinhDoNN), new { @class = "form-control text-right" })</td>
-                                            <td>@Html.DropDownList("[" + indexernn + "].Doc", new SelectList(db.DanhGiaNgoaiNgus, "MaLoai", "TenLoai", item.Doc), new { @class = "form-control text-right" })</td>
-                                            <td>@Html.DropDownList("[" + indexernn + "].Viet", new SelectList(db.DanhGiaNgoaiNgus, "MaLoai", "TenLoai", item.Viet), new { @class = "form-control text-right" })</td>
-                                            <td>@Html.DropDownList("[" + indexernn + "].Noi", new SelectList(db.DanhGiaNgoaiNgus, "MaLoai", "TenLoai", item.Noi), new { @class = "form-control text-right" })</td>
+                                            <td>@Html.TextBox("[" + indexernn + "].GhiChu", item.GhiChu, new { @class = "form-control text-right", @disabled = "disabled" })</td>
+                                            <td>@Html.TextBox("[" + indexernn + "].VanBang", item.VanBang , new { @class = "form-control text-right" })</td>
+                                            <td>@Html.TextBox("[" + indexernn + "].ChungChi", item.ChungChi, new { @class = "form-control text-right" })</td>
                                             <td><buton class="btn btn-danger" id="xoatrinhdo"><span class="glyphicon glyphicon-remove-sign"></span></buton></td>
                                         </tr>
                                             indexernn++;
@@ -481,7 +485,7 @@
     </div>
 </section>
 @section NhaKhoaHocScripts{
-<script>
+    <script>
         var indexerjs = @indexer;
         var indexerjsct = @indexerct;
         var indexernnjs = @indexernn;
@@ -492,26 +496,26 @@
         var ma_phi_xoa_nn = [];
         var ma_phi_xoa_nn_js = [];
          $(document).ready(function () {
-            $("#ThemTrinhDoNN").click(function () {               
-                $("#trinhdonn tbody:last-child ").append(`  
-                                                <tr>                                                   
+            $("#ThemTrinhDoNN").click(function () {
+                $("#trinhdonn tbody:last-child ").append(`
+                                                <tr>
                                                     <td style="display:none;"><input id="ID" name="[` + indexernnjs + `].ID" type="hidden" value="" /></td>
                                                     <td style="display:none;"><input name="[` + indexernnjs + `].MaNKH" type="hidden" value="@Model.MaNKH" /></td>
                                                     <td>@Html.DropDownList("s", new SelectList(db.TrinhDoNgoaiNgus, "MaTrinhDoNN", "TenTrinhDo"), new { @class = "form-control text-right", @id = "SelectListTenNgoaiNgu" })</td>
-                                                    <td>@Html.DropDownList("s", new SelectList(db.DanhGiaNgoaiNgus, "MaLoai", "TenLoai"), new { @class = "form-control text-right", @id = "SelectListDanhGia" })</td>                                                   
-                                                    <td>@Html.DropDownList("s", new SelectList(db.DanhGiaNgoaiNgus, "MaLoai", "TenLoai"), new { @class = "form-control text-right", @id = "SelectListDanhGia1" })</td>                                                   
-                                                    <td>@Html.DropDownList("s", new SelectList(db.DanhGiaNgoaiNgus, "MaLoai", "TenLoai"), new { @class = "form-control text-right", @id = "SelectListDanhGia2" })</td>                                                   
-                                                        <td><buton class="btn btn-danger" id="xoatrinhdo"><span class="glyphicon glyphicon-remove-sign"></span></buton></td>
+                                                    <td><input name="[` + indexernnjs + `].GhiChu"  value="" class = "form-control text-right" id="SelectListDanhGia"  /></td>
+                                                    <td><input name="[` + indexernnjs + `].VanBang"  value="" class = "form-control text-right" id="SelectListDanhGia1" /></td>
+                                                    <td><input name="[` + indexernnjs + `].ChungChi"  value="" class = "form-control text-right" id="SelectListDanhGia2"/></td>
+                                                    <td><buton class="btn btn-danger" id="xoatrinhdo"><span class="glyphicon glyphicon-remove-sign"></span></buton></td>
                                                 </tr>`);
                         $("#SelectListTenNgoaiNgu").attr('name', "[" + indexernnjs + "].MaTrinhDoNN");
-                        $("#SelectListDanhGia").attr('name', "[" + indexernnjs + "].Doc");
-                        $("#SelectListDanhGia1").attr('name', "[" + indexernnjs + "].Viet");
-                        $("#SelectListDanhGia2").attr('name', "[" + indexernnjs + "].Noi");
+                        $("#SelectListDanhGia").attr('name', "[" + indexernnjs + "].GhiChu");
+                        $("#SelectListDanhGia1").attr('name', "[" + indexernnjs + "].VanBang");
+                        $("#SelectListDanhGia2").attr('name', "[" + indexernnjs + "].ChungChi");
                         $("#SelectListDanhGia").removeAttr('id');
                         $("#SelectListDanhGia1").removeAttr('id');
                         $("#SelectListDanhGia2").removeAttr('id');
-                        indexernnjs++;                       
-            });         
+                        indexernnjs++;
+            });
 
              $('#trinhdonn').on('click', '#xoatrinhdo', function () {
                  var id = $(this).closest("tr").find("td:first input#ID").val();
@@ -531,14 +535,14 @@
 
 
 
-            $("#ThemQuaTrinhDaoTao").click(function () {               
+            $("#ThemQuaTrinhDaoTao").click(function () {
                 $("#quatrinhdt tbody:last-child ").append(`  <tr>
                                                     <input name="[`+indexerjs+`].MaNKH" type="hidden" value="@Model.MaNKH" />
                                                     <td><input name="[`+ indexerjs + `].ThoiGianBD" id="[` + indexerjs + `]DTThoiGianBD" class="form-control date-picker text-right" type="text" autocomplete="off" value="" /></td>
                                                     <td><input name="[`+ indexerjs + `].ThoiGianKT" id="[` + indexerjs + `]DTThoiGianKT" class="form-control date-picker text-right" type="text" autocomplete="off" value="" /></td>
                                                     <td>@Html.DropDownList("s", new SelectList(db.HocVis, "MaHocVi", "TenHocVi"), new { @class = "form-control text-right", @id = "SelectListMaBacDaoTao" })</td>
                                                     <td><input class="form-control text-right" name="[`+ indexerjs +`].CoSoDaoTao" type="text" value="" /></td>
-                                                    <td>@Html.DropDownList("s", new SelectList(db.NganhDaoTaos, "MaNganhDaoTao", "TenNganhDaoTao"), new { @class = "form-control text-right" , @id="SelectListMaNganhDaoTao"})</td>                                                   
+                                                    <td>@Html.DropDownList("s", new SelectList(db.NganhDaoTaos, "MaNganhDaoTao", "TenNganhDaoTao"), new { @class = "form-control text-right" , @id="SelectListMaNganhDaoTao"})</td>
                                                     <td><buton class="btn btn-danger" id="xoadaotao"><span class="glyphicon glyphicon-remove-sign"></span></buton></td>
                                                 </tr>`);
                 $("#SelectListMaBacDaoTao").attr('name', "[" + indexerjs + "].MaHocVi");
@@ -566,7 +570,7 @@
                 $(this).closest("tr").hide();
             });
 
-            
+
 
             $("#ThemQuaTrinhCongTac").click(function () {
                 $("#quatrinhct tbody:last-child ").append(`<tr>
@@ -601,7 +605,34 @@
                     $("#xoaquatrinhcongtacjs").val(JSON.stringify(ma_phi_xoa_ct_js));
                 }
                 $(this).closest("tr").hide();
-            });
+             });
+
+
+             
+             var current_val = $("select:first").val();          
+             console.log(current_val);
+            var next_input = $(this).parent().next().children("input");
+            if (current_val == 12) {
+                next_input.removeAttr('disabled');
+            }
+             
+
+             $('select').on('change', function () {
+                 var current_val = $(this).val();
+                 var next_input = $(this).parent().next().children("input");
+                 if (current_val == 12) {
+                     
+                     next_input.removeAttr('disabled');
+                 } else {
+                     next_input.attr('disabled', 'disabled');
+                 }
+             });
         });
-</script>
+    </script>
 }
+
+<!--
+<td>@@Html.DropDownList("s", new SelectList(db.DanhGiaNgoaiNgus, "MaLoai", "TenLoai"), new { @@class = "form-control text-right", @@id = "SelectListDanhGia" })</td>
+<td>@@Html.DropDownList("s", new SelectList(db.DanhGiaNgoaiNgus, "MaLoai", "TenLoai"), new { @@class = "form-control text-right", @@id = "SelectListDanhGia1" })</td>
+<td>@@Html.DropDownList("s", new SelectList(db.DanhGiaNgoaiNgus, "MaLoai", "TenLoai"), new { @@class = "form-control text-right", @@id = "SelectListDanhGia2" })</td>
+    -->
