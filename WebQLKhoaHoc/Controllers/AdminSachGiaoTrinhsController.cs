@@ -15,7 +15,7 @@ using System.Text.RegularExpressions;
 
 namespace WebQLKhoaHoc.Controllers
 {
-    [CustomizeAuthorize(Roles = "1,2")]
+    [CustomizeAuthorize(Roles = "1")]
     public class AdminSachGiaoTrinhsController : Controller
     {
         private QLKhoaHocEntities db = new QLKhoaHocEntities();
@@ -54,13 +54,16 @@ namespace WebQLKhoaHoc.Controllers
             {   
                 db.SachGiaoTrinhs.Add(sachGiaoTrinh);                
                 await db.SaveChangesAsync();
+
                 DSTacGia dstacgia = new DSTacGia {
                     MaNKH = MaChuBien,
                     MaSach = sachGiaoTrinh.MaSach,
                     LaChuBien = true
                 };
-                sachGiaoTrinh.DSTacGias.Add(dstacgia);
+                
+                db.DSTacGias.Add(dstacgia);
                 await db.SaveChangesAsync();
+
                 return RedirectToAction("Index");
             }
 
@@ -129,9 +132,18 @@ namespace WebQLKhoaHoc.Controllers
         {
             SachGiaoTrinh sachGiaoTrinh = await db.SachGiaoTrinhs.FindAsync(id);
             db.SachGiaoTrinhs.Remove(sachGiaoTrinh);
-            await db.SaveChangesAsync();
+
+            List<DSTacGia> dsTacGia = await db.DSTacGias.Where(p => p.MaSach == id).ToListAsync();
+            foreach (var tacgia in dsTacGia)
+            {
+                db.DSTacGias.Remove(tacgia);
+            }
+
+            await db.SaveChangesAsync();    
             return RedirectToAction("Index");
         }
+
+
 
         public async Task<ActionResult> DanhSachTacGia()
         {
