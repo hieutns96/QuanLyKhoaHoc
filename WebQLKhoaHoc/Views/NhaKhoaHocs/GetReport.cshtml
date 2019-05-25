@@ -1052,34 +1052,30 @@
 
             </span>
         </p>
-        <p class="c19">
-            <span class="c2">
-                M&atilde; s&#7889; c&aacute;n b&#7897; vi&ecirc;n
-                ch&#7913;c: @Model.MaNKHHoSo
-            </span>
-        </p>
+      
         <p class="c19 c20"><span class="c2"></span></p>
         <table border="0" cellspacing="15" cellpadding="10">
             <thead>
-                <tr>
-                    <td style='height:20' colspan='4' align='Center'>
-                        <img alt="" src="~/Image/logo_hcmup.png"
-                             style="max-width: 100px; max-height: 50px; vertical-align: middle"
-                             title="">
-                    </td>
-                </tr>
+            <tr>
+                <td style='height:20' colspan='4' align='Center'>
+                    TRƯỜNG ĐẠI HỌC SƯ PHẠM <br />
+                    THÀNH PHỐ HỒ CHÍ MINH
+                </td>
+                <td width='300px' style='height:30' colspan='6' align='Center'>
+                    CỘNG HÒA XÃ HỘI CHŨ NGHĨA VIỆT NAM <BR />
+                    Độc lập - Tự do - Hạnh phúc
+                </td>
+            </tr>
+            
             </thead>
             <tbody>
-                <tr>
-                    <td style='height:20' colspan='4' align='Center'>
-                        TRƯỜNG ĐẠI HỌC SƯ PHẠM <br />
-                        THÀNH PHỐ HỒ CHÍ MINH
-                    </td>
-                    <td width='300px' style='height:30' colspan='6' align='Center'>
-                        CỘNG HÒA XÃ HỘI CHŨ NGHĨA VIỆT NAM <BR />
-                        Độc lập - Tự do - Hạnh phúc
-                    </td>
-                </tr>
+            <tr>
+                <td style='height:20' colspan='4' align='Center'>
+                    <img alt="" src="~/Image/logo_hcmup_2.png"
+                         style="max-width: 100px; max-height: 50px; vertical-align: middle"
+                         title="">
+                </td>
+            </tr>
             </tbody>
         </table>
 
@@ -1088,7 +1084,7 @@
         <p class="c44 c20"><span class="c27"></span></p>
         <p class="c44 c20"><span class="c27"></span></p>
         <p class="c44 c20"><span class="c27"></span></p>
-        <p class="c44"><span class="c27">L&Iacute; L&#7882;CH KHOA H&#7884;C</span></p>
+        <p style="text-align: center" class="c44"><span class="c27">L&Iacute; L&#7882;CH KHOA H&#7884;C</span></p>
         <p class="c44 c20"><span class="c2"></span></p>
         <ol class="c9 lst-kix_list_1-0 start" start="1">
             <li class="c17 c29"><span class="c24">Th&ocirc;ng tin c&aacute; nh&acirc;n</span></li>
@@ -1369,11 +1365,8 @@
         <p class="c0"><span class="c2"></span></p>
         <ol class="c9 lst-kix_list_1-0" start="4">
             <li class="c17 c36">
-                <span class="c24">Ngo&#7841;i ng&#7919;</span><span class="c2">
-                    &nbsp;(nh&#7853;n x&eacute;t
-                    theo c&aacute;c m&#7913;c: A &ndash; y&#7871;u, B &ndash; trung b&igrave;nh, C &ndash; kh&aacute;, D
-                    &ndash; th&agrave;nh th&#7841;o)
-                </span>
+                <span class="c24">Ngo&#7841;i ng&#7919;</span>
+               
             </li>
         </ol>
         <p class="c0"><span class="c2"></span></p><a id="t.086ccfc796bd5142bc52eece30ec486a6ad3cdab"></a><a id="t.3"></a>
@@ -1467,8 +1460,9 @@
                         <th>
                             Cơ quan tài trợ kinh phí
                         </th>
-                        <th>Thời gian thực hiện</th>
-                        <th>Vai trò</th>
+                        <th>Mã số đề tài/dự án</th>
+                        <th>Thời gian</th>
+                        <th>Vai trò(chủ nhiệm, thành viên, ...</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -1485,7 +1479,10 @@
                             <td align="left">
                                 @item.DeTai.CoQuanTaiTro
                             </td>
-                            <td align="right">
+                            <td align="left">
+                                @item.DeTai.MaDeTaiHoSo
+                            </td>
+                            <td align="left">
                                 @item.DeTai.NamBD.Value.Year-@item.DeTai.NamKT.Value.Year
                             </td>
                             <td align="left">
