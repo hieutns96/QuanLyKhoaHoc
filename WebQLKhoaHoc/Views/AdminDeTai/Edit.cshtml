@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_AdminMainPage.cshtml";
 }
 
-@using (Html.BeginForm("Create", "AdminDeTai", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+@using (Html.BeginForm("Edit", "AdminDeTai", FormMethod.Post, new { @enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
 
