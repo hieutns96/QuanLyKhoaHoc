@@ -129,9 +129,18 @@ namespace WebQLKhoaHoc.Controllers
         {
             SachGiaoTrinh sachGiaoTrinh = await db.SachGiaoTrinhs.FindAsync(id);
             db.SachGiaoTrinhs.Remove(sachGiaoTrinh);
-            await db.SaveChangesAsync();
+
+            List<DSTacGia> dsTacGia = await db.DSTacGias.Where(p => p.MaSach == id).ToListAsync();
+            foreach (var tacgia in dsTacGia)
+            {
+                db.DSTacGias.Remove(tacgia);
+            }
+
+            await db.SaveChangesAsync();    
             return RedirectToAction("Index");
         }
+
+
 
         public async Task<ActionResult> DanhSachTacGia()
         {
