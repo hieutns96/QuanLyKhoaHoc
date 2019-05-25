@@ -1,0 +1,88 @@
+﻿@model IEnumerable<WebQLKhoaHoc.PhatMinhGiaiPhap>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminMainPage.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TenPM)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SoHieuPM)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MotaPM)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DoiTuongSuDung)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.QuocGiaCap)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LinkLienKet)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AnhScanGiayChungNhan)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AnhChupSanPham1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AnhChupSanPham2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NamCongBo)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TenPM)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SoHieuPM)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MotaPM)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DoiTuongSuDung)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.QuocGiaCap)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LinkLienKet)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AnhScanGiayChungNhan)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AnhChupSanPham1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AnhChupSanPham2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NamCongBo)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.MaPM }) |
+            @Html.ActionLink("Details", "Details", new { id=item.MaPM }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.MaPM })
+        </td>
+    </tr>
+}
+
+</table>
