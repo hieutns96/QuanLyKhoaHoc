@@ -226,6 +226,7 @@
     <Compile Include="Controllers\AdminPhanLoaiSPController.cs" />
     <Compile Include="Controllers\AdminPhanLoaiSachesController.cs" />
     <Compile Include="Controllers\AdminPhanLoaiTapChiController.cs" />
+    <Compile Include="Controllers\AdminPhatMinhGiaiPhapController.cs" />
     <Compile Include="Controllers\AdminQuaTrinhCongTacController.cs" />
     <Compile Include="Controllers\AdminQuaTrinhDaoTaoController.cs" />
     <Compile Include="Controllers\AdminSachGiaoTrinhsController.cs" />
@@ -427,6 +428,8 @@
     <Content Include="Image\hcmup_edu.ico" />
     <Content Include="Image\login_background.jpg" />
     <Content Include="Image\logo_hcmup.png" />
+    <Content Include="Image\logo_hcmup_2.png" />
+    <Content Include="Image\logo_hcmup_2_footer.png" />
     <Content Include="Image\research-background.png" />
     <Content Include="QLKH.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -702,6 +705,11 @@
     <Content Include="Views\AdminChuyenMonNKH\Details.cshtml" />
     <Content Include="Views\AdminChuyenMonNKH\Edit.cshtml" />
     <Content Include="Views\AdminChuyenMonNKH\Index.cshtml" />
+    <Content Include="Views\AdminPhatMinhGiaiPhap\Create.cshtml" />
+    <Content Include="Views\AdminPhatMinhGiaiPhap\Delete.cshtml" />
+    <Content Include="Views\AdminPhatMinhGiaiPhap\Details.cshtml" />
+    <Content Include="Views\AdminPhatMinhGiaiPhap\Edit.cshtml" />
+    <Content Include="Views\AdminPhatMinhGiaiPhap\Index.cshtml" />
     <None Include="Web.Debug.Config">
       <DependentUpon>Web.Config</DependentUpon>
     </None>

@@ -15,7 +15,7 @@ using System.Text.RegularExpressions;
 
 namespace WebQLKhoaHoc.Controllers
 {
-    [CustomizeAuthorize(Roles = "1,2")]
+    [CustomizeAuthorize(Roles = "1")]
     public class AdminDeTaiController : Controller
     {
         

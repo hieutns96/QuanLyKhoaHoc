@@ -14,7 +14,7 @@ using System.Text.RegularExpressions;
 namespace WebQLKhoaHoc.Controllers
 {
 
-    [CustomizeAuthorize(Roles = "1,2")]
+    [CustomizeAuthorize(Roles = "1")]
     public class AdminNhaKhoaHocController : Controller
     {
         private QLKhoaHocEntities db = new QLKhoaHocEntities();
