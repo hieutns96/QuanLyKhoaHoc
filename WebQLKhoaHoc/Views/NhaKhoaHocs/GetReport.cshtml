@@ -1559,7 +1559,16 @@
                                 @item.BaiBao.MaISSN
                             </td>
                             <td align="center" style="width: 80px" class="break-word">
-                                @item.BaiBao.LinkFileUpLoad
+                                @{
+                                    if (String.IsNullOrEmpty(item.BaiBao.LinkFileUpLoad))
+                                    {
+                                        <span>Không</span>
+                                    }
+                                    else
+                                    {
+                                        <span>Có</span>
+                                    }
+                                }
                             </td>
                         </tr>
                         count++;
@@ -1600,7 +1609,16 @@
                             @item.BaiBao.MaISSN
                         </td>
                         <td align="center" class="break-word" style="width: 80px;">
-                            @item.BaiBao.LinkFileUpLoad
+                            @{
+                                if (String.IsNullOrEmpty(item.BaiBao.LinkFileUpLoad))
+                                {
+                                    <span>Không</span>
+                                }
+                                else
+                                {
+                                    <span>Có</span>
+                                }
+                            }
                         </td>
                     </tr>
                     count++;
@@ -1639,7 +1657,16 @@
                             @item.BaiBao.MaISSN
                         </td>
                         <td align="center" class="break-word" style="width: 80px">
-                            @item.BaiBao.LinkFileUpLoad
+                            @{
+                                if (String.IsNullOrEmpty(item.BaiBao.LinkFileUpLoad))
+                                {
+                                    <span>Không</span>
+                                }
+                                else
+                                {
+                                    <span>Có</span>
+                                }
+                            }
                         </td>
                     </tr>
                     count++;
@@ -1677,7 +1704,17 @@
                             @item.BaiBao.MaISSN
                         </td>
                         <td align="center" class="break-word" style="width: 80px">
-                            @item.BaiBao.LinkFileUpLoad
+                            @{
+                                if (String.IsNullOrEmpty(item.BaiBao.LinkFileUpLoad))
+                                {
+                                    <span>Không</span>
+                                }
+                                else
+                                {
+                                    <span>Có</span>
+                                }
+                            }
+                          
                         </td>
                     </tr>
                     count++;
@@ -1715,7 +1752,16 @@
                             @item.BaiBao.MaISSN
                         </td>
                         <td align="center" class="break-word" style="width: 80px">
-                            @item.BaiBao.LinkFileUpLoad
+                            @{
+                                if (String.IsNullOrEmpty(item.BaiBao.LinkFileUpLoad))
+                                {
+                                    <span>Không</span>
+                                }
+                                else
+                                {
+                                    <span>Có</span>
+                                }
+                            }
                         </td>
 
                     </tr>
@@ -1775,7 +1821,17 @@
                                 @item.SachGiaoTrinh.PhanLoaiSach.TenLoai
                             </td>
                             <td align="center" class="break-word" style="width: 80px">
-                                @Url.Action("GetAllImage", "SachGiaoTrinhs", new { id = item.MaSach }, protocol: Request.Url.Scheme)
+                                @{
+                                    if (item.SachGiaoTrinh.AnhBiaISBN != null || item.SachGiaoTrinh.AnhBia1 != null)
+                                    {
+                                        <span>Có</span>
+                                    }
+                                    else
+                                    {
+                                        <span>Không</span>
+                                    }
+                                }
+                             
                             </td>
                         </tr>
                         count++;
@@ -1838,7 +1894,17 @@
                                 @item.PhatMinhGiaiPhap.SoHieuPM
                             </td>
                             <td align="center" class="break-word" style="width: 80px">
-                                @Url.Action("GetAllImage", "PhatMinhGiaiPhaps", new { id = item.MaPM }, protocol: Request.Url.Scheme)
+                                @{
+                                    if (item.PhatMinhGiaiPhap.AnhChupSanPham1 != null || item.PhatMinhGiaiPhap.AnhScanGiayChungNhan != null)
+                                    {
+                                        <span>Có</span>
+                                    }
+                                    else
+                                    {
+                                        <span>Không</span>
+                                    }
+                                }
+                               
                             </td>
                         </tr>
                         count++;

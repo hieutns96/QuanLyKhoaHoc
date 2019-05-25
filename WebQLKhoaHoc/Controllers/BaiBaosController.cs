@@ -82,7 +82,7 @@ namespace WebQLKhoaHoc.Controllers
             }
             else
             {
-                var mabaibaos = db.DSNguoiThamGiaBaiBaos.Where(p => p.MaNKH == 1).Select(p => p.MaBaiBao).ToList();
+                var mabaibaos = db.DSNguoiThamGiaBaiBaos.Where(p => p.MaNKH == nkhId).Select(p => p.MaBaiBao).ToList();
                 pre = pre.And(p => mabaibaos.Contains(p.MaBaiBao));
                 
             }
