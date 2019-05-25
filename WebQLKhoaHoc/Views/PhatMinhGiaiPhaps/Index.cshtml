@@ -35,11 +35,10 @@
                                 @if (Session["user"] != null)
                                 {
                                     <!-- Hiển thị nút khi đã đăng nhập -->
+                                    WebQLKhoaHoc.Models.UserLoginViewModel nkh = (WebQLKhoaHoc.Models.UserLoginViewModel)Session["user"];
                                     <div class="col-xs-12 col-sm-6 pl-5 pr-5">
                                         <div class="form-group mb-5">
-                                            <button type="submit" class="btn btn-colored btn-theme-color-2 text-white btn-lg btn-block btn-round border-radius-15px" data-loading-text="Please wait...">
-                                                Phát minh của tôi
-                                            </button>
+                                            <a href="@Url.Action("Index",new {nkhid = nkh.MaNKH})" type="button" class="btn btn-colored btn-theme-color-2 text-white btn-lg btn-block btn-round border-radius-15px" data-loading-text="Please wait...">Phát minh của tôi</a>
                                         </div>
                                     </div>
                                     <!--    ***************            -->
@@ -64,11 +63,7 @@
                                             </div>
                                         </div>
                                         <div class="clearfix"></div>
-                                        @if (Session["user"] != null)
-                                        {
-                                            WebQLKhoaHoc.Models.UserLoginViewModel nkh = (WebQLKhoaHoc.Models.UserLoginViewModel)Session["user"];
-                                            <input name="nkhId" id="nkhId" type="hidden" value="@nkh.MaNKH">
-                                        }
+                                       
                                         <div class="col-xs-12 col-sm-8 pl-5 pr-5">
                                             <div class="form-group mb-5">
                                                 <div class="styled-select">
