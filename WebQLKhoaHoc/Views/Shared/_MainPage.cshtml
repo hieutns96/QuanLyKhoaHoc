@@ -29,7 +29,7 @@
                         </div>
                         <div class="col-xs-12 col-sm-8 col-md-9">
                             <div class="header-custom">
-                                <h2 class="font-weight-800 text-theme-colored font-27">CƠ SỞ DỮ LIỆU <br/> KHOA HỌC VÀ CÔNG NGHỆ</h2>
+                                <h2 class="font-weight-800 text-theme-colored font-27" style="margin-top:-20px;">CƠ SỞ DỮ LIỆU <br /> KHOA HỌC VÀ CÔNG NGHỆ</h2>
                             </div>
                         </div>
                     </div>
@@ -39,7 +39,7 @@
                 <div class="header-nav-wrapper navbar-scrolltofixed bg-theme-colored border-bottom-theme-color-2-1px" style="z-index: 1000;">
                     <div class="container header-container">
                         <nav id="menuzord" class="menuzord bg-theme-colored pull-left flip menuzord-responsive">
-                            <ul class="menuzord-menu menuzord-indented scrollable" style="max-height: 400px;">
+                            <ul class="menuzord-menu menuzord-indented scrollable" >
                                 <li>
                                     @Html.ActionLink("Trang Chủ", "Index", "Home")
                                 </li>
@@ -78,7 +78,7 @@
                                 <li class="scrollable-fix"></li>
                             </ul>
                             <ul></ul>
-                            <ul class="menuzord-menu menuzord-indented scrollable pull-right" style="max-height: 400px;">
+                            <ul class="menuzord-menu menuzord-indented scrollable pull-right" >
 
                                 @if (Session["user"] == null)
                                 {
@@ -91,10 +91,24 @@
                                     QLKhoaHocEntities db = new QLKhoaHocEntities();
                                     WebQLKhoaHoc.Models.UserLoginViewModel nd = (WebQLKhoaHoc.Models.UserLoginViewModel)Session["user"];
                                     <li>
-                                        <a><img src="@nd.AnhCaNhan" style="width:30px;height:30px;border-radius: 50%;display: inline-block;" /> @nd.ChucVi @nd.Ten</a>
+                                        <a>
+                                            @{
+                                                if (String.IsNullOrWhiteSpace(nd.AnhCaNhan))
+                                                {
+                                                    <img src="~/Image/avatar.bmp" style="width:20px;height:20px;border-radius: 50%;display: inline-block; margin-top: -5px;" />
+                                                }
+                                                else
+                                                {
+                                                    <img src="@nd.AnhCaNhan" style="width: 20px; height: 20px; border-radius: 50%; display: inline-block; margin-top: -5px;" />
+                                                }
+                                            }
+
+                                            @nd.ChucVi @nd.Ten
+
+                                        </a>
                                         <ul class="dropdown">
                                             <li>@Html.ActionLink("Đổi Mật Khẩu", "ChangePassword", "Account")</li>
-                                           
+
                                             <li><a href="@Url.Action("Details","NhaKhoaHocs", new { id = nd.MaNKH })">Thông tin của tôi</a></li>
                                             <li>@Html.ActionLink("Đăng xuất", "LogOff", "Account")</li>
                                         </ul>
@@ -128,22 +142,22 @@
                         <ul class="list mt-5 font1 widget-title">
                             <li class="m-0 pl-10 pr-10">
                                 <i class="fa fa-map-marker text-theme-color-2 mr-5"></i>
-                                Phòng Khoa học Công Nghệ  
-                                <br/>Môi trường và Tạp chí Khoa học
-                                <br/> Trường Đại học Sư Phạm TP Hồ Chí Minh
-                                <br/>
-                                <br/><i class="fa fa-map text-theme-color-2 mr-5"></i>
+                                Phòng Khoa học Công Nghệ
+                                <br />Môi trường và Tạp chí Khoa học
+                                <br /> Trường Đại học Sư Phạm TP Hồ Chí Minh
+                                <br />
+                                <br /><i class="fa fa-map text-theme-color-2 mr-5"></i>
                                 Số 280 An Dương Vương - TP HCM
                             </li>
 
                             @*<li class="m-0 pl-10 pr-10">
-                                <i class="fa fa-user text-theme-color-2 mr-5"></i>
-                                Hỗ trợ kỹ thuật: Âu Bửu Long
-                            </li>
-                            <li class="m-0 pl-10 pr-10">
-                                <i class="fa fa-phone text-theme-color-2 mr-5"></i>
-                                0123456789 - longab@hcmue.edu.vn
-                            </li>*@
+                                    <i class="fa fa-user text-theme-color-2 mr-5"></i>
+                                    Hỗ trợ kỹ thuật: Âu Bửu Long
+                                </li>
+                                <li class="m-0 pl-10 pr-10">
+                                    <i class="fa fa-phone text-theme-color-2 mr-5"></i>
+                                    0123456789 - longab@hcmue.edu.vn
+                                </li>*@
                         </ul>
                     </div>
                 </div>
@@ -186,7 +200,7 @@
 
             if (dateFromVal > dateToVal) {
                 searchEl.attr('disabled', 'disabled');
-                alert("Vui lòng nhập ngày đến thời điểm sau ngày từ thời điểm");                
+                alert("Vui lòng nhập ngày đến thời điểm sau ngày từ thời điểm");
             } else {
                 searchEl.removeAttr("disabled");
             }

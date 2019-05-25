@@ -359,8 +359,17 @@ namespace WebQLKhoaHoc.Controllers
                     db.SaveChanges();
                 }
             }
+
             foreach(var x in quatrinhdaotao)
             {
+                if (x.ThoiGianBD == null)
+                {
+                    x.ThoiGianBD = DateTime.Now;
+                }
+                if (x.ThoiGianKT == null)
+                {
+                    x.ThoiGianKT = DateTime.Now;
+                }
                 var daotao = db.QuaTrinhDaoTaos.Where(p => p.MaQT == x.MaQT).SingleOrDefault();
                 if (daotao != null)
                 {
@@ -408,6 +417,13 @@ namespace WebQLKhoaHoc.Controllers
             }
             foreach (var x in quatrinhcongtac)
             {
+                if(x.ThoiGianBD == null)
+                {
+                    x.ThoiGianBD = DateTime.Now;
+                }
+                if (x.ThoiGIanKT == null) {
+                    x.ThoiGIanKT = DateTime.Now;
+                }
                 var congtac = db.QuaTrinhCongTacs.Where(p => p.MaCT == x.MaCT).SingleOrDefault();
                 if (congtac != null)
                 {
