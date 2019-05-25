@@ -46,9 +46,7 @@
                                     {
                                         <tr role="row" class="even">
 
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.TenNgach)
-                                            </td>
+                                            
 
                                             <td>
                                                 <a href="@Url.Action("Edit", "AdminNgachVienChuc", new {id = item.MaNgach})">
@@ -57,6 +55,9 @@
                                                 <a href="@Url.Action("Delete", "AdminNgachVienChuc", new { id = item.MaNgach })">
                                                     <i class="far fa-trash-alt"></i>
                                                 </a>
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.TenNgach)
                                             </td>
                                         </tr>
                                     }
