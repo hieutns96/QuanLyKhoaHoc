@@ -15,7 +15,7 @@
         @Html.ValidationSummary(true)
         <div class="form-group">
             <div class="col-md-2 col-md-offset-1">
-                <h2>@Html.DisplayNameFor(model => model.BaiBao.TenBaiBao)</h2>
+                <h2>Tên bài báo</h2>
             </div>
             <div class="col-md-7">
                 @Html.DropDownList("MaBaiBao", ViewBag.MaBaiBao as SelectList, new { @class = "form-control"})
@@ -23,7 +23,7 @@
         </div>
         <div class="form-group">
             <div class="col-md-2 col-md-offset-1">
-                <h2> @Html.DisplayNameFor(model => model.DeTai.TenDeTai)</h2>
+                <h2>Tên đề tài</h2>
             </div>
             <div class="col-md-7">
                 @Html.DropDownList("MaDeTai", ViewBag.MaDeTai as SelectList, new { @class = "form-control"})
@@ -31,7 +31,7 @@
         </div>
         <div class="form-group">
             <div class="col-md-2 col-md-offset-1">
-                <h2>@Html.DisplayNameFor(model => model.GhiChu)</h2>
+                <h2>Ghi chú</h2>
             </div>
             <div class="col-md-7">
                 @Html.TextBoxFor(model => model.GhiChu, new { @class = "form-control"})
@@ -40,7 +40,7 @@
         <div class="form-group">
             <div class="col-md-offset-2 col-md-8">
                 @Html.ActionLink("Trở về", "Index", null, new { @class = "btn btn-default pull-right" })
-                <input type="submit" value="Save" class="btn btn-default pull-right" />
+                <input type="submit" value="Lưu" class="btn btn-default pull-right" />
             </div>
         </div>
     </div>

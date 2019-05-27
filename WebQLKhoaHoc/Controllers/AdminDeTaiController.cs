@@ -165,7 +165,23 @@ namespace WebQLKhoaHoc.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            DeTai deTai = await db.DeTais.FindAsync(id);
+            DeTai deTai = await db.DeTais.Where(p => p.MaDeTai == id).FirstOrDefaultAsync();
+
+            foreach(var baiBao in deTai.DSBaiBaoDeTais.ToList())
+            {
+                db.DSBaiBaoDeTais.Remove(baiBao);
+            }
+
+            foreach (var nguoiThamGia in deTai.DSNguoiThamGiaDeTais.ToList())
+            {
+                db.DSNguoiThamGiaDeTais.Remove(nguoiThamGia);
+            }
+
+            foreach(var kinhPhi in deTai.KinhPhiDeTais.ToList())
+            {
+                db.KinhPhiDeTais.Remove(kinhPhi);
+            }
+
             db.DeTais.Remove(deTai);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
@@ -245,7 +261,15 @@ namespace WebQLKhoaHoc.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.DSNguoiThamGiaDeTais.AddOrUpdate(dSNguoiThamGiaDeTai);               
+                DSNguoiThamGiaDeTai tacGia = db.DSNguoiThamGiaDeTais.Where(p => p.MaDeTai == dSNguoiThamGiaDeTai.MaDeTai && p.MaNKH == dSNguoiThamGiaDeTai.MaNKH).FirstOrDefault();
+                if (tacGia != null)
+                {
+                    tacGia.LaChuNhiem = dSNguoiThamGiaDeTai.LaChuNhiem;
+                }
+                else
+                {
+                    db.DSNguoiThamGiaDeTais.Add(dSNguoiThamGiaDeTai);
+                }
                 await db.SaveChangesAsync();
                 return RedirectToAction("DanhSachNguoiThamGiaDeTai");
             }

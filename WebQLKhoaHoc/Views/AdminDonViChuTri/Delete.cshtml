@@ -16,7 +16,7 @@
             <h2>Tên đơn vị chủ trì</h2>
         </div>
         <div class="col-md-7">
-            @Html.TextBoxFor(model => model.TenDVChuTri, new { @class = "form-control", @disable = "disable" })
+            @Html.TextBoxFor(model => model.TenDVChuTri, new { @class = "form-control", @disabled = "disabled" })
         </div>
     </div>  
     <div class="form-group">
@@ -24,7 +24,7 @@
             <h2>Địa chỉ</h2>
         </div>
         <div class="col-md-7">
-            @Html.TextBoxFor(model => model.DiaChi, new { @class = "form-control", @disable = "disable" })
+            @Html.TextBoxFor(model => model.DiaChi, new { @class = "form-control", @disabled = "disabled" })
         </div>
     </div>
     @using (Html.BeginForm())
@@ -34,7 +34,7 @@
         <div class="form-group">
             <div class="col-md-offset-2 col-md-8">
                 @Html.ActionLink("Trở về", "Index", null, new { @class = "btn btn-default pull-right" })
-                <input type="submit" value="Delete" class="btn btn-default pull-right" />
+                <input type="submit" value="Xóa" class="btn btn-default pull-right" />
             </div>
         </div>
     }

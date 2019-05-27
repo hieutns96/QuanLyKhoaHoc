@@ -40,12 +40,13 @@
                                 <thead>
                                     <tr role="row">
                                         <th>Mã Đề Tài Hồ Sơ</th>
+                                        <th>Action</th>
                                         <th>Tên Đề Tài</th>
                                         <th>Mục Tiêu Đề Tài</th>
                                         <th>Nội Dung Đề Tài</th>
                                         <th>Kết Quả Đề Tài</th>
                                         <th>Năm Bắt Đầu</th>
-                                        <th>Năm Kết Thúc</th>                                        
+                                        <th>Năm Kết Thúc</th>
                                         <th>Liên Kết Web</th>
                                         <th>Link File Upload</th>
                                         <th>Cấp Đề Tài</th>
@@ -56,7 +57,7 @@
                                         <th>Xếp Lọai</th>
                                         <th>Tình Trạng Đề Tài</th>
                                         <th>Tên Phân Loại Đề Tài</th>
-                                        <th>Action</th>
+
                                     </tr>
                                   </thead>
                                 <!-- grid nkh  -->
@@ -67,6 +68,14 @@
 
                                         <td>
                                             @Html.DisplayFor(modelItem => item.MaDeTaiHoSo)
+                                        </td>
+                                        <td>
+                                            <a href="@Url.Action("Edit", "AdminDeTai", new {id = item.MaDeTai})">
+                                                <i class="far fa-edit"></i>
+                                            </a>
+                                            <a href="@Url.Action("Delete", "AdminDeTai", new {id = item.MaDeTai})">
+                                                <i class="far fa-trash-alt"></i>
+                                            </a>
                                         </td>
                                         <td>
                                             @Html.DisplayFor(modelItem => item.TenDeTai)
@@ -116,14 +125,7 @@
                                         <td>
                                             @Html.DisplayFor(modelItem => item.PhanLoaiSP.TenPhanLoai)
                                         </td>
-                                        <td>
-                                            <a href="@Url.Action("Edit", "AdminDeTai", new {id = item.MaDeTai})">
-                                                <i class="far fa-edit"></i>
-                                            </a>
-                                            <a href="@Url.Action("Delete", "AdminDeTai", new {id = item.MaDeTai})">
-                                                <i class="far fa-trash-alt"></i>
-                                            </a>
-                                        </td>
+
                                     </tr>
                                     }
 

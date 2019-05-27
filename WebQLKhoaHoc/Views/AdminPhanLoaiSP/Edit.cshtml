@@ -16,7 +16,7 @@
         @Html.HiddenFor(model => model.MaPhanLoai)
         <div class="form-group">
             <div class="col-md-2 col-md-offset-1">
-                <h2>@Html.DisplayNameFor(model => model.TenPhanLoai)</h2>
+                <h2>Tên phân loại</h2>
             </div>
             <div class="col-md-7">
                 @Html.TextBoxFor(model => model.TenPhanLoai, new { @class = "form-control" })
@@ -27,7 +27,7 @@
         <div class="form-group">
             <div class="col-md-offset-2 col-md-8">
                 @Html.ActionLink("Trở về", "Index", null, new { @class = "btn btn-default pull-right" })
-                <input type="submit" value="Save" class="btn btn-default pull-right" />
+                <input type="submit" value="Lưu" class="btn btn-default pull-right" />
             </div>
         </div>
     </div>

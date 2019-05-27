@@ -6,188 +6,150 @@
 }
 
 
-<div class="container">
-    <h2 class="text-center">@Model.TenDeTai</h2>
+<h1 class="text-center">Bạn có chắn chắn muốn xóa các thông tin bên dưới</h1>
+<div class="form-horizontal">
+    <h1 class="text-center">Sách giáo trình</h1>
     <hr />
-    <div class="col-md-offset-2">
-        <div class="row">
-            <h3 class="col-md-3">
-                Mã đề tài hộ sở:
-            </h3>
-
-            <h4 class="col-md-6">
-                @Html.DisplayFor(model => model.MaDeTaiHoSo)
-            </h4>
+    <div class="form-group">
+        <div class="col-md-2 col-md-offset-1">
+            <h2>Mã đề tài hộ sở</h2>
         </div>
-
-        <div class="row">
-            <h3 class="col-md-3">
-                Tên đề tài:
-            </h3>
-
-            <h4 class="col-md-6">
-                @Html.DisplayFor(model => model.TenDeTai)
-            </h4>
+        <div class="col-md-7">
+            @Html.TextBoxFor(model => model.MaDeTaiHoSo, new { @class = "form-control", @disabled = "disabled" })
         </div>
-
-        <div class="row">
-            <h3 class="col-md-3">
-                Mục tiêu đề tài:
-            </h3>
-
-            <h4 class="col-md-6">
-                @Html.DisplayFor(model => model.MucTieuDeTai)
-            </h4>
+    </div> 
+    <div class="form-group">
+        <div class="col-md-2 col-md-offset-1">
+            <h2>Tên đề tài</h2>
         </div>
-
-        <div class="row">
-            <h3 class="col-md-3">
-                Nội dung đề tài
-            </h3>
-
-            <h4 class="col-md-6">
-                @Html.DisplayFor(model => model.NoiDungDeTai)
-            </h4>
+        <div class="col-md-7">
+            @Html.TextBoxFor(model => model.TenDeTai, new { @class = "form-control", @disabled = "disabled" })
         </div>
-
-        <div class="row">
-            <h3 class="col-md-3">
-                Kết quả đề tài:
-            </h3>
-
-            <h4 class="col-md-6">
-                @Html.DisplayFor(model => model.KetQuaDeTai)
-            </h4>
+    </div>
+    <div class="form-group">
+        <div class="col-md-2 col-md-offset-1">
+            <h2>Mục tiêu đề tài</h2>
         </div>
-
-        <div class="row">
-            <h3 class="col-md-3">
-                Năm bắt đầu
-            </h3>
-
-            <h4 class="col-md-6">
-                @Html.DisplayFor(model => model.NamBD)
-            </h4>
+        <div class="col-md-7">
+            @Html.TextBoxFor(model => model.MucTieuDeTai, new { @class = "form-control", @disabled = "disabled" })
         </div>
-
-        <div class="row">
-            <h3 class="col-md-3">
-                năm kết thúc
-            </h3>
-
-            <h4 class="col-md-6">
-                @Html.DisplayFor(model => model.NamKT)
-            </h4>
+    </div>
+    <div class="form-group">
+        <div class="col-md-2 col-md-offset-1">
+            <h2>Nội dung đề tài</h2>
         </div>
-
-        <div class="row">
-            <h3 class="col-md-3">
-                Web liên kết
-            </h3>
-
-            <h4 class="col-md-6">
-                @Html.DisplayFor(model => model.LienKetWeb)
-            </h4>
+        <div class="col-md-7">
+            @Html.TextBoxFor(model => model.NoiDungDeTai, new { @class = "form-control", @disabled = "disabled" })
         </div>
-
-        <div class="row">
-            <h3 class="col-md-3">
-                File Upload:
-            </h3>
-
-            <h4 class="col-md-6">
-                @Html.DisplayFor(model => model.LinkFileUpload)
-            </h4>
+    </div>
+    <div class="form-group">
+        <div class="col-md-2 col-md-offset-1">
+            <h2>Kết quả đề tài</h2>
         </div>
-
-        <div class="row">
-            <h3 class="col-md-3">
-                Cấp đề tài:
-            </h3>
-
-            <h4 class="col-md-6">
-                @Html.DisplayFor(model => model.CapDeTai.TenCapDeTai)
-            </h4>
+        <div class="col-md-7">
+            @Html.TextBoxFor(model => model.KetQuaDeTai, new { @class = "form-control", @disabled = "disabled" })
         </div>
-
-        <div class="row">
-            <h3 class="col-md-3">
-                Loại hình đề tài:
-            </h3>
-
-            <h4 class="col-md-6">
-                @Html.DisplayFor(model => model.LoaiHinhDeTai.TenLoaiDT)
-            </h4>
+    </div> 
+    <div class="form-group">
+        <div class="col-md-2 col-md-offset-1">
+            <h2>Năm bắt đầu</h2>
         </div>
-
-        <div class="row">
-            <h3 class="col-md-3">
-                Tên đơn vị chủ trì:
-            </h3>
-
-            <h4 class="col-md-6">
-                @Html.DisplayFor(model => model.DonViChuTri.TenDVChuTri)
-            </h4>
+        <div class="col-md-7">
+            @Html.TextBox("NamBD",Model.NamBD, new { @class = "form-control", @disabled = "disabled" })
         </div>
-
-        <div class="row">
-            <h3 class="col-md-3">
-                Tên đơn vị đề tài
-            </h3>
-
-            <h4 class="col-md-6">
-                @Html.DisplayFor(model => model.DonViQL.TenDonVI)
-            </h4>
+    </div> 
+    <div class="form-group">
+        <div class="col-md-2 col-md-offset-1">
+            <h2>Năm kết thúc</h2>
         </div>
-
-        <div class="row">
-            <h3 class="col-md-3">
-                Lĩnh vực đề tài:
-            </h3>
-
-            <h4 class="col-md-6">
-                @Html.DisplayFor(model => model.LinhVuc.TenLinhVuc)
-            </h4>
+        <div class="col-md-7">
+            @Html.TextBox("NamBD",Model.NamKT, new { @class = "form-control", @disabled = "disabled" })
         </div>
-
-        <div class="row">
-            <h3 class="col-md-3">
-                Xếp loại đề tài
-            </h3>
-
-            <h4 class="col-md-6">
-                @Html.DisplayFor(model => model.XepLoai.TenXepLoai)
-            </h4>
+    </div>
+    <div class="form-group">
+        <div class="col-md-2 col-md-offset-1">
+            <h2>Web liên kết</h2>
         </div>
-
-        <div class="row">
-            <h3 class="col-md-3">
-                Tình trạng đề tài:
-            </h3>
-
-            <h4 class="col-md-6">
-                @Html.DisplayFor(model => model.TinhTrangDeTai.TenTinhTrang)
-            </h4>
+        <div class="col-md-7">
+            @Html.TextBoxFor(model => model.LienKetWeb, new { @class = "form-control", @disabled = "disabled" })
         </div>
-
-        <div class="row">
-            <h3 class="col-md-3">
-                Phân loại đề tài:
-            </h3>
-
-            <h4 class="col-md-6">
-                @Html.DisplayFor(model => model.PhanLoaiSP.TenPhanLoai)
-            </h4>
+    </div> 
+    <div class="form-group">
+        <div class="col-md-2 col-md-offset-1">
+            <h2>File Upload</h2>
         </div>
-        @using (Html.BeginForm())
-        {
-            @Html.AntiForgeryToken()
-        <div class="row">
-            <div class="col-md-offset-4">
-                @Html.ActionLink("Trở về", "Index", "AdminDeTai", null, new { @class = "pull-right btn btn-default" })
-                <input type="submit" value="xóa" class="btn btn-default pull-right" />
+        <div class="col-md-7">
+            @Html.TextBoxFor(model => model.LinkFileUpload, new { @class = "form-control", @disabled = "disabled" })
+        </div>
+    </div> 
+    <div class="form-group">
+        <div class="col-md-2 col-md-offset-1">
+            <h2>Cấp đề tài</h2>
+        </div>
+        <div class="col-md-7">
+            @Html.TextBoxFor(model => model.CapDeTai.TenCapDeTai, new { @class = "form-control", @disabled = "disabled" })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-2 col-md-offset-1">
+            <h2>Loại đề tài</h2>
+        </div>
+        <div class="col-md-7">
+            @Html.TextBoxFor(model => model.LoaiHinhDeTai.TenLoaiDT, new { @class = "form-control", @disabled = "disabled" })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-2 col-md-offset-1">
+            <h2>Tên đơn vị chủ trì</h2>
+        </div>
+        <div class="col-md-7">
+            @Html.TextBoxFor(model => model.DonViChuTri.TenDVChuTri, new { @class = "form-control", @disabled = "disabled" })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-2 col-md-offset-1">
+            <h2>Tên đơn vị đề tài</h2>
+        </div>
+        <div class="col-md-7">
+            @Html.TextBoxFor(model => model.DonViQL.TenDonVI, new { @class = "form-control", @disabled = "disabled" })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-2 col-md-offset-1">
+            <h2>Xếp loại đề tài</h2>
+        </div>
+        <div class="col-md-7">
+            @Html.TextBoxFor(model => model.XepLoai.TenXepLoai, new { @class = "form-control", @disabled = "disabled" })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-2 col-md-offset-1">
+            <h2>Tình trạng đề tài</h2>
+        </div>
+        <div class="col-md-7">
+            @Html.TextBoxFor(model => model.TinhTrangDeTai.TenTinhTrang, new { @class = "form-control", @disabled = "disabled" })
+        </div>
+    </div> 
+    <div class="form-group">
+        <div class="col-md-2 col-md-offset-1">
+            <h2>Phân loại đề tài</h2>
+        </div>
+        <div class="col-md-7">
+            @Html.TextBoxFor(model => model.PhanLoaiSP.TenPhanLoai, new { @class = "form-control", @disabled = "disabled" })
+        </div>
+    </div>
+
+   
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-8">
+                @Html.ActionLink("Trở về", "Index", null, new { @class = "btn btn-default pull-right" })
+                <input type="submit" value="Xóa" class="btn btn-default pull-right" />
             </div>
         </div>
-        }
-    </div>
+    }
 </div>
