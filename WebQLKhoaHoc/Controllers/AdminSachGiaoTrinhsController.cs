@@ -218,7 +218,15 @@ namespace WebQLKhoaHoc.Controllers
         {
             if (ModelState.IsValid)
             {
-               db.DSTacGias.AddOrUpdate(dSTacGia);               
+
+                DSTacGia tacGia = db.DSTacGias.Where(p => p.MaSach == dSTacGia.MaSach && p.MaNKH == dSTacGia.MaNKH).FirstOrDefault();
+                if (tacGia != null) {
+                    tacGia.LaChuBien = dSTacGia.LaChuBien;
+                }
+                else
+                {
+                    db.DSTacGias.Add(dSTacGia);
+                }
                 await db.SaveChangesAsync();
                 return RedirectToAction("DanhSachTacGia");
             }

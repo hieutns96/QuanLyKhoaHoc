@@ -59,7 +59,7 @@ namespace WebQLKhoaHoc.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "MaPM,TenPM,SoHieuPM,MotaPM,DoiTuongSuDung,QuocGiaCap,LinkLienKet,NamCongBo")] PhatMinhGiaiPhap phatMinhGiaiPhap, int MaChuSoHuu)
+        public async Task<ActionResult> Create([Bind(Include = "MaPM,TenPM,SoHieuPM,MotaPM,DoiTuongSuDung,QuocGiaCap,LinkLienKet,NamCongBo,MotaPM")] PhatMinhGiaiPhap phatMinhGiaiPhap, int MaChuSoHuu)
         {
             if (ModelState.IsValid)
             {
@@ -101,7 +101,7 @@ namespace WebQLKhoaHoc.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "MaPM,TenPM,SoHieuPM,MotaPM,DoiTuongSuDung,QuocGiaCap,LinkLienKet,NamCongBo")] PhatMinhGiaiPhap phatMinhGiaiPhap)
+        public async Task<ActionResult> Edit([Bind(Include = "MaPM,TenPM,SoHieuPM,MotaPM,DoiTuongSuDung,QuocGiaCap,LinkLienKet,NamCongBo,MotaPM")] PhatMinhGiaiPhap phatMinhGiaiPhap)
         {
             if (ModelState.IsValid)
             {
@@ -215,7 +215,15 @@ namespace WebQLKhoaHoc.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.DSPhatMinhNKHs.AddOrUpdate(dSPhatMinhNKH);
+                DSPhatMinhNKH tacGia = db.DSPhatMinhNKHs.Where(p => p.MaPM == dSPhatMinhNKH.MaPM && p.MaNKH == dSPhatMinhNKH.MaNKH).FirstOrDefault();
+                if (tacGia != null)
+                {
+                    tacGia.LaChuSoHuu = dSPhatMinhNKH.LaChuSoHuu;
+                }
+                else
+                {
+                    db.DSPhatMinhNKHs.Add(dSPhatMinhNKH);
+                }
                 await db.SaveChangesAsync();
                 return RedirectToAction("DanhSachNguoiThamGiaPhatMinh");
             }

@@ -9,7 +9,6 @@ using System.Web;
 using System.Web.Mvc;
 using PagedList;
 using WebGrease.Css.Extensions;
-using WebQLKhoaHoc;
 using WebQLKhoaHoc.Models;
 using System.IO;
 using System.Data.Entity.Migrations;

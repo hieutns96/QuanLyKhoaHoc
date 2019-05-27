@@ -1,8 +1,10 @@
 ﻿@model WebQLKhoaHoc.SachGiaoTrinh
 
 @{
-    ViewBag.Title = "Create";
-    Layout = "~/Views/Shared/_AdminMainPage.cshtml";
+                /**/
+
+                ViewBag.Title = "Create";
+                Layout = "~/Views/Shared/_AdminMainPage.cshtml";
 }
 
 
@@ -11,7 +13,7 @@
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h1 class="text-center">Sách giáo trình</h1>
+        <h1 class="text-center">Phát minh giải pháp</h1>
         <hr />
         <div class="row">
             @Html.ValidationSummary(true)
@@ -66,14 +68,14 @@
             <div class="form-group">
                 <h4 class="col-md-2 col-md-offset-1">Mô tả phát minh:</h4>
                 <div class="col-md-7">
-                    <textarea required class="form-control" name="MotaPM" />
+                    <input required class="form-control" name="MotaPM" multiple/>
                 </div>
             </div>
 
             <div class="form-group">
                 <div class="col-md-offset-3 col-md-7">
-                    @Html.ActionLink("Trở về", "Index", "AdminDeTai", null, new { @class = "pull-right btn btn-default" })
-                    <input type="submit" value="Create" class="btn btn-default pull-right" />
+                    @Html.ActionLink("Trở về", "Index", "AdminPhatMinhGiaiPhap", null, new { @class = "pull-right btn btn-default" })
+                    <input type="submit" value="Tạo" class="btn btn-default pull-right" />
                 </div>
             </div>
         </div>
