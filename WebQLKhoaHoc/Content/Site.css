@@ -15381,7 +15381,7 @@ body.lb-disable-scrolling {
 
 body, html {
     height: 100%;
-    font-family: Arial Unicode MS;
+    font-family: Arial Unicode MS !important;
 }
 
 /*---------------------------------------------*/
