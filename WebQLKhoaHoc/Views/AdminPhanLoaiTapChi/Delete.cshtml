@@ -12,10 +12,10 @@
     <br />
     <div class="form-group">
         <div class="col-md-2 col-md-offset-1">
-            <h2>@Html.DisplayNameFor(model => model.TenLoaiTapChi)</h2>
+            <h2>Tên phân loại tạp chí</h2>
         </div>
         <div class="col-md-7">
-            @Html.TextBoxFor(model => model.TenLoaiTapChi, new { @class = "form-control", @disable = "disable" })
+            @Html.TextBoxFor(model => model.TenLoaiTapChi, new { @class = "form-control", @disabled = "disabled" })
         </div>
     </div>
    
@@ -26,7 +26,7 @@
         <div class="form-group">
             <div class="col-md-offset-2 col-md-8">
                 @Html.ActionLink("Trở về", "Index", null, new { @class = "btn btn-default pull-right" })
-                <input type="submit" value="Delete" class="btn btn-default pull-right" />
+                <input type="submit" value="Xóa" class="btn btn-default pull-right" />
             </div>
         </div>
     }

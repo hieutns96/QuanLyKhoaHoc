@@ -713,6 +713,7 @@
     <Content Include="Views\AdminPhatMinhGiaiPhap\CreateDanhSachNguoiThamGiaPhatMinh.cshtml" />
     <Content Include="Views\AdminPhatMinhGiaiPhap\EditDanhSachNguoiThamGiaPhatMinh.cshtml" />
     <Content Include="Views\AdminPhatMinhGiaiPhap\DanhSachNguoiThamGiaPhatMinh.cshtml" />
+    <Content Include="Views\AdminBaiBao\CreateLinhVucBaiBao.cshtml" />
     <None Include="Web.Debug.Config">
       <DependentUpon>Web.Config</DependentUpon>
     </None>

@@ -40,6 +40,7 @@
                                 <thead>
                                     <tr role="row">
                                         <th>Mã ISSN</th>
+                                        <th>Action</th>
                                         <th>Tên Bài Báo</th>
                                         <th>Trong Nước</th>
                                         <th>Cơ Quan Xuất Bản</th>
@@ -51,7 +52,6 @@
                                         <th>Link File UpFile</th>
                                         <th>Tên Tạp Chí</th>
                                         <th>Loại Tạp Chí </th>
-                                        <th>Action</th>
                                     </tr>
                                 </thead>
 
@@ -62,6 +62,15 @@
                                     <tr role="row" class="even">
                                         <td>
                                             @Html.DisplayFor(modelItem => item.MaISSN)
+                                        </td>
+                                        <td>
+                                            <a href="@Url.Action("Edit", "AdminBaiBao", new {id = item.MaBaiBao})">
+                                                <i class="far fa-edit"></i>
+                                            </a>
+
+                                            <a href="@Url.Action("Delete", "AdminBaiBao", new {id = item.MaBaiBao })">
+                                                <i class="far fa-trash-alt"></i>
+                                            </a>
                                         </td>
                                         <td>
                                             @Html.DisplayFor(modelItem => item.TenBaiBao)
@@ -96,19 +105,7 @@
                                         <td>
                                             @Html.DisplayFor(modelItem => item.PhanLoaiTapChi.TenLoaiTapChi)
                                         </td>
-                                        <td>
-                                            <a href="@Url.Action("Edit", "AdminBaiBao", new {id = item.MaBaiBao})">
-                                                <i class="far fa-edit"></i>
-                                            </a>
-                                            <a href="@Url.Action("Details", "AdminBaiBao", new { id = item.MaBaiBao })">
-                                                <i class="fas fa-info"></i>
-                                            </a>
-                                            <a href="@Url.Action("Delete", "AdminBaiBao", new {id = item.MaBaiBao })">
-                                                <i class="far fa-trash-alt"></i>
-                                            </a>
 
-
-                                        </td>
                                     </tr>
                                     }
 
