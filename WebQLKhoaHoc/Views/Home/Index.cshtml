@@ -206,7 +206,9 @@
                                                         <p class="font1">@item.NoiDungDeTai</p>
                                                     </div>
                                                     <div class="modal-footer">
-                                                        <a href="@Url.Action("Details", "DeTais", new {id = item.MaDeTai})" type="button" class="btn btn-info">Chi Tiết</a>
+                                                        <a href="javascript:" type="button" class="btn btn-info" data-toggle="modal" data-target="#mydata" onclick="modal_load('@Url.Action("ScriptingPage", "DeTais", new { id = item.MaDeTai })')">                                                        
+                                                            Chi Tiết
+                                                        </a>
                                                     </div>
                                                 </div>
                                             </li>
@@ -230,7 +232,7 @@
                                             @foreach (var item in db.BaiBaos.OrderByDescending(p => p.NamDangBao).Take(5))
                                             {
                                                 <li class="tip-list-item">
-                                                    <a href="@Url.Action("Details","BaiBaos",new {id = item.MaBaiBao })">
+                                                    <a href="javascript:" data-toggle="modal" data-target="#mydata" onclick="modal_load('@Url.Action("Details", "BaiBaos", new { id = item.MaBaiBao })')">
                                                         @item.TenBaiBao <span class="cdate font1" style="color: #f00; font-size: 11px; font-weight: normal !important;"> (@item.NamDangBao.Value.ToShortDateString())</span>
                                                     </a>
                                                 </li>
@@ -246,11 +248,11 @@
                                         <ul class="tip-list">
                                             @foreach (var item in db.SachGiaoTrinhs.OrderByDescending(p => p.NamXuatBan).Take(5))
                                             {
-                                                <li class="tip-list-item">
-                                                    <a href="@Url.Action("Details","SachGiaoTrinhs",new {id = item.MaSach })">
-                                                        @item.TenSach <span class="cdate font1" style="color: #f00; font-size: 11px; font-weight: normal !important;"> (@item.NamXuatBan.Value.ToShortDateString())</span>
-                                                    </a>
-                                                </li>
+                                            <li class="tip-list-item">
+                                                <a href="javascript:" data-toggle="modal" data-target="#mydata" onclick="modal_load('@Url.Action("Details","SachGiaoTrinhs",new {id = item.MaSach })')">   
+                                                    @item.TenSach <span class="cdate font1" style="color: #f00; font-size: 11px; font-weight: normal !important;"> (@item.NamXuatBan.Value.ToShortDateString())</span>
+                                                </a>
+                                            </li>
                                             }
                                         </ul>
 
