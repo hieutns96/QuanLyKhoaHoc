@@ -6,7 +6,8 @@
 }
 .tip-list-item {
     border-bottom: 1px solid #e5e5e5;
-    padding: 10px 0 2px;
+    padding: 10px 0 10px;
+    margin: 10px;
 }
   
 .multiselect-container > li > a > label.checkbox
