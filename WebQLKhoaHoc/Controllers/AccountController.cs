@@ -77,7 +77,7 @@ namespace WebQLKhoaHoc.Controllers
                     MaNKH = nkh.MaNKH,
                     Usernames = nkh.EmailLienHe,
                     Passwords = Encryptor.MD5Hash(model.Password + salt), //update by Khiet
-                    MaChucNang = 1,
+                    MaChucNang = 2,
                     IsActive = true,
                     RandomKey = salt //update by Khiet
                 };

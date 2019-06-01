@@ -268,8 +268,8 @@ namespace WebQLKhoaHoc.Controllers
                 db.NhaKhoaHocs.AddOrUpdate(nhaKhoaHoc);
                 
 
-                if (DSLinhVucNC != null) {
-                    
+                if (DSLinhVucNC != null)
+                {
                     var deletedlinhvuc = nhakh.LinhVucs.Where(p => !DSLinhVucNC.Contains(p.MaLinhVuc)).ToList();
                     var addedlinhvuc = DSLinhVucNC.Except(nhakh.LinhVucs.Select(p => p.MaLinhVuc)).ToList();
                     var addlinhvuc = db.LinhVucs.Where(p => addedlinhvuc.Contains(p.MaLinhVuc)).ToList();
@@ -286,8 +286,6 @@ namespace WebQLKhoaHoc.Controllers
                 }
                 else
                 {
-                   ;
-
                     foreach (var x in nhakh.LinhVucs.ToList())
                     {
                         nhakh.LinhVucs.Remove(x);
