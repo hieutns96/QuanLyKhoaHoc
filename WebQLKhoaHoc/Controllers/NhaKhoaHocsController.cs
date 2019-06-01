@@ -286,10 +286,12 @@ namespace WebQLKhoaHoc.Controllers
                 }
                 else
                 {
-                    foreach(var x in nhakh.LinhVucs)
+                    foreach(var x in nhakh.LinhVucs.ToList())
                     {
-                        nhakh.LinhVucs.Remove(x);
+                        db.LinhVucs.Remove(x);
                     }
+
+                    db.SaveChanges();
                 }
                 
 
@@ -308,8 +310,17 @@ namespace WebQLKhoaHoc.Controllers
                         db.SaveChanges();
                     }
                 }
+                else
+                {
+                    foreach (var x in nhakh.ChuyenMonNKHs.ToList())
+                    {
+                        db.ChuyenMonNKHs.Remove(x);
+                    }
+                    db.SaveChanges();
 
-                if(nganHangNKH != null)
+                }
+
+                if (nganHangNKH != null)
                 {
                     db.NganHangNKHs.AddOrUpdate(nganHangNKH);
                 }
