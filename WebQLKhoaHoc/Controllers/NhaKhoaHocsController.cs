@@ -308,6 +308,14 @@ namespace WebQLKhoaHoc.Controllers
                         db.SaveChanges();
                     }
                 }
+                else
+                {
+                    foreach (var x in nhakh.ChuyenMonNKHs)
+                    {
+                        nhakh.ChuyenMonNKHs.Remove(x);
+
+                    }
+                }
 
                 if(nganHangNKH != null)
                 {
