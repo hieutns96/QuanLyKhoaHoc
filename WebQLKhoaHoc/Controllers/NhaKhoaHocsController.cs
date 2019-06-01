@@ -37,7 +37,7 @@ namespace WebQLKhoaHoc.Controllers
             var pre = PredicateBuilder.True<NhaKhoaHoc>();
 
            
-
+            
             if (!String.IsNullOrEmpty(nhaKhoaHoc.MaCNDaoTao))
             {
                 pre = pre.And(p => p.MaCNDaoTao.ToString() == nhaKhoaHoc.MaCNDaoTao);
