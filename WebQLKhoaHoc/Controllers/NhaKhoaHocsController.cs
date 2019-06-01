@@ -286,9 +286,11 @@ namespace WebQLKhoaHoc.Controllers
                 }
                 else
                 {
-                    foreach(var x in nhakh.LinhVucs.ToList())
+                   ;
+
+                    foreach (var x in nhakh.LinhVucs.ToList())
                     {
-                        db.LinhVucs.Remove(x);
+                        nhakh.LinhVucs.Remove(x);
                     }
 
                     db.SaveChanges();
