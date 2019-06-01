@@ -129,7 +129,10 @@
                                                                         <span class="mt-0 mb-0 font-weight-600">Ngày sinh</span>
                                                                     </div>
                                                                     <div class="col-md-8">
-                                                                        <input name="NgaySinh" id="Fromdate" class="form-control date-picker" type="text" placeholder="Năm sinh" value="@Model.NgaySinh.Value.ToString("d") " autocomplete="off" required>
+                                                                        @{ 
+                                                                            var ngaysinh = (Model.NgaySinh.Value > DateTime.MinValue) ? Model.NgaySinh.Value : DateTime.Now;
+                                                                        }
+                                                                        <input name="NgaySinh" id="Fromdate" class="form-control date-picker" type="text" placeholder="Năm sinh" value="@ngaysinh.ToString("dd/MM/yyyy")" autocomplete="off" required>
                                                                     </div>
 
                                                                 </div>
