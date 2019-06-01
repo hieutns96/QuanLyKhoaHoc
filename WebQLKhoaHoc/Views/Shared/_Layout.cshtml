@@ -43,8 +43,21 @@
         $("#Todate").off('change').on('change', function (e) {
 
             var $this = $(this);
-            var dateFromVal = $this.parents().find('#Fromdate').val();
-            var dateToVal = $this.val();
+
+            var fromDateParts = $this.parents().find('#Fromdate').val().split('/');
+            console.log(fromDateParts);
+            var dateFromVal = Date.parse(fromDateParts[1] + '/' + fromDateParts[0] + '/' + fromDateParts[2]);
+            //dateFromVal = Date.parse(dateFromVal);
+            console.log(dateFromVal);
+
+            console.log('');
+
+            var toDateParts = $this.val().split('/');
+            console.log(toDateParts);
+            var dateToVal = Date.parse(toDateParts[1] + '/' + toDateParts[0] + '/' + toDateParts[2]);
+            //dateToVal = Date.parse(dateToVal);
+            console.log(dateToVal);
+
             var searchEl;
             $this.parents().find('.btn-search-component').length == 1 ? searchEl = $this.parents().find('.btn-search-component') : searchEl = $this.parents().find('.btn-primary');
 

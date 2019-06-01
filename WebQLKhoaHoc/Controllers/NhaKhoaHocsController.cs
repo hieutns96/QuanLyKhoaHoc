@@ -38,27 +38,27 @@ namespace WebQLKhoaHoc.Controllers
 
            
             
-            if (!String.IsNullOrEmpty(nhaKhoaHoc.MaCNDaoTao))
+            if (!String.IsNullOrEmpty(nhaKhoaHoc.MaCNDaoTao) && nhaKhoaHoc.MaCNDaoTao != "0")
             {
                 pre = pre.And(p => p.MaCNDaoTao.ToString() == nhaKhoaHoc.MaCNDaoTao);
                 
             }
-            if (!String.IsNullOrEmpty(nhaKhoaHoc.MaDonVi))
+            if (!String.IsNullOrEmpty(nhaKhoaHoc.MaDonVi) && nhaKhoaHoc.MaDonVi != "0")
             {
                 pre = pre.And(p => p.MaDonViQL.ToString() == nhaKhoaHoc.MaDonVi);
                
             }
-            if (!String.IsNullOrEmpty(nhaKhoaHoc.MaHocHam))
+            if (!String.IsNullOrEmpty(nhaKhoaHoc.MaHocHam) && nhaKhoaHoc.MaHocHam != "0")
             {
                 pre = pre.And(p => p.MaHocHam.ToString() == nhaKhoaHoc.MaHocHam);
                
             }
-            if (!String.IsNullOrEmpty(nhaKhoaHoc.MaHocVi))
+            if (!String.IsNullOrEmpty(nhaKhoaHoc.MaHocVi) && nhaKhoaHoc.MaHocVi != "0")
             {
                 pre = pre.And(p => p.MaHocVi.ToString() == nhaKhoaHoc.MaHocVi);
                 
             }
-            if (!String.IsNullOrEmpty(nhaKhoaHoc.MaNgach))
+            if (!String.IsNullOrEmpty(nhaKhoaHoc.MaNgach) && nhaKhoaHoc.MaNgach != "0")
             {
                 pre = pre.And(p => p.MaNgachVienChuc.ToString() == nhaKhoaHoc.MaNgach);
                 

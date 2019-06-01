@@ -42,7 +42,7 @@ namespace WebQLKhoaHoc.Controllers
                     ViewBag.MaDonViQLThucHien = new SelectList(db.DonViQLs, "MaDonVi", "TenDonVI");
                     ViewBag.MaLinhVuc = new SelectList(QLKHrepo.GetListMenuLinhVuc(), "Id", "TenLinhVuc");
                     var detais = db.DeTais.Include(d => d.CapDeTai).Include(d => d.LoaiHinhDeTai).Include(d => d.DonViChuTri).Include(d => d.DonViQL).Include(d => d.LinhVuc).Include(d => d.XepLoai).Include(d => d.TinhTrangDeTai).Include(d => d.PhanLoaiSP).ToList();
-                    if (!String.IsNullOrEmpty(home.MaDonViQLThucHien))
+                    if (!String.IsNullOrEmpty(home.MaDonViQLThucHien) && home.MaDonViQLThucHien != "0")
                     {
                         detais = detais.Where(p => p.MaDonViQLThucHien.ToString() == home.MaDonViQLThucHien).ToList();
                     }
@@ -50,11 +50,11 @@ namespace WebQLKhoaHoc.Controllers
                     {
                         detais = detais.Where(p => p.TenDeTai.ToLower().Contains(home.SearchValue.ToLower())).ToList();
                     }
-                    int totalPage = (int)Math.Ceiling((decimal)detais.Count() / 6);
+                    int totalPage1 = (int)Math.Ceiling((decimal)detais.Count() / 6);
                     ViewBag.TotalItem = detais.Count();
-                    IPagedList<DeTai> pageOrders = new StaticPagedList<DeTai>(detais, No_Of_Page, 1, totalPage);
+                    IPagedList<DeTai> pageOrders1 = new StaticPagedList<DeTai>(detais, No_Of_Page, 1, totalPage1);
 
-                    return View("~/Views/DeTais/Index.cshtml", pageOrders);
+                    return View("~/Views/DeTais/Index.cshtml", pageOrders1);
                 case "2":
                     ViewBag.MaLinhVuc = new SelectList(QLKHrepo.GetListMenuLinhVuc(), "Id", "TenLinhVuc");
                     ViewBag.MaCapTapChi = new SelectList(db.CapTapChis, "MaCapTapChi", "TenCapTapChi");
@@ -69,11 +69,11 @@ namespace WebQLKhoaHoc.Controllers
                     {
                         baibaos = baibaos.Where(p => p.TenBaiBao.ToLower().Contains(home.SearchValue.ToLower())).ToList();
                     }
-                    int totalPage = (int)Math.Ceiling((decimal)baibaos.Count() / 6);
+                    int totalPage2 = (int)Math.Ceiling((decimal)baibaos.Count() / 6);
                     ViewBag.TotalItem = baibaos.Count();
-                    IPagedList<BaiBao> pageOrders = new StaticPagedList<BaiBao>(baibaos, No_Of_Page, 1, totalPage);
+                    IPagedList<BaiBao> pageOrders2 = new StaticPagedList<BaiBao>(baibaos, No_Of_Page, 1, totalPage2);
 
-                    return View("~/Views/BaiBaos/Index.cshtml", pageOrders);
+                    return View("~/Views/BaiBaos/Index.cshtml", pageOrders2);
                 case "3":
                     ViewBag.MaLinhVuc = new SelectList(QLKHrepo.GetListMenuLinhVuc(), "Id", "TenLinhVuc");
                     ViewBag.MaNXB = new SelectList(db.NhaXuatBans, "MaNXB", "TenNXB");
@@ -84,11 +84,11 @@ namespace WebQLKhoaHoc.Controllers
                     {
                         sachGiaoTrinhs = sachGiaoTrinhs.Where(p => p.TenSach.ToLower().Contains(home.SearchValue.ToLower())).ToList();
                     }
-                    int totalPage = (int)Math.Ceiling((decimal)sachGiaoTrinhs.Count() / 6);
+                    int totalPage3 = (int)Math.Ceiling((decimal)sachGiaoTrinhs.Count() / 6);
                     ViewBag.TotalItem = sachGiaoTrinhs.Count();
-                    IPagedList<SachGiaoTrinh> pageOrders = new StaticPagedList<SachGiaoTrinh>(sachGiaoTrinhs, No_Of_Page, 1, totalPage);
+                    IPagedList<SachGiaoTrinh> pageOrders3 = new StaticPagedList<SachGiaoTrinh>(sachGiaoTrinhs, No_Of_Page, 1, totalPage3);
 
-                    return View("~/Views/SachGiaoTrinhs/Index.cshtml", pageOrders);
+                    return View("~/Views/SachGiaoTrinhs/Index.cshtml", pageOrders3);
                 default:
                     ViewBag.MaCNDaoTao = new SelectList(db.ChuyenNganhs.ToList(), "MaChuyenNganh", "TenChuyenNganh");
                     ViewBag.MaHocHam = new SelectList(db.HocHams.ToList(), "MaHocHam", "TenHocHam");
@@ -96,7 +96,7 @@ namespace WebQLKhoaHoc.Controllers
                     ViewBag.MaDonViQL = new SelectList(db.DonViQLs.ToList(), "MaDonVi", "TenDonVI");
                     ViewBag.MaNgachVienChuc = new SelectList(db.NgachVienChucs.ToList(), "MaNgach", "TenNgach");
                     var nhaKhoaHocs = db.NhaKhoaHocs.Include(n => n.ChuyenNganh).Include(n => n.DonViQL).Include(n => n.HocHam).Include(n => n.HocVi).Include(n => n.NgachVienChuc).ToList();
-                    if (!String.IsNullOrEmpty(home.MaDonViQLThucHien))
+                    if (!String.IsNullOrEmpty(home.MaDonViQLThucHien) && home.MaDonViQLThucHien != "0")
                     {
                         nhaKhoaHocs = nhaKhoaHocs.Where(p => p.MaDonViQL.ToString() == home.MaDonViQLThucHien).ToList();
                     }
