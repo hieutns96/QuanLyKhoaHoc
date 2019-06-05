@@ -63,7 +63,7 @@ namespace WebQLKhoaHoc.Models
             nkhvm.DienThoai = nkh.DienThoai ?? String.Empty;
             nkhvm.DiaChiLienHe = nkh.DiaChiLienHe ?? String.Empty;
             nkhvm.HocHam = nkh.HocHam ?? new HocHam();
-            nkhvm.NamKetThucDaoTao = nkh.QuaTrinhDaoTaos.Count > 0 ? nkh.QuaTrinhDaoTaos.Where(p => p.MaNKH == nkh.MaNKH).Max(t => t.ThoiGianKT).Value : new DateTime();
+            nkhvm.NamKetThucDaoTao = (nkh.QuaTrinhDaoTaos.Count > 0 && nkh.QuaTrinhDaoTaos != null) ? nkh.QuaTrinhDaoTaos.Where(p => p.MaNKH == nkh.MaNKH).Max(t => t.ThoiGianKT).Value : DateTime.Now;
             nkhvm.HocVi = nkh.HocVi ?? new HocVi();
             nkhvm.DonViQL = nkh.DonViQL ?? new DonViQL();
             nkhvm.MaCNDaoTao = nkh.MaCNDaoTao ;
