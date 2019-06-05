@@ -237,6 +237,7 @@
     <Compile Include="Controllers\BaiBaosController.cs" />
     <Compile Include="Controllers\ChartsController.cs" />
     <Compile Include="Controllers\DeTaisController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\AdminNganHangController.cs" />
     <Compile Include="Controllers\NhaKhoaHocsController.cs" />
@@ -670,7 +671,9 @@
     <Content Include="Views\AdminSachGiaoTrinhs\DanhSachTacGia.cshtml" />
     <Content Include="Views\AdminSachGiaoTrinhs\EditDanhSachTacGia.cshtml" />
     <Content Include="Views\DeTais\ScriptingPage.cshtml" />
-    <Content Include="Web.Config" />
+    <Content Include="Web.Config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Views\Account\ChangePassword.cshtml" />
     <Content Include="Views\Shared\PopUpLayout.cshtml" />
     <Content Include="Views\AdminTrinhDoNgoaiNguNKH\Create.cshtml" />
@@ -714,6 +717,8 @@
     <Content Include="Views\AdminPhatMinhGiaiPhap\EditDanhSachNguoiThamGiaPhatMinh.cshtml" />
     <Content Include="Views\AdminPhatMinhGiaiPhap\DanhSachNguoiThamGiaPhatMinh.cshtml" />
     <Content Include="Views\AdminBaiBao\CreateLinhVucBaiBao.cshtml" />
+    <Content Include="Views\Error\NotFound.cshtml" />
+    <Content Include="Views\Error\Index.cshtml" />
     <None Include="Web.Debug.Config">
       <DependentUpon>Web.Config</DependentUpon>
     </None>

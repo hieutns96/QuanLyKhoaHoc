@@ -34,28 +34,28 @@ namespace WebQLKhoaHoc.Controllers
             var pre = PredicateBuilder.True<NhaKhoaHoc>();
 
            
-
-            if (!String.IsNullOrEmpty(nhaKhoaHoc.MaCNDaoTao))
+            
+            if (!String.IsNullOrEmpty(nhaKhoaHoc.MaCNDaoTao) && nhaKhoaHoc.MaCNDaoTao != "0")
             {
                 pre = pre.And(p => p.MaCNDaoTao.ToString() == nhaKhoaHoc.MaCNDaoTao);
                 
             }
-            if (!String.IsNullOrEmpty(nhaKhoaHoc.MaDonVi))
+            if (!String.IsNullOrEmpty(nhaKhoaHoc.MaDonVi) && nhaKhoaHoc.MaDonVi != "0")
             {
                 pre = pre.And(p => p.MaDonViQL.ToString() == nhaKhoaHoc.MaDonVi);
                
             }
-            if (!String.IsNullOrEmpty(nhaKhoaHoc.MaHocHam))
+            if (!String.IsNullOrEmpty(nhaKhoaHoc.MaHocHam) && nhaKhoaHoc.MaHocHam != "0")
             {
                 pre = pre.And(p => p.MaHocHam.ToString() == nhaKhoaHoc.MaHocHam);
                
             }
-            if (!String.IsNullOrEmpty(nhaKhoaHoc.MaHocVi))
+            if (!String.IsNullOrEmpty(nhaKhoaHoc.MaHocVi) && nhaKhoaHoc.MaHocVi != "0")
             {
                 pre = pre.And(p => p.MaHocVi.ToString() == nhaKhoaHoc.MaHocVi);
                 
             }
-            if (!String.IsNullOrEmpty(nhaKhoaHoc.MaNgach))
+            if (!String.IsNullOrEmpty(nhaKhoaHoc.MaNgach) && nhaKhoaHoc.MaNgach != "0")
             {
                 pre = pre.And(p => p.MaNgachVienChuc.ToString() == nhaKhoaHoc.MaNgach);
                 
@@ -265,8 +265,8 @@ namespace WebQLKhoaHoc.Controllers
                 db.NhaKhoaHocs.AddOrUpdate(nhaKhoaHoc);
                 
 
-                if (DSLinhVucNC != null) {
-                    
+                if (DSLinhVucNC != null)
+                {
                     var deletedlinhvuc = nhakh.LinhVucs.Where(p => !DSLinhVucNC.Contains(p.MaLinhVuc)).ToList();
                     var addedlinhvuc = DSLinhVucNC.Except(nhakh.LinhVucs.Select(p => p.MaLinhVuc)).ToList();
                     var addlinhvuc = db.LinhVucs.Where(p => addedlinhvuc.Contains(p.MaLinhVuc)).ToList();
@@ -283,10 +283,12 @@ namespace WebQLKhoaHoc.Controllers
                 }
                 else
                 {
-                    foreach(var x in nhakh.LinhVucs)
+                    foreach (var x in nhakh.LinhVucs.ToList())
                     {
                         nhakh.LinhVucs.Remove(x);
                     }
+
+                    db.SaveChanges();
                 }
                 
 
@@ -305,8 +307,17 @@ namespace WebQLKhoaHoc.Controllers
                         db.SaveChanges();
                     }
                 }
+                else
+                {
+                    foreach (var x in nhakh.ChuyenMonNKHs.ToList())
+                    {
+                        db.ChuyenMonNKHs.Remove(x);
+                    }
+                    db.SaveChanges();
 
-                if(nganHangNKH != null)
+                }
+
+                if (nganHangNKH != null)
                 {
                     db.NganHangNKHs.AddOrUpdate(nganHangNKH);
                 }

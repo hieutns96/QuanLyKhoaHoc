@@ -4,12 +4,7 @@
     Layout = "~/Views/Shared/_MainPage.cshtml";
 }
 <style>
-    .datepicker .datepicker-days {
-        display: none;
-    }
-    /*.datepicker .datepicker-years {
-        display: block;
-    }*/
+    
 
 </style>
 <div class="main-content">
@@ -46,10 +41,8 @@
                                         <br>Tính đến thời điểm (hiện tại)
                                     </span>
                                 </div>
-                                <div class="text-center">
-                                    <span class="statistic-title">
-                                        <input type="text" name="NamDangBao" id="datepicker" value="@DateTime.Today.Year"/>
-                                    </span>
+                                <div class="col-md-offset-5 col-md-2 mb-20">
+                                    <input type="text" name="NamDangBao" class="form-control date-picker" id="datepicker" value="@DateTime.Today.ToString("dd/MM/yyyy")" />
                                 </div>
                                 <table class="table table-bordered">
                                     <thead>

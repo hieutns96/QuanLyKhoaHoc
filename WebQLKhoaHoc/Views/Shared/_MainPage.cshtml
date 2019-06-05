@@ -29,7 +29,9 @@
                         </div>
                         <div class="col-xs-12 col-sm-8 col-md-9">
                             <div class="header-custom">
-                                <h2 class="font-weight-800 text-theme-colored font-27" style="margin-top:-20px;">CƠ SỞ DỮ LIỆU <br /> KHOA HỌC VÀ CÔNG NGHỆ</h2>
+                                <h2 style="margin-top:-20px;color: #005882;font-size: 28px;font-style: oblique;" class="font-weight-800">
+                                    CƠ SỞ DỮ LIỆU <br /> KHOA HỌC VÀ CÔNG NGHỆ
+                                </h2>
                             </div>
                         </div>
                     </div>
@@ -186,11 +188,24 @@
             $('#mydata .modal-content').load(url);
         };
 
-        $("#Todate").off('change').on('change', function (e) {
 
+        $("#Todate").off('change').on('change', function (e) {
             var $this = $(this);
-            var dateFromVal = $this.parents().find('#Fromdate').val();
-            var dateToVal = $this.val();
+           
+            var fromDateParts = $this.parents().find('#Fromdate').val().split('/');
+            console.log(fromDateParts);
+            var dateFromVal = Date.parse(fromDateParts[1] + '/' + fromDateParts[0] + '/' + fromDateParts[2]);
+            //dateFromVal = Date.parse(dateFromVal);
+            console.log(dateFromVal);
+
+            console.log('');
+
+            var toDateParts = $this.val().split('/');
+            console.log(toDateParts);
+            var dateToVal =  Date.parse(toDateParts[1]  +'/' +toDateParts[0] + '/' +  toDateParts[2]);
+            //dateToVal = Date.parse(dateToVal);
+            console.log(dateToVal);
+
             var searchEl;
             $this.parents().find('.btn-search-component').length == 1 ? searchEl = $this.parents().find('.btn-search-component') : searchEl = $this.parents().find('.btn-primary');
 

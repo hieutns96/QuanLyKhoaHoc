@@ -28,29 +28,29 @@
                                         <div class="col-xs-12 col-sm-12 pl-5 pr-5">
                                             <div class="form-group mb-5">
                                                 <div class="styled-select">
-                                                    @Html.DropDownList("MaDonVi", (IEnumerable<SelectListItem>)ViewBag.MaDonViQL, "--Chọn đơn vị--", new { @class = "form-control border-radius-15px" })
+                                                    @Html.DropDownList("MaDonVi", (IEnumerable<SelectListItem>)ViewBag.MaDonViQL, new { @class = "form-control border-radius-15px" })
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-xs-12 col-sm-6 pl-5 pr-5">
                                             <div class="form-group mb-5">
-                                                @Html.DropDownList("MaNgach", (IEnumerable<SelectListItem>)ViewBag.MaNgachVienChuc, "--Chọn ngạch--", new { @class = "form-control border-radius-15px" })
+                                                @Html.DropDownList("MaNgach", (IEnumerable<SelectListItem>)ViewBag.MaNgachVienChuc, new { @class = "form-control border-radius-15px" })
                                             </div>
                                         </div>
 
                                         <div class="col-xs-12 col-sm-6 pl-5 pr-5">
                                             <div class="form-group mb-5">
-                                                @Html.DropDownList("MaHocHam", (IEnumerable<SelectListItem>)ViewBag.MaHocHam, "--Chọn học hàm--", new { @class = "form-control border-radius-15px" })
+                                                @Html.DropDownList("MaHocHam", (IEnumerable<SelectListItem>)ViewBag.MaHocHam, new { @class = "form-control border-radius-15px" })
                                             </div>
                                         </div>
                                         <div class="col-xs-12 col-sm-6 pl-5 pr-5">
                                             <div class="form-group mb-5">
-                                                @Html.DropDownList("MaHocVi", (IEnumerable<SelectListItem>)ViewBag.MaHocVi, "--Chọn học vị--", new { @class = "form-control border-radius-15px" })
+                                                @Html.DropDownList("MaHocVi", (IEnumerable<SelectListItem>)ViewBag.MaHocVi, new { @class = "form-control border-radius-15px" })
                                             </div>
                                         </div>
                                         <div class="col-xs-12 col-sm-6 pl-5 pr-5">
                                             <div class="form-group mb-5">
-                                                @Html.DropDownList("MaCNDaoTao", (IEnumerable<SelectListItem>)ViewBag.MaCNDaoTao, "--Chọn chuyên ngành--", new { @class = "form-control border-radius-15px" })
+                                                @Html.DropDownList("MaCNDaoTao", (IEnumerable<SelectListItem>)ViewBag.MaCNDaoTao, new { @class = "form-control border-radius-15px" })
                                             </div>
                                         </div>
 
@@ -117,7 +117,7 @@
                                     <div class="col-xs-12 col-sm-6 col-md-4 mb-md-50">
                                         <div class="funfact text-center">
                                             <a href="../../BaiBaos?nkhId=@Model.MaNKH">
-                                                <h2 data-animation-duration="2000" data-value="@Model.DsBaiBao" class="animate-number mt-0 font-30 font-weight-500 text-theme-color-2 appeared">0</h2>
+                                                <h2 data-animation-duration="2000" data-value="@Model.DsBaiBao" class="animate-number mt-0 font-30 font-weight-500 text-theme-color-2 appeared">@Model.DsBaiBao</h2>
                                             </a>
                                             <h5 class="text-uppercase mb-0">Bài báo</h5>
                                         </div>
@@ -125,7 +125,7 @@
                                     <div class="col-xs-12 col-sm-6 col-md-4 mb-md-50">
                                         <div class="funfact text-center">
                                             <a href="../../SachGiaoTrinhs?nkhId=@Model.MaNKH">
-                                                <h2 data-animation-duration="2000" data-value="@Model.DsSach" class="animate-number mt-0 font-30 font-weight-500 text-theme-color-2 appeared">0</h2>
+                                                <h2 data-animation-duration="2000" data-value="@Model.DsSach" class="animate-number mt-0 font-30 font-weight-500 text-theme-color-2 appeared">@Model.DsSach</h2>
                                             </a>
                                             <h5 class="text-uppercase mb-0">Sách - Giáo trình</h5>
                                         </div>
@@ -133,7 +133,7 @@
                                     <div class="col-xs-12 col-sm-6 col-md-4 mb-md-50">
                                         <div class="funfact text-center">
                                             <a href="../../DeTais?nkhId=@Model.MaNKH">
-                                                <h2 data-animation-duration="2000" data-value="@Model.DsDetai" class="animate-number mt-0 font-30 font-weight-500 text-theme-color-2 appeared">1</h2>
+                                                <h2 data-animation-duration="2000" data-value="@Model.DsDetai" class="animate-number mt-0 font-30 font-weight-500 text-theme-color-2 appeared">@Model.DsDetai</h2>
                                             </a>
                                             <h5 class="text-uppercase mb-0">Đề tài khoa học</h5>
                                         </div>

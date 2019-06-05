@@ -4163,7 +4163,7 @@ hr {
     }
 
         .ms-list-arrow li:before {
-            font-family: Arial Unicode MS;
+            font-family: Arial, Helvetica, sans-serif;
             content: "\f301";
             background-color: #03a9f4;
             border-radius: 100%;
@@ -4782,7 +4782,7 @@ hr {
 
                             .ms-navbar .navbar-collapse .navbar-nav .nav-item.dropdown .dropdown-menu .dropdown-submenu > a:after, .ms-lead-navbar .navbar-collapse .navbar-nav .nav-item.dropdown .dropdown-menu .dropdown-submenu > a:after {
                                 margin-right: -15px;
-                                font-family: Arial Unicode MS;
+                                font-family: Arial, Helvetica, sans-serif;
                                 content: "\f2fb";
                                 float: right;
                                 vertical-align: middle
@@ -4887,7 +4887,7 @@ hr {
                                         }
 
                                         .ms-navbar .navbar-collapse .navbar-nav .nav-item.dropdown .dropdown-menu .ms-tab-menu .ms-tab-menu-left .nav-item a.nav-link:after, .ms-lead-navbar .navbar-collapse .navbar-nav .nav-item.dropdown .dropdown-menu .ms-tab-menu .ms-tab-menu-left .nav-item a.nav-link:after {
-                                            font-family: Arial Unicode MS;
+                                            font-family: Arial, Helvetica, sans-serif;
                                             content: "\f2fb";
                                             display: inline-block;
                                             position: absolute;
@@ -8162,7 +8162,7 @@ pre.line-numbers {
     .material-card-code-header .material-card-code-title a {
         display: block;
         color: #fff;
-        font-family: Arial Unicode MS;
+        font-family: Arial, Helvetica, sans-serif;
         font-weight: 400;
         font-size: 14px;
         line-height: 10px;
@@ -8487,7 +8487,7 @@ label.color-white {
         }
 
             .ms-collapse-nav li a:after {
-                font-family: Arial Unicode MS;
+                font-family: Arial, Helvetica, sans-serif;
                 font-size: 1.2em;
                 float: right;
                 content: '\f2fb';
@@ -8604,7 +8604,7 @@ label.color-white {
             .ms-collapse .material-card .material-card-header .material-card-title a {
                 display: block;
                 color: #424242;
-                font-family: Arial Unicode MS;
+                font-family: Arial, Helvetica, sans-serif;
                 font-weight: 400;
                 font-size: 14px;
                 line-height: 10px;
@@ -15381,12 +15381,12 @@ body.lb-disable-scrolling {
 
 body, html {
     height: 100%;
-    font-family: Arial Unicode MS !important;
+    font-family: Arial, Helvetica, sans-serif !important;
 }
 
 /*---------------------------------------------*/
 a {
-    font-family: Arial Unicode MS;
+    font-family: Arial, Helvetica, sans-serif;
     font-size: 14px;
     line-height: 1.7;
     color: #666666;
@@ -15411,7 +15411,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 p {
-    font-family: Arial Unicode MS;
+    font-family: Arial, Helvetica, sans-serif;
     font-size: 14px;
     line-height: 1.7;
     color: #666666;
@@ -15642,7 +15642,7 @@ iframe {
 .contact100-form-title {
     width: 100%;
     display: block;
-    font-family: Arial Unicode MS;
+    font-family: Arial, Helvetica, sans-serif;
     font-size: 30px;
     color: #333333;
     line-height: 1.2;
@@ -15664,7 +15664,7 @@ iframe {
 }
 
 .label-input100 {
-    font-family: Arial Unicode MS;
+    font-family: Arial, Helvetica, sans-serif;
     font-size: 11px;
     color: #666666;
     line-height: 1.2;
@@ -15676,7 +15676,7 @@ iframe {
     display: block;
     width: 100%;
     background: transparent;
-    font-family: Arial Unicode MS;
+    font-family: Arial, Helvetica, sans-serif;
     font-size: 18px;
     color: #404b46;
     line-height: 1.2;
@@ -15837,7 +15837,7 @@ textarea.input100 {
     transform: translateY(-50%);
     right: 2px;
     pointer-events: none;
-    font-family: Arial Unicode MS;
+    font-family: Arial, Helvetica, sans-serif;
     color: #c80000;
     font-size: 13px;
     line-height: 1.4;
@@ -15926,7 +15926,7 @@ textarea.input100 {
         /*------------------------------------------------------------------
 [ in select ]*/
         .select2-container .select2-selection--single .select2-selection__rendered {
-            font-family: Arial Unicode MS;
+            font-family: Arial, Helvetica, sans-serif;
             font-size: 18px;
             color: #404b46;
             line-height: 1.2;
@@ -16002,7 +16002,7 @@ textarea.input100 {
 }
 
 .select2-results__options {
-    font-family: Arial Unicode MS;
+    font-family: Arial, Helvetica, sans-serif;
     font-size: 18px;
     color: #404b46;
     line-height: 1.2;
@@ -16011,7 +16011,7 @@ textarea.input100 {
 .select2-search--dropdown .select2-search__field {
     border: 1px solid #aaa;
     outline: none;
-    font-family: Arial Unicode MS;
+    font-family: Arial, Helvetica, sans-serif;
     font-size: 18px;
     color: #404b46;
     line-height: 1.2;
@@ -16026,7 +16026,7 @@ textarea.input100 {
 }
 
 .font1 {
-    font-family: Arial Unicode MS;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .custom-grid {

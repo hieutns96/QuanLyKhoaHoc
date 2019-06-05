@@ -1,45 +1,81 @@
-﻿<!DOCTYPE html>
-<html>
+﻿<html lang="en">
+<!-- Head BEGIN -->
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link rel="shortcut icon" type="image/x-icon" href="~/Image/hcmup_edu.ico" />
+
+    <title>@ViewBag.Title</title>
+    @Scripts.RenderFormat("<script src=\"/Scripts/use.fontawesome.js\" data-auto-replace-svg=\"nest\"></script>", "~/bundles/use.fontawesome")
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    <link href="~/Content/Pagination.css" rel="stylesheet"/>
+
 </head>
+<!-- Head END -->
+<!-- Body BEGIN -->
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", null, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
-                @Html.Partial("_LoginPartial")
+    <div id="wrapper" class="clearfix">
+
+        @RenderBody()
+    </div>
+
+    <div id="mydata" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
             </div>
         </div>
     </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
 
+    <a class="scrollToTop" href="#"><i class="fa fa-angle-up"></i></a>
+    <!-- end wrapper -->
+    <!-- Footer Scripts -->
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/qlkh")
     @RenderSection("scripts", required: false)
-   
+    @RenderSection("NhaKhoaHocScripts", required: false)
+    @RenderSection("charts", required: false)
+    <script>
+        function modal_load(url) {
+            $('#mydata .modal-content').load(url);
+        };
+
+        $("#Todate").off('change').on('change', function (e) {
+
+            var $this = $(this);
+
+            var fromDateParts = $this.parents().find('#Fromdate').val().split('/');
+            console.log(fromDateParts);
+            var dateFromVal = Date.parse(fromDateParts[1] + '/' + fromDateParts[0] + '/' + fromDateParts[2]);
+            //dateFromVal = Date.parse(dateFromVal);
+            console.log(dateFromVal);
+
+            console.log('');
+
+            var toDateParts = $this.val().split('/');
+            console.log(toDateParts);
+            var dateToVal = Date.parse(toDateParts[1] + '/' + toDateParts[0] + '/' + toDateParts[2]);
+            //dateToVal = Date.parse(dateToVal);
+            console.log(dateToVal);
+
+            var searchEl;
+            $this.parents().find('.btn-search-component').length == 1 ? searchEl = $this.parents().find('.btn-search-component') : searchEl = $this.parents().find('.btn-primary');
+
+            if (!dateFromVal) {
+                return;
+            }
+
+            if (dateFromVal > dateToVal) {
+                searchEl.attr('disabled', 'disabled');
+                alert("Vui lòng nhập ngày đến thời điểm sau ngày từ thời điểm");
+            } else {
+                searchEl.removeAttr("disabled");
+            }
+
+        });
+
+
+    </script>
 </body>
+<!-- END BODY -->
 </html>

@@ -994,7 +994,7 @@ body {
     line-height: 1.7;
     color: #666666;
     font-size: 14px;
-    font-family: Arial Unicode MS;
+    font-family: Arial, Helvetica, sans-serif;
     background-color: #fff;
 }
 a {
@@ -1044,7 +1044,7 @@ h1,
 h2,
 .h1,
 .h2 {
-    font-family: Arial Unicode MS;
+    font-family: Arial, Helvetica, sans-serif;
     font-weight: 500;
     line-height: 1.42857143;
     color: #333333;
@@ -1075,7 +1075,7 @@ h6,
 .h4,
 .h5,
 .h6 {
-    font-family: Arial Unicode MS;
+    font-family: Arial, Helvetica, sans-serif;
     font-weight: 400;
     line-height: 1.42857143;
     color: #333333;
@@ -1126,7 +1126,7 @@ form {
 }
 /* -------- Custom Font Family ---------- */
 .font-opensans {
-  font-family: Arial Unicode MS;
+  font-family: Arial, Helvetica, sans-serif;
 }
 .font-raleway {
   font-family: 'Raleway', sans-serif;
@@ -2246,7 +2246,7 @@ section > .container-fluid {
 .menu-full-page #fullpage-nav li a {
   color: #111;
   font-size: 18px;
-  font-family: Arial Unicode MS;
+  font-family: Arial, Helvetica, sans-serif;
   text-decoration: none;
   font-weight: 400;
   text-transform: uppercase;
@@ -2611,7 +2611,7 @@ form textarea:focus {
   height: 70px;
 }
 form label {
-    font-family: Arial Unicode MS;
+    font-family: Arial, Helvetica, sans-serif;
     font-size: 16px;
     font-weight: 600;
     margin-bottom: 10px;
@@ -4233,7 +4233,7 @@ textarea {
         background: none repeat scroll 0 0 transparent;
         border: 1px solid #ccc;
         border-radius: 3px;
-        font-family: Arial Unicode MS;
+        font-family: Arial, Helvetica, sans-serif;
         height: 18px;
         left: 2.8571em;
         line-height: 1;
@@ -6265,7 +6265,7 @@ blockquote p {
 }
 .nav-tabs > li > a {
   border-radius: 0;
-  font-family: Arial Unicode MS;
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 12px;
   color: #555555;
   padding: 12px 20px;
